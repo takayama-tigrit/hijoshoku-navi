@@ -1,0 +1,53 @@
+baseURL = "https://hijoshoku-navi.com/"
+locale = "ja"
+title = "非常食ナビ｜防災備蓄食の比較・ランキング"
+theme = "PaperMod"
+defaultContentLanguage = "ja"
+paginate = 10
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+
+[params]
+  author = "非常食ナビ編集部"
+  description = "一人暮らし・ファミリー向けに非常食・防災備蓄食品を徹底比較。賞味期限・カロリー・価格を一覧でチェックして、あなたに合った非常食セットを見つけましょう。"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = false
+  ShowToc = true
+  TocOpen = false
+  disableScrollToTop = false
+
+[params.homeInfoParams]
+  Title = "非常食・防災備蓄食の比較サイト"
+  Content = "賞味期限・カロリー・価格を一目で比較。一人暮らしからファミリーまで、本当に必要な非常食が見つかります。"
+
+[menu]
+  [[menu.main]]
+    identifier = "ranking"
+    name = "おすすめランキング"
+    url = "/ranking/"
+    weight = 1
+  [[menu.main]]
+    identifier = "guide"
+    name = "選び方ガイド"
+    url = "/guide/"
+    weight = 2
+  [[menu.main]]
+    identifier = "category"
+    name = "カテゴリ別"
+    url = "/categories/"
+    weight = 3
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup.goldmark.renderer]
+  unsafe = true
