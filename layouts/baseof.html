@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="ja" dir="ltr" data-theme="light">
+<head>{{ partial "editorial-head.html" . }}</head>
+<body{{ if .IsHome }} class="home"{{ end }} id="top">
+  <a class="skip-link" href="#main-content">本文へスキップ</a>
+  {{ partial "editorial-header.html" . }}
+  <main id="main-content" tabindex="-1">{{ block "main" . }}{{ end }}</main>
+  {{ partial "editorial-footer.html" . }}
+</body>
+</html>

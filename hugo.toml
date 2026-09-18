@@ -1,6 +1,6 @@
 baseURL = "https://hijoshoku-navi.com/"
 locale = "ja"
-title = "非常食ナビ｜防災備蓄食の比較・ランキング"
+title = "非常食ナビ"
 theme = "PaperMod"
 defaultContentLanguage = "ja"
 enableRobotsTXT = true
@@ -12,36 +12,33 @@ buildFuture = false
 
 [params]
   author = "非常食ナビ編集部"
-  description = "一人暮らし・ファミリー向けに非常食・防災備蓄食品を徹底比較。賞味期限・カロリー・価格を一覧でチェックして、あなたに合った非常食セットを見つけましょう。"
-  defaultTheme = "auto"
-  ShowReadingTime = true
+  description = "いつもの暮らしに、もしもの備え。非常食の必要量、用途に合う選び方、アルファ米の違いを、公的機関やメーカーの情報をもとに整理する生活情報サイトです。"
+  tagline = "いつもの暮らしに、もしもの備え。"
+  defaultTheme = "light"
+  disableThemeToggle = true
+  ShowReadingTime = false
   ShowShareButtons = false
-  ShowPostNavLinks = true
+  ShowPostNavLinks = false
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = false
   ShowToc = true
-  TocOpen = false
-  disableScrollToTop = false
-
-[params.homeInfoParams]
-  Title = "非常食・防災備蓄食の比較サイト"
-  Content = "賞味期限・カロリー・価格を一目で比較。一人暮らしからファミリーまで、本当に必要な非常食が見つかります。"
+  disableScrollToTop = true
 
 [menu]
   [[menu.main]]
-    identifier = "ranking"
-    name = "おすすめランキング"
-    url = "/ranking/"
+    identifier = "guide"
+    name = "ガイド"
+    url = "/guide/"
     weight = 1
   [[menu.main]]
-    identifier = "guide"
-    name = "選び方ガイド"
-    url = "/guide/"
+    identifier = "ranking"
+    name = "非常食比較"
+    url = "/ranking/"
     weight = 2
   [[menu.main]]
-    identifier = "category"
-    name = "カテゴリ別"
-    url = "/categories/"
+    identifier = "alpha-mai"
+    name = "アルファ米"
+    url = "/posts/alpha-mai-osusume/"
     weight = 3
 
 [taxonomies]
@@ -49,7 +46,7 @@ buildFuture = false
   tag = "tags"
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]
 
 [markup.goldmark.renderer]
   unsafe = true

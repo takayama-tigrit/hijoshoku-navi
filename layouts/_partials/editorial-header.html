@@ -1,0 +1,14 @@
+<header class="site-header" data-testid="site-header">
+  <div class="header-inner wrap">
+    <a class="brand" href="{{ "/" | relURL }}" aria-label="非常食ナビ ホーム">
+      <img src="{{ "images/navi-mark.svg" | relURL }}" alt="" width="38" height="38">
+      <span>{{ site.Title }}</span>
+    </a>
+    <p class="brand-tagline">{{ site.Params.tagline }}</p>
+    <nav class="main-nav" aria-label="メインナビゲーション">
+      {{ range site.Menus.main }}
+      <a href="{{ .URL | relURL }}"{{ if eq $.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

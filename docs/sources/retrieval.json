@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "url": "https://www.onisifoods.co.jp/products/hakuhan.html",
+    "final_url": "https://www.onisifoods.co.jp/products/hakuhan.html",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:12.393151+09:00",
+    "excerpt": "excerpts/01.txt",
+    "response_sha256": "944f080049c99b66fc20560531e72464ba13eeaac74024e2e869e3880f458abe",
+    "excerpt_sha256": "c543093af03284b6f10315b358258856fadf0528edf7fbf91da6f550a27f1da1",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 2,
+    "url": "https://www.imuraya.co.jp/goods/yokan/c-eiyo/eiyo/",
+    "final_url": "https://www.imuraya.co.jp/goods/yokan/c-eiyo/eiyo/",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:12.600736+09:00",
+    "excerpt": "excerpts/02.txt",
+    "response_sha256": "6764e9db168991184cdcf3ac3a65bc6ba420321a3b1fbf74d74774c94033116f",
+    "excerpt_sha256": "182b410ba48ea51d60af20b1d51ed389417e62a7fadfd2b69e24c3aba72598ec",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 3,
+    "url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter01.html",
+    "final_url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter01.html",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:12.797360+09:00",
+    "excerpt": "excerpts/03.txt",
+    "response_sha256": "7f9fb487cf9db958d1f46cc80fe302426764641d82c47bd04cbfce2065b6619c",
+    "excerpt_sha256": "61c14af4af37531a96e15fa53b0426ce06069c3c59941f89b09b251e1fcfa9a1",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 4,
+    "url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter02.html",
+    "final_url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter02.html",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:13.002603+09:00",
+    "excerpt": "excerpts/04.txt",
+    "response_sha256": "dcb6ddf16147b4c408dd8406f6bb34a0893d2f588241f2e75785a49daa6d58fa",
+    "excerpt_sha256": "f1309478c52a5495c3714a3b19857755a43338fc0510f0c8e22f6b6236b4626e",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 5,
+    "url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter03.html",
+    "final_url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter03.html",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:13.195934+09:00",
+    "excerpt": "excerpts/05.txt",
+    "response_sha256": "1d3f0b1ba77ecccce0157da0e5636727293f9c8e7742e1dee6a081467e74b6d2",
+    "excerpt_sha256": "a91b843e304a45d096d892379ae268ef15482215d5ef6df07fb7ad070605436b",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 6,
+    "url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter05.html",
+    "final_url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter05.html",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:13.384619+09:00",
+    "excerpt": "excerpts/06.txt",
+    "response_sha256": "534b2de90b944270291e191a34f9445bd723a52b756de1ae039e6a952eab0753",
+    "excerpt_sha256": "a73b2e60702e9b41a9e6160f746e49b9bd09eeeabd995d7271c453ebd0466e91",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 7,
+    "url": "https://www.onisifoods.co.jp/products/gomoku.html",
+    "final_url": "https://www.onisifoods.co.jp/products/gomoku.html",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:13.557991+09:00",
+    "excerpt": "excerpts/07.txt",
+    "response_sha256": "a60e5fd2a9b9c0d04c5fb5a35755f6b9e505d0c37747413cdeef704be2d56032",
+    "excerpt_sha256": "0bdab83466e6d382a3b033d2f4a1b29cdc19d2c1dc99f544737e5ce47a532212",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 8,
+    "url": "https://www.onisifoods.co.jp/products/wakame.html",
+    "final_url": "https://www.onisifoods.co.jp/products/wakame.html",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:13.732189+09:00",
+    "excerpt": "excerpts/08.txt",
+    "response_sha256": "b4d57fb421d2109bef4de0f9e21a0887f36d68adb88d47fdd51ae42ce2c38fa0",
+    "excerpt_sha256": "dc8ca1aa46992545c42870d0a976f4f855470ba61a72d0d8abbeeae737473b01",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 9,
+    "url": "https://www.onisifoods.co.jp/faq/",
+    "final_url": "https://www.onisifoods.co.jp/faq/",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:13.921428+09:00",
+    "excerpt": "excerpts/09.txt",
+    "response_sha256": "7cdd6b14a6af1aa86c0df5decb41eb6d3eb8c9c8ccbe49a6cc915f11241c30fd",
+    "excerpt_sha256": "39477e35699e95794b12c7dccdc6d6d0a340170061027c9cc1f9cb0352866fef",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 10,
+    "url": "https://www.onisifoods.co.jp/products/list.html",
+    "final_url": "https://www.onisifoods.co.jp/products/list.html",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:14.126845+09:00",
+    "excerpt": "excerpts/10.txt",
+    "response_sha256": "c3d4c779b431baa961a77ee476235ab3215877c4383c710190ff532213cbde08",
+    "excerpt_sha256": "4c55500a0546f048ed61b121bd8c6b737b3047d66998ef45cba8eeb19cbb96f0",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 11,
+    "url": "https://www.kantei.go.jp/jp/headline/bousai/sonae.html",
+    "final_url": "https://www.kantei.go.jp/jp/headline/bousai/sonae.html",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:14.324576+09:00",
+    "excerpt": "excerpts/11.txt",
+    "response_sha256": "634959045163bfb51b7cb030c6eefc64892ce0244feb874570985252716569a2",
+    "excerpt_sha256": "76ff21d71e5337d6d2700b3d6b63161c07396df51c69dea8a7a667d8ad9b8ff0",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 12,
+    "url": "https://www.onisifoods.co.jp/products/hidamari/plane.html",
+    "final_url": "https://www.onisifoods.co.jp/products/hidamari/plane.html",
+    "status": 200,
+    "checked_at": "2026-09-18T23:35:17.723018+09:00",
+    "excerpt": "excerpts/12.txt",
+    "response_sha256": "82ebc140ca45119be1e286cea197edeca51a875b0e6c27040de44538e2d1443c",
+    "excerpt_sha256": "cf6d8e4b90d85f2e6cd15df81abc907487cf1ff5c0269196d0a5386099fe893c",
+    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  }
+]
