@@ -1,0 +1,10 @@
+{{- $args := . -}}
+{{- $ledger := readFile "docs/image-licenses.json" | transform.Unmarshal -}}
+{{- range where $ledger.images "id" .id -}}
+<figure class="food-photo {{ $args.class }}" data-photo="{{ .id }}">
+  <img src="{{ strings.TrimPrefix "static/" .local_path | relURL }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" {{ if $args.eager }}loading="eager" fetchpriority="high"{{ else }}loading="lazy"{{ end }} decoding="async">
+  <figcaption>{{ with $args.caption }}<span class="photo-purpose">{{ . }}</span>{{ end }}<span>{{ .caption }}</span>
+    <details class="photo-credit"><summary>写真の出典・利用許諾</summary><p><a href="{{ .source_url }}">作品の原掲載ページ</a> / {{ .author }} / <a href="{{ .license_url }}">{{ .license }}</a><br>{{ .attribution }}<br>{{ .modifications }} 表示枠に合わせた切り抜き表示あり。</p></details>
+  </figcaption>
+</figure>
+{{- end -}}

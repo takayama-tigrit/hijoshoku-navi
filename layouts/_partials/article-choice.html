@@ -1,0 +1,28 @@
+<section class="article-choice" data-testid="article-choice" aria-labelledby="article-choice-title">
+  <p class="choice-route">条件 → 候補 → 確認</p>
+  <h2 id="article-choice-title">{{ .Params.choiceTitle }}</h2>
+  <div class="choice-cards">
+    {{ range .Params.articleChoices }}
+    <article class="choice-card" data-choice-card>
+      <div class="choice-heading">
+        <svg class="choice-icon" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          {{ if eq .icon "water" }}<path d="M25 7h14v9l6 8v31H19V24l6-8z"/><path d="M20 34h24M25 11h14"/><path d="M32 27c-8 10-8 14 0 14s8-4 0-14z" fill="#b9d8df"/>
+          {{ else if eq .icon "bread" }}<path d="M17 27C6 23 12 10 23 14c6-9 16-6 19 0 13-4 19 10 8 14v26H17z" fill="#f3dfb4"/><path d="M25 32v12m13-12v12"/>
+          {{ else if eq .icon "yokan" }}<path d="M13 25 39 13l13 9-26 13z" fill="#9a6851"/><path d="M13 25v20l13 9V35m0 19 26-13V22" fill="#d4b399"/>
+          {{ else }}<path d="M10 32h44c-2 15-12 22-22 22S12 47 10 32z" fill="#f8f6e8"/><path d="M13 31c0-18 38-18 38 0M24 56h16"/>
+            {{ if eq .icon "gomoku" }}<path d="m22 23 4 4m10-6 4 4m-9 1 3-3" stroke="#b55b31" stroke-width="4"/>
+            {{ else if eq .icon "wakame" }}<path d="m21 25 4-5 3 6m8-6 4 6 3-4" stroke="#456951" stroke-width="4"/>
+            {{ else if eq .icon "food" }}<path d="M45 8h12v15H45z" fill="#d9e3c6"/><path d="M16 12v7m8-9v6"/>
+            {{ else }}<path d="M24 11V6m8 6V5m8 7V7"/>{{ end }}
+          {{ end }}
+        </svg>
+        <div><p class="choice-condition" data-choice-condition>{{ .condition }}</p><h3>{{ .name }}</h3></div>
+      </div>
+      <p class="choice-difference">{{ .note }}</p>
+      {{ if .action }}<a class="choice-action" data-testid="next-action" href="{{ .action }}">{{ .actionLabel }}</a>{{ end }}
+      <a class="choice-official{{ if not .action }} choice-action{{ end }}" data-official href="{{ .official }}">{{ .label }}</a>
+    </article>
+    {{ end }}
+  </div>
+  <p class="choice-note">{{ .Params.choiceNote }}</p>
+</section>

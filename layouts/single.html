@@ -1,18 +1,20 @@
 {{ define "main" }}
 {{ $editorial := not (in (slice "/about/" "/privacy/") .RelPermalink) }}
-<div class="article-wrap wrap">
+{{ with .Params.articleChoices }}{{ $css := resources.Get "css/article-choice.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">{{ end }}
+<div class="article-wrap wrap{{ if .Params.articleChoices }} choice-page{{ end }}">
   <nav class="breadcrumbs" aria-label="パンくずリスト"><a href="{{ "/" | relURL }}">ホーム</a><span aria-hidden="true">/</span><span>{{ if $editorial }}読みもの{{ else }}{{ .Title }}{{ end }}</span></nav>
   <article class="article" data-testid="article">
     <header class="article-header">
       {{ if $editorial }}<p class="eyebrow">{{ with .Params.categories }}{{ index . 0 }}{{ else }}備えの読みもの{{ end }}</p>{{ end }}
       <h1>{{ .Title }}</h1>
       {{ with .Description }}<p class="article-description">{{ . }}</p>{{ end }}
-      {{ if $editorial }}<p class="article-meta"><span>{{ site.Params.author }}</span>{{ with .Date }}<span>公開 <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006.01.02" }}</time></span>{{ end }}{{ if gt .Lastmod .Date }}<span>更新 <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006.01.02" }}</time></span>{{ end }}</p>{{ end }}
+
     </header>
+    {{ if .Params.articleChoices }}{{ partial "article-choice.html" . }}{{ end }}
+      {{ if $editorial }}<p class="article-meta"><span>{{ site.Params.author }}</span>{{ with .Date }}<span>公開 <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006.01.02" }}</time></span>{{ end }}{{ if gt .Lastmod .Date }}<span>更新 <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006.01.02" }}</time></span>{{ end }}</p>{{ end }}
     {{ if $editorial }}
     <aside class="article-disclosure" data-testid="editorial-disclosure" aria-label="記事の情報源と広告について">
-      <p>公的機関・メーカー情報をもとに整理。実食評価ではありません。</p>
-      <p><strong>広告について</strong>：現在、成果報酬型の広告リンクは掲載していません。<a href="{{ "/about/" | relURL }}">編集方針・広告掲載方針</a></p>
+      <p>公的・メーカー情報による比較（実食評価なし）。成果報酬型広告リンクは未掲載。<a href="{{ "/about/" | relURL }}">編集・広告方針</a></p>
     </aside>
     {{ end }}
     {{ if and (.Param "ShowToc") (gt (len .Fragments.Headings) 0) }}
@@ -25,7 +27,7 @@
     <section class="related-section" aria-labelledby="related-title" data-testid="related-section">
       <p class="eyebrow">次に読みたい</p><h2 id="related-title">わが家の備えを、もう一歩。</h2>
       <div class="related-grid">{{ range slice "/guide" "/ranking" "/posts/alpha-mai-osusume" }}{{ with site.GetPage . }}{{ if ne .RelPermalink $.RelPermalink }}
-        <a class="related-card" href="{{ .RelPermalink }}" data-testid="related-article"><h3>{{ .Title }}</h3><p>{{ .Description | default (.Summary | plainify | truncate 100) }}</p><span class="related-read">記事を読む <span aria-hidden="true">→</span></span></a>
+        <a class="related-card" href="{{ .RelPermalink }}" data-testid="related-article"><h3>{{ .Title }}</h3><p>{{ .Description | default (.Summary | plainify | truncate 100) }}</p><span class="related-read" data-testid="next-action">条件を確認する <span aria-hidden="true">→</span></span></a>
       {{ end }}{{ end }}{{ end }}</div>
     </section>
     {{ end }}
