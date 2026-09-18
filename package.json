@@ -1,0 +1,11 @@
+{
+  "name": "hijoshoku-navi-quality-checks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "python3 docs/sources/verify.py && node tests/site.spec.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}

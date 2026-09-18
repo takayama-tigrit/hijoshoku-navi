@@ -1,0 +1,17 @@
+{{- $pages := .RegularPages -}}
+{{- if .IsHome }}{{ $pages = site.RegularPages }}{{ end -}}
+{{- $pages = where $pages "Params.hiddenInRss" "ne" true -}}
+{{- $pages = where $pages "RelPermalink" "not in" (slice "/about/" "/privacy/") -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>{{ if not .IsHome }}{{ .Title }}｜{{ end }}{{ site.Title }}</title>
+<link>{{ .Permalink }}</link>
+<description>{{ site.Params.description }}</description>
+<language>{{ site.Language.Lang }}</language>
+{{ with .OutputFormats.Get "RSS" }}{{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}{{ end }}
+{{ range first 20 $pages.ByDate.Reverse }}
+<item><title>{{ .Title }}</title><link>{{ .Permalink }}</link><guid>{{ .Permalink }}</guid><pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate><description>{{ .Description | default (.Summary | plainify) }}</description></item>
+{{ end }}
+</channel>
+</rss>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="450" viewBox="0 0 560 450" fill="none">
+<title>日々の暮らしに備える食品棚</title>
+<desc>架空の商品を描いたイラスト。ごはんの袋、缶詰、保存用の箱、水のボトルを木の棚に並べています。</desc>
+<rect x="18" y="16" width="524" height="414" rx="180" fill="#eeeadf"/>
+<path d="M61 396h443" stroke="#b5b4a4" stroke-width="2" stroke-linecap="round"/>
+<path d="M416 105c17-18 20-34 11-47-17 11-24 27-11 47Z" fill="#859b80"/><path d="M419 126c-4-25-20-36-38-31 1 18 13 31 38 31Z" fill="#a5b49a"/><path d="m423 86-10 80" stroke="#466652" stroke-width="2"/>
+<path d="M396 146h39l-5 34h-28z" fill="#bc7956"/><path d="M394 145h43" stroke="#854e34" stroke-width="3" stroke-linecap="round"/>
+<g stroke="#506654" stroke-width="2.2" stroke-linejoin="round">
+<path d="M111 99h274v13H111z" fill="#c9cfb9"/><path d="M110 113h15v278h-15zm260 0h15v278h-15z" fill="#dadcca"/>
+<path d="M100 216h299v14H100zm0 138h299v14H100z" fill="#c9cfb9"/>
+</g>
+<g stroke="#596854" stroke-width="1.8" stroke-linejoin="round">
+<path d="M144 141h56l-5 13 12 62h-70l12-62z" fill="#f9f7ed"/><path d="M147 154h48m-48 47h50"/><path d="M155 174h33c-2 11-7 17-17 17-9 0-14-6-16-17Z" fill="#d3a06e"/><path d="M155 171c4-10 29-10 33 0"/>
+<path d="M218 128h52l-5 12 12 76h-66l12-76z" fill="#8c9e7c"/><path d="M221 140h45"/><rect x="227" y="155" width="33" height="39" rx="3" fill="#f5f2e5"/><path d="M235 168h17m-17 8h17m-17 8h10"/>
+<rect x="294" y="166" width="56" height="48" rx="6" fill="#cb956a"/><ellipse cx="322" cy="167" rx="28" ry="7" fill="#e7c7a6"/><path d="M295 201c15 7 37 7 54 0"/><rect x="305" y="178" width="33" height="16" rx="3" fill="#f4eddd"/>
+<path d="M142 258h99v95h-99z" fill="#deccaa"/><path d="m142 258 18-11h70l11 11m-50 0v95"/><path d="M155 278h23v27h-23z" fill="#faf6e9"/><path d="M160 286h13m-13 6h8"/>
+<path d="M271 265v-17h23v17l8 14v67c0 4-3 7-7 7h-25c-4 0-7-3-7-7v-67z" fill="#d9e2d8"/><path d="M271 247h23v10h-23z" fill="#7e9480"/><path d="M263 290h39v35h-39z" fill="#f5f4e9"/><path d="M282 297s-8 9-8 13a8 8 0 0 0 16 0c0-4-8-13-8-13Z" fill="#9fb4a6" stroke="none"/>
+<path d="M328 272v-17h22v17l8 14v61c0 4-3 6-7 6h-24c-4 0-7-2-7-6v-61z" fill="#e1e8dd"/><path d="M328 254h22v10h-22z" fill="#7e9480"/><path d="M320 300h38v27h-38z" fill="#f5f4e9"/><path d="M331 310h16m-16 7h11"/>
+</g>
+<path d="M410 316h67l10 73h-87z" fill="#d5b07e" stroke="#705e43" stroke-width="2" stroke-linejoin="round"/><path d="M424 322v-15c0-23 35-23 35 0v15" stroke="#705e43" stroke-width="3" stroke-linecap="round"/><path d="M420 352h45m-39 9h32" stroke="#f7f0df" stroke-width="3" stroke-linecap="round"/>
+<path d="M79 167c-18-3-26-13-24-27 15 0 25 9 24 27Zm-1 1c0-15 8-24 20-23 1 12-6 21-20 23Z" fill="#9dac8e"/><path d="M79 164v32" stroke="#648067" stroke-width="2"/>
+<path d="M64 182h29l-5 33H70z" fill="#ddd2ba" stroke="#9b9076" stroke-width="1.5"/>
+<g stroke="#a77250" stroke-width="2" stroke-linecap="round"><path d="M461 208v12m-6-6h12M88 281v8m-4-4h8"/></g>
+</svg>

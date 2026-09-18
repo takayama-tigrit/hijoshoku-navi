@@ -1,0 +1,59 @@
+name: Site quality
+
+on:
+  push:
+    branches: [main, 'feat/**', 'fix/**']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        hugo: ['0.147.7', '0.166.0']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install verified Hugo release
+        env:
+          HUGO_VERSION: ${{ matrix.hugo }}
+        run: |
+          set -euo pipefail
+          work="$(mktemp -d)"
+          file="hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+          base="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}"
+          curl --fail --location --retry 2 "$base/$file" --output "$work/$file"
+          curl --fail --location --retry 2 "$base/hugo_${HUGO_VERSION}_checksums.txt" --output "$work/checksums.txt"
+          python3 - "$work" "$file" <<'PY'
+          import hashlib, pathlib, sys, tarfile
+          work, name = pathlib.Path(sys.argv[1]), sys.argv[2]
+          expected = next(row.split()[0] for row in (work / 'checksums.txt').read_text().splitlines() if row.split()[-1] == name)
+          assert hashlib.sha256((work / name).read_bytes()).hexdigest() == expected
+          with tarfile.open(work / name) as archive:
+              member = archive.getmember('hugo')
+              assert member.isfile()
+              archive.extract(member, work)
+          PY
+          printf '%s\n' "$work" >> "$GITHUB_PATH"
+      - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+        env:
+          ARTIFACT_DIR: artifacts/screenshots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screenshots-hugo-${{ matrix.hugo }}
+          path: artifacts/screenshots
+          if-no-files-found: ignore
+          retention-days: 7
