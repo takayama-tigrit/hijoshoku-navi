@@ -1,8 +1,5 @@
-{{ $p := .page }}
+{{ $p := .page }}{{ $feature := .feature }}{{ $t := partial "editorial-config.html" . }}
 <article class="story-card{{ if .lead }} story-lead{{ end }}">
-{{ $photo := $p.Params.coverPhoto | default "cooked-rice" }}
-<div class="story-image">{{ partial "photo.html" (dict "id" $photo "compact" true "eager" .lead "href" $p.RelPermalink) }}</div>
-<div class="story-copy"><h2><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
-{{ if .lead }}<p class="story-description">{{ $p.Description }}</p>{{ end }}
-<p class="story-meta"><span>非常食ナビ編集部</span> {{ with $p.Params.categories }}{{ index . 0 }}{{ end }} <time datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "2006/01/02" }}</time></p></div>
-</article>
+{{ $photo := $p.Params.coverPhoto }}{{ with $feature.image }}{{ $photo = . }}{{ end }}
+{{ with $photo }}<div class="story-image">{{ partial "photo.html" (dict "id" . "compact" true "eager" $.lead "href" $p.RelPermalink "composition" $.lead "feature" $feature) }}</div>{{ end }}
+<div class="story-copy"><h2><a href="{{ $p.RelPermalink }}">{{ partial "editorial-icon.html" ($t.featureSymbol | default "book") }}{{ $p.Title }}</a></h2><p class="story-description">{{ $p.Params.storySummary | default $p.Description }}</p></div></article>

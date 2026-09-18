@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 
 export async function checkVisualAction(page, route, width) {
-  const minimumPhotos = { '/': 4, '/guide/': 4, '/ranking/': 3, '/posts/alpha-mai-osusume/': 3 };
+  const minimumPhotos = { '/': 3, '/guide/': 4, '/ranking/': 3, '/posts/alpha-mai-osusume/': 3 };
   if (minimumPhotos[route]) {
     const photos = page.locator('img[src*="/images/photos/"]');
     assert(await photos.count() >= minimumPhotos[route], `Photo-led coverage missing: ${route}`);

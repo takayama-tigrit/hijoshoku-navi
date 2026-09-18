@@ -2,27 +2,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#ffffff">
-{{ $title := site.Title }}
-{{ if .IsHome }}{{ $title = printf "%s｜%s" site.Title site.Params.tagline }}{{ else }}{{ $title = printf "%s｜%s" .Title site.Title }}{{ end }}
-{{ $description := .Description | default (.Summary | plainify) | default site.Params.description }}
-{{ if .IsHome }}{{ $description = site.Params.description }}{{ end }}
+{{ $t := partial "editorial-config.html" . }}
+{{ $title := $t.identity.title }}
+{{ if .IsHome }}{{ $title = printf "%s｜%s" $t.identity.title $t.identity.tagline }}{{ else }}{{ $title = printf "%s｜%s" .Title $t.identity.title }}{{ end }}
+{{ $description := .Description | default (.Summary | plainify) | default $t.identity.description }}
+{{ if .IsHome }}{{ $description = $t.identity.description }}{{ end }}
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $description }}">
-<meta name="author" content="{{ site.Params.author }}">
+<meta name="author" content="{{ $t.identity.author }}">
 {{ if or .Params.robotsNoIndex (eq .Kind "404") }}<meta name="robots" content="noindex, follow">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
-<link rel="icon" href="{{ "images/navi-mark.svg" | relURL }}" type="image/svg+xml">
-{{ $css := resources.Get "css/editorial.css" | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+{{ with $t.identity.favicon }}<link rel="icon" href="{{ . | relURL }}" type="image/svg+xml">{{ end }}
 {{ $visualCSS := resources.Get "css/visual-action.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $visualCSS.RelPermalink }}" integrity="{{ $visualCSS.Data.Integrity }}" crossorigin="anonymous">
-{{ if or .IsHome (eq .RelPermalink "/guide/") }}{{ $plannerJS := resources.Get "js/stock-planner.js" | fingerprint }}
+{{ $css := resources.Get "css/editorial.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+{{ if and $t.tools.stockPlanner (or .IsHome (eq .RelPermalink "/guide/")) }}{{ $plannerJS := resources.Get "js/stock-planner.js" | fingerprint }}
 <script type="module" src="{{ $plannerJS.RelPermalink }}" integrity="{{ $plannerJS.Data.Integrity }}" crossorigin="anonymous"></script>{{ end }}
+{{ $headerJS := resources.Get "js/editorial-header.js" | fingerprint }}
+<script type="module" src="{{ $headerJS.RelPermalink }}" integrity="{{ $headerJS.Data.Integrity }}" crossorigin="anonymous"></script>
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:site_name" content="{{ $t.identity.title }}">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary">
-{{ range .AlternativeOutputFormats }}<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ site.Title }} {{ .Name }}">{{ end }}
+{{ range .AlternativeOutputFormats }}<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $t.identity.title }} {{ .Name }}">{{ end }}

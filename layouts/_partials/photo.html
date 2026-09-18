@@ -1,9 +1,35 @@
-{{- $args := . -}}{{- $ledger := readFile "docs/image-licenses.json" | transform.Unmarshal -}}
+{{- $args := . -}}
+{{- $ledger := readFile "docs/image-licenses.json" | transform.Unmarshal -}}
+{{- $t := partial "editorial-config.html" . -}}
+{{- $composite := and $args.composition $args.feature.lines (ge (len ($args.feature.images | default slice)) 3) -}}
+{{- $ids := slice .id -}}
+{{- if $composite }}{{ $ids = $args.feature.images }}{{ end -}}
 {{- range where $ledger.images "id" .id -}}
 <figure class="food-photo {{ $args.class }}{{ if $args.compact }} photo-compact{{ end }}" data-photo="{{ .id }}">
-{{ with $args.href }}<a href="{{ . }}" tabindex="-1" aria-hidden="true">{{ end }}<img src="{{ strings.TrimPrefix "static/" .local_path | relURL }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" {{ if $args.eager }}loading="eager" fetchpriority="high"{{ else }}loading="lazy"{{ end }} decoding="async">{{ if $args.href }}</a>{{ end }}
+{{ if $composite }}
+  <div class="feature-composition">
+    {{ range $i, $id := $ids }}{{ range where $ledger.images "id" $id }}
+    <div class="feature-photo feature-cut-{{ $i }}" data-photo-id="{{ .id }}">
+      {{ with $args.href }}<a href="{{ . }}" tabindex="-1" aria-hidden="true">{{ end }}
+      <img src="{{ strings.TrimPrefix "static/" .local_path | relURL }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" {{ if $args.eager }}loading="eager"{{ else }}loading="lazy"{{ end }} decoding="async">
+      {{ if $args.href }}</a>{{ end }}
+    </div>
+    {{ end }}{{ end }}
+    <div class="feature-words"><span class="feature-kicker">{{ $args.feature.kicker }}</span><p>{{ range $args.feature.lines }}<span>{{ . }}</span>{{ end }}</p></div>
+  </div>
+{{ else }}
+  {{ with $args.href }}<a href="{{ . }}" tabindex="-1" aria-hidden="true">{{ end }}<img src="{{ strings.TrimPrefix "static/" .local_path | relURL }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" {{ if $args.eager }}loading="eager" fetchpriority="high"{{ else }}loading="lazy"{{ end }} decoding="async">{{ if $args.href }}</a>{{ end }}
+{{ end }}
 {{- $caption := $args.caption | default .caption -}}
-{{- if and $args.compact (not $args.caption) (ne .id "pantry") -}}{{- $caption = "一般イメージ・掲載商品ではありません" -}}{{- end -}}
+{{- if and $args.compact (not $args.caption) -}}
+  {{- $caption = index $t.photoCaptions .id | default .compact_caption | default .caption -}}
+  {{- if $composite }}{{ $caption = $args.feature.caption | default $t.compositionCaption | default $caption }}{{ end -}}
+{{- end -}}
+{{ if and $composite $args.caption }}{{ with $t.compositionCaption }}{{ $caption = printf "%s %s" $caption . }}{{ end }}{{ end }}
 <figcaption><span{{ if not $args.compact }} class="photo-purpose"{{ end }}>{{ $caption }}</span>
-<details class="photo-credit"><summary>写真の出典・利用許諾</summary><p>{{ .caption }}<br><a href="{{ .source_url }}">作品の原掲載ページ</a> / {{ .author }} / <a href="{{ .license_url }}">{{ .license }}</a><br>{{ .attribution }}<br>{{ .modifications }} 表示枠に合わせた切り抜き表示あり。</p></details></figcaption></figure>
+<details class="photo-credit"><summary>写真の出典・利用許諾</summary><p>
+{{ range $ids }}{{ range where $ledger.images "id" . }}
+<span class="photo-source" data-credit="{{ .id }}">{{ .caption }}<br><a href="{{ .source_url }}">作品の原掲載ページ</a> / {{ .author }} / <a href="{{ .license_url }}">{{ .license }}</a><br>{{ .attribution }}<br>{{ .modifications }} 表示枠に合わせた切り抜き表示あり。</span><br>
+{{ end }}{{ end }}
+</p></details></figcaption></figure>
 {{- end -}}

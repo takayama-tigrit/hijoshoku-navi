@@ -1,0 +1,105 @@
+{
+  "identity": {
+    "title": "非常食ナビ",
+    "tagline": "いつもの食事のそばに、備えを。",
+    "description": "いつもの食事のそばに、無理なく備えを置く。食品と水の備え方を、公的機関・メーカーの公開情報から考える読みものです。",
+    "author": "非常食ナビ編集部",
+    "footer": "いつもの食事を、これからも。",
+    "symbol": "food",
+    "favicon": "/images/navi-mark.svg"
+  },
+  "navigation": [
+    {
+      "label": "ホーム",
+      "url": "/",
+      "icon": "home"
+    },
+    {
+      "label": "備え方",
+      "url": "/guide/",
+      "icon": "food"
+    },
+    {
+      "label": "読みもの",
+      "url": "/#readings",
+      "icon": "book"
+    },
+    {
+      "label": "備蓄メモ",
+      "url": "/#stock-planner",
+      "icon": "memo"
+    }
+  ],
+  "menuLabel": "メニュー",
+  "notice": {
+    "text": "いつもの食事から、少しずつ。食品と水の備えを見直す読みものです。",
+    "url": "/guide/"
+  },
+  "featured": [
+    {
+      "path": "/guide",
+      "image": "meal",
+      "images": ["bread", "meal", "cooked-rice"],
+      "kicker": "暮らしのそばの備え",
+      "lines": [
+        "いつもの食事の、",
+        "その先を考える。"
+      ]
+    },
+    {
+      "path": "/ranking",
+      "image": "bread",
+      "kicker": "食べ方から選ぶ",
+      "lines": [
+        "開けて食べる、",
+        "水を加えて待つ。"
+      ]
+    },
+    {
+      "path": "/posts/alpha-mai-osusume",
+      "image": "cooked-rice",
+      "kicker": "ごはんの備え",
+      "lines": [
+        "白飯と味つき。",
+        "わが家なら、どれ？"
+      ]
+    }
+  ],
+  "featureSymbol": "book",
+  "articleCovers": {
+    "/guide/": {"images": ["bread", "meal", "cooked-rice"], "kicker": "暮らしのそばの備え", "lines": ["いつもの食事から、", "備えを考える。"]}
+  },
+  "photoCaptions": {
+    "meal": "一般の料理のイメージ・非常食や掲載商品の現物ではありません",
+    "bread": "一般のパンのイメージ・長期保存パンや掲載商品の現物ではありません",
+    "cooked-rice": "一般のご飯のイメージ・アルファ米や掲載商品の現物ではありません"
+  },
+  "compositionCaption": "一般の食事・パン・ご飯のイメージ。非常食・長期保存パン・アルファ米や掲載商品の現物ではありません。",
+  "home": {
+    "heading": "非常食の読みもの",
+    "storiesLabel": "備えの読みもの",
+    "toolsTitle": "暮らしの実用ツール",
+    "noteTitle": "情報の読み方",
+    "note": "公的機関・メーカーの公開情報をもとに整理しています。実食評価や人気順位ではありません。",
+    "noteLink": "編集方針・広告について",
+    "noteUrl": "/about/"
+  },
+  "articleDisclosure": {
+    "text": "公的・メーカー情報による比較（実食評価なし）。成果報酬型広告リンクは未掲載。",
+    "label": "編集・広告方針",
+    "url": "/about/"
+  },
+  "tools": {
+    "stockPlanner": true
+  },
+  "footerLinks": [
+    {
+      "label": "編集方針・広告について",
+      "url": "/about/"
+    },
+    {
+      "label": "プライバシーポリシー",
+      "url": "/privacy/"
+    }
+  ]
+}
