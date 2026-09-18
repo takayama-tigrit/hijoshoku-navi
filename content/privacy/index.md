@@ -1,7 +1,7 @@
 ---
 title: "プライバシー・外部リンクについて"
 date: 2026-09-18T00:00:00+09:00
-lastmod: 2026-09-18T00:00:00+09:00
+lastmod: 2026-09-19T00:00:00+09:00
 description: "非常食ナビでの入力情報、アクセス解析、外部リンク、配信サービスについて説明します。"
 hideMeta: true
 ShowToc: false
@@ -13,9 +13,11 @@ ShowToc: false
 
 ## アクセス解析とCookie
 
-現在、当サイト独自のアクセス解析タグや広告計測タグは設置していません。導入する場合は、利用するサービスと目的に応じてこのページを更新します。
+当サイトはCloudflare Pagesで配信しています。独自ドメインでは、Cloudflare Web Analyticsの計測スクリプト（beacon）が配信時に挿入されます。ページの閲覧状況や表示性能を測定する仕組みです。詳しくは[Cloudflare Web Analyticsの説明](https://developers.cloudflare.com/web-analytics/about/)と[公式FAQ](https://developers.cloudflare.com/web-analytics/faq/)をご覧ください。
 
-当サイトはCloudflare Pagesで配信しています。当サイト独自の計測タグがなくても、配信・セキュリティなどのために、配信事業者側でIPアドレスやリクエスト情報が処理される場合があります。配信事業者の取り扱いは、[Cloudflareのプライバシーポリシー](https://www.cloudflare.com/privacypolicy/)を参照してください。
+このアクセス解析とは別に、配信・セキュリティ対策のため、Cloudflare側でIPアドレスやリクエスト情報が処理されたり、Cookieや検証用スクリプトが使われたりする場合があります。「このサイトを閲覧しても情報が一切処理されない」「Cookieを一切使用しない」という意味ではありません。取り扱いは[Cloudflareのプライバシーポリシー](https://www.cloudflare.com/privacypolicy/)を参照してください。
+
+広告計測タグは現在設置していません。広告計測サービスなどを導入する場合は、利用するサービスと目的に応じてこのページを更新します。
 
 ## 外部サイトへのリンク
 
@@ -30,5 +32,7 @@ ShowToc: false
 運営：TIGRIT
 
 制定日：2026年9月18日
+
+最終改定日：2026年9月19日
 
 サイトの機能や利用サービスを変更した際は、内容を見直します。
