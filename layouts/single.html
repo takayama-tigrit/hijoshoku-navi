@@ -1,36 +1,21 @@
 {{ define "main" }}
 {{ $editorial := not (in (slice "/about/" "/privacy/") .RelPermalink) }}
 {{ with .Params.articleChoices }}{{ $css := resources.Get "css/article-choice.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">{{ end }}
-<div class="article-wrap wrap{{ if .Params.articleChoices }} choice-page{{ end }}">
-  <nav class="breadcrumbs" aria-label="パンくずリスト"><a href="{{ "/" | relURL }}">ホーム</a><span aria-hidden="true">/</span><span>{{ if $editorial }}読みもの{{ else }}{{ .Title }}{{ end }}</span></nav>
-  <article class="article" data-testid="article">
-    <header class="article-header">
-      {{ if $editorial }}<p class="eyebrow">{{ with .Params.categories }}{{ index . 0 }}{{ else }}備えの読みもの{{ end }}</p>{{ end }}
-      <h1>{{ .Title }}</h1>
-      {{ with .Description }}<p class="article-description">{{ . }}</p>{{ end }}
-
-    </header>
-    {{ if .Params.articleChoices }}{{ partial "article-choice.html" . }}{{ end }}
-      {{ if $editorial }}<p class="article-meta"><span>{{ site.Params.author }}</span>{{ with .Date }}<span>公開 <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006.01.02" }}</time></span>{{ end }}{{ if gt .Lastmod .Date }}<span>更新 <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006.01.02" }}</time></span>{{ end }}</p>{{ end }}
-    {{ if $editorial }}
-    <aside class="article-disclosure" data-testid="editorial-disclosure" aria-label="記事の情報源と広告について">
-      <p>公的・メーカー情報による比較（実食評価なし）。成果報酬型広告リンクは未掲載。<a href="{{ "/about/" | relURL }}">編集・広告方針</a></p>
-    </aside>
-    {{ end }}
-    {{ if and (.Param "ShowToc") (gt (len .Fragments.Headings) 0) }}
-    <details class="article-toc" data-testid="article-toc"><summary>この記事の目次<span aria-hidden="true">＋</span></summary>{{ .TableOfContents }}</details>
-    {{ end }}
-    <div class="article-content" data-testid="article-content">
-      {{ .Content | replaceRE `<table>` `<div class="table-scroll" role="region" aria-label="比較表（横にスクロールできます）" tabindex="0"><table>` | replaceRE `</table>` `</table></div>` | safeHTML }}
-    </div>
-    {{ if $editorial }}
-    <section class="related-section" aria-labelledby="related-title" data-testid="related-section">
-      <p class="eyebrow">次に読みたい</p><h2 id="related-title">わが家の備えを、もう一歩。</h2>
-      <div class="related-grid">{{ range slice "/guide" "/ranking" "/posts/alpha-mai-osusume" }}{{ with site.GetPage . }}{{ if ne .RelPermalink $.RelPermalink }}
-        <a class="related-card" href="{{ .RelPermalink }}" data-testid="related-article"><h3>{{ .Title }}</h3><p>{{ .Description | default (.Summary | plainify | truncate 100) }}</p><span class="related-read" data-testid="next-action">条件を確認する <span aria-hidden="true">→</span></span></a>
-      {{ end }}{{ end }}{{ end }}</div>
-    </section>
-    {{ end }}
-  </article>
-</div>
-{{ end }}
+<div class="wrap article-wrap{{ if not $editorial }} policy-page{{ end }}">
+<nav class="breadcrumbs" aria-label="パンくずリスト"><a href="/">ホーム</a><span>/</span><span>{{ if $editorial }}読みもの{{ else }}{{ .Title }}{{ end }}</span></nav>
+<div class="article-layout">
+<article class="article" data-testid="article">
+{{ with .Params.coverPhoto }}{{ partial "photo.html" (dict "id" . "class" "article-cover" "caption" $.Params.coverCaption "compact" true "eager" true) }}{{ end }}
+<header class="article-header"><h1>{{ .Title }}</h1>
+{{ if $editorial }}<p class="article-meta"><span>{{ site.Params.author }}</span><time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006/01/02" }}</time>{{ with .Params.categories }}<span>{{ index . 0 }}</span>{{ end }}</p>{{ end }}
+{{ with .Description }}<p class="article-description">{{ . }}</p>{{ end }}</header>
+<div class="article-reading">
+{{ if .Params.articleChoices }}{{ partial "article-choice.html" . }}{{ end }}
+{{ if $editorial }}<aside class="article-disclosure" data-testid="editorial-disclosure"><p>公的・メーカー情報による比較（実食評価なし）。成果報酬型広告リンクは未掲載。<a href="/about/">編集・広告方針</a></p></aside>{{ end }}
+{{ if and (.Param "ShowToc") (gt (len .Fragments.Headings) 0) }}<details class="article-toc" data-testid="article-toc"><summary>この記事の目次</summary>{{ .TableOfContents }}</details>{{ end }}
+<div class="article-content" data-testid="article-content">{{ .Content | replaceRE `<table>` `<div class="table-scroll" role="region" aria-label="比較表（横にスクロールできます）" tabindex="0"><table>` | replaceRE `</table>` `</table></div>` | safeHTML }}</div>
+{{ if $editorial }}<section class="related-section" aria-labelledby="related-title" data-testid="related-section"><h2 id="related-title">あわせて読みたい</h2><div class="related-grid">
+{{ range slice "/guide" "/ranking" "/posts/alpha-mai-osusume" }}{{ with site.GetPage . }}{{ if ne .RelPermalink $.RelPermalink }}<div data-testid="related-article">{{ partial "story-card.html" (dict "page" .) }}<a class="related-read" href="{{ .RelPermalink }}" data-testid="next-action">条件を確認する →</a></div>{{ end }}{{ end }}{{ end }}</div></section>{{ end }}
+</div></article>
+{{ if $editorial }}{{ partial "editorial-sidebar.html" . }}{{ end }}
+</div></div>{{ end }}

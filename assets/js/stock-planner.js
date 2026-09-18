@@ -46,7 +46,7 @@ export function initPlanner(root) {
       const stockShare = Math.min(next.stock / next.required, 1) * 100;
       root.querySelector('[data-stock-bar]').style.width = stockShare + '%';
       root.querySelector('[data-shortage-bar]').style.width = (100 - stockShare) + '%';
-      root.querySelector('[data-stock-caption]').textContent = `0Lから総量${next.required}Lまでの棒：緑＝手元の水${Math.min(next.stock, next.required)}L、斜線＝不足${next.shortage}L。` + (next.stock > next.required ? `在庫総量は${next.stock}L。目安を超える分は棒に含めていません。` : '');
+      root.querySelector('[data-stock-caption]').textContent = `0Lから総量${next.required}Lまでの棒：無地＝手元の水${Math.min(next.stock, next.required)}L、斜線＝不足${next.shortage}L。` + (next.stock > next.required ? `在庫総量は${next.stock}L。目安を超える分は棒に含めていません。` : '');
       current = next; calculatedInputs = JSON.stringify(inputs);
       error.hidden = true; results.hidden = false; waterStatus.textContent = '水：計算済み';
     } catch (err) { error.textContent = err.message; error.hidden = false; }

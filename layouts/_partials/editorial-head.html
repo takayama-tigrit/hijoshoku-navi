@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<meta name="theme-color" content="#f7f5ee">
+<meta name="theme-color" content="#ffffff">
 {{ $title := site.Title }}
 {{ if .IsHome }}{{ $title = printf "%s｜%s" site.Title site.Params.tagline }}{{ else }}{{ $title = printf "%s｜%s" .Title site.Title }}{{ end }}
 {{ $description := .Description | default (.Summary | plainify) | default site.Params.description }}

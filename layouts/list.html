@@ -1,8 +1,1 @@
-{{ define "main" }}
-<div class="wrap archive-wrap">
-<nav class="breadcrumbs" aria-label="パンくずリスト"><a href="{{ "/" | relURL }}">ホーム</a><span aria-hidden="true">/</span><span>記事一覧</span></nav>
-<header class="section-heading"><div><p class="eyebrow">備えの読みもの</p><h1>{{ if eq .Section "posts" }}記事一覧{{ else }}{{ .Title }}{{ end }}</h1></div></header>
-{{ with .Content }}<div class="article-content">{{ . }}</div>{{ end }}
-<div class="archive-grid">{{ range .Pages }}<a class="related-card" href="{{ .RelPermalink }}"><h2>{{ .Title }}</h2>{{ with .Description }}<p>{{ . }}</p>{{ end }}<span class="related-read">読む <span aria-hidden="true">→</span></span></a>{{ end }}</div>
-</div>
-{{ end }}
+{{ define "main" }}<div class="wrap archive-wrap"><nav class="breadcrumbs" aria-label="パンくずリスト"><a href="/">ホーム</a><span>/</span><span>記事一覧</span></nav><h1>{{ if eq .Section "posts" }}記事一覧{{ else }}{{ .Title }}{{ end }}</h1>{{ with .Content }}<div class="article-content">{{ . }}</div>{{ end }}<div class="archive-grid">{{ range .Pages }}{{ partial "story-card.html" (dict "page" .) }}{{ end }}</div></div>{{ end }}

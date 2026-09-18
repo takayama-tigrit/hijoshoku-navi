@@ -28,6 +28,8 @@ export async function checkVisualAction(page, route, width) {
     assert.match(await planner.locator('[data-output="required"]').innerText(), /84\s*L/);
     assert.match(await planner.locator('[data-output="shortage"]').innerText(), /64\s*L/);
     assert.match(await planner.locator('[data-output="buy"]').innerText(), /32\s*本/);
+    assert.match(await planner.locator('[data-stock-caption]').innerText(), /無地＝手元の水20L、斜線＝不足64L/);
+    assert.doesNotMatch(await planner.locator('[data-stock-caption]').innerText(), /緑＝|青＝/);
     await planner.locator('[name="people"]').fill('2');
     await planner.locator('[name="days"]').selectOption('3');
     await planner.locator('[name="bottles"]').fill('3');
