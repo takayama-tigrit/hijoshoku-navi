@@ -3,10 +3,12 @@ locale = "ja"
 title = "非常食ナビ｜防災備蓄食の比較・ランキング"
 theme = "PaperMod"
 defaultContentLanguage = "ja"
-paginate = 10
 enableRobotsTXT = true
 buildDrafts = false
 buildFuture = false
+
+[pagination]
+  pagerSize = 10
 
 [params]
   author = "非常食ナビ編集部"
