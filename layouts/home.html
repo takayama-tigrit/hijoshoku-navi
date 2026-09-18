@@ -1,11 +1,14 @@
 {{ define "main" }}
-<div class="wrap visual-home">
-<section class="home-hero" data-testid="home-hero" aria-labelledby="hero-title">
-<div class="hero-copy"><p class="eyebrow">家族が食べられる備えを、必要な分だけ。</p><h1 id="hero-title">家にあるものから、<br>足りない分を。</h1><p class="hero-intro">水の本数を数えたら、買い足す量がわかる。<br>食べ物は、家族の食べやすさで選ぼう。</p><a class="button" data-testid="next-action" href="#water-check">水の不足を調べる →</a><a class="text-link hero-secondary" href="/ranking/">食べ物を比べる ↗</a></div>
-{{ partial "photo.html" (dict "id" "meal" "class" "hero-food" "caption" "食べ慣れた主食に、おかずも。" "eager" true) }}
+<div class="wrap home-editorial">
+<h1 class="home-heading">非常食の読みもの</h1>
+<div class="editorial-layout">
+<div class="home-main">
+<section class="lead-stories" aria-label="備えの読みもの">
+{{ range $i, $path := slice "/guide" "/ranking" "/posts/alpha-mai-osusume" }}{{ with site.GetPage $path }}{{ partial "story-card.html" (dict "page" . "lead" (eq $i 0)) }}{{ end }}{{ end }}
 </section>
-<div class="home-action-layout"><div>{{ partial "stock-planner.html" . }}</div><aside class="water-aside">{{ partial "photo.html" (dict "id" "water-bottles" "caption" "まず、水の在庫を確認。写真の容器の容量と、計算に使う2Lボトルは区別してください。") }}<a class="text-link" href="/guide/">食事の回数・水量を図で見る →</a></aside></div>
-<section class="food-paths" aria-labelledby="food-path-title"><div class="section-heading"><div><p class="eyebrow">02 / 食べられるものを選ぶ</p><h2 id="food-path-title">水の次は、いつもの食事から。</h2></div></div>
-<div class="food-path-grid"><div>{{ partial "photo.html" (dict "id" "cooked-rice" "caption" "ごはんを中心に備えたい。") }}<h3>水で戻すごはん</h3><a class="text-link" href="/posts/alpha-mai-osusume/">水量と待ち時間を見る →</a></div><div>{{ partial "photo.html" (dict "id" "bread" "caption" "調理しない主食も候補に。") }}<h3>開けて食べる主食</h3><a class="text-link" href="/ranking/">調理条件で比べる →</a></div><div>{{ partial "photo.html" (dict "id" "canned-food" "caption" "主食だけで終わらせず、おかずも確認。") }}<h3>食事の組み合わせ</h3><a class="text-link" href="/guide/">家族の食事の枠を埋める →</a></div></div></section>
-<aside class="editorial-note"><div><h2>数は公的目安、違いはメーカー情報から。</h2><p>実食レビューではありません。写真は食材・備蓄の一般イメージで、掲載商品の現物ではありません。</p></div><a class="text-link" href="/about/">編集方針・広告について →</a></aside>
+<section class="home-tools" aria-label="備蓄の実用ツール"><p class="section-label">暮らしの実用ツール</p>{{ partial "stock-planner.html" . }}</section>
+</div>
+{{ partial "editorial-sidebar.html" . }}
+</div>
+<aside class="editorial-note"><h2>情報の読み方</h2><p>公的機関・メーカーの公開情報をもとに整理しています。実食評価や人気順位ではありません。</p><a href="/about/">編集方針・広告について →</a></aside>
 </div>{{ end }}
