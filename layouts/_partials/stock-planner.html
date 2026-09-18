@@ -1,0 +1,39 @@
+{{ $q := readFile "data/quantities.json" | transform.Unmarshal }}
+<section class="stock-planner" id="stock-planner" data-testid="stock-planner" data-water-rate="{{ $q.water.litres_per_person_day }}" data-bottle-size="{{ $q.water.bottle_litres }}" aria-labelledby="planner-title">
+  <p class="eyebrow">01 / 家にある食品・水を残す</p><h2 id="planner-title">食品と水を、ひとつの備蓄メモに。</h2>
+  <p>食品だけでも記入・保存できます。水がわからないときは「未確認」のままで大丈夫です。</p>
+  <fieldset class="food-inventory" aria-describedby="food-inventory-help">
+    <legend>家にある食品を記入</legend>
+    <p id="food-inventory-help">品名・数・期限を、わかる範囲で。量や栄養が足りるかの自動判定はしません。</p>
+    <div class="food-inventory-grid">
+      <label class="foodNotes">主食<span>ごはん・パン・麺など</span><textarea name="foodStaples" data-food-field="主食" rows="2" maxlength="2000" placeholder="例：パックごはん6食、期限は来年3月"></textarea></label>
+      <label class="foodNotes">主菜<span>缶詰・豆・肉や魚のおかずなど</span><textarea name="foodMains" data-food-field="主菜" rows="2" maxlength="2000" placeholder="例：さば缶3缶、豆の煮物2袋"></textarea></label>
+      <label class="foodNotes">副菜<span>野菜のおかず・乾物など</span><textarea name="foodSides" data-food-field="副菜" rows="2" maxlength="2000" placeholder="例：乾燥野菜1袋、野菜スープ4食"></textarea></label>
+      <label class="foodNotes">買足・確認<span>足りない物／今は買わない物</span><textarea name="foodActions" data-food-field="買足・確認" rows="2" maxlength="2000" placeholder="例：主食は手持ちで足りるので今は買わない。缶詰の期限を確認"></textarea></label>
+      <label class="foodNotes food-family">家族の条件<span>食べられない物・味・調理の条件など</span><textarea name="foodNotes" data-food-field="家族の条件" rows="2" maxlength="2000" placeholder="例：卵アレルギー。原材料を確認し、家族で味を試す"></textarea></label>
+    </div>
+  </fieldset>
+  <div class="water-planner" id="water-check">
+    <h3>水の不足分を計算する（任意）</h3>
+    <p>人数・日数と、家にある<strong>{{ $q.water.bottle_litres }}Lボトル</strong>の本数を入力。未入力は在庫ゼロとして扱いません。</p>
+    <fieldset disabled data-planner-fields style="border:0;padding:0;margin:0;min-width:0">
+    <div class="planner-fields">
+      <label>家族の人数<input type="number" name="people" min="1" max="12" step="1" required placeholder="例：4" inputmode="numeric"><span>1〜12人（整数）</span></label>
+      <label>備える日数<select name="days"><option value="3">3日</option><option value="7">7日</option></select><span>まず3日、できれば1週間</span></label>
+      <label>家にある{{ $q.water.bottle_litres }}Lの水<input type="number" name="bottles" min="0" max="1000" step="1" required placeholder="例：10" inputmode="numeric"><span>0〜1000本（整数）</span></label>
+    </div>
+    <button class="button" type="button" data-calculate data-testid="next-action">不足分を計算する →</button>
+    </fieldset>
+    <p data-planner-error role="alert" hidden></p>
+  </div>
+  <div class="planner-results" data-results aria-live="polite" hidden>
+    <div class="result-grid"><div><span>目安の総量</span><strong data-output="required"></strong></div><div><span>いま足りない量</span><strong data-output="shortage"></strong></div><div><span>買い足す{{ $q.water.bottle_litres }}Lボトル</span><strong data-output="buy"></strong></div></div>
+    <figure class="stock-chart" data-viz="stock"><div class="stock-bar" aria-hidden="true"><span data-stock-bar></span><span data-shortage-bar></span></div><figcaption data-stock-caption></figcaption></figure>
+  </div>
+  <p class="planner-water-status" data-water-status role="status">水：未確認</p>
+  <button class="button secondary-button" type="button" data-download disabled>食品・水のメモを保存する ↓</button>
+  <p class="planner-status" data-save-status role="status"></p>
+  <p class="planner-caution">水は1人1日{{ $q.water.litres_per_person_day }}Lの公的目安で計算。これだけで生活・調理のすべてを賄えるわけではありません。調理用水や生活用水は別に確認してください。<a href="https://www.kantei.go.jp/jp/headline/bousai/sonae.html">出典：首相官邸 災害が起きる前にできること</a></p>
+  <p class="planner-privacy">計算・メモ作成はこのブラウザ内だけ。入力内容を送信せず、Cookieやブラウザ保存も使いません。保存ボタンでテキストファイルを作成します。ページを離れると入力は失われます。</p>
+  <noscript><p>JavaScriptが無効のため計算と保存は使えません。食品の記入内容は手元のメモに写してください。人数 × 日数 × {{ $q.water.litres_per_person_day }}Lから、手元の{{ $q.water.bottle_litres }}Lの水 × 本数を引いて不足分を確認してください。<a href="/guide/">人数・日数ごとの目安を図で見る</a></p></noscript>
+</section>

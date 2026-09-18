@@ -14,6 +14,10 @@
 <link rel="icon" href="{{ "images/navi-mark.svg" | relURL }}" type="image/svg+xml">
 {{ $css := resources.Get "css/editorial.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+{{ $visualCSS := resources.Get "css/visual-action.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $visualCSS.RelPermalink }}" integrity="{{ $visualCSS.Data.Integrity }}" crossorigin="anonymous">
+{{ if or .IsHome (eq .RelPermalink "/guide/") }}{{ $plannerJS := resources.Get "js/stock-planner.js" | fingerprint }}
+<script type="module" src="{{ $plannerJS.RelPermalink }}" integrity="{{ $plannerJS.Data.Integrity }}" crossorigin="anonymous"></script>{{ end }}
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">

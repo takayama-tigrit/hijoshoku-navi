@@ -30,7 +30,8 @@ for record in records:
 
 for path in ARTICLES:
     text = path.read_text()
-    assert 'lastmod: 2026-09-18T00:00:00+09:00' in text
+    lastmod = re.search(r'^lastmod: (\d{4}-\d{2}-\d{2})T', text, re.M)
+    assert lastmod and lastmod.group(1) >= max(record['checked_at'][:10] for record in records), 'Article revision predates its evidence'
     assert text.count("## Sources") == 1
     body, footer = text.split("## Sources")
     cited = {int(x) for x in re.findall(r"\[(\d+)\](?![(:])", body)}

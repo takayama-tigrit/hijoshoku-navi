@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import http from 'node:http';
 import { chromium } from '@playwright/test';
+import { checkVisualAction } from './action-ui-checks.mjs';
 
 const root = process.cwd();
 const output = await mkdtemp(path.join(tmpdir(), 'hijoshoku-site-test-'));
@@ -19,7 +20,7 @@ for (const route of routes) {
 }
 for (const file of ['sitemap.xml', 'robots.txt']) assert((await stat(path.join(output, file))).size > 0);
 
-const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.xml': 'application/xml', '.json': 'application/json' };
+const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.ico': 'image/x-icon', '.xml': 'application/xml', '.json': 'application/json' };
 const server = http.createServer(async (req, res) => {
   try {
     let pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
@@ -63,8 +64,14 @@ try {
       assert((await page.locator('meta[name="description"]').getAttribute('content'))?.length > 10, `Description: ${route}`);
       const dimensions = await page.evaluate(() => ({ width: innerWidth, scroll: document.documentElement.scrollWidth }));
       assert(dimensions.scroll <= dimensions.width + 1, `Horizontal overflow ${route} width=${width}: ${JSON.stringify(dimensions)}`);
+      for (const image of await page.locator('img').all()) {
+        await image.scrollIntoViewIfNeeded();
+        await image.evaluate(img => img.decode());
+      }
+      await page.evaluate(() => window.scrollTo(0, 0));
       const imgs = await page.locator('img').evaluateAll(images => images.filter(img => !img.complete || !img.naturalWidth || !img.hasAttribute('alt')).map(img => img.src));
       assert.deepEqual(imgs, [], `Broken or unlabelled image: ${route}`);
+
       const body = await page.locator('body').innerText();
       assert(!/要確認|おすすめ10選|第[1-5]位/.test(body), `Unverified claim/unsupported ranking: ${route}`);
       for (const href of await page.locator('a[href]').evaluateAll(anchors => anchors.map(a => a.getAttribute('href')))) {
@@ -89,6 +96,7 @@ try {
         assert.equal(await page.locator(':focus').getAttribute('id'), 'main-content', 'Skip link target');
         for (const target of routes.slice(1)) assert(await page.locator(`a[href="${target}"]`).count() > 0, `Home missing ${target}`);
       }
+      await checkVisualAction(page, route, width);
       const toc = page.locator('details.article-toc');
       if (await toc.count()) {
         await toc.locator('summary').focus();
@@ -98,6 +106,9 @@ try {
         assert(!(await toc.evaluate(el => el.open)), 'Keyboard TOC closes');
       }
       for (const table of await page.locator('.table-scroll').all()) {
+        const disclosure = table.locator('xpath=ancestor::details[1]');
+        const wasClosed = await disclosure.count() && !(await disclosure.evaluate(el => el.open));
+        if (wasClosed) await disclosure.locator(':scope > summary').click();
         const before = await table.evaluate(el => ({ client: el.clientWidth, scroll: el.scrollWidth }));
         if (before.scroll > before.client) {
           await table.focus();
@@ -106,12 +117,19 @@ try {
           assert(await table.evaluate(el => el.scrollLeft > 0), `Keyboard table scroll: ${route} width=${width}`);
           await table.evaluate(el => { el.scrollLeft = 0; });
         }
+        if (wasClosed) await disclosure.locator(':scope > summary').click();
       }
       await page.evaluate(() => { document.activeElement?.blur(); window.scrollTo(0, 0); });
       await page.screenshot({ path: path.join(artifacts, `${width}-${route === '/' ? 'home' : route.split('/').filter(Boolean).join('-')}.png`), fullPage: true });
     }
     await context.close();
   }
+  const noJS = await browser.newContext({ javaScriptEnabled: false });
+  const noJSPage = await noJS.newPage();
+  await noJSPage.goto(base + '/');
+  assert(await noJSPage.locator('[data-calculate]').isDisabled(), 'No-JS form must not submit input to the server');
+  assert(await noJSPage.locator('noscript').isVisible(), 'No-JS alternative is visible');
+  await noJS.close();
   for (const pathname of links) {
     const local = path.join(output, decodeURIComponent(pathname), pathname.endsWith('/') ? 'index.html' : '');
     assert((await stat(local)).isFile(), `Broken internal link: ${pathname}`);

@@ -1,0 +1,150 @@
+{
+  "water": {
+    "litres_per_person_day": 3,
+    "bottle_litres": 2,
+    "scenarios": [
+      {
+        "people": 1,
+        "days": 3,
+        "litres": 9,
+        "meal_occasions": 9
+      },
+      {
+        "people": 1,
+        "days": 7,
+        "litres": 21,
+        "meal_occasions": 21
+      },
+      {
+        "people": 2,
+        "days": 3,
+        "litres": 18,
+        "meal_occasions": 18
+      },
+      {
+        "people": 2,
+        "days": 7,
+        "litres": 42,
+        "meal_occasions": 42
+      },
+      {
+        "people": 4,
+        "days": 3,
+        "litres": 36,
+        "meal_occasions": 36
+      },
+      {
+        "people": 4,
+        "days": 7,
+        "litres": 84,
+        "meal_occasions": 84
+      }
+    ],
+    "source_ids": [
+      11
+    ]
+  },
+  "rice": [
+    {
+      "id": "white",
+      "name": "白飯",
+      "dry_g": 100,
+      "cooked_g": 260,
+      "water_ml": 160,
+      "kcal": 366,
+      "protein_g": 6.3,
+      "salt_g": 0.01,
+      "source_ids": [
+        1
+      ]
+    },
+    {
+      "id": "gomoku",
+      "name": "五目ごはん",
+      "dry_g": 100,
+      "cooked_g": 260,
+      "water_ml": 160,
+      "kcal": 377,
+      "protein_g": 6.9,
+      "salt_g": 1.8,
+      "source_ids": [
+        7
+      ]
+    },
+    {
+      "id": "wakame",
+      "name": "わかめごはん",
+      "dry_g": 100,
+      "cooked_g": 260,
+      "water_ml": 160,
+      "kcal": 361,
+      "protein_g": 6.6,
+      "salt_g": 1.7,
+      "source_ids": [
+        8
+      ]
+    }
+  ],
+  "preparation": {
+    "hot_water_minutes": 15,
+    "water_temperature_c": 15,
+    "water_minutes": 60,
+    "source_ids": [
+      10
+    ]
+  },
+  "foods": [
+    {
+      "id": "white",
+      "name": "100g尾西の白飯",
+      "serving_g": 100,
+      "kcal": 366,
+      "shelf_life_months": 60,
+      "role": "主食",
+      "source_ids": [
+        1
+      ]
+    },
+    {
+      "id": "bread",
+      "name": "尾西のひだまりパン プレーン",
+      "serving_g": 70,
+      "kcal": 257,
+      "shelf_life_months": 60,
+      "role": "主食",
+      "source_ids": [
+        12
+      ]
+    },
+    {
+      "id": "yokan",
+      "name": "井村屋えいようかん",
+      "serving_g": 60,
+      "kcal": 171,
+      "shelf_life_months": 66,
+      "units_per_box": 5,
+      "role": "補助食品",
+      "source_ids": [
+        2
+      ]
+    }
+  ],
+  "rice_water_scenarios": [
+    {
+      "bags": 9,
+      "water_litres": 1.44
+    },
+    {
+      "bags": 36,
+      "water_litres": 5.76
+    }
+  ],
+  "rice_only_energy": {
+    "bags": 3,
+    "kcal_each": 366,
+    "total_kcal": 1098,
+    "is_complete_daily_nutrition": false
+  },
+  "as_of": "2026-09-18",
+  "important": "量・袋数・熱量は食事全体の充足を保証しない。栄養表示は乾燥状態の1袋100g当たり。調理用水と生活用水を別に見積もる。"
+}
