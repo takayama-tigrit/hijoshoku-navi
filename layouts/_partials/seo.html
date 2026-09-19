@@ -1,0 +1,11 @@
+{{- $t := partial "editorial-config.html" . -}}
+{{- $image := "" -}}
+{{- with .Params.coverPhoto -}}{{- $ledger := readFile "docs/image-licenses.json" | transform.Unmarshal -}}{{- range where $ledger.images "id" . -}}{{- $image = strings.TrimPrefix "static/" .local_path | absURL -}}{{- end -}}{{- end -}}
+{{- with $image }}<meta property="og:image" content="{{ . }}"><meta name="twitter:image" content="{{ . }}">{{ end -}}
+{{- if .Params.evidenceKey -}}
+{{- $url := .Permalink -}}
+{{- $article := dict "@type" "Article" "@id" (printf "%s#article" $url) "headline" .Title "description" .Description "mainEntityOfPage" $url "inLanguage" site.Language.Lang "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00") "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00") "author" (dict "@type" "Organization" "name" $t.identity.author "url" ("about/" | absURL)) "publisher" (dict "@type" "Organization" "name" $t.identity.title "url" site.BaseURL) -}}
+{{- with $image -}}{{- $article = merge $article (dict "image" (slice .)) -}}{{- end -}}
+{{- $crumb := dict "@type" "BreadcrumbList" "itemListElement" (slice (dict "@type" "ListItem" "position" 1 "name" $t.identity.title "item" ("" | absURL)) (dict "@type" "ListItem" "position" 2 "name" .Title "item" $url)) -}}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" (slice $article $crumb) | jsonify | safeJS }}</script>
+{{- end -}}

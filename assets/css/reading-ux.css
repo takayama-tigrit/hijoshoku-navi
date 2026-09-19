@@ -1,0 +1,25 @@
+/* Skimmable reading, using the existing editorial highlight token. */
+.article-content mark.key-point{background:linear-gradient(transparent 62%,var(--highlight) 62%,var(--highlight) 94%,transparent 94%);color:inherit;font-weight:700;padding:0 .04em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.article-content mark.key-point strong{font-weight:700}
+.article-content .product-comparison{margin:2rem 0 2.5rem;scroll-margin-top:100px}
+.article-content .product-comparison .table-scroll{margin:0;overflow:visible;border:0}
+.article-content .product-comparison table{width:100%;min-width:0;table-layout:fixed;border-collapse:collapse;background:#fff;font-size:.92em}
+.article-content .product-comparison caption{text-align:left;font-weight:700;font-size:1.08em;padding:0 0 1rem}
+.article-content .product-comparison th,.article-content .product-comparison td{min-width:0;white-space:normal;overflow-wrap:anywhere;padding:1.1rem;vertical-align:top;border:1px solid var(--line)}
+.article-content .product-comparison thead th{background:var(--paper);font-size:.9em;padding:.7rem 1rem}
+.article-content .product-comparison th:first-child{width:34%}
+.article-content .product-comparison tbody th{background:#fff;text-align:left}
+.article-content .product-photo{display:block;text-decoration:none;border:0;font-size:.67em;font-weight:400;line-height:1.6;color:var(--muted)}
+.article-content .product-photo img{display:block;width:100%;max-width:180px;height:auto;aspect-ratio:1;object-fit:contain;margin:0 0 .45rem;border:0;border-radius:0;background:#fff}
+.article-content .product-name{display:block;font-size:.96em;line-height:1.6;margin-top:.65rem}
+.article-content .product-comparison td p{margin:0 0 .65rem;font-size:1em;line-height:1.8}
+.article-content .product-comparison td .product-condition{margin-bottom:1rem}
+.article-content .product-comparison .product-note{font-size:.9em}
+.article-content .product-actions{display:grid;gap:.7rem;margin-top:1rem}
+.article-content .product-source{font-size:.84em;line-height:1.6;display:block;min-height:44px;padding:.55rem 0}
+.article-content .product-search{display:flex;align-items:center;justify-content:center;min-height:44px;background:var(--ink);color:#fff;border:1px solid var(--ink);border-radius:2px;text-decoration:none;font-size:.92em;font-weight:700;padding:.65rem .5rem;line-height:1.5}
+.article-content .product-search:hover{background:#444;color:#fff}
+.article-content .product-comparison-note{font-size:.8em;line-height:1.8;margin:.8rem 0 0;color:var(--muted)}
+.article-compare-jump{display:inline-block;font-size:.85em;font-weight:700;min-height:44px;padding:.6rem 0;text-underline-offset:.3em}
+@media(max-width:600px){.article-content .product-comparison th,.article-content .product-comparison td{padding:.8rem .65rem}.article-content .product-comparison th:first-child{width:34%}.article-content .product-comparison table{font-size:.91em}.article-content .product-comparison .product-actions{gap:.35rem}.article-content .product-comparison td p{line-height:1.75}.article-content .product-source{font-size:.82em}.article-content .product-search{font-size:.88em}.article-content .product-name{font-size:.91em}.article-content .product-photo span{display:block}}
+@media(forced-colors:active){.article-content mark.key-point{background:none;border-bottom:2px solid CanvasText}.article-content .product-search{border:2px solid LinkText}}

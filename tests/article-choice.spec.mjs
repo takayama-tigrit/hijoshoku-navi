@@ -69,7 +69,7 @@ try {
       await block.screenshot({ path: path.join(artifacts, `${width}-${name}-cards.png`) });
       measurements.push({ route, width, startY: start.y, firstActionY: action.y, firstActionBottom: action.y + action.height });
       if (route !== '/guide/') {
-        assert(await page.locator('.article-content table').evaluateAll(tables => tables.every(table => table.closest('details'))), 'Decision tables are supplementary disclosures');
+        assert(await page.locator('.article-content table:not(.product-table)').evaluateAll(tables => tables.every(table => table.closest('details'))), 'Detailed specification tables remain supplementary; photo comparisons stay open');
       }
     }
     await context.close();

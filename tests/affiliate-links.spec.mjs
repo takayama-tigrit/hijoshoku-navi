@@ -47,7 +47,7 @@ try{
     for(const[k,v]of Object.entries({a_id:'5810105',p_id:'54',pc_id:'54',pl_id:'616'}))assert.equal(u.searchParams.get(k),v);
     const destination=new URL(u.searchParams.get('url'));assert.equal(destination.origin,'https://search.rakuten.co.jp');assert.equal(destination.pathname,'/search/mall');
     assert.deepEqual([...destination.searchParams.keys()],['sitem']);assert.equal(destination.searchParams.get('sitem'),terms[i]);
-    assert.equal(await a.innerText(),`楽天市場で「${terms[i]}」を検索`);
+    assert.equal(await a.innerText(),"楽天市場で探す →");assert.equal(await a.getAttribute("aria-label"),`楽天市場で「${terms[i]}」を検索`);
     assert.deepEqual((await a.getAttribute('rel')).split(/\s+/).sort(),['nofollow','sponsored']);assert.equal(await a.getAttribute('referrerpolicy'),'origin');
     assert(!await a.evaluate(e=>e.closest('details:not([open])')),'purchase link is not hidden');
    }
@@ -71,6 +71,10 @@ try{
  for(const [route,terms]of Object.entries(routes)){
   await page.goto(base+route);assert.equal(await page.locator('a[href*="af.moshimo.com"],[data-testid="affiliate-disclosure"]').count(),0);
   assert.equal(await page.locator('a[href^="https://search.rakuten.co.jp/search/mall"]').count(),terms.length,'ordinary links preserve no-JS preview functionality');
+  assert.equal(await page.locator('.product-photo,img[src*="rakuten.co.jp"],img[src*="r10s.jp"]').count(),0,'inactive previews omit ASP-supplied product photos and src');
+  assert.equal(await page.locator('.product-name').count(),terms.length,'product names survive without photos');
+  assert.equal(await page.locator('.product-condition mark,.product-note mark').count(),terms.length*2,'marked conditions survive without photos');
+  assert.equal(await page.locator('.product-source').count(),terms.length,'official links survive without photos');
  }
  await c.close();checks.push('different-baseURL build falls back to ordinary searches without affiliate disclosure');
  // Cloudflare preview builds retain the production baseURL, so inspect its actual branch signal too.
@@ -80,6 +84,7 @@ try{
   for(const route of Object.keys(routes)){
    const html=await readFile(path.join(dest,route,'index.html'),'utf8');
    assert.equal(html.includes('https://af.moshimo.com/af/c/click'),branch==='main','only Cloudflare main enables affiliate codes');
+   assert.equal(html.includes('https://thumbnail.image.rakuten.co.jp/'),branch==='main','only Cloudflare main emits ASP-supplied image src');
   }
  }
  checks.push('Cloudflare non-main previews use ordinary links; main keeps approved affiliate links');

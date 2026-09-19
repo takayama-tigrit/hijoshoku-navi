@@ -139,14 +139,22 @@ try {
    if (u.search) {
     assert.equal(u.origin, 'https://af.moshimo.com', 'only approved fixed-product affiliate links have queries');
     assert.equal(u.pathname, '/af/c/click');
-    assert.deepEqual([...u.searchParams.keys()].sort(), ['a_id', 'p_id', 'pc_id', 'pl_id', 'url']);
+    const approvedImages = Object.values(JSON.parse(await readFile('data/product-images.json','utf8')).images);
+    const exactImage = approvedImages.find(x=>x.href===link.href);
+    assert.deepEqual([...u.searchParams.keys()].sort(), exactImage ? ['a_id', 'm', 'p_id', 'pc_id', 'pl_id', 'url'] : ['a_id', 'p_id', 'pc_id', 'pl_id', 'url']);
     for (const [key, value] of Object.entries({ a_id: '5810105', p_id: '54', pc_id: '54', pl_id: '616' })) assert.equal(u.searchParams.get(key), value);
     const destination = new URL(u.searchParams.get('url'));
+    if (exactImage) {
+     assert.equal(destination.href, exactImage.destination);
+     assert.equal(destination.origin, 'https://item.rakuten.co.jp');
+     assert.equal(new URL(u.searchParams.get('m')).origin, 'http://m.rakuten.co.jp');
+    } else {
     assert.equal(destination.origin, 'https://search.rakuten.co.jp');
     assert.equal(destination.pathname, '/search/mall');
     assert(!destination.username && !destination.password && !destination.hash);
     assert.deepEqual([...destination.searchParams.keys()], ['sitem']);
     assert(["井村屋 えいようかん", "尾西 ひだまりパン プレーン", "尾西 わかめごはん 100g", "尾西 五目ごはん 100g", "尾西 白飯 100g", "尾西 ごはんシリーズ CY", "尾西 ごはんシリーズ DW", "ハウス 温めずにおいしいカレー まろやか野菜カレー 200g", "ハウス 温めずにおいしいカレー 香りたつキーマカレー 180g"].includes(destination.searchParams.get('sitem')), 'nested query is a reviewed product name, never visitor input');
+    }
    }
    assert(!/email|user_?id|phone|address|name|memo|note|gclid|fbclid/i.test([...u.searchParams.keys()].join(' ')), 'no personal/advertising query fields');
    assert(!/[\w.+-]+@[\w.-]+\.[a-z]{2,}/i.test(link.href), 'no email in outbound URL');
