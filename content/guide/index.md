@@ -4,10 +4,10 @@ date: 2026-09-17T00:00:00+09:00
 lastmod: 2026-09-19T00:00:00+09:00
 description: "飲料水は1人1日3Lが目安。家にある水、ごはん、おかずを数え、3日分から1週間分へ備えるための在庫メモです。足りる分は買い足しません。"
 seriesTitle: "食卓から始める備え"
-storySummary: "棚のごはんや缶詰も、わが家の備えに。水の本数と食事の組み合わせから、買い足すものを見つけます。"
+"storySummary": "棚のごはんや缶詰も、わが家の備えに。水の合計量と食事の組み合わせから、買い足すものを見つけます。"
 choiceTitle: "家にある水と食品、どちらから数える？"
 choiceNote: "家にあるものを数えたら、足りない分を買い物メモへ。食事制限がある家族には、普段の食事に合うものを。"
-articleChoices: [{"condition": "飲める水は何本ある？", "name": "水の在庫 → 不足量", "note": "人数・日数と手持ちの水から、買い足す量を確認。", "icon": "water", "official": "https://www.kantei.go.jp/jp/headline/bousai/sonae.html", "label": "公的な備蓄の目安", "action": "#water-check", "actionLabel": "水の在庫を数える →"}, {"condition": "食べられる食品は何がある？", "name": "食品の在庫 → 主食・おかず", "note": "主食・主菜・副菜を分けてメモ。水の量が不明でも食品から。", "icon": "food", "official": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter03.html", "label": "農水省で組み合わせを確認", "action": "#food-inventory-help", "actionLabel": "食品の在庫をメモする →"}]
+articleChoices: [{"condition": "手持ちの水は何Lある？", "name": "水の在庫 → 不足量", "note": "人数・日数と手持ちの水から、買い足す量を確認。", "icon": "water", "official": "https://www.kantei.go.jp/jp/headline/bousai/sonae.html", "label": "公的な備蓄の目安", "action": "#water-check", "actionLabel": "水の在庫を数える →"}, {"condition": "食べられる食品は何がある？", "name": "食品の在庫 → 主食・おかず", "note": "主食・主菜・副菜を分けてメモ。水の量が不明でも食品から。", "icon": "food", "official": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter03.html", "label": "農水省で組み合わせを確認", "action": "#food-inventory-help", "actionLabel": "食品の在庫をメモする →"}]
 categories: ["ガイド"]
 tags: ["非常食", "家庭備蓄", "水", "選び方", "ローリングストック"]
 coverPhoto: "meal"
@@ -15,9 +15,13 @@ evidenceKey: guide
 draft: false
 ---
 
-台所の棚にあるごはんや缶詰、買い置きの水。非常食をそろえるなら、まずは家にあるものを数えるところから。いつも食べている食品も使いながら、主食・主菜・副菜を家族の3日分、できれば1週間分へとそろえていきます。
+買い置きの水と、ごはんやパン。いま家にある量は、家族の何日分になるでしょう。まずは下の計算例を手持ちの量に変えてみてください。主食・主菜・副菜を家族の3日分、できれば1週間分へとそろえる出発点になります。
 
-<div data-testid="next-action"><p><strong>棚の中身を、買い物メモに</strong></p><p>食品の数や期限を書き留め、水は人数・日数から不足分を計算できます。</p><a href="#stock-check">食品と水の在庫メモを使う</a></div>
+<div data-testid="next-action"><a href="#stock-check">水と主食の日数・買い足す量を確かめる</a></div>
+
+<div id="stock-check"></div>
+
+{{< planner >}}
 
 ## 棚の食品を、ごはんとおかずに分けてみる
 
@@ -47,19 +51,13 @@ draft: false
 
 </details>
 
-家族が普段食べる量と、栄養成分表示を照らし合わせて選びます。
-
 アレルギー、治療上の食事制限、かむ・飲み込むことへの配慮が必要な場合は、一般例だけで決めず、普段の食事指導や医療・栄養の専門職への相談をもとに選びます。
 
 ## 飲料水は1人1日3Lが目安
 
-{{< viz id="water" >}}
-
 4人で3日分なら、飲料水の目安は36L。アルファ米を戻す水もここから使うなら、飲む分を残せるように配分し、不足分を足しておきます。
 
 湯煎や食器洗い、トイレなどの生活用水は別に備えます。
-
-{{< viz id="meals" >}}
 
 朝・昼・夕の食事を、食べる人の分だけ数えたのが「延べ食事回数」です。家族全員で囲む食卓の回数とも、食品の袋数とも区別して使います。
 
@@ -78,7 +76,7 @@ draft: false
 
 </details>
 
-<figure class="quantity-viz" data-quantity-id="recovery-duration"><div class="energy-bags"><div><span>出発点</span><strong>3日分</strong></div><div><span>次の目安</span><strong>1週間分</strong></div><div><span>地域の状況で</span><strong>追加</strong></div></div><figcaption>ライフラインの復旧には1週間以上かかる場合も。3日分を出発点に、地域の状況に合わせて備えを増やします。</figcaption></figure>
+ライフラインの復旧には1週間以上かかる場合も。3日分を出発点に、地域の状況に合わせて備えを増やします。
 
 地域のハザードマップも確認し、必要に応じて多めに備えます。
 
@@ -86,11 +84,9 @@ draft: false
 
 {{< photo id="cooked-rice" >}}
 
-{{< viz id="energy" >}}
-
 ごはんは食事の土台。白飯の熱量だけを足すのではなく、主菜・副菜を合わせて1日にとる栄養を考えます。
 
-「9食セット」の表示も、主食9袋なのか、おかずまで入っているのかで中身が違います。上の食事回数の図に当てはめるときも、袋数だけで数えないようにします。
+「9食セット」も、主食9袋なのか、おかずまで入っているのかで中身が違います。計算機には、1人が1回に食べる主食の量を1食分として数えた値を入れます。
 
 <details>
 <summary>熱量の計算と表示単位を確認する</summary>
@@ -109,7 +105,7 @@ draft: false
 
 尾西の白飯・五目ごはん・わかめごはんは、熱湯で15分、水15℃で60分が目安です。水温が違えば待ち時間も変わるので、作るときは袋の表示に合わせます。
 
-<figure class="quantity-viz" data-quantity-id="red-rice-prep"><p>赤飯の熱湯調理：<strong>20分</strong>（上図と同じ0〜60分の目盛り）</p><meter min="0" max="60" value="20" style="width:100%;height:2rem" aria-label="赤飯の熱湯調理20分。目盛り0から60分">20分</meter><figcaption>赤飯は熱湯で20分。味によって調理時間が違うため、それぞれの袋の表示に合わせます。</figcaption></figure>
+赤飯は熱湯で20分。味によって調理時間が違うため、それぞれの袋の表示に合わせます。
 
 「常温保存」できる食品も、「水で作れる」食品も、そのまま食べられるとは限りません。電子レンジやお湯が使えないときのために、[水と待ち時間で食品を比較する](/ranking/#choose-by-prep)と、買い足す候補を探せます。
 
@@ -122,16 +118,6 @@ draft: false
 届いた食品は、現物の期限と保存方法を見てから、家族が取り出せる場所へ。指定の保管条件を守り、期限の早いものから使って、減った分を補充します。
 
 備蓄も普段の食事に取り入れ、賞味期限内に食べて入れ替えていきましょう。
-
-## 足りない分をメモして、次の買い物へ
-
-食品の残数と期限を見ながら、買い足すものを書き留めます。そろっているものは、そのまま次の食事に使っていけます。
-
-<div id="stock-check"></div>
-
-{{< planner >}}
-
-食品名・残数・期限・買い足す数も任意でメモできます。入力とダウンロードはブラウザ内で処理し、個人データを送信しません。
 
 ## 関連記事
 

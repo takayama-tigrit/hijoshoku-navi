@@ -48,16 +48,19 @@ try {
       const planner = page.locator('[data-testid="stock-planner"]');
       if (mode === 'normal') {
         const initial = await memo(page, planner);
-        assert.match(initial, /水：未確認/);
+        assert.match(initial, /初期値は計算例/);
+        assert.match(initial, /水：約2日分/);
         assert.match(initial, /未記入/);
-        assert(!initial.includes('目安の総量：'));
+        assert(initial.includes('目安の総量：18L'));
       }
-      // This is the original B2 failure: food alone must unlock download.
+      // v7 notes are secondary, but food-only completion remains independent.
+      await planner.locator('.stock-notes summary').click();
+      if (mode === 'normal') { await planner.locator('[name="litres"]').fill(''); await planner.locator('[name="meals"]').fill(''); }
       await planner.locator('[name="foodNotes"]').fill('卵は食べられない');
       if (mode === 'normal') assert.equal(await planner.locator('[data-download]').isEnabled(), true, 'Food-only memo must save without a water calculation');
       for (const [name, label] of [['foodStaples', '主食'], ['foodMains', '主菜'], ['foodSides', '副菜'], ['foodActions', '買足・確認'], ['foodNotes', '家族の条件']]) {
         const field = planner.locator(`[name="${name}"]`);
-        assert(await field.isVisible(), `${label} must be visible without expanding anything`);
+        assert(await field.isVisible(), `${label} must be reachable after expanding optional notes`);
         assert((await field.evaluate(el => el.closest('label').textContent)).includes(label));
         assert.equal(await field.evaluate(el => el.form === null), true, 'Private notes cannot belong to a submittable form');
       }
@@ -78,7 +81,7 @@ try {
       assert.equal(await page.evaluate(() => window.__foodXss), undefined);
       assert.equal(await planner.locator('img[src="x"], script').count(), 0);
       await planner.locator('[name="people"]').fill('2');
-      await planner.locator('[name="bottles"]').fill('3');
+      await planner.locator('[name="litres"]').fill('6');
       await planner.locator('[data-calculate]').click();
       await planner.locator('[name="foodNotes"]').fill('卵不可。味を試す');
       text = await memo(page, planner);
@@ -88,13 +91,13 @@ try {
       assert(text.includes('卵不可。味を試す'));
       assert(text.includes('https://www.kantei.go.jp/jp/headline/bousai/sonae.html'));
       assert.equal(await planner.locator('.planner-caution a').getAttribute('href'), 'https://www.kantei.go.jp/jp/headline/bousai/sonae.html');
-      for (const [name, value] of [['people', '4'], ['days', '7'], ['bottles', '9']]) {
+      for (const [name, value] of [['people', '4'], ['days', '7'], ['litres', '18']]) {
         const field = planner.locator(`[name="${name}"]`);
         if (name === 'days') await field.selectOption(value); else await field.fill(value);
-        assert(await planner.locator('[data-results]').isHidden());
+        assert(await planner.locator('[data-results]').isVisible());
         text = await memo(page, planner);
-        assert.match(text, /水：未確認/);
-        assert(!text.includes('目安の総量：'), 'No stale water result');
+        assert.match(text, /水：約/);
+        assert(text.includes('目安の総量：'), 'v7 recalculates immediately, never saves stale result');
         await planner.locator('[data-calculate]').click();
       }
       await planner.locator('[name="people"]').fill('0');
@@ -106,7 +109,7 @@ try {
       assert(await planner.locator('[data-planner-error]').isVisible(), 'Saving food must not clear water errors');
       await planner.locator('[name="people"]').fill('2');
       await planner.locator('[name="days"]').selectOption('3');
-      await planner.locator('[name="bottles"]').fill('9');
+      await planner.locator('[name="litres"]').fill('18');
       await planner.locator('[data-calculate]').click();
       assert.match(await memo(page, planner), /買い足す2Lボトル：0本/);
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));

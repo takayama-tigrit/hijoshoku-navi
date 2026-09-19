@@ -20,8 +20,8 @@
 {{ range $q.foods }}{{ partial "viz-row.html" (dict "label" .name "value" .shelf_life_months "unit" "か月" "max" 66) }}{{ end }}
 <figcaption>60か月＝5年、66か月＝5年6か月。購入時には残存賞味期限を、到着時には実物の期限を見ておきます。出典は本文のメーカー情報。</figcaption>
 {{ else if eq $id "rice-nutrition" }}
-<h3>ごはん3品を、栄養の3つの軸で見る</h3><p class="viz-axis">どれも乾燥状態の1袋100g当たり。軸ごとに単位・上限が異なります。</p>
-{{ range slice (dict "key" "kcal" "title" "エネルギー" "unit" " kcal" "max" 400) (dict "key" "protein_g" "title" "たんぱく質" "unit" " g" "max" 8) (dict "key" "salt_g" "title" "食塩相当量" "unit" " g" "max" 2) }}{{ $axis := . }}<section class="nutrition-axis"><h4>{{ .title }} <span>0〜{{ .max }}{{ .unit }}</span></h4>{{ range $q.rice }}{{ partial "viz-row.html" (dict "label" .name "value" (index . $axis.key) "unit" $axis.unit "max" $axis.max) }}{{ end }}</section>{{ end }}
+<h3>おかずと合わせる、1袋の塩分</h3><p class="viz-axis">どれも乾燥状態の1袋100g当たり。食塩相当量を0から比較。</p>
+{{ range slice (dict "key" "salt_g" "title" "食塩相当量" "unit" " g" "max" 2) }}{{ $axis := . }}<section class="nutrition-axis"><h4>{{ .title }} <span>0〜{{ .max }}{{ .unit }}</span></h4>{{ range $q.rice }}{{ partial "viz-row.html" (dict "label" .name "value" (index . $axis.key) "unit" $axis.unit "max" $axis.max) }}{{ end }}</section>{{ end }}
 <figcaption>尾西食品の白飯・五目ごはん・わかめごはん。棒は成分ごとの量をゼロから示しています。おかずとの組み合わせや食事制限に合わせて選びます。出典は本文のメーカー栄養表示。</figcaption>
 {{ else if eq $id "rice-prep" }}
 <h3>使える水で、待ち時間が変わる</h3><p class="viz-axis">0〜{{ $q.preparation.water_minutes }}分 ／ 尾西の白飯・五目ごはん・わかめごはん</p>
