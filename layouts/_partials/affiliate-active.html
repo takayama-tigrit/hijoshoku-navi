@@ -1,0 +1,3 @@
+{{- $config := readFile "data/affiliate-links.json" | transform.Unmarshal -}}
+{{- $branch := os.Getenv "CF_PAGES_BRANCH" -}}
+{{- return (and $config.enabled (eq (string site.BaseURL) $config.baseURL) (or (eq $branch "") (eq $branch "main"))) -}}
