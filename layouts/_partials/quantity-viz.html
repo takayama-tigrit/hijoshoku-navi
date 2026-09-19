@@ -7,31 +7,31 @@
 {{ else if eq $id "meals" }}
 <h3>食事の枠を、人数 × 日数で埋める</h3><p class="viz-axis">1マス＝1人の食事1回。1人1日3回で数えた延べ回数</p>
 {{ range $q.water.scenarios }}<div class="meal-row"><div class="viz-label"><span>{{ .people }}人 × {{ .days }}日</span><strong>{{ .meal_occasions }}回</strong></div><div class="meal-dots" aria-hidden="true">{{ range seq (int .meal_occasions) }}<i></i>{{ end }}</div></div>{{ end }}
-<figcaption>「回」は食事を用意する枠。袋数ではありません。主食だけで埋めても、食事全体のエネルギーや栄養が十分とは限りません。</figcaption>
+<figcaption>「回」は1人の食事1回を表します。袋数とは分けて数え、それぞれに主食とおかずを当てはめ、量と栄養も確かめます。</figcaption>
 {{ else if eq $id "energy" }}
-<h3>白飯を3袋そろえても、食事全体ではない</h3><div class="energy-bags">{{ range seq (int $q.rice_only_energy.bags) }}<div><span>白飯 1袋</span><strong>{{ $q.rice_only_energy.kcal_each }}<small> kcal</small></strong></div>{{ end }}</div><p class="viz-total">合計 <strong>{{ $q.rice_only_energy.total_kcal }} kcal</strong></p>
-<figcaption>乾燥100gの尾西の白飯 × {{ $q.rice_only_energy.bags }}袋の熱量。1日の必要量達成を意味しません。おかず・補助食品も組み合わせます。<a href="https://www.onisifoods.co.jp/products/">出典：尾西食品 商品情報</a></figcaption>
+<h3>白飯3袋で、主食の熱量を見てみる</h3><div class="energy-bags">{{ range seq (int $q.rice_only_energy.bags) }}<div><span>白飯 1袋</span><strong>{{ $q.rice_only_energy.kcal_each }}<small> kcal</small></strong></div>{{ end }}</div><p class="viz-total">合計 <strong>{{ $q.rice_only_energy.total_kcal }} kcal</strong></p>
+<figcaption>乾燥100gの尾西の白飯 × {{ $q.rice_only_energy.bags }}袋の熱量。主食だけの合計です。1日の必要量とは分けて考え、おかず・補助食品も組み合わせます。<a href="https://www.onisifoods.co.jp/products/">出典：尾西食品 商品情報</a></figcaption>
 {{ else if eq $id "food-energy" }}
 <h3>1袋・1本の熱量を比べる</h3><p class="viz-axis">0〜400 kcal ／ 内容量が異なる製品の1単位</p>
 {{ range $q.foods }}{{ $unit := "袋" }}{{ if eq .id "yokan" }}{{ $unit = "本" }}{{ end }}{{ partial "viz-row.html" (dict "label" (printf "%s｜%s・1%s%vg" .name .role $unit .serving_g) "value" .kcal "unit" " kcal" "max" 400) }}{{ end }}
-<figcaption>白飯は乾燥状態の1袋100g、パンは1袋70g、えいようかんは1本60g。用途も量も異なり、優劣や栄養充足を表す図ではありません。メーカー仕様に基づく比較（出典は本文）。</figcaption>
+<figcaption>白飯は乾燥状態の1袋100g、パンは1袋70g、えいようかんは1本60g。ひとつ食べたときの熱量を、食事を組む目安に。主食・補助食品それぞれの役割も合わせて選びます。出典は本文のメーカー情報。</figcaption>
 {{ else if eq $id "food-storage" }}
-<h3>保存期間は、届いた日の残り期間とは別</h3><p class="viz-axis">0〜66か月 ／ メーカーが示す製造日からの期間</p>
+<h3>保存期間は、届いた日の残り期間とは別</h3><p class="viz-axis">0〜66か月 ／ メーカーの保存期間表示</p>
 {{ range $q.foods }}{{ partial "viz-row.html" (dict "label" .name "value" .shelf_life_months "unit" "か月" "max" 66) }}{{ end }}
-<figcaption>60か月＝5年、66か月＝5年6か月。受取後にこの期間が残っているとは限りません。購入時に販売条件と実物の期限表示を確認。出典は本文のメーカー情報。</figcaption>
+<figcaption>60か月＝5年、66か月＝5年6か月。購入時には残存賞味期限を、到着時には実物の期限を見ておきます。出典は本文のメーカー情報。</figcaption>
 {{ else if eq $id "rice-nutrition" }}
 <h3>ごはん3品を、栄養の3つの軸で見る</h3><p class="viz-axis">どれも乾燥状態の1袋100g当たり。軸ごとに単位・上限が異なります。</p>
 {{ range slice (dict "key" "kcal" "title" "エネルギー" "unit" " kcal" "max" 400) (dict "key" "protein_g" "title" "たんぱく質" "unit" " g" "max" 8) (dict "key" "salt_g" "title" "食塩相当量" "unit" " g" "max" 2) }}{{ $axis := . }}<section class="nutrition-axis"><h4>{{ .title }} <span>0〜{{ .max }}{{ .unit }}</span></h4>{{ range $q.rice }}{{ partial "viz-row.html" (dict "label" .name "value" (index . $axis.key) "unit" $axis.unit "max" $axis.max) }}{{ end }}</section>{{ end }}
-<figcaption>尾西食品の白飯・五目ごはん・わかめごはん。棒の長さは各軸のゼロからの量を示し、総合点ではありません。家族の条件に合わせて選びます。出典は本文のメーカー栄養表示。</figcaption>
+<figcaption>尾西食品の白飯・五目ごはん・わかめごはん。棒は成分ごとの量をゼロから示しています。おかずとの組み合わせや食事制限に合わせて選びます。出典は本文のメーカー栄養表示。</figcaption>
 {{ else if eq $id "rice-prep" }}
 <h3>使える水で、待ち時間が変わる</h3><p class="viz-axis">0〜{{ $q.preparation.water_minutes }}分 ／ 尾西の白飯・五目ごはん・わかめごはん</p>
 {{ partial "viz-row.html" (dict "label" "熱湯" "value" $q.preparation.hot_water_minutes "unit" "分" "max" $q.preparation.water_minutes) }}
 {{ partial "viz-row.html" (dict "label" (printf "水（水温%v℃）" $q.preparation.water_temperature_c) "value" $q.preparation.water_minutes "unit" "分" "max" $q.preparation.water_minutes) }}
-<figcaption>待ち時間の目安。水温などで変わるため、製品の作り方を確認してください。<a href="https://www.onisifoods.co.jp/">出典：尾西食品</a></figcaption>
+<figcaption>待ち時間は水温などで変わります。作るときは袋の表示に合わせて。<a href="https://www.onisifoods.co.jp/">出典：尾西食品</a></figcaption>
 {{ else if eq $id "rice-water" }}
 <h3>袋数が増えると、戻す水も増える</h3><p class="viz-axis">0〜5.76 L ／ 1袋につき{{ (index $q.rice 0).water_ml }}mL</p>
 {{ range $q.rice_water_scenarios }}{{ partial "viz-row.html" (dict "label" (printf "%v袋" .bags) "value" .water_litres "unit" " L" "max" 5.76) }}{{ end }}
-<figcaption>尾西の白飯など乾燥100g・注水量160mLの商品で計算した調理用水だけの量。飲み水や生活用水の全量ではありません。</figcaption>
+<figcaption>乾燥100g・注水量160mLの尾西の白飯などで計算した、戻すための水量です。飲み水や生活用水は別に見積もります。</figcaption>
 {{ else if eq $id "rice-weight" }}
 {{ $r := index $q.rice 0 }}<h3>乾燥100gに水を加えて、できあがり260g</h3><p class="viz-axis">できあがり{{ $r.cooked_g }}gを全幅で表示 ／ 尾西の白飯</p>
 <div class="weight-bar" aria-hidden="true"><span style="width:{{ mul (div (float $r.dry_g) (float $r.cooked_g)) 100 }}%"></span><span style="width:{{ mul (div (float $r.water_ml) (float $r.cooked_g)) 100 }}%"></span></div>
