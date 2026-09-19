@@ -327,27 +327,23 @@
           ]
         },
         {
-          "text": "| 尾西の白飯 | [原材料・作り方](https://www.onisifoods.co.jp/products/hakuhan.html) | [Amazonで「尾西 白飯 100g」を検索](https://www.amazon.co.jp/s?k=尾西+白飯+100g) |",
+          "text": "**尾西の白飯**。注水する水と待ち時間を確保し、袋数を手持ちの主食と合わせて数えます。",
           "source_ids": [
             1,
-            2,
+            10
+          ]
+        },
+        {
+          "text": "**ひだまりパン プレーン**。原材料・アレルギー表示を確かめ、必要な個数に合う入数を選びます。",
+          "source_ids": [
             12
           ]
         },
         {
-          "text": "| ひだまりパン プレーン | [原材料・アレルギー表示](https://www.onisifoods.co.jp/products/hidamari/plane.html) | [Amazonで「尾西 ひだまりパン プレーン」を検索](https://www.amazon.co.jp/s?k=尾西+ひだまりパン+プレーン) |",
+          "text": "**えいようかん**。主食やおかずをそろえたうえで、箱の入数を確かめます。",
           "source_ids": [
-            1,
             2,
-            12
-          ]
-        },
-        {
-          "text": "| えいようかん | [内容量・原材料](https://www.imuraya.co.jp/goods/yokan/c-eiyo/eiyo/) | [Amazonで「井村屋 えいようかん」を検索](https://www.amazon.co.jp/s?k=井村屋+えいようかん) |",
-          "source_ids": [
-            1,
-            2,
-            12
+            5
           ]
         },
         {
@@ -562,6 +558,225 @@
             7,
             8,
             10
+          ]
+        }
+      ]
+    },
+    "set_check": {
+      "file": "content/posts/emergency-food-set-check.md",
+      "source_ids": [
+        4,
+        5,
+        6,
+        10,
+        11,
+        13,
+        14
+      ],
+      "claims": [
+        {
+          "text": "尾西食品の「ごはんシリーズCY」と「ごはんシリーズDW」は、どちらも五目ごはん・わかめごはん・ドライカレー・チキンライスを各3袋、計12袋まとめたセットです。DWには、さらに長期保存水500mLが6本入っています。",
+          "source_ids": [
+            13,
+            14
+          ]
+        },
+        {
+          "text": "| 尾西のごはんシリーズCY | アルファ米4種類×3袋＝12袋 | セット内容に主菜・副菜の記載なし | セット内容に水の記載なし |",
+          "source_ids": [
+            13
+          ]
+        },
+        {
+          "text": "| 尾西のごはんシリーズDW | アルファ米4種類×3袋＝12袋 | セット内容に主菜・副菜の記載なし | 長期保存水500mL×6本＝3L |",
+          "source_ids": [
+            14
+          ],
+          "derivation": "500*6/1000=3L"
+        },
+        {
+          "text": "たとえば、**2人が1日3回、毎回1袋ずつ食べると仮定すると、12袋 ÷ 2人 ÷ 3回 ＝ 主食2日分**です。",
+          "source_ids": [
+            13,
+            14
+          ],
+          "derivation": "12/2/3=2 days of rice under the stated bag/person/meal assumption; not nutritional sufficiency"
+        },
+        {
+          "text": "農林水産省は、家にある食品を確認し、栄養バランスや家族の人数・好みに合わせて内容と量を決め、足りないものを買い足す流れを紹介しています。",
+          "source_ids": [
+            5
+          ]
+        },
+        {
+          "text": "ごはんやパンは主食、肉・魚・豆のおかずは主菜、野菜のおかずや汁物は副菜。",
+          "source_ids": [
+            5
+          ]
+        },
+        {
+          "text": "DWに入る水は、500mL×6本で3L。飲料水の公的な目安は1人1日3Lなので、1人3日分の目安9Lに対して、同梱の3Lだけでは届きません。",
+          "source_ids": [
+            11,
+            14
+          ],
+          "derivation": "500*6/1000=3; 3*1*3=9; compare 3 < 9"
+        },
+        {
+          "text": "アルファ米を戻す水も必要です。",
+          "source_ids": [
+            10
+          ]
+        },
+        {
+          "text": "湯煎や食器洗いなどの生活用水も別に備えます。",
+          "source_ids": [
+            6,
+            11
+          ]
+        },
+        {
+          "text": "食べた分を補充するローリングストックなら、家族の好みも確かめながら備えられます。",
+          "source_ids": [
+            4,
+            5
+          ]
+        },
+        {
+          "text": "アルファ米4種類を各3袋。手持ちの水と合わせて選ぶ候補。",
+          "source_ids": [
+            13
+          ]
+        },
+        {
+          "text": "同じごはん12袋と、水500mLが6本。飲む分と調理分を見積もります。",
+          "source_ids": [
+            14
+          ]
+        }
+      ]
+    },
+    "side_dishes": {
+      "file": "content/posts/emergency-food-side-dishes.md",
+      "source_ids": [
+        4,
+        5,
+        10,
+        15,
+        16,
+        17,
+        18
+      ],
+      "claims": [
+        {
+          "text": "アルファ米は棚にあるけれど、一緒に食べるおかずはまだ。そんなときは、**ごはんに添える主菜と、野菜などの副菜を分けて考える**と、買い足すものを絞れます。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_design_hypothesis_not_measured_effect"
+        },
+        {
+          "text": "温めずにごはんへかける候補として、ハウス食品の「温めずにおいしいカレー」には、まろやか野菜カレー200gと、香りたつキーマカレー180gがあります。どちらも未開封で常温保存できるレトルトです。",
+          "source_ids": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "野菜の具材で選ぶなら野菜カレー、鶏肉と粒状植物性たん白を使ったものならキーマ。",
+          "source_ids": [
+            15,
+            16
+          ],
+          "support_type": "editorial_choice_based_on_ingredients"
+        },
+        {
+          "text": "[農林水産省の食品ストックガイド](https://www.maff.go.jp/j/zyukyu/foodstock/chapter03.html)では、ごはんやパンは主食、肉・魚・大豆製品などのおかずは主菜、野菜の煮物や汁物などは副菜に分けています。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "| 温めずにおいしいカレー まろやか野菜カレー・200g | 玉ねぎ・じゃがいも・にんじんの具材を添えたいとき。大豆・豚肉・りんごを含む。 | [公式の原材料](https://housefoods.jp/products/catalog/cd_1,092501,ret,curry,ata.html#materials) |",
+          "source_ids": [
+            15
+          ],
+          "support_type": "direct_specs_and_editorial_usage"
+        },
+        {
+          "text": "| 温めずにおいしいカレー 香りたつキーマカレー・180g | 鶏肉と粒状植物性たん白を使ったカレーを合わせたいとき。大豆・鶏肉・豚肉・りんごを含む。 | [公式の原材料](https://housefoods.jp/products/catalog/cd_1,092500,ret,curry,ata.html#materials) |",
+          "source_ids": [
+            16
+          ],
+          "support_type": "direct_specs_and_editorial_usage"
+        },
+        {
+          "text": "今回の2品は、どちらもメーカーの作り方が「ごはんに本品をそのままかけて」。おかず側の温めは不要です。",
+          "source_ids": [
+            17,
+            18
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "家にある主食がアルファ米なら、ごはんを戻す水と待ち時間は別に用意します。",
+          "source_ids": [
+            10
+          ],
+          "support_type": "applies_to_linked_Onisi_products_not_all_alpha_rice"
+        },
+        {
+          "text": "「野菜カレー」も豚肉を含む表示です。",
+          "source_ids": [
+            15
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "公式の商品情報欄は、2品とも賞味期間を「製造後4年1ヵ月（未開封）」としています。",
+          "source_ids": [
+            15,
+            16
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "メーカーのパッケージには、中袋の開封後は1回で使い切るよう記載があります。",
+          "source_ids": [
+            17,
+            18
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "期限の早いものから普段の食事で使い、食べた分を補充します。",
+          "source_ids": [
+            4
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "200g。大豆・豚肉・りんごを含みます。",
+          "source_ids": [
+            15
+          ]
+        },
+        {
+          "text": "180g。大豆・鶏肉・豚肉・りんごを含みます。",
+          "source_ids": [
+            16
+          ]
+        },
+        {
+          "text": "おかず側の温めは不要。合わせる主食の調理条件は別に見ます。",
+          "source_ids": [
+            10,
+            17,
+            18
           ]
         }
       ]

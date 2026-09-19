@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Offline checks for retained evidence and the three editorial articles."""
+"""Offline checks for retained evidence and every registered editorial article."""
 import hashlib
 import json
 from pathlib import Path
 import re
 from decimal import Decimal
+from datetime import date, datetime, timezone
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -14,15 +15,35 @@ ARTICLES = [ROOT / p for p in (
 )]
 ledger = json.loads((HERE / "ledger.json").read_text())
 records = json.loads((HERE / "retrieval.json").read_text())
+registry = json.loads((ROOT / 'data/article-evidence.json').read_text())['articles']
+registered_paths = {ROOT / a['file'] for a in registry.values()}
+assert len(registered_paths) == len(registry), 'duplicate article file'
+assert set(ARTICLES) <= registered_paths, 'baseline article missing'
+ARTICLES += sorted(registered_paths - set(ARTICLES))
+discovered_paths = {p for p in (ROOT / 'content').rglob('*.md')
+                    if re.search(r'^evidenceKey:', p.read_text(), re.M)}
+assert discovered_paths == registered_paths, 'unregistered or missing evidence article'
+# Section indexes and these exact utility pages are not editorial articles.
+utility_pages = {ROOT / p for p in ('content/about/index.md', 'content/privacy/index.md',
+                                  'content/photo-credits/index.md')}
+editorial_paths = {p for p in (ROOT / 'content').rglob('*.md')
+                   if p.name != '_index.md' and p not in utility_pages}
+assert editorial_paths <= registered_paths, 'editorial article missing evidenceKey or registry entry'
 sources = {s["id"]: s for s in ledger["sources"]}
-assert len(sources) == len(records) == 12
+assert len(sources) == len(ledger['sources']) == len(records)
+assert set(range(1, 13)) <= sources.keys(), 'baseline evidence missing'
+assert {r['id'] for r in records} == sources.keys(), 'retrieval identity mismatch'
+records_by_id = {r['id']: r for r in records}
 all_cited = set()
 for record in records:
     raw = (HERE / record["excerpt"]).read_bytes()
     assert hashlib.sha256(raw).hexdigest() == record["excerpt_sha256"]
     assert record["status"] == 200
-    assert record["checked_at"].startswith("2026-09-18")
+    checked = datetime.fromisoformat(record['checked_at'].replace('Z', '+00:00'))
+    assert checked.tzinfo and checked <= datetime.now(timezone.utc), 'invalid or future evidence date'
     source = sources[record["id"]]
+    # accessed uses the calendar date in the recorded retrieval timestamp's offset.
+    assert date.fromisoformat(source['accessed']) == checked.date(), 'display/retrieval date mismatch'
     assert source["url"] == record["url"].rstrip("/")
     assert source.get("quotes"), source["id"]
     for quote in source["quotes"]:
@@ -31,16 +52,17 @@ for record in records:
 for path in ARTICLES:
     text = path.read_text()
     lastmod = re.search(r'^lastmod: (\d{4}-\d{2}-\d{2})T', text, re.M)
-    assert lastmod and lastmod.group(1) >= max(record['checked_at'][:10] for record in records), 'Article revision predates its evidence'
+
     key = re.search(r'^evidenceKey: (\w+)$', text, re.M)
     assert key, (path, 'explicit article evidence key required')
-    evidence = json.loads((ROOT / 'data/article-evidence.json').read_text())['articles'][key.group(1)]
+    evidence = registry[key.group(1)]
     assert evidence['file'] == str(path.relative_to(ROOT))
     body = text
     assert '## Sources' not in text and not re.search(r'\[\d+\]', text), 'Reader copy must not carry audit numbering'
     cited = set(evidence['source_ids'])
     assert len(cited) == len(evidence['source_ids'])
     assert cited <= sources.keys()
+    assert lastmod and lastmod.group(1) >= max(records_by_id[i]['checked_at'][:10] for i in cited), 'Article revision predates its evidence'
     mapped = set()
     for claim in evidence['claims']:
         assert claim['text'] in text, (path, 'stale claim mapping', claim['text'])
@@ -64,7 +86,7 @@ for path in ARTICLES:
         assert not re.search(r"amazon\.co\.jp[^\s)]*[?&]tag=", body)
     all_cited |= cited
     print(f"PASS {path.relative_to(ROOT)}: {len(cited)} evidence-backed sources")
-assert all_cited == sources.keys(), "unused source in all three articles"
+assert all_cited == sources.keys(), "unused source in registered articles"
 
 # Verify published numeric tables, not only standalone multiplication.
 guide = ARTICLES[1].read_text()
@@ -91,5 +113,10 @@ for i, product, energy, protein, salt in (
     assert f"食塩相当量\n{salt}g" in excerpt
     assert "100g/260g（必要水量160ml）" in excerpt
     assert f"| 100g尾西の{product} | 100g／260g | 160mL | {energy}kcal | {protein}g | {salt}g |" in alpha
+set_article = (ROOT / registry['set_check']['file']).read_text()
+assert Decimal(500) * 6 / 1000 == 3
+assert Decimal(12) / 2 / 3 == 2
+assert '500mL×6本＝3L' in set_article and '12袋 ÷ 2人 ÷ 3回 ＝ 主食2日分' in set_article
+assert '1人3日分の目安9L' in set_article
 print("PASS arithmetic, source hashes, quotes, source blocks, key product tables, article invariants")
 print("NOTE: structural checks do not replace human review of claim support or a live site build.")
