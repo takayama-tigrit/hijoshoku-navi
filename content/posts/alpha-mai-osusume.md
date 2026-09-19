@@ -40,7 +40,7 @@ draft: false
 
 ## おかずと一緒に、塩分も確かめる
 
-味付きごはんを選ぶときは、おかずと合わせた塩分にも目を向けてみましょう。図は乾燥状態の1袋分の栄養成分です。塩分などに食事上の制限がある場合は、ごはんとおかずを合わせて確認します。
+味付きごはんと一緒に食べる缶詰やレトルト。その塩分も合わせて選びます。図は乾燥状態の1袋分の食塩相当量です。食事上の制限がある場合は、おかずを含めて確認します。
 
 {{< viz id="rice-nutrition" >}}
 
@@ -49,8 +49,6 @@ draft: false
 五目やわかめも、食事の中では主食。肉や魚の主菜、野菜の副菜を組み合わせます。
 
 味の好みは備蓄するおかずと一緒に確かめ、組み合わせを決めておくと、買い足すものも整理できます。
-
-{{< viz id="rice-weight" >}}
 
 <details>
 <summary>内容量・水量・栄養成分の公式表を開く</summary>
@@ -91,11 +89,7 @@ draft: false
 
 湯を使えない場面には、待たずに食べられる食品も組み合わせておきましょう。[そのまま食べる食品との比較](/ranking/#choose-by-prep)もできます。
 
-<figure class="quantity-viz" data-quantity-id="rice-bag-scenarios"><p>水量の試算：1人につき1日3袋とした場合</p><div class="energy-bags"><div><span>1人 × 3日</span><strong>9袋</strong></div><div><span>4人 × 3日</span><strong>36袋</strong></div></div><figcaption>この袋数は、戻す水を計算するための例です。実際に食べる量は、おかずも含めて決めます。</figcaption></figure>
-
-{{< viz id="rice-water" >}}
-
-買い置きする袋数が決まったら、戻すための水もセットで数えておきましょう。図の試算に含まれるのは注水分だけで、飲み水は別に見積もります。
+買い置きする袋数が決まったら、1袋160mLを掛けて戻す水も数えます。下の試算は注水分だけで、飲み水は別に見積もります。
 
 <details>
 <summary>注水量の計算を開く</summary>
@@ -117,11 +111,9 @@ draft: false
 
 ## 期限の早い袋から、いつもの食事に
 
-<figure class="quantity-viz" data-quantity-id="rice-storage"><div class="energy-bags"><div><span>白飯</span><strong>5年保存</strong></div><div><span>五目</span><strong>5年保存</strong></div><div><span>わかめ</span><strong>5年保存</strong></div></div><p>配送時の残存賞味期限を確認 → 到着した袋の期限を確認</p><figcaption>買うときは販売店の案内で残存賞味期限を、届いたら袋に書かれた期限を確かめます。</figcaption></figure>
+今回の3品はいずれも5年保存。購入時は配送時の残存賞味期限を、到着時は袋に書かれた期限を確かめます。
 
-家の在庫で足りるなら、追加購入は不要です。
-
-買うときは商品名・内容量・入数を確かめます。ごはんの袋数だけでなく、使う水と待ち時間、おかずを含めた量まで見ておきましょう。
+家の在庫で足りるなら、追加購入は不要です。買い足す場合は、商品名・内容量・入数を確かめて選びます。
 
 - [Amazonで「尾西 白飯 100g」を検索](https://www.amazon.co.jp/s?k=尾西+白飯+100g)
 - [Amazonで「尾西 五目ごはん 100g」を検索](https://www.amazon.co.jp/s?k=尾西+五目ごはん+100g)

@@ -1,5 +1,5 @@
 {{ define "main" }}{{ $t := partial "editorial-config.html" . }}
 <div class="wrap home-editorial"><h1 class="visually-hidden">{{ $t.home.heading }}</h1><div class="home-main"><section id="readings" class="lead-stories" aria-label="{{ $t.home.storiesLabel }}">
 {{ range $i, $feature := $t.featured }}{{ with site.GetPage $feature.path }}{{ partial "story-card.html" (dict "page" . "lead" (eq $i 0) "feature" $feature) }}{{ end }}{{ end }}
-</section>{{ if $t.tools.stockPlanner }}<section class="home-tools" aria-label="{{ $t.home.toolsTitle }}"><p class="section-label">{{ $t.home.toolsTitle }}</p>{{ partial "stock-planner.html" . }}</section>{{ end }}</div>
+</section>{{ if $t.tools.stockPlanner }}<section id="stock-check" class="home-tools" aria-label="{{ $t.home.toolsTitle }}"><p class="section-label">{{ $t.home.toolsTitle }}</p>{{ partial "stock-planner.html" . }}</section>{{ end }}</div>
 </div>{{ end }}

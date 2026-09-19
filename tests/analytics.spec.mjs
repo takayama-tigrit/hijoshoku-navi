@@ -56,9 +56,10 @@ async function close(v, name) {
 }
 async function usePlanner(page) {
  const planner = page.locator('[data-testid="stock-planner"]');
+ await planner.locator('.stock-notes summary').click();
  for (const name of ['foodStaples', 'foodMains', 'foodSides', 'foodActions', 'foodNotes']) await planner.locator(`[name="${name}"]`).fill(sentinel + name);
  await planner.locator('[name="people"]').fill('2');
- await planner.locator('[name="bottles"]').fill('3');
+ await planner.locator('[name="litres"]').fill('6');
  await planner.locator('[data-calculate]').click();
  assert.match(await planner.locator('[data-output="shortage"]').innerText(), /12\s*L/);
  const pending = page.waitForEvent('download');
@@ -115,6 +116,7 @@ try {
   if (mode !== 'noJS') await usePlanner(v.page);
   else {
    const planner = v.page.locator('[data-testid="stock-planner"]');
+   await planner.locator('.stock-notes summary').click();
    await planner.locator('[name="foodNotes"]').fill(sentinel);
    assert.equal(await planner.locator('form').count(), 0);
    assert(await planner.locator('[data-calculate]').isDisabled());

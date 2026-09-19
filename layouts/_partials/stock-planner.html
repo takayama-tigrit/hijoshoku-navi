@@ -1,7 +1,27 @@
 {{ $q := readFile "data/quantities.json" | transform.Unmarshal }}
 <section class="stock-planner" id="stock-planner" data-testid="stock-planner" data-water-rate="{{ $q.water.litres_per_person_day }}" data-bottle-size="{{ $q.water.bottle_litres }}" aria-labelledby="planner-title">
-  <p class="eyebrow">01 / 家にある食品・水を残す</p><h2 id="planner-title">食品と水を、ひとつの備蓄メモに。</h2>
-  <p>食品だけでも記入・保存できます。水がわからないときは「未確認」のままで大丈夫です。</p>
+  <h2 id="planner-title">いまの水と主食は、何日分？</h2>
+  <p data-example>初期値は計算例です。家にある量に変えて使います。</p>
+  <fieldset disabled data-planner-fields class="stock-day-fields">
+    <legend>人数と、家にある量</legend>
+    <div class="planner-fields">
+      <label>人数<span class="field-helpers"><button class="stepper-btn" type="button" data-adjust="people" data-delta="-1" aria-label="人数を1人減らす">－</button><input type="number" name="people" min="1" max="12" step="1" value="2" inputmode="numeric"><button class="stepper-btn" type="button" data-adjust="people" data-delta="1" aria-label="人数を1人増やす">＋</button></span><span>1〜12人</span></label>
+      <label>何日分にそろえる？<select name="days"><option value="3" selected>3日分</option><option value="7">7日分</option></select></label>
+      <label id="water-check">手持ちの水（合計L）<input type="number" name="litres" min="0" max="2000" step="0.001" value="12" inputmode="decimal"><span class="field-helpers water-helpers"><button class="stepper-btn" type="button" data-adjust="litres" data-delta="0.5" aria-label="水を0.5L増やす">＋0.5L</button><button class="stepper-btn" type="button" data-adjust="litres" data-delta="2" aria-label="水を2L増やす">＋2L</button></span><span>500mLは0.5L。2Lの水と足し合わせて</span><span class="origin-tag" data-stock-origin="litres"></span></label>
+      <label>手持ちの主食（食分）<span class="field-helpers"><button class="stepper-btn" type="button" data-adjust="meals" data-delta="-1" aria-label="主食を1食分減らす">－</button><input type="number" name="meals" min="0" max="10000" step="1" value="18" inputmode="numeric"><button class="stepper-btn" type="button" data-adjust="meals" data-delta="1" aria-label="主食を1食分増やす">＋</button></span><span>1人が1回に食べる量を1食分に</span><span class="origin-tag" data-stock-origin="meals"></span></label>
+      <label>1人1日の主食（食分）<input type="number" name="mealsPerDay" min="1" max="6" step="1" value="3" inputmode="numeric"><span>普段の食事に合わせて変更できます</span></label>
+    </div>
+    <button class="button" type="button" data-calculate data-testid="next-action">この量で確認する</button>
+  </fieldset>
+  <p data-planner-error role="alert" hidden></p>
+  <div class="planner-results" data-results aria-live="polite" aria-atomic="true" hidden>
+    <div class="coverage-grid"><strong data-output="waterDays"></strong><strong data-output="foodDays"></strong></div>
+    <p data-water-status></p>
+    <div class="result-grid"><div><span>水をあと</span><strong data-output="shortage"></strong><span>2Lボトルなら <b data-output="buy"></b></span></div><div><span>主食をあと</span><strong data-output="foodBuy"></strong></div></div>
+    <p class="water-total">水の目安の総量：<span data-output="required"></span></p>
+  </div>
+  <p class="planner-caution">主食の食分は袋数とは別です。おかずや栄養の充足は、この日数だけではわかりません。水は1人1日{{ $q.water.litres_per_person_day }}Lで計算。調理に使う分を見積もり、飲む分を残します。生活用水は別に。<a href="https://www.kantei.go.jp/jp/headline/bousai/sonae.html">水の目安の出典</a></p>
+  <details class="stock-notes"><summary>食品名・期限・家族の条件もメモする（任意）</summary>
   <fieldset class="food-inventory" aria-describedby="food-inventory-help">
     <legend>家にある食品を記入</legend>
     <p id="food-inventory-help">棚を見ながら、品名・数・期限を書き留めます。食品の量や栄養は、普段の食事と照らし合わせて。</p>
@@ -13,27 +33,10 @@
       <label class="foodNotes food-family">家族の条件<span>食べられない物・味・調理の条件など</span><textarea name="foodNotes" data-food-field="家族の条件" rows="2" maxlength="2000" placeholder="例：卵アレルギー。原材料を確認し、家族で味を試す"></textarea></label>
     </div>
   </fieldset>
-  <div class="water-planner" id="water-check">
-    <h3>水の不足分を計算する（任意）</h3>
-    <p>人数・日数と、家にある<strong>{{ $q.water.bottle_litres }}Lボトル</strong>の本数を入力。未入力は在庫ゼロとして扱いません。</p>
-    <fieldset disabled data-planner-fields style="border:0;padding:0;margin:0;min-width:0">
-    <div class="planner-fields">
-      <label>家族の人数<input type="number" name="people" min="1" max="12" step="1" required placeholder="例：4" inputmode="numeric"><span>1〜12人（整数）</span></label>
-      <label>備える日数<select name="days"><option value="3">3日</option><option value="7">7日</option></select><span>まず3日、できれば1週間</span></label>
-      <label>家にある{{ $q.water.bottle_litres }}Lの水<input type="number" name="bottles" min="0" max="1000" step="1" required placeholder="例：10" inputmode="numeric"><span>0〜1000本（整数）</span></label>
-    </div>
-    <button class="button" type="button" data-calculate data-testid="next-action">不足分を計算する →</button>
-    </fieldset>
-    <p data-planner-error role="alert" hidden></p>
-  </div>
-  <div class="planner-results" data-results aria-live="polite" hidden>
-    <div class="result-grid"><div><span>目安の総量</span><strong data-output="required"></strong></div><div><span>いま足りない量</span><strong data-output="shortage"></strong></div><div><span>買い足す{{ $q.water.bottle_litres }}Lボトル</span><strong data-output="buy"></strong></div></div>
-    <figure class="stock-chart" data-viz="stock"><div class="stock-bar" aria-hidden="true"><span data-stock-bar></span><span data-shortage-bar></span></div><figcaption data-stock-caption></figcaption></figure>
-  </div>
-  <p class="planner-water-status" data-water-status role="status">水：未確認</p>
-  <button class="button secondary-button" type="button" data-download disabled>食品・水のメモを保存する ↓</button>
+  </details>
+  <button class="button secondary-button" type="button" data-download disabled>買い足す量とメモを保存する ↓</button>
   <p class="planner-status" data-save-status role="status"></p>
-  <p class="planner-caution">水は1人1日{{ $q.water.litres_per_person_day }}Lの公的目安で計算。調理に使う分も見積もって、飲む分が残るように配分・追加します。湯煎や食器洗いなどの生活用水は別に備えます。<a href="https://www.kantei.go.jp/jp/headline/bousai/sonae.html">出典：首相官邸 災害が起きる前にできること</a></p>
-  <p class="planner-privacy">計算・メモ作成はこのブラウザ内だけ。入力内容を送信せず、Cookieやブラウザ保存も使いません。保存ボタンでテキストファイルを作成します。ページを離れると入力は失われます。</p>
-  <noscript><p>JavaScriptが無効のため計算と保存は使えません。食品の記入内容は手元のメモに写してください。人数 × 日数 × {{ $q.water.litres_per_person_day }}Lから、手元の{{ $q.water.bottle_litres }}Lの水 × 本数を引いて不足分を確認してください。<a href="/guide/">人数・日数ごとの目安を図で見る</a></p></noscript>
+  <p class="planner-privacy">入力は外部に送信せず、ブラウザにも保存しません。保存ボタンで手元にテキストファイルを作ります。食品メモだけでも保存でき、空欄の数量は未確認になります。</p>
+  <p class="planner-formula">日数の計算：水のL ÷ 人数 ÷ {{ $q.water.litres_per_person_day }}。主食の食分 ÷ 人数 ÷ 1人1日の食分。</p>
+  <noscript><p>JavaScriptが無効のため計算と保存は使えません。上の式で計算し、食品名や期限は手元のメモに写してください。</p></noscript>
 </section>
