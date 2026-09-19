@@ -4,12 +4,18 @@ on:
   push:
     branches: [main, 'feat/**', 'fix/**']
   pull_request:
+  workflow_dispatch:
+  schedule:
+    # 09:23 JST. The probe rejects dates outside 2026-09-21..2026-10-18.
+    - cron: '23 0 21-30 9 *'
+    - cron: '23 0 1-18 10 *'
 
 permissions:
   contents: read
 
 jobs:
   build-and-browser:
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     strategy:
@@ -57,3 +63,26 @@ jobs:
           path: artifacts/screenshots
           if-no-files-found: ignore
           retention-days: 7
+
+  public-seo-observation:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test observation contract (offline fixtures)
+        run: python3 tests/public-seo.spec.py
+      - name: Check published cohort (no analytics or ad clicks)
+        env:
+          RUN_EVENT: ${{ github.event_name }}
+        run: |
+          args=()
+          if [[ "$RUN_EVENT" == "schedule" ]]; then args+=(--scheduled); fi
+          python3 scripts/check-public-seo.py --output artifacts/public-seo.json "${args[@]}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-seo-${{ github.run_id }}
+          path: artifacts/public-seo.json
+          if-no-files-found: error
+          retention-days: 35
