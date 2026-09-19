@@ -139,7 +139,7 @@ try {
    if (u.search) {
     assert.equal(u.origin, 'https://www.amazon.co.jp', 'only fixed product search URLs have queries');
     assert.deepEqual([...u.searchParams.keys()], ['k']);
-    assert(['井村屋 えいようかん', '尾西 ひだまりパン プレーン', '尾西 わかめごはん 100g', '尾西 五目ごはん 100g', '尾西 白飯 100g'].includes(u.searchParams.get('k')), 'query is a reviewed product name, not visitor input');
+    assert(["井村屋 えいようかん", "尾西 ひだまりパン プレーン", "尾西 わかめごはん 100g", "尾西 五目ごはん 100g", "尾西 白飯 100g", "尾西 ごはんシリーズ CY", "尾西 ごはんシリーズ DW", "ハウス 温めずにおいしいカレー まろやか野菜カレー 200g", "ハウス 温めずにおいしいカレー 香りたつキーマカレー 180g"].includes(u.searchParams.get('k')), 'query is a reviewed product name, not visitor input');
    }
    assert(!/email|user_?id|phone|address|name|memo|note|gclid|fbclid/i.test([...u.searchParams.keys()].join(' ')), 'no personal/advertising query fields');
    assert(!/[\w.+-]+@[\w.-]+\.[a-z]{2,}/i.test(link.href), 'no email in outbound URL');

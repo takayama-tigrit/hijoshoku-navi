@@ -73,16 +73,23 @@ draft: false
 
 ## 買う前に見る、原材料と袋の開けやすさ
 
-<details>
-<summary>原材料を調べる・商品を探す</summary>
+### 注水の準備をせず主食を食べるなら
 
-| 候補 | 公式情報 | 通販で探す場合 |
-|---|---|---|
-| 尾西の白飯 | [原材料・作り方](https://www.onisifoods.co.jp/products/hakuhan.html) | [Amazonで「尾西 白飯 100g」を検索](https://www.amazon.co.jp/s?k=尾西+白飯+100g) |
-| ひだまりパン プレーン | [原材料・アレルギー表示](https://www.onisifoods.co.jp/products/hidamari/plane.html) | [Amazonで「尾西 ひだまりパン プレーン」を検索](https://www.amazon.co.jp/s?k=尾西+ひだまりパン+プレーン) |
-| えいようかん | [内容量・原材料](https://www.imuraya.co.jp/goods/yokan/c-eiyo/eiyo/) | [Amazonで「井村屋 えいようかん」を検索](https://www.amazon.co.jp/s?k=井村屋+えいようかん) |
+**ひだまりパン プレーン**。原材料・アレルギー表示を確かめ、必要な個数に合う入数を選びます。
 
-</details>
+[尾西食品で原材料・アレルギー表示を見る](https://www.onisifoods.co.jp/products/hidamari/plane.html) ／ [Amazonで「尾西 ひだまりパン プレーン」を検索](https://www.amazon.co.jp/s?k=尾西+ひだまりパン+プレーン)
+
+### おかずに合わせるごはんを備えるなら
+
+**尾西の白飯**。注水する水と待ち時間を確保し、袋数を手持ちの主食と合わせて数えます。
+
+[尾西食品で原材料・作り方を見る](https://www.onisifoods.co.jp/products/hakuhan.html) ／ [Amazonで「尾西 白飯 100g」を検索](https://www.amazon.co.jp/s?k=尾西+白飯+100g)
+
+### 食事に甘いものを添えるなら
+
+**えいようかん**。主食やおかずをそろえたうえで、箱の入数を確かめます。
+
+[井村屋で内容量・原材料を見る](https://www.imuraya.co.jp/goods/yokan/c-eiyo/eiyo/) ／ [Amazonで「井村屋 えいようかん」を検索](https://www.amazon.co.jp/s?k=井村屋+えいようかん)
 
 手元の在庫で組めるなら、追加購入は不要です。
 

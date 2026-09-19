@@ -130,5 +130,89 @@
     "response_sha256": "82ebc140ca45119be1e286cea197edeca51a875b0e6c27040de44538e2d1443c",
     "excerpt_sha256": "cf6d8e4b90d85f2e6cd15df81abc907487cf1ff5c0269196d0a5386099fe893c",
     "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+  },
+  {
+    "id": 13,
+    "url": "https://www.onisifoods.co.jp/products/set/cy.html",
+    "final_url": "https://www.onisifoods.co.jp/products/set/cy.html",
+    "status": 200,
+    "checked_at": "2026-09-19T13:28:37.682Z",
+    "excerpt": "excerpts/13.txt",
+    "excerpt_sha256": "fec704d3fa17a1c00f91f386966be993d092a424ea5b92e183f62a2829291475",
+    "dom_text_sha256": "3bbd6fa1cba953c54f4233598eeffbe3d0549c2e750b82d79f75766d35cb9eb9",
+    "retention": "Minimal visible manufacturer product text via browser DOM. Full HTTP response and headers not retained."
+  },
+  {
+    "id": 14,
+    "url": "https://www.onisifoods.co.jp/products/set/dw.html",
+    "final_url": "https://www.onisifoods.co.jp/products/set/dw.html",
+    "status": 200,
+    "checked_at": "2026-09-19T13:28:37.865Z",
+    "excerpt": "excerpts/14.txt",
+    "excerpt_sha256": "bcd4a8ff1722a61bbfb6cd65f6d288013b11c5e815bf8ea3d1a5deac944c3b30",
+    "dom_text_sha256": "32b6c6dceae26888c92cfcf642536dcb806a05d1a446224395d6867bdc6be66c",
+    "retention": "Minimal visible manufacturer product text via browser DOM. Full HTTP response and headers not retained."
+  },
+  {
+    "id": 15,
+    "url": "https://housefoods.jp/products/catalog/cd_1,092501,ret,curry,ata.html",
+    "final_url": "https://housefoods.jp/products/catalog/cd_1,092501,ret,curry,ata.html",
+    "status": 200,
+    "checked_at": "2026-09-19T22:22:44.956108+09:00",
+    "excerpt": "excerpts/15.txt",
+    "excerpt_sha256": "eb57fd215372796cc3bd6501719e996d7b6908b9ac4a14d54050f9d87773573c",
+    "response_sha256": "cc51aedab6c2b67a19610eb7b4243287d7120bc17c2bf275d3c3cc9f7fcf6d68",
+    "retention": "Minimal manufacturer excerpt; package copy is visual transcription, no manufacturer image republished.",
+    "source_kind": "manufacturer_product_page"
+  },
+  {
+    "id": 16,
+    "url": "https://housefoods.jp/products/catalog/cd_1,092500,ret,curry,ata.html",
+    "final_url": "https://housefoods.jp/products/catalog/cd_1,092500,ret,curry,ata.html",
+    "status": 200,
+    "checked_at": "2026-09-19T22:22:44.963239+09:00",
+    "excerpt": "excerpts/16.txt",
+    "excerpt_sha256": "141e2310a3c9c7d5a3752d8d542ef7cc8fb3f875ce7c90eafc0e93c5456bd906",
+    "response_sha256": "0b9957b8b5498a7a061077aa109c924bd4f6bfb2ca2546edb9f8d43761b88646",
+    "retention": "Minimal manufacturer excerpt; package copy is visual transcription, no manufacturer image republished.",
+    "source_kind": "manufacturer_product_page"
+  },
+  {
+    "id": 17,
+    "url": "https://housefoods.jp/products/catalog/pkg_1,092501.html",
+    "final_url": "https://housefoods.jp/products/catalog/pkg_1,092501.html",
+    "status": 200,
+    "checked_at": "2026-09-19T22:22:44.951991+09:00",
+    "excerpt": "excerpts/17.txt",
+    "excerpt_sha256": "f84ac0e796e46bc04edd352bcd4097a4ac97151cdef2d42f0b9eef4f1302635b",
+    "response_sha256": "5a367f6e92e7a821af843809d5f501a6ec6ffe68c5540f3a2acefd59768e0716",
+    "retention": "Minimal manufacturer excerpt; package copy is visual transcription, no manufacturer image republished.",
+    "source_kind": "manufacturer_package_visual_transcription",
+    "supporting_image": {
+      "url": "https://housefoods.jp/_sys/catimages/products/hfhomeproducts/items/092501/pkg1.3000-3000.jpeg",
+      "sha256": "ee37eaffd237bd26177f0578fe2547f622bddf825e0800308afd28b6701f2128",
+      "http_status": 200,
+      "retrieved_at": "2026-09-19T22:26:21.117450+09:00"
+    },
+    "visual_verification": "Parent reloaded manufacturer image and read instructions, unopened ambient storage, allergens and quantity on 2026-09-19."
+  },
+  {
+    "id": 18,
+    "url": "https://housefoods.jp/products/catalog/pkg_1,092500.html",
+    "final_url": "https://housefoods.jp/products/catalog/pkg_1,092500.html",
+    "status": 200,
+    "checked_at": "2026-09-19T22:22:44.959318+09:00",
+    "excerpt": "excerpts/18.txt",
+    "excerpt_sha256": "f84ac0e796e46bc04edd352bcd4097a4ac97151cdef2d42f0b9eef4f1302635b",
+    "response_sha256": "8967f252ee7713a9d5c02c86b718e938a1cd358350fa0c3a317f3bce697520c6",
+    "retention": "Minimal manufacturer excerpt; package copy is visual transcription, no manufacturer image republished.",
+    "source_kind": "manufacturer_package_visual_transcription",
+    "supporting_image": {
+      "url": "https://housefoods.jp/_sys/catimages/products/hfhomeproducts/items/092500/pkg1.3000-3000.jpeg",
+      "sha256": "847c482be638b751aa155310f305893e183f50059b3be8d51d3e826d60182524",
+      "http_status": 200,
+      "retrieved_at": "2026-09-19T22:26:21.117145+09:00"
+    },
+    "visual_verification": "Parent reloaded manufacturer image and read instructions, unopened ambient storage, allergens and quantity on 2026-09-19."
   }
 ]

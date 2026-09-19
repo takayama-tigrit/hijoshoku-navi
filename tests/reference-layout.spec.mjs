@@ -48,7 +48,8 @@ try {
      const rect=s=>{const e=document.querySelector(s);if(!e)return null;const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,bottom:r.bottom}};
      return {lead:rect('.lead-stories'),first:rect('.story-card:first-child'),second:rect('.story-card:nth-child(2)'),side:rect('.editorial-sidebar'),planner:rect('.stock-planner'),cards:document.querySelectorAll('.lead-stories .story-card').length,background:getComputedStyle(document.body).backgroundColor};
     });
-    check(m.cards===3,`${width}: exactly three real editorial stories`);
+    const expectedStories=JSON.parse(await readFile('data/editorial.json','utf8')).featured.length;
+    check(m.cards===expectedStories,`${width}: all configured editorial stories are visible`);
     check(m.background==='rgb(255, 255, 255)',`${width}: white editorial canvas`);
     check(m.lead&&m.planner.y>m.lead.bottom,`${width}: planner follows stories`);
     if(width===1440)check(m.lead?.width===752&&!m.side&&m.first.width===752&&m.second.width===364, 'desktop: centered 752, full lead then two columns');

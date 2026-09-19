@@ -67,6 +67,24 @@
         "白飯と味つき。",
         "わが家なら、どれ？"
       ]
+    },
+    {
+      "path": "/posts/emergency-food-set-check",
+      "image": "cooked-rice",
+      "kicker": "買う前の備蓄チェック",
+      "lines": [
+        "袋の数と、",
+        "水の中身を読む。"
+      ]
+    },
+    {
+      "path": "/posts/emergency-food-side-dishes",
+      "image": "meal",
+      "kicker": "備蓄のおかず選び",
+      "lines": [
+        "ごはんに添える、",
+        "温めないおかず。"
+      ]
     }
   ],
   "featureSymbol": "book",

@@ -12,7 +12,8 @@ for(const item of t.navigation)assert(supports(item.icon),'navigation icon exist
 assert.equal(t.navigation.length,4,'four links plus the native menu icon');
 assert(/^\/images\/[\w-]+\.svg$/.test(t.identity.favicon),'local SVG favicon');
 await access('static'+t.identity.favicon);
-assert.equal(new Set(t.featured.map(f=>f.path)).size,3,'three distinct real featured articles');
+assert(t.featured.length>=3,'retain the baseline editorial stories');
+assert.equal(new Set(t.featured.map(f=>f.path)).size,t.featured.length,'distinct real featured articles');
 for(const f of t.featured){
  assert(/^\/[a-z0-9/-]+$/.test(f.path)&&!f.path.includes('..'),'safe article path');
  let found=false;for(const name of [`content${f.path}.md`,`content${f.path}/index.md`]){try{await access(name);found=true;}catch{}}
