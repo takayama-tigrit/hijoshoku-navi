@@ -6,8 +6,8 @@ description: "尾西の白飯・五目・わかめは、いずれも1袋に水16
 seriesTitle: "備蓄のごはん選び"
 storySummary: "白飯か、味付きの五目・わかめか。おかずとの組み合わせ、原材料、水と待ち時間から選びます。"
 choiceTitle: "備蓄のおかずに合わせるなら、どのごはん？"
-choiceNote: "図は味の違いを表す模式図（商品現物ではありません）。3品とも水と待ち時間が必要。現物の表示を優先してください。"
-articleChoices: [{"condition": "おかずに合わせたい", "name": "白飯", "note": "原材料は国産うるち米。味付きごはんではなく、おかずと組み合わせる主食。", "icon": "rice", "official": "https://www.onisifoods.co.jp/products/hakuhan.html", "label": "公式で白飯の原材料を確認 →"}, {"condition": "具材のある味付きがよい", "name": "五目ごはん", "note": "人参・油揚げ・ごぼう等。小麦・大豆を含む通常品で、「アレルギー対応五目」とは別商品。", "icon": "gomoku", "official": "https://www.onisifoods.co.jp/products/gomoku.html", "label": "公式で五目の原材料を確認 →"}, {"condition": "わかめの味付きがよい", "name": "わかめごはん", "note": "わかめに昆布エキス・ホタテエキス等。名前だけで食べられるとは判断しないでください。", "icon": "wakame", "official": "https://www.onisifoods.co.jp/products/wakame.html", "label": "公式でわかめの原材料を確認 →"}]
+choiceNote: "3品とも1袋に水160mL。水15℃なら60分、熱湯なら15分待って食べます。"
+articleChoices: [{"condition": "おかずに合わせたい", "name": "白飯", "note": "国産うるち米の白飯。備蓄しているおかずと合わせるなら。", "icon": "rice", "official": "https://www.onisifoods.co.jp/products/hakuhan.html", "label": "公式で白飯の原材料を確認 →"}, {"condition": "具材のある味付きがよい", "name": "五目ごはん", "note": "人参・油揚げ・ごぼう等。小麦・大豆を含む通常品で、「アレルギー対応五目」とは別商品。", "icon": "gomoku", "official": "https://www.onisifoods.co.jp/products/gomoku.html", "label": "公式で五目の原材料を確認 →"}, {"condition": "わかめの味付きがよい", "name": "わかめごはん", "note": "わかめに昆布エキス・ホタテエキス等を加えた味付きごはん。原材料は袋の表示で。", "icon": "wakame", "official": "https://www.onisifoods.co.jp/products/wakame.html", "label": "公式でわかめの原材料を確認 →"}]
 categories: ["アルファ米"]
 tags: ["アルファ米", "非常食", "尾西食品", "水量", "比較"]
 coverPhoto: "cooked-rice"
@@ -15,38 +15,38 @@ evidenceKey: alpha
 draft: false
 ---
 
-おかずに合わせる白飯、味付きの主食には五目・わかめが候補です。家族が食べられる原材料かを確かめて選びます。水だけで作れても、すぐ食べられるわけではありません。
+備蓄の缶詰やレトルトのおかずに、どのごはんを添えましょう。尾西のアルファ米には、おかずに合わせる白飯と、具材や味付けのある五目・わかめごはんがあります。家族が食べられる原材料を確かめ、水と戻す時間も一緒に用意しておきます。
 
-<div data-testid="next-action"><p><strong>味の候補を選び、原材料を確認する</strong></p><a href="#choose-flavour">白飯・五目・わかめの違いを見る</a> ／ <a href="/guide/#stock-check">買う前に在庫を数える</a></div>
+<div data-testid="next-action"><p><strong>おかずに合わせて、ごはんを選ぶ</strong></p><a href="#choose-flavour">白飯・五目・わかめの違いを見る</a> ／ <a href="/guide/#stock-check">買う前に在庫を数える</a></div>
 
 <div id="choose-flavour"></div>
 
 ## 五目には小麦・大豆、わかめにはホタテエキスも
 
+五目ごはんには、人参や油揚げ、ごぼうなどの具材が入っています。この通常品は小麦・大豆を含み、「アレルギー対応五目ごはん」とは別商品。わかめごはんにも昆布エキスやホタテエキスが使われていて、味ごとに原材料が違います。
+
 <details>
-<summary>原材料と次の行動の一覧（補助）</summary>
+<summary>3つのごはんの原材料を見る</summary>
 
 | 候補 | 原材料と選ぶときの注意 | 次の行動 |
 |---|---|---|
-| 白飯 | 国産うるち米。用意したおかずに合わせる候補。 | [公式の原材料を見る](https://www.onisifoods.co.jp/products/hakuhan.html) |
+| 白飯 | 国産うるち米。用意したおかずに合わせる白飯。 | [公式の原材料を見る](https://www.onisifoods.co.jp/products/hakuhan.html) |
 | 五目ごはん | 乾燥人参、油揚げ、乾燥ごぼう、乾燥椎茸、こんにゃくなど。小麦・大豆を含む。 | [公式の原材料を見る](https://www.onisifoods.co.jp/products/gomoku.html) |
-| わかめごはん | わかめのほか昆布エキス・ホタテエキスなど。名前だけで原材料を推測しない。 | [公式の原材料を見る](https://www.onisifoods.co.jp/products/wakame.html) |
+| わかめごはん | わかめのほか昆布エキス・ホタテエキスなどを使用。 | [公式の原材料を見る](https://www.onisifoods.co.jp/products/wakame.html) |
 
 </details>
 
-**通常の「五目ごはん」と、別商品の「アレルギー対応五目ごはん」を取り違えないでください。** 味違いを同じ条件で食べられるとは判断できません。
-
-現物の原材料・アレルギー表示を確認してください。この記事は個別の安全性を保証しません。
+食物アレルギーがある場合は、選んだ味の原材料・アレルギー表示を現物で確かめます。
 
 ## おかずと一緒に、塩分も確かめる
 
-{{< viz id="rice-nutrition" >}}
+味付きごはんを選ぶときは、おかずと合わせた塩分にも目を向けてみましょう。図は乾燥状態の1袋分の栄養成分です。塩分などに食事上の制限がある場合は、ごはんとおかずを合わせて確認します。
 
-数値は乾燥状態の1袋分。出来上がりの同じ重さ当たりで比べた値ではありません。 塩分などに食事上の制限がある場合は、おかずも含めて確認します。
+{{< viz id="rice-nutrition" >}}
 
 {{< photo id="meal" >}}
 
-具材入りのごはんでも、主菜・副菜が不要とは判断できません。
+五目やわかめも、食事の中では主食。肉や魚の主菜、野菜の副菜を組み合わせます。
 
 味の好みは備蓄するおかずと一緒に確かめ、組み合わせを決めておくと、買い足すものも整理できます。
 
@@ -61,17 +61,17 @@ draft: false
 | 100g尾西の五目ごはん | 100g／260g | 160mL | 377kcal | 6.9g | 1.8g |
 | 100g尾西のわかめごはん | 100g／260g | 160mL | 361kcal | 6.6g | 1.7g |
 
-栄養成分はすべて乾燥状態の1袋100g当たりで、出来上がり100g当たりではありません。 対象は通常の100gタイプ。「レンジ＋」や炊き出し用とは別です。
+栄養成分はすべて乾燥状態の1袋100g当たり。出来上がり100gではなく、袋ひとつ分の値です。ここで比べているのは通常の100gタイプで、「レンジ＋」や炊き出し用とは別の商品です。
 
 </details>
 
 ## 1袋に水160mL。水15℃なら60分待つ
 
+袋に水を注いだら、熱湯なら15分、水なら**15℃で60分**待つのが目安です。水温によって待ち時間は変わります。実際に作るときは、手元の袋の作り方に合わせます。
+
 {{< viz id="rice-prep" >}}
 
-熱湯なら15分、水なら**15℃で60分**が目安です。どんな冷水でも同じ時間とは考えず、手元の商品の作り方を優先してください。
-
-湯と水で別々の注水量は案内されていません。
+注ぐ量は、湯でも水でも1袋160mLです。
 
 <details>
 <summary>調理条件と開封後の手順を確認する</summary>
@@ -85,17 +85,17 @@ draft: false
 
 </details>
 
-復元後は長期保存用の状態ではありません。早めに食べてください。
+水や湯で戻したごはんは、早めに食べ切ります。
 
 {{< photo id="bread" >}}
 
 湯を使えない場面には、待たずに食べられる食品も組み合わせておきましょう。[そのまま食べる食品との比較](/ranking/#choose-by-prep)もできます。
 
-<figure class="quantity-viz" data-quantity-id="rice-bag-scenarios"><p>仮定：1人につき1日3袋</p><div class="energy-bags"><div><span>1人 × 3日</span><strong>9袋</strong></div><div><span>4人 × 3日</span><strong>36袋</strong></div></div><figcaption>注水量を計算するための仮定。食事全体の充足を保証する袋数ではありません。</figcaption></figure>
+<figure class="quantity-viz" data-quantity-id="rice-bag-scenarios"><p>水量の試算：1人につき1日3袋とした場合</p><div class="energy-bags"><div><span>1人 × 3日</span><strong>9袋</strong></div><div><span>4人 × 3日</span><strong>36袋</strong></div></div><figcaption>この袋数は、戻す水を計算するための例です。実際に食べる量は、おかずも含めて決めます。</figcaption></figure>
 
 {{< viz id="rice-water" >}}
 
-袋数に応じた注水だけの試算です。アルファ米だけで食事が足りるという意味ではありません。
+買い置きする袋数が決まったら、戻すための水もセットで数えておきましょう。図の試算に含まれるのは注水分だけで、飲み水は別に見積もります。
 
 <details>
 <summary>注水量の計算を開く</summary>
@@ -111,13 +111,13 @@ draft: false
 
 </details>
 
-飲料水の公的な目安も使って、飲む分が足りるよう全体を見積もってください。 湯煎や食器洗いなどの水は別途必要です。
+飲料水の公的な目安と合わせて、飲む分が残るように水全体を見積もります。湯煎や食器洗いなどの生活用水も、別途備えます。
 
 家にある水との差は、[人数別の水量と在庫計算](/guide/#stock-check)で確認できます。
 
-## 「5年保存」でも、届く袋の期限を確かめる
+## 期限の早い袋から、いつもの食事に
 
-<figure class="quantity-viz" data-quantity-id="rice-storage"><div class="energy-bags"><div><span>白飯</span><strong>5年保存</strong></div><div><span>五目</span><strong>5年保存</strong></div><div><span>わかめ</span><strong>5年保存</strong></div></div><p>配送時の残存賞味期限を確認 → 到着した袋の期限を確認</p><figcaption>公式の保存表示です。 購入日から5年間の残存賞味期限を保証するものではありません。</figcaption></figure>
+<figure class="quantity-viz" data-quantity-id="rice-storage"><div class="energy-bags"><div><span>白飯</span><strong>5年保存</strong></div><div><span>五目</span><strong>5年保存</strong></div><div><span>わかめ</span><strong>5年保存</strong></div></div><p>配送時の残存賞味期限を確認 → 到着した袋の期限を確認</p><figcaption>買うときは販売店の案内で残存賞味期限を、届いたら袋に書かれた期限を確かめます。</figcaption></figure>
 
 家の在庫で足りるなら、追加購入は不要です。
 
@@ -127,9 +127,7 @@ draft: false
 - [Amazonで「尾西 五目ごはん 100g」を検索](https://www.amazon.co.jp/s?k=尾西+五目ごはん+100g)
 - [Amazonで「尾西 わかめごはん 100g」を検索](https://www.amazon.co.jp/s?k=尾西+わかめごはん+100g)
 
-Amazonで商品名を検索できます。商品・内容量と販売条件を確認してください。
-
-賞味期限が過ぎた商品について、尾西食品は喫食を勧めていません。 期限内に試して使い、消費した分を補充するローリングストックで管理しましょう。
+期限の早い袋から普段の食事に取り入れ、食べた分を買い足す。そんなローリングストックなら、おかずとの組み合わせも確かめながら備えられます。尾西食品は賞味期限を過ぎた商品の喫食を勧めていないため、期限内に食べて入れ替えます。
 
 ## 関連記事
 

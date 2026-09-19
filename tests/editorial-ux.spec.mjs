@@ -32,6 +32,15 @@ try {
    check(await page.locator('script[src*="googletagmanager.com"],script[src*="google-analytics.com"]').count()===0,`${route}: no remote Google tag with JS disabled on localhost`);
    if(['/guide/','/ranking/','/posts/alpha-mai-osusume/'].includes(route)){
     check(!/\[\d+\]/.test(await page.locator('main').innerText()),`${route}: no numbered citations`);
+    const articleText=await page.locator('main').textContent();
+    check(!/保証(?:しません|できません|するものでは|する袋数|する日数)|判断できません|取り違えないでください|混同しないでください|商品現物ではありません|Amazonで商品名を検索できます|成果報酬型広告リンクは未掲載|この記事は個別の安全性/.test(articleText),`${route}: no defensive editorial voice in DOM`);
+    check(!/量や栄養が足りるかの自動判定はしません|総合点ではありません/.test(articleText),`${route}: no repeated audit prose`);
+    check(await page.locator('.article-content [data-testid="next-action"] a').count()>0,`${route}: direct reading action retained`);
+    if(route.includes('alpha')) for(const fact of ['小麦・大豆','ホタテエキス','アレルギー対応五目ごはん','15℃','60分','160mL','乾燥状態の1袋100g','残存賞味期限','期限内']) check(articleText.includes(fact),`${route}: fact ${fact}`);
+    const bodyStart=page.locator('.article-content > p').first();
+    await bodyStart.scrollIntoViewIfNeeded();await page.screenshot({path:path.join(artifacts,`${width}-${slug}-body-start.png`)});
+    const middle=page.locator('.article-content > h2').nth(1);await middle.scrollIntoViewIfNeeded();await page.screenshot({path:path.join(artifacts,`${width}-${slug}-body-middle.png`)});
+
     const refs=page.locator('.article-references');check(await refs.count()===1,`${route}: reference section`);
     if(await refs.count()){
      const m=await refs.evaluate(e=>({font:parseFloat(getComputedStyle(e).fontSize),line:parseFloat(getComputedStyle(e).lineHeight),heading:parseFloat(getComputedStyle(e.querySelector('h2')).fontSize),links:e.querySelectorAll('a').length}));measurements.push({route,width,...m});check(m.font===13&&Math.abs(m.line-21.45)<.1&&m.heading<18&&m.links>=7,`${route}: quiet readable references`);

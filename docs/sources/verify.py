@@ -59,7 +59,8 @@ for path in ARTICLES:
     assert "主菜" in body and "副菜" in body
     assert "アレルギー" in body
     if "amazon.co.jp" in body:
-        assert "Amazonで商品名を検索できます" in body
+        amazon_links = re.findall(r"\[([^\]]+)\]\((https://www\.amazon\.co\.jp/[^)]+)\)", body)
+        assert amazon_links and all("Amazonで" in label and "検索" in label for label, url in amazon_links)
         assert not re.search(r"amazon\.co\.jp[^\s)]*[?&]tag=", body)
     all_cited |= cited
     print(f"PASS {path.relative_to(ROOT)}: {len(cited)} evidence-backed sources")
