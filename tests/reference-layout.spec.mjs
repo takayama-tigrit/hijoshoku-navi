@@ -51,29 +51,26 @@ try {
     check(m.cards===3,`${width}: exactly three real editorial stories`);
     check(m.background==='rgb(255, 255, 255)',`${width}: white editorial canvas`);
     check(m.lead&&m.planner.y>m.lead.bottom,`${width}: planner follows stories`);
-    if(width===1440)check(m.lead?.width===800&&m.side?.width===300&&m.first.width>m.second.width*2, 'desktop: 800/300 editorial split, asymmetric lead');
-    if(width<=390)check(await page.locator('.story-card:nth-child(2)').evaluateAll(es=>es.length&&getComputedStyle(es[0]).display==='grid'),`${width}: secondary story is horizontal`);
+    if(width===1440)check(m.lead?.width===752&&!m.side&&m.first.width===752&&m.second.width===364, 'desktop: centered 752, full lead then two columns');
+    if(width<=390)check(m.second.y>=m.first.bottom&&m.second.width===width-32,`${width}: secondary story is vertically stacked`);
     measurements.push({route,width,...m});
    } else if(['/guide/','/ranking/','/posts/alpha-mai-osusume/'].includes(route)) {
     const m=await page.evaluate(()=>{
-     const image=document.querySelector('.article-cover img'), title=document.querySelector('.article-header h1'),body=document.querySelector('.article-content'),a=document.querySelector('[data-choice-card] a');
-     return {imageBottom:image?.getBoundingClientRect().bottom,titleY:title.getBoundingClientRect().y,bodyWidth:body.getBoundingClientRect().width,font:getComputedStyle(body).fontSize,line:getComputedStyle(body).lineHeight,titleSize:getComputedStyle(title).fontSize,actionBottom:a?.getBoundingClientRect().bottom,radius:getComputedStyle(document.querySelector('[data-choice-card]')).borderRadius};
+     const image=document.querySelector('.article-cover img'), title=document.querySelector('.article-header h1'),body=document.querySelector('.article-content'),a=document.querySelector('.article-jump');
+     return {imageY:image?.getBoundingClientRect().y,titleY:title.getBoundingClientRect().y,bodyWidth:body.getBoundingClientRect().width,font:getComputedStyle(body).fontSize,line:getComputedStyle(body).lineHeight,titleSize:getComputedStyle(title).fontSize,actionBottom:a?.getBoundingClientRect().bottom,radius:getComputedStyle(document.querySelector('[data-choice-card]')).borderRadius};
     });
-    check(m.imageBottom<=m.titleY,`${route} ${width}: photo before title`);
-    check(m.font==='16px'&&m.line==='29.6px',`${route} ${width}: 16px/1.85 body`);
+    check(m.titleY<m.imageY,`${route} ${width}: title before photo`);
+    check(m.font==='16px'&&m.line==='28px',`${route} ${width}: 16px/28px body`);
     check(m.radius==='0px',`${route}: flat editorial choice memo`);
-    if(width<=390)check(m.titleSize==='20px'&&m.actionBottom<750,`${route} ${width}: compact title and early choice`);
-    if(width===1440)check(m.bodyWidth===650,`${route}: 650px reading column`);
+    if(width<=390)check(m.titleSize==='18px'&&m.actionBottom<750,`${route} ${width}: compact title and early choice`);
+    if(width===1440)check(m.bodyWidth===518,`${route}: 518px reading column`);
     measurements.push({route,width,...m});
    }
    if (bodyPhotoIds[route]) {
     const photos = page.locator('.article-content .food-photo');
     check(JSON.stringify(await photos.evaluateAll(es=>es.map(e=>e.dataset.photo)))===JSON.stringify(bodyPhotoIds[route]), `${route}: all body photos retained`);
     for (const [i, photo] of (await photos.all()).entries()) {
-     const visible = photo.locator('figcaption > span:visible');
-     check(await visible.count()===1, `${route} ${width} photo ${i}: exactly one visible caption`);
-     check((await visible.allTextContents()).join('')===bodyCaptions[route][i], `${route} ${width} photo ${i}: preserve complete contextual caption without repetition`);
-     check(/イメージ。.*(?:普通|通常)の.*ではありません。/.test(await visible.first().innerText()), `${route} ${width} photo ${i}: nearby general-food and non-product qualification`);
+     check(await photo.locator('figcaption').count()===0, `${route} ${width}: no boilerplate captions`);
      if(width===390||width===1440) {
       await photo.locator('img').evaluate(img=>img.decode());
       await photo.screenshot({path:path.join(artifacts,`${width}-${route.split('/').filter(Boolean).join('-')}-body-photo-${i+1}.png`)});
@@ -82,17 +79,8 @@ try {
    }
    for (const photo of await page.locator('.food-photo').all()) {
     const id=await photo.getAttribute('data-photo'), record=ledger.find(e=>e.id===id);
-    const details=photo.locator('details.photo-credit'), visible=photo.locator('figcaption > span');
-    check(await visible.count()===1, `${route} ${width} ${id}: single near-image caption`);
-    check(await details.evaluate(e=>!e.open), `${route} ${width} ${id}: credits initially collapsed`);
-    const text=await details.textContent();
-    for(const key of ['caption','author','license','attribution','modifications']) check(text.includes(record[key]), `${route} ${width} ${id}: credit retains ${key}`);
-    check(await details.locator('a').evaluateAll((links, urls)=>urls.every(url=>links.some(a=>decodeURI(a.href)===decodeURI(url))), [record.source_url,record.license_url]), `${route} ${id}: original and license links retained`);
-    if(id==='pantry') check((await visible.innerText()).includes('安全な収納方法を推奨する写真') && (await visible.innerText()).includes('掲載商品の現物ではありません'), `${route} ${width}: pantry safety qualification stays nearby`);
-    if(await photo.evaluate(e=>e.classList.contains('article-cover')) && id==='water-bottles') check(/一般イメージ.*掲載商品の現物ではありません/.test(await visible.innerText()) && (await visible.innerText()).includes('必要量や商品の推奨を示すものではありません'), `${route} ${width}: water identity and quantity qualification stay nearby`);
-    await details.locator('summary').click();
-    check(await details.locator('p').isVisible(), `${route} ${width} ${id}: source details expandable without JS`);
-    await details.locator('summary').click();
+    check(await photo.locator('details.photo-credit').count()===0, `${route}: credits live on their dedicated page`);
+    for(const img of await photo.locator('img').all()) { const src=await img.getAttribute('src');const image=ledger.find(r=>src.endsWith(r.local_path.replace('static/','')));check(image && await img.getAttribute('alt')===image.alt, `${route}: each cut retains accurate descriptive alt`); }
    }
    for(const image of await page.locator('img').all()){await image.scrollIntoViewIfNeeded();await image.evaluate(img=>img.decode());}
    await page.evaluate(()=>scrollTo(0,0));

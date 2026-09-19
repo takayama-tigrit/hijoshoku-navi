@@ -32,13 +32,25 @@ for path in ARTICLES:
     text = path.read_text()
     lastmod = re.search(r'^lastmod: (\d{4}-\d{2}-\d{2})T', text, re.M)
     assert lastmod and lastmod.group(1) >= max(record['checked_at'][:10] for record in records), 'Article revision predates its evidence'
-    assert text.count("## Sources") == 1
-    body, footer = text.split("## Sources")
-    cited = {int(x) for x in re.findall(r"\[(\d+)\](?![(:])", body)}
-    listed = {int(i): u for i, u in re.findall(r"^\[(\d+)\] (https?://\S+)", footer, re.M)}
-    assert cited == listed.keys(), path
-    for i, url in listed.items():
-        assert url == sources[i]["url"], (path, i)
+    key = re.search(r'^evidenceKey: (\w+)$', text, re.M)
+    assert key, (path, 'explicit article evidence key required')
+    evidence = json.loads((ROOT / 'data/article-evidence.json').read_text())['articles'][key.group(1)]
+    assert evidence['file'] == str(path.relative_to(ROOT))
+    body = text
+    assert '## Sources' not in text and not re.search(r'\[\d+\]', text), 'Reader copy must not carry audit numbering'
+    cited = set(evidence['source_ids'])
+    assert len(cited) == len(evidence['source_ids'])
+    assert cited <= sources.keys()
+    mapped = set()
+    for claim in evidence['claims']:
+        assert claim['text'] in text, (path, 'stale claim mapping', claim['text'])
+        assert claim['source_ids'] and set(claim['source_ids']) <= cited
+        mapped.update(claim['source_ids'])
+    assert mapped == cited, (path, 'missing claim provenance')
+    # Every numeric table row must remain explicitly traceable, including derived totals.
+    for line in text.splitlines():
+        if line.startswith('| ') and re.search(r'\d', line) and not any(h in line for h in ['熱量（', '3日分の', '| 人数 |', '| 家族の人数 |', '今回の3品']):
+            assert any(c['text'] == line for c in evidence['claims']), (path, 'unmapped numeric table row', line)
     assert "要確認" not in body
     assert not re.search(r"第\d+位|TOP\d|おすすめ10選|佐竹食品|72L", body)
     assert "## 関連記事" in body
@@ -47,7 +59,7 @@ for path in ARTICLES:
     assert "主菜" in body and "副菜" in body
     assert "アレルギー" in body
     if "amazon.co.jp" in body:
-        assert "通常の検索リンク" in body
+        assert "Amazonで商品名を検索できます" in body
         assert not re.search(r"amazon\.co\.jp[^\s)]*[?&]tag=", body)
     all_cited |= cited
     print(f"PASS {path.relative_to(ROOT)}: {len(cited)} evidence-backed sources")
@@ -77,6 +89,6 @@ for i, product, energy, protein, salt in (
     assert f"たんぱく質\n{protein}g" in excerpt
     assert f"食塩相当量\n{salt}g" in excerpt
     assert "100g/260g（必要水量160ml）" in excerpt
-    assert f"| 100g尾西の{product}[{i}] | 100g／260g | 160mL | {energy}kcal | {protein}g | {salt}g |" in alpha
+    assert f"| 100g尾西の{product} | 100g／260g | 160mL | {energy}kcal | {protein}g | {salt}g |" in alpha
 print("PASS arithmetic, source hashes, quotes, source blocks, key product tables, article invariants")
 print("NOTE: structural checks do not replace human review of claim support or a live site build.")

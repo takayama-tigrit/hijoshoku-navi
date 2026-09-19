@@ -1,0 +1,6 @@
+{{- $a := readFile "data/analytics.json" | transform.Unmarshal -}}
+{{- $topic := partial "editorial-config.html" . -}}
+{{- if and (eq $a.enabled true) (eq $topic.identity.title $a.site_title) (eq $a.origin "https://hijoshoku-navi.com") (eq site.BaseURL "https://hijoshoku-navi.com/") (ne .Kind "404") (not .Params.robotsNoIndex) (findRE `^G-[A-Z0-9]{10}$` $a.measurement_id) -}}
+{{- $js := resources.Get "js/analytics.js" | fingerprint -}}
+<script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" data-analytics-enabled="true" data-measurement-id="{{ $a.measurement_id }}" data-page-location="{{ .Permalink }}" data-page-title="{{ if .IsHome }}{{ printf "%s｜%s" $topic.identity.title $topic.identity.tagline }}{{ else }}{{ printf "%s｜%s" .Title $topic.identity.title }}{{ end }}"></script>
+{{- end -}}

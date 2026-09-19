@@ -44,8 +44,11 @@ try {
       const cards = block.locator('[data-choice-card]');
       assert.equal(await cards.count(), candidates.length);
       const start = await block.boundingBox();
-      const action = await cards.first().locator('a').first().boundingBox();
-      assert(start.y < 750 && action.y + action.height < 750, `${route} ${width}: first action below fold ${JSON.stringify({ start, action })}`);
+      const jump = page.locator('.article-jump');
+      const action = await jump.boundingBox();
+      assert(action && action.y + action.height < 750, `${route} ${width}: title-near action below fold ${JSON.stringify({ start, action })}`);
+      assert.equal(await jump.getAttribute('href'), '#article-choice-title');
+      assert.equal(await page.locator('#article-choice-title').count(), 1, 'Short action resolves to real choice cards');
       assert.equal(await page.evaluate(() => window.scrollY), 0, 'Untouched initial viewport');
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'No page overflow');
       for (const [i, candidate] of candidates.entries()) {

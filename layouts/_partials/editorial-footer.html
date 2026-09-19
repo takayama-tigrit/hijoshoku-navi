@@ -1,11 +1,2 @@
-<footer class="site-footer">
-  <div class="footer-inner wrap">
-    <div><a class="footer-brand" href="{{ "/" | relURL }}">{{ site.Title }}</a><p>{{ site.Params.tagline }}</p></div>
-    <nav aria-label="フッターナビゲーション">
-      <a href="{{ "/about/" | relURL }}">編集方針・広告について</a>
-      <a href="{{ "/privacy/" | relURL }}">プライバシーポリシー</a>
-      <a href="#top">ページの先頭へ <span aria-hidden="true">↑</span></a>
-    </nav>
-  </div>
-  <div class="footer-bottom wrap"><small>© {{ now.Year }} {{ site.Title }}</small><span>自分と、大切な人の食事を守るために。</span></div>
-</footer>
+{{ $t := partial "editorial-config.html" . }}
+<footer class="site-footer"><div class="footer-inner wrap"><div><a class="footer-brand" href="/">{{ $t.identity.title }}</a><p>{{ $t.identity.tagline }}</p></div><nav aria-label="フッターナビゲーション">{{ range $t.footerLinks }}<a href="{{ .url | relURL }}">{{ .label }}</a>{{ end }}<a href="#top">ページの先頭へ ↑</a></nav></div><div class="footer-bottom wrap"><small>© {{ now.Year }} {{ $t.identity.title }}</small><span>{{ $t.identity.footer }}</span></div></footer>

@@ -1,0 +1,109 @@
+{
+  "identity": {
+    "title": "非常食ナビ",
+    "tagline": "いつもの食事のそばに、備えを。",
+    "description": "いつもの食事のそばに、無理なく備えを置く。食品と水の備え方を、公的機関・メーカーの公開情報から考える読みものです。",
+    "author": "非常食ナビ編集部",
+    "footer": "いつもの食事を、これからも。",
+    "symbol": "food",
+    "favicon": "/images/navi-mark.svg"
+  },
+  "navigation": [
+    {
+      "label": "ホーム",
+      "url": "/",
+      "icon": "home"
+    },
+    {
+      "label": "備え方",
+      "url": "/guide/",
+      "icon": "food"
+    },
+    {
+      "label": "読みもの",
+      "url": "/#readings",
+      "icon": "book"
+    },
+    {
+      "label": "備蓄メモ",
+      "url": "/#stock-planner",
+      "icon": "memo"
+    }
+  ],
+  "menuLabel": "メニュー",
+  "notice": {
+    "text": "いつもの食事から、少しずつ。食品と水の備えを見直す読みものです。",
+    "url": "/guide/"
+  },
+  "featured": [
+    {
+      "path": "/guide",
+      "image": "meal",
+      "images": [
+        "bread",
+        "meal",
+        "cooked-rice"
+      ],
+      "kicker": "暮らしのそばの備え",
+      "lines": [
+        "いつもの食事の、",
+        "その先を考える。"
+      ]
+    },
+    {
+      "path": "/ranking",
+      "image": "bread",
+      "kicker": "食べ方から選ぶ",
+      "lines": [
+        "開けて食べる、",
+        "水を加えて待つ。"
+      ]
+    },
+    {
+      "path": "/posts/alpha-mai-osusume",
+      "image": "cooked-rice",
+      "kicker": "ごはんの備え",
+      "lines": [
+        "白飯と味つき。",
+        "わが家なら、どれ？"
+      ]
+    }
+  ],
+  "featureSymbol": "book",
+  "articleCovers": {
+    "/guide/": {
+      "images": [
+        "bread",
+        "meal",
+        "cooked-rice"
+      ],
+      "kicker": "暮らしのそばの備え",
+      "lines": [
+        "いつもの食事から、",
+        "備えを考える。"
+      ]
+    }
+  },
+  "home": {
+    "heading": "非常食の読みもの",
+    "storiesLabel": "備えの読みもの",
+    "toolsTitle": "暮らしの実用ツール"
+  },
+  "tools": {
+    "stockPlanner": true
+  },
+  "footerLinks": [
+    {
+      "label": "このサイトについて",
+      "url": "/about/"
+    },
+    {
+      "label": "プライバシー",
+      "url": "/privacy/"
+    },
+    {
+      "label": "写真クレジット",
+      "url": "/photo-credits/"
+    }
+  ]
+}

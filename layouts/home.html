@@ -1,14 +1,5 @@
-{{ define "main" }}
-<div class="wrap home-editorial">
-<h1 class="home-heading">非常食の読みもの</h1>
-<div class="editorial-layout">
-<div class="home-main">
-<section class="lead-stories" aria-label="備えの読みもの">
-{{ range $i, $path := slice "/guide" "/ranking" "/posts/alpha-mai-osusume" }}{{ with site.GetPage $path }}{{ partial "story-card.html" (dict "page" . "lead" (eq $i 0)) }}{{ end }}{{ end }}
-</section>
-<section class="home-tools" aria-label="備蓄の実用ツール"><p class="section-label">暮らしの実用ツール</p>{{ partial "stock-planner.html" . }}</section>
-</div>
-{{ partial "editorial-sidebar.html" . }}
-</div>
-<aside class="editorial-note"><h2>情報の読み方</h2><p>公的機関・メーカーの公開情報をもとに整理しています。実食評価や人気順位ではありません。</p><a href="/about/">編集方針・広告について →</a></aside>
+{{ define "main" }}{{ $t := partial "editorial-config.html" . }}
+<div class="wrap home-editorial"><h1 class="visually-hidden">{{ $t.home.heading }}</h1><div class="home-main"><section id="readings" class="lead-stories" aria-label="{{ $t.home.storiesLabel }}">
+{{ range $i, $feature := $t.featured }}{{ with site.GetPage $feature.path }}{{ partial "story-card.html" (dict "page" . "lead" (eq $i 0) "feature" $feature) }}{{ end }}{{ end }}
+</section>{{ if $t.tools.stockPlanner }}<section class="home-tools" aria-label="{{ $t.home.toolsTitle }}"><p class="section-label">{{ $t.home.toolsTitle }}</p>{{ partial "stock-planner.html" . }}</section>{{ end }}</div>
 </div>{{ end }}

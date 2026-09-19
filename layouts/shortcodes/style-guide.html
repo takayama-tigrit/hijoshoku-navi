@@ -1,0 +1,7 @@
+{{ $t := partial "editorial-config.html" . }}
+<h2>細線アイコン</h2><div class="style-guide-icons">{{ range slice "home" "book" "food" "memo" "menu" "plant" }}<figure>{{ partial "editorial-icon.html" . }}<figcaption>{{ . }}</figcaption></figure>{{ end }}</div>
+<h2>記事カードと写真構図</h2>{{ $feature := index $t.featured 0 }}{{ with site.GetPage $feature.path }}{{ partial "story-card.html" (dict "page" . "lead" true "feature" $feature) }}
+<h2>選ぶときのメモ</h2>{{ partial "article-choice.html" . }}
+{{ $css := resources.Get "css/article-choice.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ end }}
+{{ partial "article-references.html" "guide" }}

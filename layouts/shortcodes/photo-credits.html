@@ -1,0 +1,2 @@
+{{ $ledger := readFile "docs/image-licenses.json" | transform.Unmarshal }}
+<div class="photo-credits">{{ range $ledger.images }}<section data-credit="{{ .id }}"><h2>{{ .alt }}</h2><p>{{ .author }} / <a href="{{ .source_url }}">原写真</a> / <a href="{{ .license_url }}">{{ .license }}</a></p><p>{{ .attribution }}</p><p>{{ .modifications }} 表示枠に合わせた切り抜き表示あり。</p></section>{{ end }}</div>
