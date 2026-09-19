@@ -39,7 +39,11 @@
     {
       "path": "/guide",
       "image": "meal",
-      "images": ["bread", "meal", "cooked-rice"],
+      "images": [
+        "bread",
+        "meal",
+        "cooked-rice"
+      ],
       "kicker": "暮らしのそばの備え",
       "lines": [
         "いつもの食事の、",
@@ -67,39 +71,39 @@
   ],
   "featureSymbol": "book",
   "articleCovers": {
-    "/guide/": {"images": ["bread", "meal", "cooked-rice"], "kicker": "暮らしのそばの備え", "lines": ["いつもの食事から、", "備えを考える。"]}
+    "/guide/": {
+      "images": [
+        "bread",
+        "meal",
+        "cooked-rice"
+      ],
+      "kicker": "暮らしのそばの備え",
+      "lines": [
+        "いつもの食事から、",
+        "備えを考える。"
+      ]
+    }
   },
-  "photoCaptions": {
-    "meal": "一般の料理のイメージ・非常食や掲載商品の現物ではありません",
-    "bread": "一般のパンのイメージ・長期保存パンや掲載商品の現物ではありません",
-    "cooked-rice": "一般のご飯のイメージ・アルファ米や掲載商品の現物ではありません"
-  },
-  "compositionCaption": "一般の食事・パン・ご飯のイメージ。非常食・長期保存パン・アルファ米や掲載商品の現物ではありません。",
   "home": {
     "heading": "非常食の読みもの",
     "storiesLabel": "備えの読みもの",
-    "toolsTitle": "暮らしの実用ツール",
-    "noteTitle": "情報の読み方",
-    "note": "公的機関・メーカーの公開情報をもとに整理しています。実食評価や人気順位ではありません。",
-    "noteLink": "編集方針・広告について",
-    "noteUrl": "/about/"
-  },
-  "articleDisclosure": {
-    "text": "公的・メーカー情報による比較（実食評価なし）。成果報酬型広告リンクは未掲載。",
-    "label": "編集・広告方針",
-    "url": "/about/"
+    "toolsTitle": "暮らしの実用ツール"
   },
   "tools": {
     "stockPlanner": true
   },
   "footerLinks": [
     {
-      "label": "編集方針・広告について",
+      "label": "このサイトについて",
       "url": "/about/"
     },
     {
-      "label": "プライバシーポリシー",
+      "label": "プライバシー",
       "url": "/privacy/"
+    },
+    {
+      "label": "写真クレジット",
+      "url": "/photo-credits/"
     }
   ]
 }

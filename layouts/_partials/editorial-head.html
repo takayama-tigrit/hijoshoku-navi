@@ -28,4 +28,5 @@
 <meta property="og:site_name" content="{{ $t.identity.title }}">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary">
+{{ partial "analytics.html" . }}
 {{ range .AlternativeOutputFormats }}<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $t.identity.title }} {{ .Name }}">{{ end }}

@@ -28,11 +28,11 @@ try {
    await page.goto(base+route);const comp=page.locator(route==='/'?'.story-lead .feature-composition':'.article-cover .feature-composition');
    const imgs=comp.locator('img');check(await imgs.count()===3,`S1 ${route} three real cuts`);check(new Set(await imgs.evaluateAll(es=>es.map(e=>e.src))).size===3,`S1 ${route} distinct assets`);
    const fig=page.locator(route==='/'?'.story-lead figure':'.article-cover').first();
+   check(await fig.locator('figcaption, .photo-credit').count()===0,'S1 no repetitive photo audit copy');
    for(const id of ['meal','bread','cooked-rice']){
-    const rec=ledger.find(r=>r.id===id);const txt=await fig.textContent();for(const k of ['caption','author','license','attribution','modifications'])check(txt.includes(rec[k]),`S1 rights ${route} ${id} ${k}`);
-    check(await fig.locator('a').evaluateAll((as,urls)=>urls.every(u=>as.some(a=>decodeURI(a.href)===decodeURI(u))),[rec.source_url,rec.license_url]),`S1 rights links ${route} ${id}`);
+    const rec=ledger.find(r=>r.id===id);check(rec.license==='CC0','S1 unchanged three-cut rights');
+    check(await fig.locator(`img[alt="${rec.alt}"]`).count()===1,`S1 accurate cut alt ${id}`);
    }
-   check(/一般|イメージ/.test(await fig.locator('figcaption > span').innerText())&&/ではありません/.test(await fig.locator('figcaption > span').innerText()),'S1 nearby qualification');
    if(route==='/'){
     const b=await comp.boundingBox();check(Math.abs(b.width/b.height-752/351)<.01,'S3 corrected ratio');
     if(width===390){for(const im of await page.locator('.lead-stories .story-image').all()){const b=await im.boundingBox();check(b.x===0&&b.width===390,'S3 all home images full bleed');}for(const c of await page.locator('.lead-stories .story-copy').all()){const b=await c.boundingBox();check(b.x===16&&b.width===358,'S3 inset copy');}}

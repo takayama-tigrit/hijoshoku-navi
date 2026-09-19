@@ -1,5 +1,5 @@
 {{ define "main" }}{{ $t := partial "editorial-config.html" . }}
-{{ $editorial := not (in (slice "/about/" "/privacy/") .RelPermalink) }}
+{{ $editorial := not (in (slice "/about/" "/privacy/" "/photo-credits/" "/style-guide/") .RelPermalink) }}
 {{ $feature := dict }}{{ with index $t.articleCovers .RelPermalink }}{{ $feature = . }}{{ end }}{{ with .Params.editorialCover }}{{ $feature = . }}{{ end }}
 {{ with .Params.articleChoices }}{{ $css := resources.Get "css/article-choice.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">{{ end }}
 <div class="wrap article-wrap{{ if not $editorial }} policy-page{{ end }}"><article class="article" data-testid="article">
@@ -9,7 +9,7 @@
 {{ if .Params.articleChoices }}<a class="article-jump" href="#article-choice-title" data-testid="next-action">{{ .Params.choiceTitle }} ↓</a>{{ end }}</header>
 {{ with .Params.coverPhoto }}{{ partial "photo.html" (dict "id" . "class" "article-cover" "caption" $.Params.coverCaption "compact" true "eager" true "composition" true "feature" $feature) }}{{ end }}
 <div class="article-reading">{{ if .Params.articleChoices }}{{ partial "article-choice.html" . }}{{ end }}
-{{ if and $editorial $t.articleDisclosure }}<aside class="article-disclosure" data-testid="editorial-disclosure"><p>{{ $t.articleDisclosure.text }}<a href="{{ $t.articleDisclosure.url }}">{{ $t.articleDisclosure.label }}</a></p></aside>{{ end }}
 {{ if and (.Param "ShowToc") (gt (len .Fragments.Headings) 0) }}<details class="article-toc" data-testid="article-toc"><summary>この記事の目次</summary>{{ .TableOfContents }}</details>{{ end }}
 <div class="article-content" data-testid="article-content">{{ .Content | replaceRE `<table>` `<div class="table-scroll" role="region" aria-label="比較表（横にスクロールできます）" tabindex="0"><table>` | replaceRE `</table>` `</table></div>` | safeHTML }}</div>
+{{ with .Params.evidenceKey }}{{ partial "article-references.html" . }}{{ end }}
 {{ if $editorial }}<section class="related-section" aria-labelledby="related-title" data-testid="related-section"><h2 id="related-title">あわせて読みたい</h2><div class="related-grid">{{ range $t.featured }}{{ $f := . }}{{ with site.GetPage .path }}{{ if ne .RelPermalink $.RelPermalink }}<div data-testid="related-article">{{ partial "story-card.html" (dict "page" . "feature" $f) }}<a class="related-read" href="{{ .RelPermalink }}" data-testid="next-action">条件を確認する →</a></div>{{ end }}{{ end }}{{ end }}</div></section>{{ end }}</div></article></div>{{ end }}

@@ -20,16 +20,5 @@
 {{ else }}
   {{ with $args.href }}<a href="{{ . }}" tabindex="-1" aria-hidden="true">{{ end }}<img src="{{ strings.TrimPrefix "static/" .local_path | relURL }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" {{ if $args.eager }}loading="eager" fetchpriority="high"{{ else }}loading="lazy"{{ end }} decoding="async">{{ if $args.href }}</a>{{ end }}
 {{ end }}
-{{- $caption := $args.caption | default .caption -}}
-{{- if and $args.compact (not $args.caption) -}}
-  {{- $caption = index $t.photoCaptions .id | default .compact_caption | default .caption -}}
-  {{- if $composite }}{{ $caption = $args.feature.caption | default $t.compositionCaption | default $caption }}{{ end -}}
-{{- end -}}
-{{ if and $composite $args.caption }}{{ with $t.compositionCaption }}{{ $caption = printf "%s %s" $caption . }}{{ end }}{{ end }}
-<figcaption><span{{ if not $args.compact }} class="photo-purpose"{{ end }}>{{ $caption }}</span>
-<details class="photo-credit"><summary>写真の出典・利用許諾</summary><p>
-{{ range $ids }}{{ range where $ledger.images "id" . }}
-<span class="photo-source" data-credit="{{ .id }}">{{ .caption }}<br><a href="{{ .source_url }}">作品の原掲載ページ</a> / {{ .author }} / <a href="{{ .license_url }}">{{ .license }}</a><br>{{ .attribution }}<br>{{ .modifications }} 表示枠に合わせた切り抜き表示あり。</span><br>
-{{ end }}{{ end }}
-</p></details></figcaption></figure>
+{{ with $args.caption }}<figcaption>{{ . }}</figcaption>{{ end }}</figure>
 {{- end -}}

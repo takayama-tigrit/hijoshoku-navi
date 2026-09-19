@@ -55,7 +55,13 @@ try {
   }
   await ctx.close();
  }
- const routes=(await readdir(output,{recursive:true})).filter(p=>p.endsWith('.html')).map(p=>'/'+p.replace(/index\.html$/,''));
+ // This exact Google ownership document is not an editorial HTML page.
+ const verificationFile='googlebc361a986c060010.html';
+ assert.equal(await readFile(path.join(output,verificationFile),'utf8'),'google-site-verification: '+verificationFile);
+ const verificationResponse=await fetch(base+'/'+verificationFile);
+ assert.equal(verificationResponse.status,200);
+ assert.equal(await verificationResponse.text(),'google-site-verification: '+verificationFile);
+ const routes=(await readdir(output,{recursive:true})).filter(p=>p.endsWith('.html')&&p!==verificationFile).map(p=>'/'+p.replace(/index\.html$/,''));
  for(const width of [320,390,768,1440]){const page=await browser.newPage({viewport:{width,height:960}});for(const route of routes){await page.goto(base+route);check(await page.locator('h1').count()===1,`all routes ${route}: one h1`);check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`all routes ${route} ${width}: no overflow`);}await page.close();}
  // A real isolated Hugo source fixture: no mutation of project content/data.
  const fixture=await mkdtemp(path.join(tmpdir(),'editorial-topic-fixture-'));

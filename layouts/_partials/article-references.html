@@ -1,0 +1,3 @@
+{{ $e := readFile "data/article-evidence.json" | transform.Unmarshal }}
+{{ $ledger := readFile "docs/sources/ledger.json" | transform.Unmarshal }}
+{{ with index $e.articles . }}<section class="article-references" aria-labelledby="references-title"><h2 id="references-title">参考にした情報</h2><ul>{{ range .source_ids }}{{ range where $ledger.sources "id" . }}<li><a href="{{ .url }}">{{ .title }}</a></li>{{ end }}{{ end }}</ul><p>情報確認：{{ (index $ledger.sources 0).accessed }}</p></section>{{ end }}
