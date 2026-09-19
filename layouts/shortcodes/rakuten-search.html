@@ -1,0 +1,9 @@
+{{- $term := .Get 0 -}}
+{{- $config := readFile "data/affiliate-links.json" | transform.Unmarshal -}}
+{{- $link := index $config.links $term -}}
+{{- if not $link -}}{{- errorf "Unknown Rakuten search term: %s" $term -}}{{- end -}}
+{{- if partial "affiliate-active.html" .Page -}}
+<a data-commerce="rakuten" href="{{ $link.url }}" rel="sponsored nofollow" referrerpolicy="origin">楽天市場で「{{ $term }}」を検索</a>
+{{- else -}}
+<a href="{{ $link.destination }}" referrerpolicy="origin">楽天市場で「{{ $term }}」を検索</a>
+{{- end -}}

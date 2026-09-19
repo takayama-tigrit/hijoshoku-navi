@@ -6,6 +6,7 @@
 <header class="article-header">{{ if $editorial }}<p class="article-series">{{ .Params.seriesTitle | default $feature.kicker | default "読みもの" }}</p>{{ end }}
 <div class="article-title-row">{{ with .Params.coverPhoto }}{{ $ledger := readFile "docs/image-licenses.json" | transform.Unmarshal }}{{ range where $ledger.images "id" . }}<div class="article-title-thumb" aria-hidden="true" style="background-image:url('{{ strings.TrimPrefix "static/" .local_path | relURL }}')"></div>{{ end }}{{ end }}<h1>{{ .Title }}</h1></div>
 {{ if $editorial }}<p class="article-meta"><span>{{ $t.identity.author }}</span><time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006/01/02" }}</time></p>{{ end }}
+{{ if and (.HasShortcode "rakuten-search") (partial "affiliate-active.html" .) }}<p class="article-series" data-testid="affiliate-disclosure">広告：この記事にはアフィリエイト広告を含みます。</p>{{ end }}
 {{ if .Params.articleChoices }}<a class="article-jump" href="#article-choice-title" data-testid="next-action">{{ .Params.choiceTitle }} ↓</a>{{ end }}</header>
 {{ with .Params.coverPhoto }}{{ partial "photo.html" (dict "id" . "class" "article-cover" "caption" $.Params.coverCaption "compact" true "eager" true "composition" true "feature" $feature) }}{{ end }}
 <div class="article-reading">{{ if .Params.articleChoices }}{{ partial "article-choice.html" . }}{{ end }}

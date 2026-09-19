@@ -50,3 +50,6 @@ buildFuture = false
 
 [markup.goldmark.renderer]
   unsafe = true
+
+[security.funcs]
+  getenv = ["^HUGO_", "^CI$", "^CF_PAGES_BRANCH$"]

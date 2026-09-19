@@ -32,8 +32,8 @@ draft: false
 
 **主食を買い足したいなら**、手持ちの水とおかずを数えてから、このようなごはんのセットを候補にできます。**おかずだけが足りないなら**、ごはんをもう一箱増やすより、[主菜・副菜の候補](/posts/emergency-food-side-dishes/)から探すほうが目的に合います。
 
-- [尾西食品でCYのセット内容を見る](https://www.onisifoods.co.jp/products/set/cy.html) ／ [Amazonで「尾西 ごはんシリーズ CY」を検索](https://www.amazon.co.jp/s?k=尾西+ごはんシリーズ+CY)
-- [尾西食品でDWのセット内容を見る](https://www.onisifoods.co.jp/products/set/dw.html) ／ [Amazonで「尾西 ごはんシリーズ DW」を検索](https://www.amazon.co.jp/s?k=尾西+ごはんシリーズ+DW)
+- [尾西食品でCYのセット内容を見る](https://www.onisifoods.co.jp/products/set/cy.html) ／ {{< rakuten-search "尾西 ごはんシリーズ CY" >}}
+- [尾西食品でDWのセット内容を見る](https://www.onisifoods.co.jp/products/set/dw.html) ／ {{< rakuten-search "尾西 ごはんシリーズ DW" >}}
 
 販売ページでは、商品名だけでなく味の内訳・入数まで公式情報と見比べます。同じシリーズの別セットを選んでいないか、ここで確かめておきましょう。
 
