@@ -49,8 +49,14 @@ for record in records:
     for quote in source["quotes"]:
         assert quote["text"] in raw.decode(), (source["id"], "quote mismatch")
 
+def semantic_text(text):
+    # Formatting-only shortcodes retain the exact claim; JSON decoding is not evaluation.
+    text = re.sub(r'\{\{<\s*mark\s+("(?:[^"\\]|\\.)*")\s*>\}\}', lambda m: json.loads(m.group(1)), text)
+    return re.sub(r'\*\*(.*?)\*\*', r'\1', text)
+
+
 for path in ARTICLES:
-    text = path.read_text()
+    text = semantic_text(path.read_text())
     lastmod = re.search(r'^lastmod: (\d{4}-\d{2}-\d{2})T', text, re.M)
 
     key = re.search(r'^evidenceKey: (\w+)$', text, re.M)
@@ -65,7 +71,7 @@ for path in ARTICLES:
     assert lastmod and lastmod.group(1) >= max(records_by_id[i]['checked_at'][:10] for i in cited), 'Article revision predates its evidence'
     mapped = set()
     for claim in evidence['claims']:
-        assert claim['text'] in text, (path, 'stale claim mapping', claim['text'])
+        assert semantic_text(claim['text']) in text, (path, 'stale claim mapping', claim['text'])
         assert claim['source_ids'] and set(claim['source_ids']) <= cited
         mapped.update(claim['source_ids'])
     assert mapped == cited, (path, 'missing claim provenance')

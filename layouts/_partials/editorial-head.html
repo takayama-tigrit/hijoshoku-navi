@@ -10,7 +10,7 @@
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $description }}">
 <meta name="author" content="{{ $t.identity.author }}">
-{{ if or .Params.robotsNoIndex (eq .Kind "404") }}<meta name="robots" content="noindex, follow">{{ end }}
+{{ if or .Params.robotsNoIndex (in (slice "404" "taxonomy" "term") .Kind) }}<meta name="robots" content="noindex, follow">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
 {{ with $t.identity.favicon }}<link rel="icon" href="{{ . | relURL }}" type="image/svg+xml">{{ end }}
 {{ $visualCSS := resources.Get "css/visual-action.css" | minify | fingerprint }}
@@ -28,5 +28,8 @@
 <meta property="og:site_name" content="{{ $t.identity.title }}">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary">
+{{ $readingCSS := resources.Get "css/reading-ux.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $readingCSS.RelPermalink }}" integrity="{{ $readingCSS.Data.Integrity }}" crossorigin="anonymous">
+{{ partial "seo.html" . }}
 {{ partial "analytics.html" . }}
 {{ range .AlternativeOutputFormats }}<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $t.identity.title }} {{ .Name }}">{{ end }}

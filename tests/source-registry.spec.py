@@ -27,6 +27,19 @@ class EvidenceVerifierTests(unittest.TestCase):
         for slug in ('emergency-food-set-check', 'emergency-food-side-dishes'):
             self.assertIn(f'PASS content/posts/{slug}.md:', result.stdout)
 
+    def test_mark_wrapping_preserves_source_claims(self):
+        result = self.verify()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_tampered_marked_claim_is_rejected(self):
+        p = self.root / 'content/guide/index.md'
+        text = p.read_text()
+        self.assertIn('4人で3日分なら、飲料水の目安は36L。', text)
+        p.write_text(text.replace('4人で3日分なら、飲料水の目安は36L。', '4人で3日分なら、飲料水の目安は99L。'))
+        result = self.verify()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('stale claim mapping', result.stderr)
+
     def test_unregistered_article_fails_closed(self):
         (self.root / 'content/posts/unregistered.md').write_text('---\nevidenceKey: unregistered\n---\nUnmapped article\n')
         self.assertNotEqual(self.verify().returncode, 0)

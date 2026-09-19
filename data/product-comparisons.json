@@ -1,0 +1,89 @@
+{
+  "products": {
+    "尾西 ひだまりパン プレーン": {
+      "name": "ひだまりパン プレーン",
+      "saleUnit": "1袋70g／写真の販売品は36袋",
+      "condition": "注水せず、そのまま食べる主食",
+      "spec": "1個70g・257kcal。5年保存。",
+      "note": "小麦・卵・乳成分・大豆を含みます。",
+      "official": "https://www.onisifoods.co.jp/products/hidamari/plane.html"
+    },
+    "尾西 白飯 100g": {
+      "name": "尾西の白飯",
+      "condition": "水と待ち時間を確保し、おかずに合わせる",
+      "spec": "1袋100g・366kcal。",
+      "note": "水または湯160mL。熱湯15分／水15℃で60分が目安。",
+      "official": "https://www.onisifoods.co.jp/products/hakuhan.html"
+    },
+    "井村屋 えいようかん": {
+      "name": "えいようかん",
+      "condition": "食事に添える補助食品。主食・おかずは別に",
+      "spec": "1本60g・171kcal。1箱5本入り。",
+      "note": "水を加えず、そのまま食べられます。",
+      "official": "https://www.imuraya.co.jp/goods/yokan/c-eiyo/eiyo/"
+    },
+    "尾西 五目ごはん 100g": {
+      "name": "尾西の五目ごはん",
+      "condition": "具入りごはんで、味に変化をつける",
+      "spec": "乾燥状態の1袋100g・377kcal。食塩相当量1.8g。",
+      "note": "小麦・大豆を含む通常品。「アレルギー対応五目」とは別商品。",
+      "official": "https://www.onisifoods.co.jp/products/gomoku.html"
+    },
+    "尾西 わかめごはん 100g": {
+      "name": "尾西のわかめごはん",
+      "condition": "わかめの風味で、ごはんを選ぶ",
+      "spec": "乾燥状態の1袋100g・361kcal。食塩相当量1.7g。",
+      "note": "ホタテエキスを含みます。水または湯160mL。熱湯15分／水15℃で60分が目安。",
+      "official": "https://www.onisifoods.co.jp/products/wakame.html"
+    },
+    "尾西 ごはんシリーズ CY": {
+      "name": "尾西のごはんシリーズ CY",
+      "condition": "水は別に備え、ごはんをまとめる",
+      "spec": "4種類×各3袋、計12袋。水なし。",
+      "note": "家の主食在庫と飲料水を、別々に数えます。",
+      "official": "https://www.onisifoods.co.jp/products/set/cy.html"
+    },
+    "尾西 ごはんシリーズ DW": {
+      "name": "尾西のごはんシリーズ DW",
+      "condition": "ごはんと保存水を一緒に用意する",
+      "spec": "4種類×各3袋、計12袋。保存水500mL×6本。",
+      "note": "水は計3L。1人3日分の飲料水の目安9Lには届きません。",
+      "official": "https://www.onisifoods.co.jp/products/set/dw.html"
+    },
+    "ハウス 温めずにおいしいカレー まろやか野菜カレー 200g": {
+      "name": "まろやか野菜カレー",
+      "saleUnit": "1袋200g／写真の販売品は2箱",
+      "condition": "玉ねぎ・じゃがいも・にんじんの具材を添える",
+      "spec": "温めずにおいしいカレー・200g。",
+      "note": "大豆・豚肉・りんごを含みます。",
+      "official": "https://housefoods.jp/products/catalog/cd_1,092501,ret,curry,ata.html#materials"
+    },
+    "ハウス 温めずにおいしいカレー 香りたつキーマカレー 180g": {
+      "name": "香りたつキーマカレー",
+      "condition": "鶏肉と粒状植物性たん白のカレーを合わせる",
+      "spec": "温めずにおいしいカレー・180g。",
+      "note": "大豆・鶏肉・豚肉・りんごを含みます。",
+      "official": "https://housefoods.jp/products/catalog/cd_1,092500,ret,curry,ata.html#materials"
+    }
+  },
+  "groups": {
+    "ranking": [
+      "尾西 ひだまりパン プレーン",
+      "尾西 白飯 100g",
+      "井村屋 えいようかん"
+    ],
+    "alpha": [
+      "尾西 白飯 100g",
+      "尾西 五目ごはん 100g",
+      "尾西 わかめごはん 100g"
+    ],
+    "sets": [
+      "尾西 ごはんシリーズ CY",
+      "尾西 ごはんシリーズ DW"
+    ],
+    "sides": [
+      "ハウス 温めずにおいしいカレー まろやか野菜カレー 200g",
+      "ハウス 温めずにおいしいカレー 香りたつキーマカレー 180g"
+    ]
+  }
+}
