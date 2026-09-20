@@ -139,7 +139,7 @@ try {
    if (u.search) {
     assert.equal(u.origin, 'https://af.moshimo.com', 'only approved fixed-product affiliate links have queries');
     assert.equal(u.pathname, '/af/c/click');
-    const approvedImages = Object.values(JSON.parse(await readFile('data/product-images.json','utf8')).images);
+    const approvedImages = [...Object.values(JSON.parse(await readFile('data/product-images.json','utf8')).images), ...Object.values(JSON.parse(await readFile('data/water-offers.json','utf8')).offers)];
     const exactImage = approvedImages.find(x=>x.href===link.href);
     assert.deepEqual([...u.searchParams.keys()].sort(), exactImage ? ['a_id', 'm', 'p_id', 'pc_id', 'pl_id', 'url'] : ['a_id', 'p_id', 'pc_id', 'pl_id', 'url']);
     for (const [key, value] of Object.entries({ a_id: '5810105', p_id: '54', pc_id: '54', pl_id: '616' })) assert.equal(u.searchParams.get(key), value);

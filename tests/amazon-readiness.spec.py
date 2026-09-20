@@ -28,7 +28,17 @@ for slug in SLUGS:
     raw = (ROOT / 'content/posts' / (slug + '.md')).read_bytes()
     check(len(re.findall(rb'^draft: false$', raw, re.M)) == 1, slug + ': explicitly published')
     original = re.sub(rb'^draft: false$', b'draft: true', raw, flags=re.M)
-    check(hashlib.sha256(original).hexdigest() == record.get('source_sha256', {}).get(slug), slug + ': text equals the human-confirmed source except draft flag')
+    if slug == 'emergency-water-bottles':
+        # A separately confirmed revision; never overwrite the historical CONTENT-05 record.
+        revision_file = ROOT / 'docs/reviews/water-10-human-proofreading.json'
+        revision = json.loads(revision_file.read_text()) if revision_file.exists() else {}
+        check(revision.get('version') == 'WATER-10-V2' and revision.get('result') == 'confirmed_no_changes' and revision.get('reviewer') == 'site_operator', 'water: actual operator confirmation')
+        check(revision.get('packet_sha256') == '8e8dc7b5d971d36f89e0b8c8d5cf3c50e0c2296c9d56ab0ecbb5edc51625a96c', 'water: confirmed packet identity')
+        check(revision.get('source_sha256') == 'f3032e456c90738e2a9fa9ca09cfe1c1bff3ce9b20369324515a137e75be49e1', 'water: confirmed source identity')
+        check(hashlib.sha256(original).hexdigest() == revision.get('source_sha256'), 'water: published text equals confirmed source except draft flag')
+        check(hashlib.sha256(raw).hexdigest() == revision.get('published_sha256'), 'water: published bytes match record')
+    else:
+        check(hashlib.sha256(original).hexdigest() == record.get('source_sha256', {}).get(slug), slug + ': text equals the human-confirmed source except draft flag')
 
 with tempfile.TemporaryDirectory(prefix='hijoshoku-amazon-readiness-') as temp:
     out = Path(temp) / 'public'

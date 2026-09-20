@@ -1,0 +1,11 @@
+{{- $data := readFile "data/water-offers.json" | transform.Unmarshal -}}
+{{- $key := .Get 0 -}}{{- $mode := .Get 1 -}}{{- $offer := index $data.offers $key -}}
+{{- if not $offer -}}{{- errorf "Unknown water offer: %s" $key -}}{{- end -}}
+{{- $active := partial "affiliate-active.html" .Page -}}
+{{- if eq $mode "photo" -}}
+  {{- if $active -}}
+<a class="product-photo water-offer-photo" href="{{ $offer.href }}" data-commerce="rakuten-product" rel="sponsored nofollow" referrerpolicy="origin" aria-label="{{ $offer.displayName }}を楽天市場で見る"><img src="{{ $offer.image }}" alt="{{ $offer.displayName }}の商品画像" width="300" height="300" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a>
+  {{- end -}}
+{{- else if eq $mode "link" -}}
+<p><a class="water-offer-link" href="{{ if $active }}{{ $offer.href }}{{ else }}{{ $offer.destination }}{{ end }}" {{ if $active }}data-commerce="rakuten-product" rel="sponsored nofollow"{{ end }} referrerpolicy="origin">楽天市場で{{ $offer.displayName }}の価格・送料を見る →</a></p>
+{{- else -}}{{- errorf "Unknown water offer mode: %s" $mode -}}{{- end -}}

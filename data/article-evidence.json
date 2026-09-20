@@ -781,185 +781,6 @@
         }
       ]
     },
-    "water_bottles": {
-      "file": "content/posts/emergency-water-bottles.md",
-      "source_ids": [
-        5,
-        6,
-        19,
-        20,
-        21
-      ],
-      "claims": [
-        {
-          "text": "水を買い置きするとき、500mLを箱で買うか、2Lを何本か置くか。一人ずつ手に取る分と、家で分けて使う分を分けると、容器の大きさを選びやすくなります。どちらか一種類にそろえる必要はありません。",
-          "source_ids": [
-            19,
-            20
-          ],
-          "support_type": "editorial_proposal_or_calculation"
-        },
-        {
-          "text": "政府広報オンラインが示す飲料水の目安は、1人1日3L、まず3日分です。1人3日分なら9L。必要な量と、買うボトルの本数は分けて考えます。",
-          "source_ids": [
-            19
-          ],
-          "support_type": "source_supported"
-        },
-        {
-          "text": "下の表は、手持ちの水がない場合の計算例です。2Lだけで9L以上をそろえる場合は5本になり、合計10Lになります。",
-          "source_ids": [
-            19
-          ],
-          "support_type": "editorial_proposal_or_calculation"
-        },
-        {
-          "text": "| 1人3日分の目安9Lをそろえる例 | 本数の組み合わせ | 合計 |",
-          "source_ids": [
-            19
-          ],
-          "support_type": "editorial_example_and_derived_arithmetic"
-        },
-        {
-          "text": "| 小容量だけでそろえる | 500mL×18本 | 9L |",
-          "source_ids": [
-            19
-          ],
-          "support_type": "editorial_example_and_derived_arithmetic"
-        },
-        {
-          "text": "| 大容量だけでそろえる | 2L×5本 | 10L |",
-          "source_ids": [
-            19
-          ],
-          "support_type": "editorial_example_and_derived_arithmetic"
-        },
-        {
-          "text": "| 大小を組み合わせる | 2L×4本＋500mL×2本 | 9L |",
-          "source_ids": [
-            19
-          ],
-          "support_type": "editorial_example_and_derived_arithmetic"
-        },
-        {
-          "text": "農林水産省は、湯せんや食品・食器を洗う水は別途必要と案内しています。ごはんを戻すなど調理にも使う場合は、その使い道を含めて水を配分し、飲む分がなくならないよう見積もります。",
-          "source_ids": [
-            6
-          ],
-          "support_type": "source_supported"
-        },
-        {
-          "text": "500mLと2Lでは、一本を開けたときの量が違います。総量をそろえるだけでなく、誰が、どの器で使うかも買う前に考えておきます。",
-          "source_ids": [
-            19,
-            20
-          ],
-          "support_type": "editorial_proposal_or_calculation"
-        },
-        {
-          "text": "| 使う場面 | 容器を選ぶときの見方 |",
-          "source_ids": [
-            19,
-            20
-          ],
-          "support_type": "editorial_selection_criteria"
-        },
-        {
-          "text": "| 一人ずつボトルを手に取って飲む | 小容量なら一度に開ける量を小さくできる |",
-          "source_ids": [
-            19,
-            20
-          ],
-          "support_type": "editorial_selection_criteria"
-        },
-        {
-          "text": "| 家でコップへ分けたり、調理に使ったりする | 大容量を候補にし、開封後に使い切る流れも決める |",
-          "source_ids": [
-            19,
-            20
-          ],
-          "support_type": "editorial_selection_criteria"
-        },
-        {
-          "text": "| 大小を一緒に備える | 本数ではなく、容量を掛けて合計Lを数える |",
-          "source_ids": [
-            19,
-            20
-          ],
-          "support_type": "editorial_selection_criteria"
-        },
-        {
-          "text": "本数を減らすことより、開けた一本をどう使うか。 置ける場所や普段の消費量に合わせて、大小を組み合わせるのも一案です。",
-          "source_ids": [
-            19,
-            20
-          ],
-          "support_type": "editorial_proposal_or_calculation"
-        },
-        {
-          "text": "サントリーはミネラルウォーターについて、直接口をつけて飲む小容量はその日のうちに飲み、開栓後に飲みきれない大容量は栓をして冷蔵庫へ入れるよう案内しています。",
-          "source_ids": [
-            20
-          ],
-          "support_type": "source_supported"
-        },
-        {
-          "text": "「開封後は冷蔵」の条件を、冷蔵できない停電時の保存日数へ読み替えないでください。 購入する商品の表示・メーカーの案内を確認し、開ける量を考えます。",
-          "source_ids": [
-            20
-          ],
-          "support_type": "editorial_proposal_or_calculation"
-        },
-        {
-          "text": "同社は、未開栓品も直射日光や極度に高温の場所、においの強いものの近くを避けて保管するよう案内しています。長期保存水という名前だけで、置き場所の条件がなくなるわけではありません。",
-          "source_ids": [
-            21
-          ],
-          "support_type": "source_supported"
-        },
-        {
-          "text": "- 容量と入数： 500mLなのか2Lなのか、箱に何本入っているのか。合計Lを家の不足と比べます。\n- 期限と保存： 配送時の残存賞味期限と保管方法を確認し、届いた現物の期限をメモします。\n- 食事の在庫： 水だけで備蓄が完成するわけではありません。主食・主菜・副菜と、食べる人のアレルギーに合う食品も別に点検します。",
-          "source_ids": [
-            5,
-            19,
-            20,
-            21
-          ],
-          "support_type": "editorial_proposal_or_calculation"
-        },
-        {
-          "text": "買い物メモには「水」だけでなく、「容量×本数」を残す。 手持ちで足りているなら、追加購入より期限と置き場所の確認を先にできます。",
-          "source_ids": [
-            19,
-            20
-          ],
-          "support_type": "editorial_proposal_or_calculation"
-        }
-      ],
-      "calculations": [
-        {
-          "expression": "1 * 3 * 3",
-          "result": 9,
-          "unit": "L",
-          "meaning": "1人3日分の飲料水目安"
-        },
-        {
-          "expression": "0.5 * 18",
-          "result": 9,
-          "unit": "L"
-        },
-        {
-          "expression": "2 * 5",
-          "result": 10,
-          "unit": "L"
-        },
-        {
-          "expression": "2 * 4 + 0.5 * 2",
-          "result": 9,
-          "unit": "L"
-        }
-      ]
-    },
     "single_person": {
       "file": "content/posts/emergency-food-for-one.md",
       "source_ids": [
@@ -1482,6 +1303,259 @@
             5
           ],
           "support_type": "editorial_proposal"
+        }
+      ]
+    },
+    "water_bottles_revision": {
+      "file": "content/posts/emergency-water-bottles.md",
+      "source_ids": [
+        5,
+        6,
+        19,
+        20,
+        21,
+        24,
+        25,
+        26,
+        27
+      ],
+      "claims": [
+        {
+          "text": "水を買い置きするとき、500mLを箱で買うか、2Lを何本か置くか。一人ずつ手に取る分と、家で分けて使う分を分けると、容器の大きさを選びやすくなります。どちらか一種類にそろえる必要はありません。",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "政府広報オンラインが示す飲料水の目安は、1人1日3L、まず3日分です。1人3日分なら9L。必要な量と、買うボトルの本数は分けて考えます。",
+          "source_ids": [
+            19
+          ],
+          "support_type": "source_supported"
+        },
+        {
+          "text": "下の表は、手持ちの水がない場合の計算例です。2Lだけで9L以上をそろえる場合は5本になり、合計10Lになります。",
+          "source_ids": [
+            19
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "| 1人3日分の目安9Lをそろえる例 | 本数の組み合わせ | 合計 |",
+          "source_ids": [
+            19
+          ],
+          "support_type": "editorial_example_and_derived_arithmetic"
+        },
+        {
+          "text": "| 小容量だけでそろえる | 500mL×18本 | 9L |",
+          "source_ids": [
+            19
+          ],
+          "support_type": "editorial_example_and_derived_arithmetic"
+        },
+        {
+          "text": "| 大容量だけでそろえる | 2L×5本 | 10L |",
+          "source_ids": [
+            19
+          ],
+          "support_type": "editorial_example_and_derived_arithmetic"
+        },
+        {
+          "text": "| 大小を組み合わせる | 2L×4本＋500mL×2本 | 9L |",
+          "source_ids": [
+            19
+          ],
+          "support_type": "editorial_example_and_derived_arithmetic"
+        },
+        {
+          "text": "農林水産省は、湯せんや食品・食器を洗う水は別途必要と案内しています。ごはんを戻すなど調理にも使う場合は、その使い道を含めて水を配分し、飲む分がなくならないよう見積もります。",
+          "source_ids": [
+            6
+          ],
+          "support_type": "source_supported"
+        },
+        {
+          "text": "500mLと2Lでは、一本を開けたときの量が違います。総量をそろえるだけでなく、誰が、どの器で使うかも買う前に考えておきます。",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "| 使う場面 | 容器を選ぶときの見方 |",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_selection_criteria"
+        },
+        {
+          "text": "| 一人ずつボトルを手に取って飲む | 小容量なら一度に開ける量を小さくできる |",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_selection_criteria"
+        },
+        {
+          "text": "| 家でコップへ分けたり、調理に使ったりする | 大容量を候補にし、開封後に使い切る流れも決める |",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_selection_criteria"
+        },
+        {
+          "text": "| 大小を一緒に備える | 本数ではなく、容量を掛けて合計Lを数える |",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_selection_criteria"
+        },
+        {
+          "text": "本数を減らすことより、開けた一本をどう使うか。 置ける場所や普段の消費量に合わせて、大小を組み合わせるのも一案です。",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "サントリーはミネラルウォーターについて、直接口をつけて飲む小容量はその日のうちに飲み、開栓後に飲みきれない大容量は栓をして冷蔵庫へ入れるよう案内しています。",
+          "source_ids": [
+            20
+          ],
+          "support_type": "source_supported"
+        },
+        {
+          "text": "「開封後は冷蔵」の条件を、冷蔵できない停電時の保存日数へ読み替えないでください。 購入する商品の表示・メーカーの案内を確認し、開ける量を考えます。",
+          "source_ids": [
+            20
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "同社は、未開栓品も直射日光や極度に高温の場所、においの強いものの近くを避けて保管するよう案内しています。長期保存水という名前だけで、置き場所の条件がなくなるわけではありません。",
+          "source_ids": [
+            21
+          ],
+          "support_type": "source_supported"
+        },
+        {
+          "text": "- 容量と入数： 500mLなのか2Lなのか、箱に何本入っているのか。合計Lを家の不足と比べます。\n- 期限と保存： 配送時の残存賞味期限と保管方法を確認し、届いた現物の期限をメモします。\n- 食事の在庫： 水だけで備蓄が完成するわけではありません。主食・主菜・副菜と、食べる人のアレルギーに合う食品も別に点検します。",
+          "source_ids": [
+            5,
+            19,
+            20,
+            21
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "買い物メモには「水」だけでなく、「容量×本数」を残す。 手持ちで足りているなら、追加購入より期限と置き場所の確認を先にできます。",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "9L必要でも、通販で買う1箱が9Lとは限りません。 以下は、普段飲んで補充する水の購入候補です。何年も入れ替えず置く長期保存水の比較ではありません。先ほどの9Lの例と、販売単位を並べてみます。",
+          "source_ids": [
+            26,
+            27
+          ],
+          "support_type": "retailer_listing_and_editorial_selection_or_calculation"
+        },
+        {
+          "text": "アイリスフーズ 富士山の天然水 2L／1箱6本。 合計12Lで、手持ちゼロから9Lをそろえる例では3L多くなります。必要量の計算では5本ですが、この販売品は6本入りです。開封後に冷蔵できるか、使い切れるかを先に考えて選びます。",
+          "source_ids": [
+            27,
+            19,
+            20
+          ],
+          "support_type": "retailer_listing_and_editorial_selection_or_calculation"
+        },
+        {
+          "text": "アイリスフーズ 富士山の天然水 ラベルレス 500mL／1箱24本。 合計12Lで、手持ちゼロから9Lをそろえる例では3L多くなります。必要な18本より6本多いので、普段飲む分も含めて置けるかを見て選びます。",
+          "source_ids": [
+            26,
+            19
+          ],
+          "support_type": "retailer_listing_and_editorial_selection_or_calculation"
+        },
+        {
+          "text": "商品名と販売単位は2026年9月20日に確認しました。価格・在庫・送料・配送条件は、注文時の商品ページで確かめます。",
+          "source_ids": [
+            26,
+            27
+          ],
+          "support_type": "retailer_listing_and_editorial_selection_or_calculation"
+        },
+        {
+          "text": "<p data-testid=\"water-terms\"><strong>購入前に、届く時点の残存賞味期限と送料を確認。</strong> 期限の案内が見当たらなければ販売店へ確認し、届いた現物の期限を記録して入れ替えます。</p>",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_purchase_check_not_shelf_life_guarantee"
+        },
+        {
+          "text": "足りない量が少なければ、箱を買わず、近くの店舗で必要な本数だけ買う方法もあります。 通販では送料込みの支払額と置き場所を照合し、送料無料にするためだけの買い足しは避けます。箱のまま運びにくい場合は、宅配ボックスから保管場所まで運べるかも、注文前に考えておきます。",
+          "source_ids": [
+            24,
+            25
+          ],
+          "support_type": "retailer_listing_and_editorial_selection_or_calculation"
+        }
+      ],
+      "calculations": [
+        {
+          "expression": "1 * 3 * 3",
+          "result": 9,
+          "unit": "L",
+          "meaning": "1人3日分の飲料水目安"
+        },
+        {
+          "expression": "0.5 * 18",
+          "result": 9,
+          "unit": "L"
+        },
+        {
+          "expression": "2 * 5",
+          "result": 10,
+          "unit": "L"
+        },
+        {
+          "expression": "2 * 4 + 0.5 * 2",
+          "result": 9,
+          "unit": "L"
+        },
+        {
+          "expression": "0.5 * 24",
+          "result": 12,
+          "unit": "L"
+        },
+        {
+          "expression": "12 - 9",
+          "result": 3,
+          "unit": "L"
+        },
+        {
+          "expression": "24 - 18",
+          "result": 6,
+          "unit": "本"
+        },
+        {
+          "expression": "2 * 6",
+          "result": 12,
+          "unit": "L",
+          "meaning": "今回の楽天販売単位2L×6本"
         }
       ]
     }

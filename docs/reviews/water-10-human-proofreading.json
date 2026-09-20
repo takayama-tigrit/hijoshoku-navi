@@ -1,0 +1,13 @@
+{
+  "version": "WATER-10-V2",
+  "reviewer": "site_operator",
+  "recorded_at": "2026-09-20T15:31:29.276802+00:00",
+  "result": "confirmed_no_changes",
+  "packet_sha256": "8e8dc7b5d971d36f89e0b8c8d5cf3c50e0c2296c9d56ab0ecbb5edc51625a96c",
+  "source_sha256": "f3032e456c90738e2a9fa9ca09cfe1c1bff3ce9b20369324515a137e75be49e1",
+  "published_sha256": "14e99d2b057ca783c21699619bd46c0495540f54e125b61f834fe898414feba6",
+  "previous_published_sha256": "aa9e49fadcdbc408bc22811bda1350b119403a0adf878ec31b951da145c9706f",
+  "source_file": "content/posts/emergency-water-bottles.md",
+  "publication_delta": "draft:true to draft:false only; filename promoted to existing URL; wording unchanged",
+  "supersedes": "CONTENT-05-V2 for emergency-water-bottles only"
+}
