@@ -780,6 +780,710 @@
           ]
         }
       ]
+    },
+    "water_bottles": {
+      "file": "content/posts/emergency-water-bottles.md",
+      "source_ids": [
+        5,
+        6,
+        19,
+        20,
+        21
+      ],
+      "claims": [
+        {
+          "text": "水を買い置きするとき、500mLを箱で買うか、2Lを何本か置くか。一人ずつ手に取る分と、家で分けて使う分を分けると、容器の大きさを選びやすくなります。どちらか一種類にそろえる必要はありません。",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "政府広報オンラインが示す飲料水の目安は、1人1日3L、まず3日分です。1人3日分なら9L。必要な量と、買うボトルの本数は分けて考えます。",
+          "source_ids": [
+            19
+          ],
+          "support_type": "source_supported"
+        },
+        {
+          "text": "下の表は、手持ちの水がない場合の計算例です。2Lだけで9L以上をそろえる場合は5本になり、合計10Lになります。",
+          "source_ids": [
+            19
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "| 1人3日分の目安9Lをそろえる例 | 本数の組み合わせ | 合計 |",
+          "source_ids": [
+            19
+          ],
+          "support_type": "editorial_example_and_derived_arithmetic"
+        },
+        {
+          "text": "| 小容量だけでそろえる | 500mL×18本 | 9L |",
+          "source_ids": [
+            19
+          ],
+          "support_type": "editorial_example_and_derived_arithmetic"
+        },
+        {
+          "text": "| 大容量だけでそろえる | 2L×5本 | 10L |",
+          "source_ids": [
+            19
+          ],
+          "support_type": "editorial_example_and_derived_arithmetic"
+        },
+        {
+          "text": "| 大小を組み合わせる | 2L×4本＋500mL×2本 | 9L |",
+          "source_ids": [
+            19
+          ],
+          "support_type": "editorial_example_and_derived_arithmetic"
+        },
+        {
+          "text": "農林水産省は、湯せんや食品・食器を洗う水は別途必要と案内しています。ごはんを戻すなど調理にも使う場合は、その使い道を含めて水を配分し、飲む分がなくならないよう見積もります。",
+          "source_ids": [
+            6
+          ],
+          "support_type": "source_supported"
+        },
+        {
+          "text": "500mLと2Lでは、一本を開けたときの量が違います。総量をそろえるだけでなく、誰が、どの器で使うかも買う前に考えておきます。",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "| 使う場面 | 容器を選ぶときの見方 |",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_selection_criteria"
+        },
+        {
+          "text": "| 一人ずつボトルを手に取って飲む | 小容量なら一度に開ける量を小さくできる |",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_selection_criteria"
+        },
+        {
+          "text": "| 家でコップへ分けたり、調理に使ったりする | 大容量を候補にし、開封後に使い切る流れも決める |",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_selection_criteria"
+        },
+        {
+          "text": "| 大小を一緒に備える | 本数ではなく、容量を掛けて合計Lを数える |",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_selection_criteria"
+        },
+        {
+          "text": "本数を減らすことより、開けた一本をどう使うか。 置ける場所や普段の消費量に合わせて、大小を組み合わせるのも一案です。",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "サントリーはミネラルウォーターについて、直接口をつけて飲む小容量はその日のうちに飲み、開栓後に飲みきれない大容量は栓をして冷蔵庫へ入れるよう案内しています。",
+          "source_ids": [
+            20
+          ],
+          "support_type": "source_supported"
+        },
+        {
+          "text": "「開封後は冷蔵」の条件を、冷蔵できない停電時の保存日数へ読み替えないでください。 購入する商品の表示・メーカーの案内を確認し、開ける量を考えます。",
+          "source_ids": [
+            20
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "同社は、未開栓品も直射日光や極度に高温の場所、においの強いものの近くを避けて保管するよう案内しています。長期保存水という名前だけで、置き場所の条件がなくなるわけではありません。",
+          "source_ids": [
+            21
+          ],
+          "support_type": "source_supported"
+        },
+        {
+          "text": "- 容量と入数： 500mLなのか2Lなのか、箱に何本入っているのか。合計Lを家の不足と比べます。\n- 期限と保存： 配送時の残存賞味期限と保管方法を確認し、届いた現物の期限をメモします。\n- 食事の在庫： 水だけで備蓄が完成するわけではありません。主食・主菜・副菜と、食べる人のアレルギーに合う食品も別に点検します。",
+          "source_ids": [
+            5,
+            19,
+            20,
+            21
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        },
+        {
+          "text": "買い物メモには「水」だけでなく、「容量×本数」を残す。 手持ちで足りているなら、追加購入より期限と置き場所の確認を先にできます。",
+          "source_ids": [
+            19,
+            20
+          ],
+          "support_type": "editorial_proposal_or_calculation"
+        }
+      ],
+      "calculations": [
+        {
+          "expression": "1 * 3 * 3",
+          "result": 9,
+          "unit": "L",
+          "meaning": "1人3日分の飲料水目安"
+        },
+        {
+          "expression": "0.5 * 18",
+          "result": 9,
+          "unit": "L"
+        },
+        {
+          "expression": "2 * 5",
+          "result": 10,
+          "unit": "L"
+        },
+        {
+          "expression": "2 * 4 + 0.5 * 2",
+          "result": 9,
+          "unit": "L"
+        }
+      ]
+    },
+    "single_person": {
+      "file": "content/posts/emergency-food-for-one.md",
+      "source_ids": [
+        4,
+        5,
+        9
+      ],
+      "claims": [
+        {
+          "text": "袋入りごはんと、魚の缶詰。一人暮らしの備蓄を選ぶなら、箱をいくつ買うかより先に、開けたひと袋・ひと缶を食べ切れるか考えます。 ごはんに添える量まで見てから、買う単位を決めましょう。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "通販の「小分け」「個包装」という言葉だけで決めず、何を開けると食品が出るのかを商品説明で確かめます。いくつかの袋をまとめた外箱と、食品が直接入った袋は分けて見ます。購入前に内側の包装が分からなければ、販売店に尋ねてから選びましょう。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "下の項目を、候補の商品名と一緒にメモしてみてください。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 1袋・1缶の内容量： ごはんやおかずと合わせて食べ切れそうか。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 開封・調理後の指示： 使い切る時期と、必要な保存条件。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 原材料・アレルギー表示： 自分が避けるものを含まないか。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "試せる少量の販売があれば、箱買いより先に普段の食事で量を見ておく方法があります。ごはんだけで食べ切れるかではなく、一緒に食べるおかずも皿に出して考えます。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "メモは「ごはんの量」「おかずと合わせた量」「開け方や調理で困ったこと」だけでも構いません。多すぎたものは、食べ残しを後で保存する前提にせず、次の候補では小さい包装を探します。試すときも、使う水や加熱方法は現物の表示どおりにします。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "使い慣れた食品が決まったら、箱の入数と、いま家に残っている数を並べます。置ける場所と普段の食事に出す機会も考え、無理に大きな箱を選ぶ必要はありません。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "通販では配送時の残存賞味期限を見て、届いてから使う時間を確かめます。 セット内で期限が異なるかも尋ね、届いたら現物の期限と保管方法を見ます。箱を開ける場合も、食品の個包装や表示は残し、期限の早いものを先に使う順番にしましょう。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "開封後・調理後の扱いは、現物にあるメーカーの指示に合わせます。",
+          "source_ids": [
+            9
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "たとえば[尾西食品のFAQ](https://www.onisifoods.co.jp/faq)は、水やお湯で戻したアルファ米を早めに食べるよう案内しています。",
+          "source_ids": [
+            9
+          ],
+          "support_type": "source_paraphrase"
+        },
+        {
+          "text": "戻したごはんまで長期保存するつもりで、まとめて作らないようにします。",
+          "source_ids": [
+            9
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "農林水産省の[食品の選び方](https://www.maff.go.jp/j/zyukyu/foodstock/chapter03.html)では、肉・魚・豆の缶詰などを主菜、野菜のおかずや汁物などを副菜として挙げています。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "source_paraphrase"
+        },
+        {
+          "text": "主食の袋に、主菜と副菜を組み合わせるところまで考えておきましょう。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "[農林水産省が案内するローリングストック](https://www.maff.go.jp/j/zyukyu/foodstock/chapter02.html)は、普段の食品を少し多めに持ち、消費した分を補充する方法です。",
+          "source_ids": [
+            4
+          ],
+          "support_type": "source_paraphrase"
+        },
+        {
+          "text": "自分が食べ切れる包装を選んだら、買い物メモにその商品名と補充する数を残してください。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        }
+      ]
+    },
+    "rolling_stock": {
+      "file": "content/posts/rolling-stock-routine.md",
+      "source_ids": [
+        4,
+        5
+      ],
+      "claims": [
+        {
+          "text": "夕食に使った缶詰の名前と数を、いつもの買い物メモへ。ローリングストックが途切れるなら、食べたときにメモし、次の買い物前に棚の残りを数えるところから試してみてください。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "管理用のアプリを増やす前に、いつも使っているメモへ「備蓄の補充」欄を作ってみます。缶詰やレトルトのおかずなど、普段から食べている食品を対象に、次の買い物まで試しましょう。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 食事に使ったとき： 商品名と使った数を書き、買う候補に入れます。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 買い物に出る前： 棚の残りと置いておく数を比べ、足りない数に直します。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 買ってしまうとき： 現物の期限を見て早いものを手前へ置き、メモから補充できた分を消します。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "同じ食品を別の場所にも置いているなら、数える場所もメモへ。買い物前には、主食だけでなく、肉・魚・豆などの主菜、野菜のおかずや汁物などの副菜も見ます。この分類は[農林水産省の食品の選び方](https://www.maff.go.jp/j/zyukyu/foodstock/chapter03.html)を参考にしています。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "メモが前回の買い物分のままなら、棚にある実数を優先します。置いておく数から現在の数を引き、不足する分だけを買い物メモに残す案です。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "| 食品の記入例 | 置いておく数 | 現在の数 | 今回買う数 |",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "| ツナ缶（仮の管理例） | 6缶 | 4缶 | 2缶 |",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal",
+          "formula": {
+            "expression": "max(target_count - current_count, 0)",
+            "inputs": {
+              "target_count": 6,
+              "current_count": 4
+            },
+            "result": 2,
+            "unit": "缶",
+            "assumptions": "編集部が置いた補充数の管理例。6缶は必要備蓄量の基準ではない。"
+          }
+        },
+        {
+          "text": "この例は6−4＝2缶。6缶を必要備蓄量として勧めるものではありません。置いておく数は、備えたい日数や食事の組み合わせに応じて別に決めます。現在の数が決めた数以上なら、その食品の補充は不要です。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal",
+          "formula": {
+            "expression": "max(target_count - current_count, 0)",
+            "inputs": {
+              "target_count": 6,
+              "current_count": 4
+            },
+            "result": 2,
+            "unit": "缶",
+            "assumptions": "編集部が置いた補充数の管理例。6缶は必要備蓄量の基準ではない。"
+          }
+        },
+        {
+          "text": "期限までに食べることと、使った分を補充することを一組にします。 次の買い物で戻せないほど減るなら、買い物の間隔や、普段使う分を含む買い置き量を見直します。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "品切れなら未補充として残し、同じ食事の役割を担う別の食品を候補にします。代わりを選ぶときは、原材料・アレルギー表示、開封後の扱い、調理方法を現物で確かめます。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "通販で補充するなら、配送時の残存賞味期限と届く時期を見ます。届いたときも購入順のまま並べず、現物の期限を比較し、指定の保管条件に合う場所へ戻しましょう。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "続かなかった週の記録を埋め直すより、いま棚にある数から再開して構いません。食べずに残る食品は、普段のどの食事に出すかを決めます。それでも出番がなければ、次は食べ慣れた候補に替える案もあります。今日使った食品をメモに残し、次の買い物前に棚と照合してみましょう。",
+          "source_ids": [
+            4,
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "[農林水産省の案内](https://www.maff.go.jp/j/zyukyu/foodstock/chapter02.html)では、普段の食品を少し多めに買い置きし、賞味期限を考えて古いものから消費し、消費した分を買い足す方法を紹介しています。",
+          "source_ids": [
+            4
+          ],
+          "support_type": "source_paraphrase"
+        },
+        {
+          "text": "以下は、その流れを普段の買い物に組み込むための手順案です。",
+          "source_ids": [
+            4
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "肉・魚・豆などの主菜、野菜のおかずや汁物などの副菜",
+          "source_ids": [
+            5
+          ],
+          "support_type": "source_paraphrase"
+        }
+      ]
+    },
+    "storage": {
+      "file": "content/posts/emergency-food-storage.md",
+      "source_ids": [
+        5,
+        9,
+        22
+      ],
+      "claims": [
+        {
+          "text": "届いた非常食の箱を開けたら、しまう前に袋の裏側も見てみましょう。外箱は、メーカー指定の保存条件と、表示を残せるかで判断します。密封された食品の袋や容器は開けず、まずは外箱の扱いと置き先を考えます。",
+          "source_ids": [
+            22
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "収納のために食品を別容器へ詰め替えるのではなく、個包装のまま置く案です。外箱と個包装の両方を見て、必要な情報がどこにあるか確かめます。",
+          "source_ids": [
+            22
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 外箱に期限や保存方法がまとまっている： 箱ごと置き、商品名・期限・保存方法が読める面を残します。",
+          "source_ids": [
+            22
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 個包装にも必要な表示がそろっている： メーカー指定の包装・保存条件を変えない場合に、箱から出してケースへ。未開封の個包装と調理の説明を残します。不明なら箱を残します。",
+          "source_ids": [
+            22
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 小分けにすると原材料表示が食品と離れる： 外箱を一緒に置き、原材料・アレルギー表示と注意書きを残します。",
+          "source_ids": [
+            22
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "ケースに移す場合も、元の袋を折り込んで表示を隠さず、内容物を押しつぶさない入れ方に。アレルギーに配慮した食品は、商品名が分かる状態で家族の分を区別しておきます。",
+          "source_ids": [
+            22
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "農林水産省は、取り出しやすいケースや箱で中身を見えるようにし、側面へ賞味期限を書く収納方法を紹介しています。重いものを下、軽いものを上に置く案内もあります。",
+          "source_ids": [
+            22
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "これを手元の食品に当てはめるなら、期限の面を手前へ。箱を残す場合は、中身のうち最も早い期限を外側のメモにも写しておきます。メモは元の表示を覆わない場所へ貼り、日付が違う袋はまとめて同じ期限にしません。",
+          "source_ids": [
+            22
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "購入時に見た配送時の残存賞味期限と、届いた現物の期限を照合します。「長期保存」という商品説明から日付を推測せず、袋や箱に印字された日付を記録しましょう。",
+          "source_ids": [
+            22
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "棚に収まることと、保存条件に合うことは別です。例えば尾西食品は、アルファ米を直射日光・高温多湿を避け、常温で保存するよう案内しています。この条件を菓子や別の食品へ一律に当てはめず、それぞれの現物表示に合わせて置き先を決めます。",
+          "source_ids": [
+            9
+          ],
+          "support_type": "direct_or_paraphrased_with_product_scope"
+        },
+        {
+          "text": "同社は賞味期限を過ぎた商品の喫食を勧めておらず、水や湯で戻したアルファ米も早めに食べるよう案内しています。期限を過ぎた袋や調理済みの食品は、未開封の備蓄と分けて扱います。",
+          "source_ids": [
+            9
+          ],
+          "support_type": "direct_or_paraphrased_with_product_scope"
+        },
+        {
+          "text": "食品の一覧には「商品名／個数／期限／置き場所／家置き・持ち出し」を書く方法を提案します。持ち出し用はバッグへ入れる分、家置き用は家で使う分として、同じ食品を両方へ重複して数えないようにします。",
+          "source_ids": [
+            22
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "ごはんだけでなく、主菜・副菜、お菓子も別の欄へ。分散して置いた食品は場所も書き添え、家族でメモの置き場所を共有しましょう。まずは届いた箱の中身を書き出せれば、今回の収納はひと区切りです。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_proposal"
+        }
+      ]
+    },
+    "snacks": {
+      "file": "content/posts/emergency-food-snacks.md",
+      "source_ids": [
+        2,
+        5
+      ],
+      "claims": [
+        {
+          "text": "非常食のお菓子を選ぶ前に、棚にあるごはんとおかずも見てみましょう。菓子は食事に添える補助食品として数え、主食・主菜・副菜の不足は別に確かめます。甘いものの箱が増えても、それだけで食事の備えを済ませないためです。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "農林水産省の食品ストックガイドは、ようかん、ビスケット、せんべいなどを「菓子・嗜好品」に分類しています。主菜は肉・魚・大豆製品などのおかず、副菜は野菜の煮物や汁物など。菓子の個数を、そのまま食事の回数に置き換えずに備えます。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "direct_or_paraphrased_with_editorial_counting_rule"
+        },
+        {
+          "text": "家族の備蓄メモも、ごはん、おかず、菓子を分けて。菓子を追加する前に主菜・副菜の欄が空いていないか見る、という順番を提案します。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "普段の菓子を選ぶなら、手元の期限内に食べる予定が立つか。長期保存品を選ぶなら、保管したい期間に対して、販売店の配送時の残存賞味期限が合うかを見ます。保存年数の長さだけで決めず、どちらも届いた現物の期限と保存方法を確かめましょう。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 期限と保存方法： 食べる予定と照合し、置き場所が保存表示に合うか見ます。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 包装と開け方： 箱の中が個包装か、食べる人が開けられる形か見ます。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 原材料： アレルギー表示と製造上の注意を現物で読みます。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "- 食べる量： 箱全体ではなく、一度に開ける袋や一本の量を見ます。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "ここでいう「一回分」は一律の推奨量ではなく、その人が一度に開けて食べる単位です。大袋から少しずつ食べる予定より、食べる人に合う小分けを候補に。開封後の扱いは商品の注意書きに従い、開けたまま長期保存する前提では選びません。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_proposal"
+        },
+        {
+          "text": "井村屋のえいようかんは、水を加えずそのまま食べられるようかんです。公式ページには、フィルムを引っぱって開ける包装と、次の仕様が示されています。",
+          "source_ids": [
+            2
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "| 箱の内容量 | 300g（60g×5本） |",
+          "source_ids": [
+            2
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "| 一本の量と熱量 | 60g・171kcal |",
+          "source_ids": [
+            2
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "| 賞味期間 | 5年6か月 |",
+          "source_ids": [
+            2
+          ],
+          "support_type": "direct_or_paraphrased"
+        },
+        {
+          "text": "171kcalは一本分。箱全体の値でも、一食に必要な栄養の目安でもありません。どのおかずと一緒に備えるか、誰が一本を食べるかを考えて、箱数を決めます。表の賞味期間と、到着後に残っている期間も分けて見てください。",
+          "source_ids": [
+            2,
+            5
+          ],
+          "support_type": "direct_specs_and_editorial_proposal"
+        },
+        {
+          "text": "原材料は砂糖（国内製造）、生あん（小豆）、水あめ、寒天。購入時は[井村屋の公式商品情報](https://www.imuraya.co.jp/goods/yokan/c-eiyo/eiyo/)と現物の原材料・アレルギー表示を照合します。別の味や似た名前の商品へ、この仕様を当てはめないようにしましょう。",
+          "source_ids": [
+            2
+          ],
+          "support_type": "direct_specs_and_editorial_label_check"
+        },
+        {
+          "text": "まず家にある菓子をひとつ取り、期限、開ける単位、食べる人をメモへ。合う在庫があれば、専用品を追加せずに備える選択もできます。",
+          "source_ids": [
+            5
+          ],
+          "support_type": "editorial_proposal"
+        }
+      ]
     }
   }
 }
