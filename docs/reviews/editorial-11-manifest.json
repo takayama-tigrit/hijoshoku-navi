@@ -1,0 +1,88 @@
+{
+  "version": "EDITORIAL-11-V2",
+  "human_review": "confirmed_no_changes",
+  "publication": "prepared_existing_urls_pending_release",
+  "articles": [
+    {
+      "target": "content/posts/emergency-water-bottles.md",
+      "draft": "content/revisions/editorial11-emergency-water-bottles.md",
+      "key": "water_bottles_revision_editorial11",
+      "baseline_sha256": "14e99d2b057ca783c21699619bd46c0495540f54e125b61f834fe898414feba6",
+      "draft_sha256": "4be4d014e55be6ec3530aa7209b24b4c8a282781ea3c6c5f0dcda58324e8cb70",
+      "image_action": "retain"
+    },
+    {
+      "target": "content/posts/emergency-food-set-check.md",
+      "draft": "content/revisions/editorial11-emergency-food-set-check.md",
+      "key": "set_check_editorial11",
+      "baseline_sha256": "0754f8f7b4f0e41fc367d3d4fe9cbc008dccab466dd1e9164e8fbddf8d8756c0",
+      "draft_sha256": "dfad0adf377756beda29119c259dad4fcd077e68f475ce596b65420f0072964c",
+      "image_action": "retain"
+    },
+    {
+      "target": "content/posts/emergency-food-for-one.md",
+      "draft": "content/revisions/editorial11-emergency-food-for-one.md",
+      "key": "single_person_editorial11",
+      "baseline_sha256": "3c3918fcf1e8325e77a6912180942ab4bfd4f0912dae6825ae65e5eb564c0934",
+      "draft_sha256": "4d8e048728a8be18918ba5c798caf9baef1eee46102bbcaf13e791e417a9bf1d",
+      "image_action": "not_applicable"
+    },
+    {
+      "target": "content/guide/index.md",
+      "draft": "content/revisions/editorial11-guide.md",
+      "key": "guide_editorial11",
+      "baseline_sha256": "41ed0ae0f10e695258e450c8a0b580c6c4f2725a053e97ecdc567b96e02030ed",
+      "draft_sha256": "1d84d92c95fed038ec4b4a8e956cf06240333bf7dba147ecb6a29013ed4be017",
+      "image_action": "replace_contextual_photo"
+    },
+    {
+      "target": "content/posts/emergency-food-storage.md",
+      "draft": "content/revisions/editorial11-emergency-food-storage.md",
+      "key": "storage_editorial11",
+      "baseline_sha256": "52456ec2c1d5b9823c696e400f1e8c0af59b4d59472e2d99420ac931a346e8aa",
+      "draft_sha256": "be070518d3a5d6e74aa13f94d6b0e945c08722b0ea4fff03ef3238726a76825d",
+      "image_action": "not_applicable"
+    },
+    {
+      "target": "content/posts/rolling-stock-routine.md",
+      "draft": "content/revisions/editorial11-rolling-stock-routine.md",
+      "key": "rolling_stock_editorial11",
+      "baseline_sha256": "13dfcd525e9b70b0005d164a737b83aeb2f3777da6c0c58a1fe5a7e9eefdfc0c",
+      "draft_sha256": "6daa3bfadbed12bbf1d6fef5a00218377bfea87e61bf92114ee40a3073c8f3b2",
+      "image_action": "not_applicable"
+    },
+    {
+      "target": "content/posts/emergency-food-side-dishes.md",
+      "draft": "content/revisions/editorial11-emergency-food-side-dishes.md",
+      "key": "side_dishes_editorial11",
+      "baseline_sha256": "a3485b4c53885e11351805f597cd059290bd44301595d118f4b57f045815a54d",
+      "draft_sha256": "2eefbab9bd2eeb731ad066cd8edea1cb1d9160cf7dfaf691c07dd1e9b13f8639",
+      "image_action": "retain"
+    },
+    {
+      "target": "content/ranking/index.md",
+      "draft": "content/revisions/editorial11-ranking.md",
+      "key": "ranking_editorial11",
+      "baseline_sha256": "2df095241c83376ab7bcc559b8a5f3a11d3e10efffb4c98326cd5b40471f0ec4",
+      "draft_sha256": "a3f077a27d95cbe15abaa32f322fea62b7557fde9a33f9396deb1e5903268dd5",
+      "image_action": "retain_or_relocate"
+    },
+    {
+      "target": "content/posts/alpha-mai-osusume.md",
+      "draft": "content/revisions/editorial11-alpha-mai-osusume.md",
+      "key": "alpha_editorial11",
+      "baseline_sha256": "d4048b15a38e236b3a3bfcd405dd961525f7aab68261b0cde9ea5bcc51da84e9",
+      "draft_sha256": "8ae6a629f121cc59bdb31cef3b9bdcac87d79b9fcfd850e95aa0303fe1bf3edc",
+      "image_action": "retain_or_relocate"
+    },
+    {
+      "target": "content/posts/emergency-food-snacks.md",
+      "draft": "content/revisions/editorial11-emergency-food-snacks.md",
+      "key": "snacks_editorial11",
+      "baseline_sha256": "584a3b3498f94d6a7a30134f7fc96b53c3907d76434a1f2e52021a3debe9042d",
+      "draft_sha256": "3a137555c765cdd8173e52c5795c9f10db778f0bb4799d9847e4032a7ee2d505",
+      "image_action": "add_existing_approved_image"
+    }
+  ],
+  "confirmation": "docs/reviews/editorial-11-human-proofreading.json"
+}

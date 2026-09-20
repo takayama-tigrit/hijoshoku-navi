@@ -8,6 +8,8 @@ import {chromium,devices} from '@playwright/test';
 import {browserOptions} from './browser-options.mjs';
 
 const routes={
+ '/guide/':['尾西 白飯 100g'],
+ '/posts/emergency-food-snacks/':['井村屋 えいようかん'],
  '/ranking/':['尾西 ひだまりパン プレーン','尾西 白飯 100g','井村屋 えいようかん'],
  '/posts/alpha-mai-osusume/':['尾西 白飯 100g','尾西 五目ごはん 100g','尾西 わかめごはん 100g'],
  '/posts/emergency-food-set-check/':['尾西 ごはんシリーズ CY','尾西 ごはんシリーズ DW'],
@@ -58,7 +60,7 @@ try{
    if(name!=='noJS'){await anchors.first().scrollIntoViewIfNeeded();await page.screenshot({path:path.join(artifacts,`${name}${slug}action.png`)});}
    checks.push(`${name}: ${route} exact ${terms.length} links, disclosure, no view-time ASP requests`);
   }
-  for(const route of ['/','/guide/','/about/','/privacy/','/photo-credits/']){
+  for(const route of ['/','/about/','/privacy/','/photo-credits/']){
    await page.goto(base+route);assert.equal(await page.locator('[data-testid="affiliate-disclosure"],a[data-commerce]').count(),0,'no article ad banner or sales link injected into '+route);
   }
   await page.goto(base+'/privacy/');assert.match(await page.locator('.article-content').innerText(),/もしもアフィリエイト/);assert.match(await page.locator('.article-content').innerText(),/Cookie/);

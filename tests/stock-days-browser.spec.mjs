@@ -9,7 +9,7 @@ import { browserOptions } from './browser-options.mjs';
 const output=await mkdtemp(path.join(tmpdir(),'stock-days-'));
 const evidence=process.env.ARTIFACT_DIR || await mkdtemp(path.join(tmpdir(),'stock-days-evidence-'));
 await mkdir(evidence,{recursive:true});
-execFileSync(process.env.HUGO_BIN || 'hugo',['--minify','--panicOnWarning','--destination',output]);
+execFileSync(process.env.HUGO_BIN || 'hugo',['--baseURL', 'http://localhost/', '--minify','--panicOnWarning','--destination',output]);
 const server=http.createServer(async(req,res)=>{try{let p=new URL(req.url,'http://localhost').pathname;if(p.endsWith('/'))p+='index.html';const file=path.join(output,p);const body=await readFile(file);res.writeHead(200,{'Content-Type':({'.html':'text/html','.js':'text/javascript','.css':'text/css','.webp':'image/webp','.svg':'image/svg+xml'})[path.extname(file)]||'application/octet-stream'}).end(body);}catch{res.writeHead(404).end();}});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
 const browser=await chromium.launch({headless:true,...browserOptions()});

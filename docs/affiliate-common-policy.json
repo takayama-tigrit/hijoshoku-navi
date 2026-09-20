@@ -1,0 +1,5 @@
+{
+  "version": "affiliate-common-v1",
+  "canonical": "static-site-affiliate-ops/references/portfolio-policy.md",
+  "rules": ["AF01", "AF02", "AF03", "AF04", "AF05", "AF06", "AF07", "AF08"]
+}

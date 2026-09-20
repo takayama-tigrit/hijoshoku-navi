@@ -1,0 +1,80 @@
+{
+  "version": "affiliate-common-v1",
+  "policy_sha256": "640c7a936afb3d23d75f4bff740a71e74358c87518c47e370efc6942c2242b0a",
+  "rules": {
+    "AF01": {
+      "evidence": [
+        "docs/editorial-contract.md"
+      ],
+      "checks": []
+    },
+    "AF02": {
+      "evidence": [
+        "docs/sources/ledger.json",
+        "data/article-evidence.json"
+      ],
+      "checks": [
+        "docs/sources/verify.py",
+        "tests/source-registry.spec.py"
+      ]
+    },
+    "AF03": {
+      "evidence": [
+        "docs/editorial-contract.md"
+      ],
+      "checks": [
+        "tests/editorial-style.spec.py"
+      ]
+    },
+    "AF04": {
+      "evidence": [
+        "data/product-images.json",
+        "data/water-offers.json"
+      ],
+      "checks": [
+        "tests/product-images.spec.mjs",
+        "tests/water-product-links.spec.mjs"
+      ]
+    },
+    "AF05": {
+      "evidence": [
+        "docs/reviews/editorial-11-manifest.json"
+      ],
+      "checks": [
+        "tests/editorial-batch.spec.py"
+      ]
+    },
+    "AF06": {
+      "evidence": [
+        "docs/editorial-contract.md",
+        "docs/reviews/content-05-human-proofreading.json",
+        "docs/reviews/water-10-human-proofreading.json",
+        "docs/reviews/editorial-11-human-proofreading.json"
+      ],
+      "checks": [
+        "tests/amazon-readiness.spec.py",
+        "tests/water-confirmation.spec.py",
+        "tests/editorial-batch.spec.py"
+      ]
+    },
+    "AF07": {
+      "evidence": [
+        "docs/editorial-contract.md"
+      ],
+      "checks": [
+        "tests/editorial-products.spec.py",
+        "tests/site.spec.mjs",
+        "tests/planner-mobile.spec.mjs"
+      ]
+    },
+    "AF08": {
+      "evidence": [
+        "docs/plans/2026-09-20-growth-cycle-03.md"
+      ],
+      "checks": [
+        "tests/analytics.spec.mjs",
+        "tests/marketing-sprint.spec.mjs"
+      ]
+    }
+  }
+}

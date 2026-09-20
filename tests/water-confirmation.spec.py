@@ -8,11 +8,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 with tempfile.TemporaryDirectory(prefix='water-confirmation-') as tmp:
     fixture = Path(tmp)
-    for rel in ['content', 'docs', 'tests', 'data', 'assets', 'layouts', 'themes', 'static']:
+    for rel in ['content', 'docs', 'tests', 'data', 'assets', 'layouts', 'themes', 'static', 'scripts']:
         shutil.copytree(ROOT / rel, fixture / rel)
     shutil.copy2(ROOT / 'hugo.toml', fixture / 'hugo.toml')
     record = fixture / 'docs/reviews/water-10-human-proofreading.json'
-    article = fixture / 'content/posts/emergency-water-bottles.md'
+    article = fixture / 'docs/reviews/editorial-11/previous/posts/emergency-water-bottles.md'
     original_record = record.read_text()
     original_article = article.read_text()
     cases = [

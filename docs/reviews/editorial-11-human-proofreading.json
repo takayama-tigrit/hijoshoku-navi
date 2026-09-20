@@ -1,0 +1,131 @@
+{
+  "version": "EDITORIAL-11-V2",
+  "reviewer": "site_operator",
+  "recorded_at": "2026-09-21T02:53:13+09:00",
+  "timestamp_semantics": "recording time; user message timestamp not independently available",
+  "user_quote": "EDITORIAL-11-V2を校正・事実確認済み",
+  "result": "confirmed_no_changes",
+  "packet_sha256": "b21bdc2eb5ba446aa303d29a60a274743eaa62565dfa2a6822e1ef41b0b6473e",
+  "publication_delta": "Existing URLs; draft:true to draft:false only; all other reviewed source bytes unchanged",
+  "articles": [
+    {
+      "target": "content/posts/emergency-water-bottles.md",
+      "draft": "content/revisions/editorial11-emergency-water-bottles.md",
+      "key": "water_bottles_revision_editorial11",
+      "baseline_sha256": "14e99d2b057ca783c21699619bd46c0495540f54e125b61f834fe898414feba6",
+      "draft_sha256": "4be4d014e55be6ec3530aa7209b24b4c8a282781ea3c6c5f0dcda58324e8cb70",
+      "image_action": "retain",
+      "snapshot": "docs/reviews/editorial-11/sources/editorial11-emergency-water-bottles.md",
+      "previous": "docs/reviews/editorial-11/previous/posts/emergency-water-bottles.md",
+      "published_sha256": "c8c799c5be838d20b3492f7f1b5183889acd29da8b7f44e866af9cc6ffd076ab"
+    },
+    {
+      "target": "content/posts/emergency-food-set-check.md",
+      "draft": "content/revisions/editorial11-emergency-food-set-check.md",
+      "key": "set_check_editorial11",
+      "baseline_sha256": "0754f8f7b4f0e41fc367d3d4fe9cbc008dccab466dd1e9164e8fbddf8d8756c0",
+      "draft_sha256": "dfad0adf377756beda29119c259dad4fcd077e68f475ce596b65420f0072964c",
+      "image_action": "retain",
+      "snapshot": "docs/reviews/editorial-11/sources/editorial11-emergency-food-set-check.md",
+      "previous": "docs/reviews/editorial-11/previous/posts/emergency-food-set-check.md",
+      "published_sha256": "630892c3741ee7903ba6b262d09a9667c02a97c8a63ff71df2d5b0391effd3bb"
+    },
+    {
+      "target": "content/posts/emergency-food-for-one.md",
+      "draft": "content/revisions/editorial11-emergency-food-for-one.md",
+      "key": "single_person_editorial11",
+      "baseline_sha256": "3c3918fcf1e8325e77a6912180942ab4bfd4f0912dae6825ae65e5eb564c0934",
+      "draft_sha256": "4d8e048728a8be18918ba5c798caf9baef1eee46102bbcaf13e791e417a9bf1d",
+      "image_action": "not_applicable",
+      "snapshot": "docs/reviews/editorial-11/sources/editorial11-emergency-food-for-one.md",
+      "previous": "docs/reviews/editorial-11/previous/posts/emergency-food-for-one.md",
+      "published_sha256": "9db1056625414b0ea2ceb2fa1201fb24bcde3b7d885950ec75610ca32ca57e87"
+    },
+    {
+      "target": "content/guide/index.md",
+      "draft": "content/revisions/editorial11-guide.md",
+      "key": "guide_editorial11",
+      "baseline_sha256": "41ed0ae0f10e695258e450c8a0b580c6c4f2725a053e97ecdc567b96e02030ed",
+      "draft_sha256": "1d84d92c95fed038ec4b4a8e956cf06240333bf7dba147ecb6a29013ed4be017",
+      "image_action": "replace_contextual_photo",
+      "snapshot": "docs/reviews/editorial-11/sources/editorial11-guide.md",
+      "previous": "docs/reviews/editorial-11/previous/guide/index.md",
+      "published_sha256": "53edddf4e51160a6570211eb2fa56c7c6abbe2470838900ca24fb7a4fb2ea7cc"
+    },
+    {
+      "target": "content/posts/emergency-food-storage.md",
+      "draft": "content/revisions/editorial11-emergency-food-storage.md",
+      "key": "storage_editorial11",
+      "baseline_sha256": "52456ec2c1d5b9823c696e400f1e8c0af59b4d59472e2d99420ac931a346e8aa",
+      "draft_sha256": "be070518d3a5d6e74aa13f94d6b0e945c08722b0ea4fff03ef3238726a76825d",
+      "image_action": "not_applicable",
+      "snapshot": "docs/reviews/editorial-11/sources/editorial11-emergency-food-storage.md",
+      "previous": "docs/reviews/editorial-11/previous/posts/emergency-food-storage.md",
+      "published_sha256": "6488bcd5112fd44d1b06e607c7874ea71974b93874e0f83af3644a66b0811908"
+    },
+    {
+      "target": "content/posts/rolling-stock-routine.md",
+      "draft": "content/revisions/editorial11-rolling-stock-routine.md",
+      "key": "rolling_stock_editorial11",
+      "baseline_sha256": "13dfcd525e9b70b0005d164a737b83aeb2f3777da6c0c58a1fe5a7e9eefdfc0c",
+      "draft_sha256": "6daa3bfadbed12bbf1d6fef5a00218377bfea87e61bf92114ee40a3073c8f3b2",
+      "image_action": "not_applicable",
+      "snapshot": "docs/reviews/editorial-11/sources/editorial11-rolling-stock-routine.md",
+      "previous": "docs/reviews/editorial-11/previous/posts/rolling-stock-routine.md",
+      "published_sha256": "6d36ee5c46b6debec275bf8ace97132c2a346aff9cec0a2d809186517743ba60"
+    },
+    {
+      "target": "content/posts/emergency-food-side-dishes.md",
+      "draft": "content/revisions/editorial11-emergency-food-side-dishes.md",
+      "key": "side_dishes_editorial11",
+      "baseline_sha256": "a3485b4c53885e11351805f597cd059290bd44301595d118f4b57f045815a54d",
+      "draft_sha256": "2eefbab9bd2eeb731ad066cd8edea1cb1d9160cf7dfaf691c07dd1e9b13f8639",
+      "image_action": "retain",
+      "snapshot": "docs/reviews/editorial-11/sources/editorial11-emergency-food-side-dishes.md",
+      "previous": "docs/reviews/editorial-11/previous/posts/emergency-food-side-dishes.md",
+      "published_sha256": "f1e82c8d64102e66129ffd672b6e503897d070a80e70ce14709ef567bc31e010"
+    },
+    {
+      "target": "content/ranking/index.md",
+      "draft": "content/revisions/editorial11-ranking.md",
+      "key": "ranking_editorial11",
+      "baseline_sha256": "2df095241c83376ab7bcc559b8a5f3a11d3e10efffb4c98326cd5b40471f0ec4",
+      "draft_sha256": "a3f077a27d95cbe15abaa32f322fea62b7557fde9a33f9396deb1e5903268dd5",
+      "image_action": "retain_or_relocate",
+      "snapshot": "docs/reviews/editorial-11/sources/editorial11-ranking.md",
+      "previous": "docs/reviews/editorial-11/previous/ranking/index.md",
+      "published_sha256": "5f1ee4b7fd0c930ef8a1168826810626136a564609daf87c9f49ed7cdccba0a8"
+    },
+    {
+      "target": "content/posts/alpha-mai-osusume.md",
+      "draft": "content/revisions/editorial11-alpha-mai-osusume.md",
+      "key": "alpha_editorial11",
+      "baseline_sha256": "d4048b15a38e236b3a3bfcd405dd961525f7aab68261b0cde9ea5bcc51da84e9",
+      "draft_sha256": "8ae6a629f121cc59bdb31cef3b9bdcac87d79b9fcfd850e95aa0303fe1bf3edc",
+      "image_action": "retain_or_relocate",
+      "snapshot": "docs/reviews/editorial-11/sources/editorial11-alpha-mai-osusume.md",
+      "previous": "docs/reviews/editorial-11/previous/posts/alpha-mai-osusume.md",
+      "published_sha256": "7d07b7cce5514c34b60b338433a18f45d0efd0daab3504b1649742a79b49af71"
+    },
+    {
+      "target": "content/posts/emergency-food-snacks.md",
+      "draft": "content/revisions/editorial11-emergency-food-snacks.md",
+      "key": "snacks_editorial11",
+      "baseline_sha256": "584a3b3498f94d6a7a30134f7fc96b53c3907d76434a1f2e52021a3debe9042d",
+      "draft_sha256": "3a137555c765cdd8173e52c5795c9f10db778f0bb4799d9847e4032a7ee2d505",
+      "image_action": "add_existing_approved_image",
+      "snapshot": "docs/reviews/editorial-11/sources/editorial11-emergency-food-snacks.md",
+      "previous": "docs/reviews/editorial-11/previous/posts/emergency-food-snacks.md",
+      "published_sha256": "ac207d0b21c05b302e5df8a6292035e3bb97a80642ec2817ca74a2987d8d940d"
+    }
+  ],
+  "dependencies": {
+    "data/product-comparisons.json": "5b6984e5da179428cb3cdfdd59dbeffaba8dfee64213b76dae030ba76defec88",
+    "data/product-images.json": "14d359e206bb06d64dc927fe4350ce4a8ed1b131639d5f60c31b23ab7fb18476",
+    "data/water-offers.json": "b857c7219ff401a0852f6825e4819e1cbe89a101263e866e06f8df80b268f121",
+    "layouts/shortcodes/product-compare.html": "881542393d6655493589d3132719a9e0de95633783e39c94d73c1b12989895d8",
+    "data/article-evidence.json": "25382aa5abc3b6b84e452f290d78cdc24fce8c00a844cdf1990924226ca1e07f",
+    "docs/reviews/content-05-human-proofreading.json": "622eaff84dae31da3935c59e1f0e5118656679dc1944c16c7d7cff793c730ee6",
+    "docs/reviews/water-10-human-proofreading.json": "87902765a581b3f3dbbc42c2dff155a7361449dc3cfb38b6d897e2fc56e172fa"
+  }
+}
