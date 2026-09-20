@@ -265,5 +265,49 @@
     "excerpt_sha256": "eb1c78f933f171c0a7acc951d94ec2e396d7e8beeefddcdb0d02ee0541abd5de",
     "method": "urllib GET; HTMLParser visible-text extraction; exact substring check",
     "retention": "Minimal exact excerpts only; full responses were not retained."
+  },
+  {
+    "id": 24,
+    "url": "https://lohaco.yahoo.co.jp/store/h-lohaco/item/u254244/",
+    "final_url": "https://lohaco.yahoo.co.jp/store/h-lohaco/item/u254244/",
+    "status": 200,
+    "checked_at": "2026-09-20T22:38:14.214657+09:00",
+    "excerpt": "excerpts/24.txt",
+    "response_sha256": "1fc75fe1605e121e6c6b64c13f19a7737794cf7780c5e75c1bc7bbed2192d806",
+    "excerpt_sha256": "4fc97d065a5a56ef4d7ddc7df4344e13571a95b737948a51cdeff241d6d88c97",
+    "method": "public GET; product title, delivery expiry and purchase limit exact excerpts",
+    "retention": "No account data, raw HTML, advertising URLs or reviewer identities retained."
+  },
+  {
+    "id": 25,
+    "url": "https://lohaco.yahoo.co.jp/store/h-lohaco/item/en30177/",
+    "final_url": "https://lohaco.yahoo.co.jp/store/h-lohaco/item/en30177/",
+    "status": 200,
+    "checked_at": "2026-09-20T22:38:14.871754+09:00",
+    "excerpt": "excerpts/25.txt",
+    "response_sha256": "9852a2510d5618e3327e3e2550b0c0b4a540b9445818915065f5d852f4a72fcc",
+    "excerpt_sha256": "5f334b201f6b5e3ff4662a9cd166600d41e988817be63d815062dcc8d0faf209",
+    "method": "public GET; product title, delivery expiry and purchase limit exact excerpts",
+    "retention": "No account data, raw HTML, advertising URLs or reviewer identities retained."
+  },
+  {
+    "id": 26,
+    "url": "https://item.rakuten.co.jp/rakuten24/4562403563002/",
+    "final_url": "https://item.rakuten.co.jp/rakuten24/4562403563002/",
+    "status": 200,
+    "checked_at": "2026-09-20T14:32:10.197Z",
+    "excerpt": "excerpts/26.txt",
+    "excerpt_sha256": "e03d90df66b20b1cec9a09ce1f2c838e56bad4dc3188bcaa8a01b85340e61ca3",
+    "method": "Public GET server-rendered text; exact excerpt retained from verified source-check; dynamic price, stock and remaining shelf life not verified."
+  },
+  {
+    "id": 27,
+    "url": "https://item.rakuten.co.jp/irisplaza-r/310789/",
+    "final_url": "https://item.rakuten.co.jp/irisplaza-r/310789/",
+    "status": 200,
+    "checked_at": "2026-09-20T14:32:10.197Z",
+    "excerpt": "excerpts/27.txt",
+    "excerpt_sha256": "1bdc428752c799943c6497dc91f5720a8558a1264d2994c47cb71f5d1690711e",
+    "method": "Public GET server-rendered text; exact excerpt retained from verified source-check; dynamic price, stock and remaining shelf life not verified."
   }
 ]

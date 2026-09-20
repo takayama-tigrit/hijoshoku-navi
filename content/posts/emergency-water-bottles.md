@@ -6,18 +6,20 @@ description: "備蓄水の必要量を500mL・2Lの本数に置き換え、飲�
 seriesTitle: "水の買い置き"
 storySummary: "小さいボトルを何本か、大きいボトルを何本か。必要な量だけでなく、開けた後の使い方も一緒に考えます。"
 coverPhoto: "water-bottles"
+hideTitleThumbnail: true
+readingJump: {"href": "#water-purchase", "label": "2L・500mLの商品と入数を見る"}
 choiceTitle: "ボトルの本数と使い方を見る"
 choiceNote: "どちらか一種類にそろえる必要はありません。家で使う分と、一人ずつ飲む分に分けて選べます。"
 articleChoices: [{"condition":"一人ずつ手に取って飲む分","name":"500mLの小容量を候補に","note":"開ける量を小さくできます。同じL数をそろえる本数は多くなります。","icon":"water","official":"#bottle-count","label":"必要な本数を比べる →"},{"condition":"家でコップなどへ分けて使う分","name":"2Lの大容量を候補に","note":"本数を抑えられますが、開封後の保管と使い切り方を先に考えます。","icon":"home","official":"#after-opening","label":"開封後の注意を見る →"}]
 categories: ["選び方"]
 tags: ["水", "家庭備蓄", "ボトル"]
-evidenceKey: water_bottles
+evidenceKey: water_bottles_revision
 draft: false
 ---
 
 水を買い置きするとき、500mLを箱で買うか、2Lを何本か置くか。{{< mark "一人ずつ手に取る分と、家で分けて使う分を分ける" >}}と、容器の大きさを選びやすくなります。どちらか一種類にそろえる必要はありません。
 
-<div data-testid="next-action"><strong>家にある水のL数を数えたら、足す本数へ。</strong><br><a href="#bottle-count">500mL・2Lの本数の例を見る</a> ／ <a href="/guide/#stock-planner">手持ちの水から不足量を計算する</a></div>
+<div data-testid="next-action"><strong>家にある水のL数を数えたら、足す本数へ。</strong><br><a href="#bottle-count">500mL・2Lの本数の例を見る</a> ／ <a href="/guide/#stock-planner">手持ちの水から不足量を計算する</a> ／ <a href="#water-purchase">買う箱・商品を選ぶ</a></div>
 
 <div id="bottle-count"></div>
 
@@ -58,6 +60,44 @@ draft: false
 {{< mark "「開封後は冷蔵」の条件を、冷蔵できない停電時の保存日数へ読み替えないでください。" >}} 購入する商品の表示・メーカーの案内を確認し、開ける量を考えます。
 
 同社は、未開栓品も直射日光や極度に高温の場所、においの強いものの近くを避けて保管するよう案内しています。長期保存水という名前だけで、置き場所の条件がなくなるわけではありません。
+
+<div id="water-purchase"></div>
+
+## 買う量が決まったら、箱の入数と照らし合わせる
+
+{{< mark "9L必要でも、通販で買う1箱が9Lとは限りません。" >}} 以下は、普段飲んで補充する水の購入候補です。何年も入れ替えず置く長期保存水の比較ではありません。先ほどの9Lの例と、販売単位を並べてみます。
+
+<div data-testid="water-2l">
+
+### 家で分けて使うなら：2L×6本の12L
+
+{{< water-offer "water-2l" "photo" >}}
+
+**アイリスフーズ 富士山の天然水 2L／1箱6本。** 合計12Lで、手持ちゼロから9Lをそろえる例では3L多くなります。必要量の計算では5本ですが、この販売品は6本入りです。開封後に冷蔵できるか、使い切れるかを先に考えて選びます。
+
+<p data-testid="water-terms"><strong>購入前に、届く時点の残存賞味期限と送料を確認。</strong> 期限の案内が見当たらなければ販売店へ確認し、届いた現物の期限を記録して入れ替えます。</p>
+
+{{< water-offer "water-2l" "link" >}}
+
+</div>
+
+<div data-testid="water-500ml">
+
+### 一人ずつ飲むなら：500mL×24本の12L
+
+{{< water-offer "water-500ml" "photo" >}}
+
+**アイリスフーズ 富士山の天然水 ラベルレス 500mL／1箱24本。** 合計12Lで、手持ちゼロから9Lをそろえる例では3L多くなります。必要な18本より6本多いので、普段飲む分も含めて置けるかを見て選びます。
+
+<p data-testid="water-terms"><strong>購入前に、届く時点の残存賞味期限と送料を確認。</strong> 期限の案内が見当たらなければ販売店へ確認し、届いた現物の期限を記録して入れ替えます。</p>
+
+{{< water-offer "water-500ml" "link" >}}
+
+</div>
+
+商品名と販売単位は2026年9月20日に確認しました。価格・在庫・送料・配送条件は、注文時の商品ページで確かめます。
+
+{{< mark "足りない量が少なければ、箱を買わず、近くの店舗で必要な本数だけ買う方法もあります。" >}} 通販では送料込みの支払額と置き場所を照合し、送料無料にするためだけの買い足しは避けます。箱のまま運びにくい場合は、宅配ボックスから保管場所まで運べるかも、注文前に考えておきます。
 
 ## カートへ入れる前に、容量・入数・期限を照合
 
