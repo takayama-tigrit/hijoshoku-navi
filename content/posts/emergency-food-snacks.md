@@ -8,7 +8,7 @@ storySummary: "えいようかんの箱と一本の違いを手がかりに、�
 categories: ["選び方"]
 tags: ["非常食", "お菓子", "えいようかん"]
 evidenceKey: snacks
-draft: true
+draft: false
 readingJump: {"href": "#snack-check", "label": "菓子を期限・包装で選ぶ"}
 ---
 

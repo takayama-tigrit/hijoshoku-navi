@@ -9,7 +9,7 @@ coverPhoto: "meal"
 categories: ["ガイド"]
 tags: ["非常食", "ローリングストック", "買い物", "家庭備蓄"]
 evidenceKey: rolling_stock
-draft: true
+draft: false
 readingJump: {"href": "#shopping-loop", "label": "食べる・買う・しまう手順を見る"}
 ---
 

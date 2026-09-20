@@ -9,7 +9,7 @@ coverPhoto: "cooked-rice"
 categories: ["選び方"]
 tags: ["非常食", "一人暮らし", "小分け", "家庭備蓄"]
 evidenceKey: single_person
-draft: true
+draft: false
 readingJump: {"href": "#one-meal-note", "label": "開ける量の確認項目を見る"}
 ---
 

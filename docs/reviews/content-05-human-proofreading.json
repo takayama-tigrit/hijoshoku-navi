@@ -1,0 +1,15 @@
+{
+  "version": "CONTENT-05-V2",
+  "reviewer": "site_operator",
+  "recorded_at": "2026-09-20T07:49:36Z",
+  "result": "confirmed_no_changes",
+  "packet_sha256": "d627f49e1d9973e56159b9a7af37ea8a8396804f7baea9d25ffe3e43bc65fab2",
+  "source_sha256": {
+    "emergency-food-for-one": "f0318842105d7e22e905929fadf28b14793af24da16f813fc79972908948f49e",
+    "rolling-stock-routine": "992f531e8ead33d78905fa797e1e41c81e90187a6e7b9d48eef2cd2b4ddcf31f",
+    "emergency-food-storage": "b12391e6df395442f54e5bf96008c0b38593f9c4773bb8fbd5ab9ffc91ce7bc8",
+    "emergency-water-bottles": "e62a171888bd26b3f59fd438e236d5e1b3965ffed4ce05997d82ae73950fc0ce",
+    "emergency-food-snacks": "7f2394dec804f5de00736f46ffa8f6332636b1e33455fb78bdc9f5b815d36526"
+  },
+  "publication_delta": "draft:true to draft:false only; article wording unchanged"
+}

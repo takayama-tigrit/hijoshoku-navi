@@ -8,7 +8,7 @@ storySummary: "外箱を残す条件、期限の見せ方、保存場所。届�
 categories: ["ガイド"]
 tags: ["非常食", "収納", "賞味期限"]
 evidenceKey: storage
-draft: true
+draft: false
 readingJump: {"href": "#box-check", "label": "外箱を残す条件を確かめる"}
 ---
 

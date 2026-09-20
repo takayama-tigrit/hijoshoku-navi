@@ -12,7 +12,7 @@ articleChoices: [{"condition":"一人ずつ手に取って飲む分","name":"500
 categories: ["選び方"]
 tags: ["水", "家庭備蓄", "ボトル"]
 evidenceKey: water_bottles
-draft: true
+draft: false
 ---
 
 水を買い置きするとき、500mLを箱で買うか、2Lを何本か置くか。{{< mark "一人ずつ手に取る分と、家で分けて使う分を分ける" >}}と、容器の大きさを選びやすくなります。どちらか一種類にそろえる必要はありません。

@@ -15,6 +15,11 @@ await new Promise(r=>server.listen(0,'127.0.0.1',r));
 const base=`http://127.0.0.1:${server.address().port}`;
 const { browserOptions } = await import('./browser-options.mjs');
 const browser=await chromium.launch(browserOptions());
+const expectedStoryPaths=[];
+for(const {file} of Object.values(JSON.parse(await readFile('data/article-evidence.json','utf8')).articles)){
+ const source=await readFile(file,'utf8');
+ if(!/^draft:\s*true\s*$/m.test(source))expectedStoryPaths.push('/'+file.replace(/^content\//,'').replace(/(?:\/index)?\.md$/,'')+'/');
+}
 const failures=[],measurements=[];
 const check=(v,m)=>{if(!v)failures.push(m);};
 try {
@@ -30,7 +35,8 @@ try {
    if(width===1440){check(m.header?.h===100,'PC header 100');check(m.notice?.h===46,'PC notice 46');}
    if(width<=390){check(m.nav?.h===73&&m.brand?.h===61&&m.nav.bottom<=m.brand.y,`${width}: 73px nav before 61px brand`);check(await page.locator('.main-nav > *').count()===5,`${width}: five icon items`);}
    if(route==='/'){
-    check(await page.locator('.lead-stories .story-card').count()===JSON.parse(await readFile('data/editorial.json','utf8')).featured.length,'all configured distinct stories');
+    const storyPaths=await page.locator('.lead-stories .story-copy h2 a').evaluateAll(links=>links.map(a=>new URL(a.href).pathname));
+    check(await page.locator('.lead-stories .story-card').count()===expectedStoryPaths.length&&JSON.stringify(storyPaths.sort())===JSON.stringify([...expectedStoryPaths].sort()),'all published editorial stories, without missing or duplicate routes');
     check(await page.locator('.story-lead .feature-composition').count()===1,'independent split composition, not raw photo');
     const composition=await page.locator('.story-lead .feature-composition').boundingBox();
     check(composition&&Math.abs(composition.width/composition.height-752/351)<0.02,'home composition keeps measured 752:351 without copy-driven growth');
