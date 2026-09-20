@@ -82,7 +82,7 @@ for path in ARTICLES:
     assert "要確認" not in body
     assert not re.search(r"第\d+位|TOP\d|おすすめ10選|佐竹食品|72L", body)
     assert "## 関連記事" in body
-    assert "|---" in body
+    assert "|---" in body or '<div data-testid="primary-checklist">' in body
     assert "残存賞味期限" in body
     assert "主菜" in body and "副菜" in body
     assert "アレルギー" in body

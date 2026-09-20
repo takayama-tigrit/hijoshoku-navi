@@ -40,6 +40,25 @@ class EvidenceVerifierTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn('stale claim mapping', result.stderr)
 
+    def test_primary_checklist_safety_change_is_rejected(self):
+        p = self.root / 'content/posts/emergency-food-storage.md'
+        text = p.read_text()
+        old = 'メーカー指定の包装・保存条件を変えない場合'
+        self.assertIn(old, text)
+        p.write_text(text.replace(old, 'メーカー指定の包装・保存条件を変えてよい場合'))
+        result = self.verify()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('stale claim mapping', result.stderr)
+
+    def test_new_water_table_value_is_rejected(self):
+        p = self.root / 'content/posts/emergency-water-bottles.md'
+        text = p.read_text()
+        self.assertIn('500mL×18本 | 9L', text)
+        p.write_text(text.replace('500mL×18本 | 9L', '500mL×18本 | 8L'))
+        result = self.verify()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('stale claim mapping', result.stderr)
+
     def test_unregistered_article_fails_closed(self):
         (self.root / 'content/posts/unregistered.md').write_text('---\nevidenceKey: unregistered\n---\nUnmapped article\n')
         self.assertNotEqual(self.verify().returncode, 0)

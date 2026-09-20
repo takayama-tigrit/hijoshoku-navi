@@ -11,15 +11,16 @@
     "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
   },
   {
-    "id": 2,
-    "url": "https://www.imuraya.co.jp/goods/yokan/c-eiyo/eiyo/",
+    "url": "https://www.imuraya.co.jp/goods/yokan/c-eiyo/eiyo",
     "final_url": "https://www.imuraya.co.jp/goods/yokan/c-eiyo/eiyo/",
     "status": 200,
-    "checked_at": "2026-09-18T23:35:12.600736+09:00",
-    "excerpt": "excerpts/02.txt",
+    "checked_at": "2026-09-20T15:00:00.037717+09:00",
     "response_sha256": "6764e9db168991184cdcf3ac3a65bc6ba420321a3b1fbf74d74774c94033116f",
-    "excerpt_sha256": "182b410ba48ea51d60af20b1d51ed389417e62a7fadfd2b69e24c3aba72598ec",
-    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+    "id": 2,
+    "excerpt": "excerpts/02.txt",
+    "excerpt_sha256": "6f840732ce72ac3976b45e701159b3621888debbc8eb9569c49c2c86b17ae212",
+    "method": "urllib GET; HTMLParser visible-text extraction; exact substring check",
+    "retention": "Minimal exact excerpts only; full responses were not retained."
   },
   {
     "id": 3,
@@ -44,15 +45,16 @@
     "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
   },
   {
-    "id": 5,
     "url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter03.html",
     "final_url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter03.html",
     "status": 200,
-    "checked_at": "2026-09-18T23:35:13.195934+09:00",
-    "excerpt": "excerpts/05.txt",
+    "checked_at": "2026-09-20T14:59:59.819934+09:00",
     "response_sha256": "1d3f0b1ba77ecccce0157da0e5636727293f9c8e7742e1dee6a081467e74b6d2",
+    "id": 5,
+    "excerpt": "excerpts/05.txt",
     "excerpt_sha256": "a91b843e304a45d096d892379ae268ef15482215d5ef6df07fb7ad070605436b",
-    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+    "method": "urllib GET; HTMLParser visible-text extraction; exact substring check",
+    "retention": "Minimal exact excerpts only; full responses were not retained."
   },
   {
     "id": 6,
@@ -88,15 +90,16 @@
     "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
   },
   {
-    "id": 9,
-    "url": "https://www.onisifoods.co.jp/faq/",
-    "final_url": "https://www.onisifoods.co.jp/faq/",
+    "url": "https://www.onisifoods.co.jp/faq",
+    "final_url": "http://www.onisifoods.co.jp/faq/",
     "status": 200,
-    "checked_at": "2026-09-18T23:35:13.921428+09:00",
-    "excerpt": "excerpts/09.txt",
+    "checked_at": "2026-09-20T14:59:59.828462+09:00",
     "response_sha256": "7cdd6b14a6af1aa86c0df5decb41eb6d3eb8c9c8ccbe49a6cc915f11241c30fd",
-    "excerpt_sha256": "39477e35699e95794b12c7dccdc6d6d0a340170061027c9cc1f9cb0352866fef",
-    "retention": "Minimal extracted text and, where needed, verbatim HTML img alt tags; full page not retained."
+    "id": 9,
+    "excerpt": "excerpts/09.txt",
+    "excerpt_sha256": "5c09579472f464ec092510b4a7ad93bab58f4308ea5482636f694c6522b653cb",
+    "method": "urllib GET; HTMLParser visible-text extraction; exact substring check",
+    "retention": "Minimal exact excerpts only; full responses were not retained."
   },
   {
     "id": 10,
@@ -214,5 +217,53 @@
       "retrieved_at": "2026-09-19T22:26:21.117145+09:00"
     },
     "visual_verification": "Parent reloaded manufacturer image and read instructions, unopened ambient storage, allergens and quantity on 2026-09-19."
+  },
+  {
+    "id": 19,
+    "url": "https://www.gov-online.go.jp/article/201108/entry-8072.html",
+    "final_url": "https://www.gov-online.go.jp/article/201108/entry-8072.html",
+    "status": 200,
+    "checked_at": "2026-09-20T06:13:14.839Z",
+    "excerpt": "excerpts/19.txt",
+    "excerpt_sha256": "47b4dcf64ed6e2236e360c36491295ce5b90fa14efb29a3f40ede92cc9184f22",
+    "rendered_text_sha256": "d8377dec6fb305ed8ab004849da78547d596d17e8abb6342825863e27b446140",
+    "retention": "Minimal public answer excerpt; browser text is retained privately, no product images republished.",
+    "method": "normal-browser-public-page"
+  },
+  {
+    "id": 20,
+    "url": "https://www.suntory.co.jp/customer/faq/001899.html",
+    "final_url": "https://www.suntory.co.jp/customer/faq/001899.html",
+    "status": 200,
+    "checked_at": "2026-09-20T06:13:15.163Z",
+    "excerpt": "excerpts/20.txt",
+    "excerpt_sha256": "4d09a3ceef1393ad8124fea253be231deb9c8c6d0d129f4848e589f0902dc708",
+    "rendered_text_sha256": "65dc1dd08a2a50e948e250e630bc30e89a514f22c3082806098c7fcb9335a4b1",
+    "retention": "Minimal public answer excerpt; browser text is retained privately, no product images republished.",
+    "method": "normal-browser-public-page"
+  },
+  {
+    "id": 21,
+    "url": "https://www.suntory.co.jp/customer/faq/001898.html",
+    "final_url": "https://www.suntory.co.jp/customer/faq/001898.html",
+    "status": 200,
+    "checked_at": "2026-09-20T06:13:15.327Z",
+    "excerpt": "excerpts/21.txt",
+    "excerpt_sha256": "a9acf4ad4f5e69e3af3fb0abca2744885642fcf2e009698288489b3de2c20462",
+    "rendered_text_sha256": "36e468d77d58e20b9ec15acb785bda9c5250b052b38afefc43b7f7a7933ab628",
+    "retention": "Minimal public answer excerpt; browser text is retained privately, no product images republished.",
+    "method": "normal-browser-public-page"
+  },
+  {
+    "url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter09.html",
+    "final_url": "https://www.maff.go.jp/j/zyukyu/foodstock/chapter09.html",
+    "status": 200,
+    "checked_at": "2026-09-20T14:59:59.849683+09:00",
+    "response_sha256": "a5e9a08ea7ec3b9c999c7763bc5f1ec0580badfcc39739479d8cd768a416eea5",
+    "id": 22,
+    "excerpt": "excerpts/22.txt",
+    "excerpt_sha256": "eb1c78f933f171c0a7acc951d94ec2e396d7e8beeefddcdb0d02ee0541abd5de",
+    "method": "urllib GET; HTMLParser visible-text extraction; exact substring check",
+    "retention": "Minimal exact excerpts only; full responses were not retained."
   }
 ]

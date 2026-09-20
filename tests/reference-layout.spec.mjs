@@ -24,6 +24,12 @@ await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch(process.env.PLAYWRIGHT_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH } : process.platform === 'darwin' ? { channel: 'chrome' } : {});
 const ledger = JSON.parse(await readFile('docs/image-licenses.json', 'utf8')).images;
+const editorial = JSON.parse(await readFile('data/editorial.json','utf8'));
+const expectedStoryPaths = [];
+for (const {file} of Object.values(JSON.parse(await readFile('data/article-evidence.json','utf8')).articles)) {
+ const source = await readFile(file,'utf8');
+ if (!/^draft:\s*true\s*$/m.test(source)) expectedStoryPaths.push('/'+file.replace(/^content\//,'').replace(/(?:\/index)?\.md$/,'')+'/');
+}
 const bodyPhotoIds = {
  '/guide/': ['meal', 'cooked-rice', 'bread'],
  '/ranking/': ['bread', 'meal'],
@@ -48,8 +54,9 @@ try {
      const rect=s=>{const e=document.querySelector(s);if(!e)return null;const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,bottom:r.bottom}};
      return {lead:rect('.lead-stories'),first:rect('.story-card:first-child'),second:rect('.story-card:nth-child(2)'),side:rect('.editorial-sidebar'),planner:rect('.stock-planner'),cards:document.querySelectorAll('.lead-stories .story-card').length,background:getComputedStyle(document.body).backgroundColor};
     });
-    const expectedStories=JSON.parse(await readFile('data/editorial.json','utf8')).featured.length;
-    check(m.cards===expectedStories,`${width}: all configured editorial stories are visible`);
+    const actualStoryPaths = await page.locator('.lead-stories .story-copy h2 a').evaluateAll(links=>links.map(a=>new URL(a.href).pathname));
+    check(m.cards===expectedStoryPaths.length && JSON.stringify([...actualStoryPaths].sort())===JSON.stringify([...expectedStoryPaths].sort()),`${width}: all published editorial stories are visible exactly once`);
+    check(JSON.stringify(actualStoryPaths.slice(0,editorial.featured.length))===JSON.stringify(editorial.featured.map(x=>x.path.replace(/\/$/,'')+'/')),`${width}: configured featured order is retained`);
     check(m.background==='rgb(255, 255, 255)',`${width}: white editorial canvas`);
     check(m.lead&&m.planner.y>m.lead.bottom,`${width}: planner follows stories`);
     if(width===1440)check(m.lead?.width===752&&!m.side&&m.first.width===752&&m.second.width===364, 'desktop: centered 752, full lead then two columns');
