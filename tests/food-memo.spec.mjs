@@ -93,7 +93,7 @@ try {
       assert.equal(await planner.locator('.planner-caution a').getAttribute('href'), 'https://www.kantei.go.jp/jp/headline/bousai/sonae.html');
       for (const [name, value] of [['people', '4'], ['days', '7'], ['litres', '18']]) {
         const field = planner.locator(`[name="${name}"]`);
-        if (name === 'days') await field.selectOption(value); else await field.fill(value);
+        if (name === 'days') await planner.locator(`[name="days"][value="${value}"]`).check(); else await field.fill(value);
         assert(await planner.locator('[data-results]').isVisible());
         text = await memo(page, planner);
         assert.match(text, /水：約/);
@@ -108,7 +108,7 @@ try {
       assert(text.includes('缶詰3缶'));
       assert(await planner.locator('[data-planner-error]').isVisible(), 'Saving food must not clear water errors');
       await planner.locator('[name="people"]').fill('2');
-      await planner.locator('[name="days"]').selectOption('3');
+      await planner.locator('[name="days"][value="3"]').check();
       await planner.locator('[name="litres"]').fill('18');
       await planner.locator('[data-calculate]').click();
       assert.match(await memo(page, planner), /買い足す2Lボトル：0本/);

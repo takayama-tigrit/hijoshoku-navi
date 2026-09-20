@@ -4,4 +4,8 @@
 <h2>選ぶときのメモ</h2>{{ partial "article-choice.html" . }}
 {{ $css := resources.Get "css/article-choice.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ $css.RelPermalink }}">
 {{ end }}
+<h2>数量と日数をタップで変更する</h2>
+{{ partial "stock-planner.html" . }}
+{{ $plannerJS := resources.Get "js/stock-planner.js" | fingerprint }}
+<script type="module" src="{{ $plannerJS.RelPermalink }}" integrity="{{ $plannerJS.Data.Integrity }}" crossorigin="anonymous"></script>
 {{ partial "article-references.html" "guide" }}

@@ -23,14 +23,14 @@ export async function checkVisualAction(page, route, width) {
     const planner = page.locator('[data-testid="stock-planner"]');
     assert.equal(await planner.count(), 1);
     await planner.locator('[name="people"]').fill('4');
-    await planner.locator('[name="days"]').selectOption('7');
+    await planner.locator('[name="days"][value="7"]').check();
     await planner.locator('[name="litres"]').fill('20');
     await planner.locator('[data-calculate]').click();
     assert.match(await planner.locator('[data-output="required"]').innerText(), /84\s*L/);
     assert.match(await planner.locator('[data-output="shortage"]').innerText(), /64\s*L/);
     assert.match(await planner.locator('[data-output="buy"]').innerText(), /32\s*本/);
     await planner.locator('[name="people"]').fill('2');
-    await planner.locator('[name="days"]').selectOption('3');
+    await planner.locator('[name="days"][value="3"]').check();
     await planner.locator('[name="litres"]').fill('6');
     await planner.locator('[data-calculate]').click();
     assert.match(await planner.locator('[data-output="required"]').innerText(), /18\s*L/);
@@ -55,7 +55,7 @@ export async function checkVisualAction(page, route, width) {
     await planner.locator('[data-calculate]').click();
     assert(await planner.locator('[data-planner-error]').isVisible(), 'Invalid values must not produce a recommendation');
     await planner.locator('[name="people"]').fill('2');
-    await planner.locator('[name="days"]').selectOption('3');
+    await planner.locator('[name="days"][value="3"]').check();
     await planner.locator('[name="litres"]').fill('0');
     await planner.locator('[data-calculate]').click();
   }

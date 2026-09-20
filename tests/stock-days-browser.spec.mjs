@@ -36,7 +36,7 @@ try{
     for(const key of ['people','days','confirm','litres','meals']){
      await reset();
      if(key==='confirm')await p.locator('[data-calculate]').click();
-     else if(key==='days')await p.locator('[name="days"]').selectOption('7');
+     else if(key==='days')await p.locator('[name="days"][value="7"]').check();
      else await p.locator(`[name="${key}"]`).fill(key==='people'?'4':key==='litres'?'13':'19');
      for(const stock of ['litres','meals'])assert.match(await origin(stock),stock===key?/入力値/:/初期例/);
      const text=await download(page,p,`${label}-origin-${key}.txt`);
@@ -60,7 +60,7 @@ try{
     await helper('litres','2').click();assert.equal(await p.locator('[data-output="shortage"]').innerText(),'3.5L');assert.match(await origin('meals'),/初期例/);
     await helper('meals','1').click();await helper('meals','-1').click();assert.equal(await p.locator('[name="meals"]').inputValue(),'18');
     for(const [name,value,delta] of [['litres','','2'],['litres','-1','2'],['litres','17.9999999999','2'],['litres','5e-324','2'],['litres','2001','2'],['litres','1999','2'],['people','12','1'],['people','0','1'],['meals','0','-1']]){
-     await p.locator(`[name="${name}"]`).fill(value);await helper(name,delta).click();assert.equal(await p.locator(`[name="${name}"]`).inputValue(),value, 'do not clamp or repair');
+     await p.locator(`[name="${name}"]`).fill(value);assert(await helper(name,delta).isDisabled());await helper(name,delta).evaluate(e=>e.click());assert.equal(await p.locator(`[name="${name}"]`).inputValue(),value, 'do not clamp or repair');
     }
     await p.locator('[name="litres"]').fill('0');await helper('litres','0.5').click();assert.equal(await p.locator('[name="litres"]').inputValue(),'0.5');
     await reset();await p.locator('[name="people"]').fill('4');
@@ -84,7 +84,7 @@ try{
    for(const control of await p.locator('input,select,button').all()){if(await control.isVisible())assert((await control.boundingBox()).height>=44);}
    assert.equal(await p.locator('.stock-notes').getAttribute('open'),null);
    let memo=await download(page,p,`${label}-example.txt`);assert.match(memo,/初期値は計算例/);assert.match(memo,/在庫：12L/);
-   await p.locator('[name="days"]').selectOption('7');assert.equal(await p.locator('[data-output="foodBuy"]').innerText(),'24食分');
+   await p.locator('[name="days"][value="7"]').check();assert.equal(await p.locator('[data-output="foodBuy"]').innerText(),'24食分');
    await p.locator('[name="litres"]').fill('12.5');assert.equal(await p.locator('[data-output="shortage"]').innerText(),'29.5L');assert.equal(await p.locator('[data-output="buy"]').innerText(),'15本');
    await p.locator('[name="mealsPerDay"]').fill('2');assert.equal(await p.locator('[data-output="foodDays"]').innerText(),'主食 約4.5日分');
    await p.locator('[name="litres"]').fill('0.001');assert.equal(await p.locator('[data-output="waterDays"]').innerText(),'水 0.1日未満');

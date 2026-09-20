@@ -2,16 +2,23 @@
 <section class="stock-planner" id="stock-planner" data-testid="stock-planner" data-water-rate="{{ $q.water.litres_per_person_day }}" data-bottle-size="{{ $q.water.bottle_litres }}" aria-labelledby="planner-title">
   <h2 id="planner-title">いまの水と主食は、何日分？</h2>
   <p data-example>初期値は計算例です。家にある量に変えて使います。</p>
+  <p class="planner-tap-hint">−／＋で増減。数字をタップして直接入力もできます。</p>
   <fieldset disabled data-planner-fields class="stock-day-fields">
-    <legend>人数と、家にある量</legend>
+    <legend class="visually-hidden">人数と、家にある量</legend>
     <div class="planner-fields">
-      <label>人数<span class="field-helpers"><button class="stepper-btn" type="button" data-adjust="people" data-delta="-1" aria-label="人数を1人減らす">－</button><input type="number" name="people" min="1" max="12" step="1" value="2" inputmode="numeric"><button class="stepper-btn" type="button" data-adjust="people" data-delta="1" aria-label="人数を1人増やす">＋</button></span><span>1〜12人</span></label>
-      <label>何日分にそろえる？<select name="days"><option value="3" selected>3日分</option><option value="7">7日分</option></select></label>
-      <label id="water-check">手持ちの水（合計L）<input type="number" name="litres" min="0" max="2000" step="0.001" value="12" inputmode="decimal"><span class="field-helpers water-helpers"><button class="stepper-btn" type="button" data-adjust="litres" data-delta="0.5" aria-label="水を0.5L増やす">＋0.5L</button><button class="stepper-btn" type="button" data-adjust="litres" data-delta="2" aria-label="水を2L増やす">＋2L</button></span><span>500mLは0.5L。2Lの水と足し合わせて</span><span class="origin-tag" data-stock-origin="litres"></span></label>
-      <label>手持ちの主食（食分）<span class="field-helpers"><button class="stepper-btn" type="button" data-adjust="meals" data-delta="-1" aria-label="主食を1食分減らす">－</button><input type="number" name="meals" min="0" max="10000" step="1" value="18" inputmode="numeric"><button class="stepper-btn" type="button" data-adjust="meals" data-delta="1" aria-label="主食を1食分増やす">＋</button></span><span>1人が1回に食べる量を1食分に</span><span class="origin-tag" data-stock-origin="meals"></span></label>
-      <label>1人1日の主食（食分）<input type="number" name="mealsPerDay" min="1" max="6" step="1" value="3" inputmode="numeric"><span>普段の食事に合わせて変更できます</span></label>
+      {{ partial "planner-stepper.html" (dict "name" "people" "label" "人数" "unit" "人" "aria" "人数" "min" 1 "max" 12 "step" 1 "value" 2 "inputmode" "numeric" "help" "1〜12人") }}
+      <fieldset class="planner-period">
+        <legend>何日分にそろえる？</legend>
+        <div class="period-choices">
+          <label><input type="radio" name="days" value="3" checked><span>3日分</span></label>
+          <label><input type="radio" name="days" value="7"><span>7日分</span></label>
+        </div>
+      </fieldset>
+      {{ partial "planner-stepper.html" (dict "name" "litres" "label" "手持ちの水" "unit" "L" "aria" "水" "min" 0 "max" 2000 "step" "0.001" "value" 12 "inputmode" "decimal" "help" "500mL＝0.5L。水の合計量" "stock" true "anchor" "water-check") }}
+      {{ partial "planner-stepper.html" (dict "name" "meals" "label" "手持ちの主食" "unit" "食分" "aria" "主食" "min" 0 "max" 10000 "step" 1 "value" 18 "inputmode" "numeric" "help" "1人が1回に食べる量＝1食分" "stock" true) }}
+      {{ partial "planner-stepper.html" (dict "name" "mealsPerDay" "label" "1人1日の主食" "unit" "食分" "aria" "1人1日の主食" "min" 1 "max" 6 "step" 1 "value" 3 "inputmode" "numeric" "help" "普段の食事に合わせて、1〜6食分") }}
     </div>
-    <button class="button" type="button" data-calculate data-testid="next-action">この量で確認する</button>
+    <button class="button button-primary" type="button" data-calculate data-testid="next-action">この量で確認する <span aria-hidden="true">↓</span></button>
   </fieldset>
   <p data-planner-error role="alert" hidden></p>
   <div class="planner-results" data-results aria-live="polite" aria-atomic="true" hidden>

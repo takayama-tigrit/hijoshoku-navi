@@ -1,0 +1,17 @@
+<div class="planner-field"{{ with .anchor }} id="{{ . }}"{{ end }}>
+  <label class="planner-field-label" id="{{ .name }}-label" for="planner-{{ .name }}">{{ .label }} <span class="field-unit">{{ .unit }}</span></label>
+  <div class="quantity-stepper" role="group" aria-labelledby="{{ .name }}-label">
+    <button class="stepper-btn" type="button" data-adjust="{{ .name }}" data-delta="-1" aria-label="{{ .aria }}を1{{ .unit }}減らす">−1</button>
+    <input id="planner-{{ .name }}" type="number" name="{{ .name }}" min="{{ .min }}" max="{{ .max }}" step="{{ .step }}" value="{{ .value }}" inputmode="{{ .inputmode }}" aria-describedby="{{ .name }}-help{{ if .stock }} {{ .name }}-origin{{ end }}">
+    <button class="stepper-btn" type="button" data-adjust="{{ .name }}" data-delta="1" aria-label="{{ .aria }}を1{{ .unit }}増やす">＋1</button>
+  </div>
+  {{ if eq .name "litres" }}
+  <div class="water-helpers" role="group" aria-label="水をボトルの量で増減">
+    <button class="stepper-btn" type="button" data-adjust="litres" data-delta="-0.5" aria-label="水を0.5L減らす">−0.5L</button>
+    <button class="stepper-btn" type="button" data-adjust="litres" data-delta="0.5" aria-label="水を0.5L増やす">＋0.5L</button>
+    <button class="stepper-btn" type="button" data-adjust="litres" data-delta="-2" aria-label="水を2L減らす">−2L</button>
+    <button class="stepper-btn" type="button" data-adjust="litres" data-delta="2" aria-label="水を2L増やす">＋2L</button>
+  </div>
+  {{ end }}
+  <div class="planner-field-foot"><span class="field-help" id="{{ .name }}-help">{{ .help }}</span>{{ if .stock }}<span class="origin-tag" id="{{ .name }}-origin" data-stock-origin="{{ .name }}"></span>{{ end }}</div>
+</div>

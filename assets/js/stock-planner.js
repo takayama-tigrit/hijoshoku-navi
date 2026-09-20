@@ -48,6 +48,21 @@ export function formatDays(value) {
   if (value > 0 && value < 0.1) return '0.1日未満';
   return '約' + (Math.floor(value * 10) / 10) + '日分';
 }
+// A single contract drives both button availability and adjustment. Never repair invalid input.
+export function adjustQuantity(name, value, delta) {
+  const limits = { people: [1, 12], litres: [0, 2000], meals: [0, 10000], mealsPerDay: [1, 6] };
+  if (!Object.hasOwn(limits, name)) return null;
+  const text = value == null ? '' : String(value).trim();
+  const step = Number(delta);
+  const water = name === 'litres';
+  if (!(water ? /^\d+(\.\d{1,3})?$/ : /^\d+$/).test(text)) return null;
+  if (!(water ? [-2, -1, -0.5, 0.5, 1, 2] : [-1, 1]).includes(step)) return null;
+  const scale = water ? 1000 : 1;
+  const current = Math.round(Number(text) * scale);
+  const next = current + Math.round(step * scale);
+  const [min, max] = limits[name].map(n => n * scale);
+  return current >= min && current <= max && next >= min && next <= max ? String(next / scale) : null;
+}
 export function initPlanner(root) {
   const fields = root.querySelector('[data-planner-fields]');
   const results = root.querySelector('[data-results]');
@@ -56,9 +71,9 @@ export function initPlanner(root) {
   const status = root.querySelector('[data-save-status]');
   const rate = Number(root.dataset.waterRate), bottleSize = Number(root.dataset.bottleSize);
   if (![rate, bottleSize].every(v => Number.isFinite(v) && v > 0)) return;
-  const read = () => Object.fromEntries([...fields.querySelectorAll('[name]')].map(el => [el.name, el.value]));
+  const read = () => Object.fromEntries([...fields.querySelectorAll('[name]')].filter(el => el.type !== 'radio' || el.checked).map(el => [el.name, el.value]));
   // Per-field provenance: track which stock fields the user has actually touched.
-  const initialValues = Object.fromEntries([...fields.querySelectorAll('[name]')].map(el => [el.name, el.value]));
+  const initialValues = read();
   const touched = new Set();
   const isUserValue = (name) => {
     if (touched.has(name)) return true;
@@ -70,8 +85,11 @@ export function initPlanner(root) {
     if (el) el.textContent = isUserValue(name) ? '入力値' : '初期例';
   };
   const put = (key, text) => { root.querySelector(`[data-output="${key}"]`).textContent = text; };
+  const adjusters = [...fields.querySelectorAll('[data-adjust]')];
   const refresh = () => {
-    const r = calculateDays(read(), rate, bottleSize);
+    const values = read();
+    adjusters.forEach(btn => { btn.disabled = adjustQuantity(btn.dataset.adjust, values[btn.dataset.adjust], btn.dataset.delta) === null; });
+    const r = calculateDays(values, rate, bottleSize);
     put('waterDays', r.water ? '水 ' + formatDays(r.water.coverage) : '水：未確認');
     put('foodDays', r.food ? '主食 ' + formatDays(r.food.coverage) : '主食：未確認');
     put('required', r.water ? r.water.required + 'L' : '未確認');
@@ -96,33 +114,16 @@ export function initPlanner(root) {
     results.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
   });
   root.querySelectorAll('[data-food-field]').forEach(el => el.addEventListener('input', () => { status.textContent = ''; }));
-  // Helper buttons (±): only apply when current value is in the accepted domain and result stays in range.
-  const addDelta = (name, delta) => {
-    const el = fields.querySelector(`[name="${name}"]`);
-    if (!el) return;
-    const s = el.value.trim();
-    if (name === 'litres') {
-      if (!/^\d+(\.\d{1,3})?$/.test(s)) return;
-      const cur = Number(s);
-      if (cur < 0 || cur > 2000) return;
-      const newMl = Math.round(cur * 1000) + Math.round(Number(delta) * 1000);
-      if (newMl < 0 || newMl > 2000000) return;
-      el.value = String(newMl / 1000);
-    } else {
-      if (!/^\d+$/.test(s)) return;
-      const cur = parseInt(s, 10);
-      const [min, max] = name === 'people' ? [1, 12] : [0, 10000];
-      if (cur < min || cur > max) return;
-      const n = cur + parseInt(delta, 10);
-      if (n < min || n > max) return;
-      el.value = String(n);
-    }
-    touched.add(name);
-    refresh();
-    putOrigin('litres'); putOrigin('meals');
-  };
-  root.querySelectorAll('[data-adjust]').forEach(btn => {
-    btn.addEventListener('click', () => addDelta(btn.dataset.adjust, btn.dataset.delta));
+  // Buttons share the same domain guard as their disabled state; no input focus/keyboard needed.
+  adjusters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const el = fields.querySelector(`[name="${btn.dataset.adjust}"]`);
+      if (!el) return;
+      const next = adjustQuantity(el.name, el.value, btn.dataset.delta);
+      if (next === null) return;
+      el.value = next;
+      update({ target: el });
+    });
   });
   download.addEventListener('click', () => {
     // Re-evaluate even programmatic changes that did not emit events.
