@@ -33,7 +33,7 @@ await cp('tests/fixtures/style-guide.md',path.join(fixture,'content/style-guide/
 const output=path.join(fixture,'public');
 execFileSync(process.env.HUGO_BIN||'hugo',['--source',fixture,'--destination',output],{stdio:'inherit'});
 const html=await readFile(path.join(output,'style-guide/index.html'),'utf8');
-for(const selector of ['style-guide-icons','article-choice','feature-composition','article-references'])assert(html.includes(selector),`real component specimen: ${selector}`);
+for(const selector of ['style-guide-icons','article-choice','feature-composition','article-references','quantity-stepper','button-primary','period-choices'])assert(html.includes(selector),`real component specimen: ${selector}`);
 for(const id of ['home','book','food','memo','menu','plant'])assert(html.includes(`data-symbol="${id}"`));
 const sitemap=await readFile(path.join(output,'sitemap.xml'),'utf8');assert(!sitemap.includes('/style-guide/'),'no sitemap listing');
 const home=await readFile(path.join(output,'index.html'),'utf8');assert(!home.includes('/style-guide/'),'no home listing');
