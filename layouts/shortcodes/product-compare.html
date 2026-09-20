@@ -4,12 +4,13 @@
 {{- $group := .Get 0 -}}{{- $terms := index $data.groups $group -}}
 {{- if not $terms -}}{{- errorf "Unknown product comparison: %s" $group -}}{{- end -}}
 {{- $active := partial "affiliate-active.html" .Page -}}
+{{- $revision := eq .Page.Params.editorialRevision "editorial11" -}}
 <section class="product-comparison" id="product-compare" aria-label="{{ if $active }}商品写真と{{ end }}選ぶ条件の比較">
-<table class="product-table"><caption>{{ if $active }}写真で候補を確認し、条件を比べる{{ else }}候補と選ぶ条件を比べる{{ end }}</caption><thead><tr><th scope="col">商品</th><th scope="col">選ぶ条件・確認先</th></tr></thead><tbody>
+<table class="product-table"><caption>{{ if and $revision (eq (len $terms) 1) }}商品写真と内容量{{ else }}{{ if $active }}写真で候補を確認し、条件を比べる{{ else }}候補と選ぶ条件を比べる{{ end }}{{ end }}</caption><thead><tr><th scope="col">商品</th><th scope="col">選ぶ条件・確認先</th></tr></thead><tbody>
 {{ range $terms }}{{ $term := . }}{{ $p := index $data.products $term }}{{ $im := index $images.images $term }}{{ $search := index $links.links $term }}
 {{ if or (not $p) (not $im) (not $search) }}{{ errorf "Incomplete product comparison: %s" $term }}{{ end }}
 <tr data-product-key="{{ $term }}"><th scope="row">{{ if $active }}<a class="product-photo" href="{{ $im.href }}" data-commerce="rakuten-product" rel="sponsored nofollow" referrerpolicy="origin" aria-label="{{ $p.name }}の写真の商品を楽天市場で見る"><img src="{{ $im.image }}" alt="{{ $p.name }}の商品画像" width="300" height="300" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span>写真の商品を見る ↗</span></a>{{ with $p.saleUnit }}<p class="product-sale-unit"><mark class="key-point"><strong>{{ . }}</strong></mark></p>{{ end }}{{ end }}<span class="product-name">{{ $p.name }}</span></th>
 <td><p class="product-condition"><mark class="key-point"><strong>{{ $p.condition }}</strong></mark></p><p>{{ $p.spec }}</p><p class="product-note"><mark class="key-point"><strong>{{ $p.note }}</strong></mark></p><div class="product-actions"><a class="product-source" href="{{ $p.official }}">公式で原材料・仕様を確認 ↗</a><a class="product-search" href="{{ if $active }}{{ $search.url }}{{ else }}{{ $search.destination }}{{ end }}" {{ if $active }}data-commerce="rakuten" rel="sponsored nofollow"{{ end }} referrerpolicy="origin" aria-label="楽天市場で「{{ $term }}」を検索">楽天市場で探す →</a></div></td></tr>
 {{ end }}</tbody></table>
-{{ if $active }}<p class="product-comparison-note">写真は楽天市場の掲載商品です。入数・送料・届く時点の賞味期限は、販売ページで確かめます。</p>{{ end }}
+{{ if and $active (not $revision) }}<p class="product-comparison-note">写真は楽天市場の掲載商品です。入数・送料・届く時点の賞味期限は、販売ページで確かめます。</p>{{ end }}
 </section>

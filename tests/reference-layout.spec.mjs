@@ -27,11 +27,12 @@ const ledger = JSON.parse(await readFile('docs/image-licenses.json', 'utf8')).im
 const editorial = JSON.parse(await readFile('data/editorial.json','utf8'));
 const expectedStoryPaths = [];
 for (const {file} of Object.values(JSON.parse(await readFile('data/article-evidence.json','utf8')).articles)) {
- const source = await readFile(file,'utf8');
+ if (!file.startsWith('content/')) continue; // Historical evidence is not a public route.
+ const source=await readFile(file,'utf8');
  if (!/^draft:\s*true\s*$/m.test(source)) expectedStoryPaths.push('/'+file.replace(/^content\//,'').replace(/(?:\/index)?\.md$/,'')+'/');
 }
 const bodyPhotoIds = {
- '/guide/': ['meal', 'cooked-rice', 'bread'],
+ '/guide/': ['meal', 'bread'],
  '/ranking/': ['bread', 'meal'],
  '/posts/alpha-mai-osusume/': ['meal', 'bread'],
 };

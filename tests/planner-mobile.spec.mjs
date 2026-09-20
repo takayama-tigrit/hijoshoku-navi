@@ -11,7 +11,7 @@ import * as arithmetic from '../assets/js/stock-planner.js';
 const output = await mkdtemp(path.join(tmpdir(), 'planner-mobile-'));
 const evidence = process.env.ARTIFACT_DIR || await mkdtemp(path.join(tmpdir(), 'planner-mobile-evidence-'));
 await mkdir(evidence, { recursive: true });
-execFileSync(process.env.HUGO_BIN || 'hugo', ['--minify', '--panicOnWarning', '--destination', output]);
+execFileSync(process.env.HUGO_BIN || 'hugo', ['--baseURL', 'http://localhost/', '--minify', '--panicOnWarning', '--destination', output]);
 const server = http.createServer(async (req, res) => {
   try {
     let pathname = new URL(req.url, 'http://localhost').pathname;

@@ -17,6 +17,7 @@ const { browserOptions } = await import('./browser-options.mjs');
 const browser=await chromium.launch(browserOptions());
 const expectedStoryPaths=[];
 for(const {file} of Object.values(JSON.parse(await readFile('data/article-evidence.json','utf8')).articles)){
+ if (!file.startsWith('content/')) continue; // Historical evidence is not a public route.
  const source=await readFile(file,'utf8');
  if(!/^draft:\s*true\s*$/m.test(source))expectedStoryPaths.push('/'+file.replace(/^content\//,'').replace(/(?:\/index)?\.md$/,'')+'/');
 }

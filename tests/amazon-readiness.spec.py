@@ -25,7 +25,7 @@ check(record.get('version') == 'CONTENT-05-V2' and record.get('result') == 'conf
 check(record.get('packet_sha256') == 'd627f49e1d9973e56159b9a7af37ea8a8396804f7baea9d25ffe3e43bc65fab2', 'confirmed packet identity')
 check(set(record.get('source_sha256', {})) == set(SLUGS), 'confirmation covers exactly the five drafts')
 for slug in SLUGS:
-    raw = (ROOT / 'content/posts' / (slug + '.md')).read_bytes()
+    raw = (ROOT / 'docs/reviews/editorial-11/previous/posts' / (slug + '.md')).read_bytes()
     check(len(re.findall(rb'^draft: false$', raw, re.M)) == 1, slug + ': explicitly published')
     original = re.sub(rb'^draft: false$', b'draft: true', raw, flags=re.M)
     if slug == 'emergency-water-bottles':
@@ -39,6 +39,9 @@ for slug in SLUGS:
         check(hashlib.sha256(raw).hexdigest() == revision.get('published_sha256'), 'water: published bytes match record')
     else:
         check(hashlib.sha256(original).hexdigest() == record.get('source_sha256', {}).get(slug), slug + ': text equals the human-confirmed source except draft flag')
+
+current = subprocess.run(['python3', '-B', str(ROOT / 'scripts/editorial_confirmation.py')], text=True, capture_output=True)
+check(current.returncode == 0, 'current EDITORIAL-11 publication confirmation: ' + (current.stderr if current.returncode else 'PASS'))
 
 with tempfile.TemporaryDirectory(prefix='hijoshoku-amazon-readiness-') as temp:
     out = Path(temp) / 'public'

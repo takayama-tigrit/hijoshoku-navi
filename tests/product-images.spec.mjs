@@ -31,6 +31,10 @@ for(const food of q.foods){const term={bread:ordered[0],white:ordered[1],yokan:o
 for(const rice of q.rice.filter(x=>x.id!=='white')){const term=rice.id==='gomoku'?ordered[3]:ordered[4],spec=comp.products[term].spec;for(const value of [`1袋${rice.dry_g}g`,`${rice.kcal}kcal`,`${rice.salt_g}g`])assert(spec.includes(value),'rice unit and value '+value);}
 assert(comp.products[ordered[3]].note.includes('小麦・大豆')&&comp.products[ordered[3]].note.includes('別商品'));
 assert(comp.products[ordered[7]].note.includes('大豆・豚肉・りんご'));assert(comp.products[ordered[8]].note.includes('大豆・鶏肉・豚肉・りんご'));
-assert.deepEqual(Object.values(comp.groups).map(x=>x.length),[3,3,2,2]);
+assert.deepEqual(comp.groups, {
+ ranking:[ordered[0],ordered[1],ordered[2]], alpha:[ordered[1],ordered[3],ordered[4]],
+ sets:[ordered[5],ordered[6]], sides:[ordered[7],ordered[8]],
+ 'guide-white':[ordered[1]], snacks:[ordered[2]],
+});
 assert(Object.values(comp.groups).flat().every(t=>terms.includes(t)));
-console.log('PASS 9 exact official image codes/product destinations/source URLs; 10 rows; quantity/source consistency; 4 negative mutations');
+console.log('PASS 9 exact official image codes/product destinations/source URLs; 12 group rows; quantity/source consistency; 4 negative mutations');
