@@ -1,8 +1,9 @@
 """Complete confirmed publication coverage plus isolated draft-exclusion fixture."""
-import importlib.util, json, os, re, shutil, subprocess, tempfile
+import importlib.util, json, os, re, shutil, subprocess, tempfile, sys
 from pathlib import Path
 import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'scripts'))
 def load(name):
     spec=importlib.util.spec_from_file_location(name,ROOT/'scripts'/f'{name}.py')
     assert spec is not None and spec.loader is not None
@@ -13,7 +14,10 @@ editorial_style=load('editorial_style')
 editorial_confirmation.verify()
 manifest=json.loads((ROOT/'docs/reviews/editorial-11-manifest.json').read_text())
 assert manifest['human_review']=='confirmed_no_changes'
-articles=manifest['articles']
+content12_confirmation=load('content12_confirmation')
+content12_confirmation.verify()
+additional=json.loads((ROOT/'docs/reviews/content-12-human-proofreading.json').read_text())
+articles=manifest['articles']+additional['articles']
 expected={a['target'] for a in articles}
 utility={'content/about/index.md','content/privacy/index.md','content/photo-credits/index.md'}
 public={str(p.relative_to(ROOT)) for p in (ROOT/'content').rglob('*.md') if p.name!='_index.md' and str(p.relative_to(ROOT)) not in utility and not re.search(r'^draft: true$',p.read_text(),re.M)}

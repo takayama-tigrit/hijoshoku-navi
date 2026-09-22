@@ -1,0 +1,26 @@
+[
+  {
+    "id": 28,
+    "url": "https://www.satosyokuhin.co.jp/inquiry/faq",
+    "final_url": "https://www.satosyokuhin.co.jp/inquiry/faq/",
+    "status": 200,
+    "checked_at": "2026-09-22T15:50:24.836691+09:00",
+    "excerpt": "excerpts/28.txt",
+    "response_sha256": "0a286a50b3e01e7a8f1ada133d48500bb97d7ec447bfc28b10c55e074fce0a8f",
+    "excerpt_sha256": "aae9d0c0ce88587ecc2644531d3dbb83fbb23cf035b5b58c8636e25d6bd52065",
+    "method": "urllib GET; HTMLParser visible-text extraction; exact substring match. Fragment identifies retained section; no independent corroboration claimed.",
+    "retention": "Minimal exact excerpts only; no full HTML in repository."
+  },
+  {
+    "id": 29,
+    "url": "https://www.kantei.go.jp/jp/headline/bousai/sonae.html#c3",
+    "final_url": "https://www.kantei.go.jp/jp/headline/bousai/sonae.html",
+    "status": 200,
+    "checked_at": "2026-09-22T15:50:24.823346+09:00",
+    "excerpt": "excerpts/29.txt",
+    "response_sha256": "634959045163bfb51b7cb030c6eefc64892ce0244feb874570985252716569a2",
+    "excerpt_sha256": "aa8f033b128cd8f9f232a793beeffbe765ab2cbf0c094dd000fa14c3ba9ce24a",
+    "method": "urllib GET; HTMLParser visible-text extraction; exact substring match. Fragment identifies retained section; no independent corroboration claimed.",
+    "retention": "Minimal exact excerpts only; no full HTML in repository."
+  }
+]

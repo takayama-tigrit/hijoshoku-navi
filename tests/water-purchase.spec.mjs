@@ -9,7 +9,7 @@ const normal=path.join(temp,'normal'),dest=path.join(temp,'draft');
 for(const [target,extra] of [[normal,[]],[dest,['--buildDrafts']]])execFileSync(process.env.HUGO_BIN||'hugo',['--destination',target,'--baseURL','http://localhost/','--environment','development','--panicOnWarning',...extra],{stdio:'inherit'});
 // Existing public URL only; no revision/new-article publication.
 assert.match(await readFile('content/posts/emergency-water-bottles.md','utf8'),/^draft: false$/m);
-for(const s of ['pack-rice-or-alpha-rice','emergency-food-tasting','emergency-water-bottles-revision']){
+for(const s of ['emergency-food-tasting','emergency-water-bottles-revision']){
  await assert.rejects(readFile(path.join(normal,'posts',s,'index.html')));
  for(const f of ['index.html','index.xml','sitemap.xml','posts/index.html'])assert(!(await readFile(path.join(normal,f),'utf8')).includes(`/posts/${s}/`));
 }
