@@ -1,0 +1,43 @@
+{
+  "version": "CONTENT-12-V2",
+  "result": "confirmed_no_changes",
+  "reviewer": "site_operator",
+  "user_quote": "2記事とも校正・事実確認済み。公開して",
+  "recorded_at": "2026-09-22T20:03:20+0900",
+  "packet": "docs/reviews/content-12/CONTENT-12-V2.md",
+  "packet_sha256": "5422b6bcb26d9efef8f8fab9e3bb55921d550544638953a1c8b12721988d1a4f",
+  "reviewed_manifest_sha256": "48897fa4da6d228e0d3afe6ccc6c279ce6d8f4855173603e1d215878d6a0eedb",
+  "frozen_dependencies": {
+    "docs/drafts/content-12/article-evidence-additions.json": "e8775908284b772f3f719105d98a69d1ed3769fc582e757798d07df6d7268f87",
+    "docs/drafts/content-12/emergency-food-to-go.md": "ab3be766d73828f7c6b1209cb3227275f7ec39cb4882f3f5fbbfa5d163c1d975",
+    "docs/drafts/content-12/excerpts/28.txt": "aae9d0c0ce88587ecc2644531d3dbb83fbb23cf035b5b58c8636e25d6bd52065",
+    "docs/drafts/content-12/excerpts/29.txt": "aa8f033b128cd8f9f232a793beeffbe765ab2cbf0c094dd000fa14c3ba9ce24a",
+    "docs/drafts/content-12/ledger.json": "cd84a5edac37bb1581074da1bba3df69f39d1d3364b774b4a86ed7636a2ab67c",
+    "docs/drafts/content-12/pack-rice-or-alpha-rice.md": "43a656b99c5901d29ca9e6c1cd0d21be1d29c5edfdf278464d50f7b72166758d",
+    "docs/drafts/content-12/retrieval.json": "2d2cdcc8e14b3932391ee967fa0a0d39e3720f1708914e1e3da0d5cb1054bdc9"
+  },
+  "publication_dependencies": {
+    "data/article-evidence.json": "3d0d5442916a877b6c3b0c2f5b22e310e5099e9aaa7c946684791ca34aa151e2",
+    "docs/sources/ledger.json": "8bdcc5b739d5f2d2d5fe7890634e35fd46bd51c0b524e00fb69749e2ac6e30ca",
+    "docs/sources/retrieval.json": "15e056db09073e11b8cf5c93f7f4a382a98f829f6eb1d73f57ea3badc3498389",
+    "docs/sources/excerpts/28.txt": "aae9d0c0ce88587ecc2644531d3dbb83fbb23cf035b5b58c8636e25d6bd52065",
+    "docs/sources/excerpts/29.txt": "aa8f033b128cd8f9f232a793beeffbe765ab2cbf0c094dd000fa14c3ba9ce24a"
+  },
+  "articles": [
+    {
+      "key": "pack_rice_12",
+      "snapshot": "docs/drafts/content-12/pack-rice-or-alpha-rice.md",
+      "target": "content/posts/pack-rice-or-alpha-rice.md",
+      "draft_sha256": "43a656b99c5901d29ca9e6c1cd0d21be1d29c5edfdf278464d50f7b72166758d",
+      "published_sha256": "cf676f89d4f71b571e1edd0417c5f3efa307eb2e3f2088016714dcf0d0e5f39a"
+    },
+    {
+      "key": "food_to_go_12",
+      "snapshot": "docs/drafts/content-12/emergency-food-to-go.md",
+      "target": "content/posts/emergency-food-to-go.md",
+      "draft_sha256": "ab3be766d73828f7c6b1209cb3227275f7ec39cb4882f3f5fbbfa5d163c1d975",
+      "published_sha256": "528cb08baf86e5c31d7326a89b433693c152df069b54d428b54e2e3f826fc151"
+    }
+  ],
+  "scope": "Publish these two articles and their exact evidence only; not Amazon reapplication, ad changes or new delivery channels."
+}

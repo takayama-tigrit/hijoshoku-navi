@@ -4,6 +4,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 def digest(raw): return hashlib.sha256(raw).hexdigest()
 def verify(root=ROOT):
+    if not __debug__:
+        raise RuntimeError('approval verification requires assertions enabled')
     raw = (root/'docs/reviews/editorial-11-human-proofreading.json').read_bytes()
     record = json.loads(raw)
     assert record.get('version') == 'EDITORIAL-11-V2' and record.get('result') == 'confirmed_no_changes' and record.get('reviewer') == 'site_operator' and record.get('user_quote') == 'EDITORIAL-11-V2を校正・事実確認済み', 'actual operator confirmation'
@@ -24,7 +26,20 @@ def verify(root=ROOT):
         assert digest((root/a['previous']).read_bytes()) == f['baseline_sha256'], 'previous published history'
         assert registry[a['key']]['file'] == a['target'], 'current evidence file binding'
     for rel, expected in record['dependencies'].items():
-        assert digest((root/rel).read_bytes()) == expected, 'confirmed dependency identity'
+        dependency = (root/rel).read_bytes()
+        if rel == 'data/article-evidence.json' and digest(dependency) != expected:
+            # CONTENT-12 is a separately operator-confirmed addition. Removing
+            # exactly its two keys must reconstruct the original pinned bytes.
+            from content12_confirmation import KEYS, verify as verify_content12
+            previous = json.loads(dependency)
+            assert KEYS <= previous['articles'].keys(), 'confirmed dependency identity'
+            for key in KEYS:
+                del previous['articles'][key]
+            restored = (json.dumps(previous, ensure_ascii=False, indent=2) + '\n').encode()
+            assert digest(restored) == expected, 'confirmed dependency identity'
+            verify_content12(root)
+        else:
+            assert digest(dependency) == expected, 'confirmed dependency identity'
     assert digest(raw) == '08e88eb063cbce5e9495b620618735b6f3868b6daf3c7ff63f384e3317881c88', 'confirmation record pin'
     print('PASS EDITORIAL-11-V2: 10 exact published source hashes, frozen snapshots, dependency and operator pins')
 if __name__ == '__main__': verify()

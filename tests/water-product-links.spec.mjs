@@ -29,7 +29,7 @@ for(const [mode,base,branch,extra] of [['main',origin+'/', 'main',['--buildDraft
 }
 for(const f of ['index.html','index.xml','sitemap.xml','posts/index.html']){
  const html=await readFile(path.join(outputs.normal,f),'utf8');assert(html.includes(slug),'existing published URL remains discoverable');
- for(const draft of ['emergency-water-bottles-revision','pack-rice-or-alpha-rice','emergency-food-tasting'])assert(!html.includes(`/posts/${draft}/`),'unapproved drafts must stay private');
+ for(const draft of ['emergency-water-bottles-revision','emergency-food-tasting'])assert(!html.includes(`/posts/${draft}/`),'unapproved drafts must stay private');
 }
 assert((await readFile(path.join(outputs.normal,slug,'index.html'),'utf8')).includes('water-2l'));
 const expected=[['water-2l','https://item.rakuten.co.jp/irisplaza-r/310789/','2L×6本'],['water-500ml','https://item.rakuten.co.jp/rakuten24/4562403563002/','500mL×24本']];
