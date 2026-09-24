@@ -1,0 +1,266 @@
+{
+  "version": "CONTENT-14-VISUAL-DRAFT-1",
+  "groups": {
+    "cans": {
+      "label": "二つの缶の中身と量を見る",
+      "entries": [
+        {
+          "id": "hotei",
+          "title": "ホテイ やきとり たれ味75g",
+          "condition": "内容総量75g・固形量55g",
+          "notes": [
+            "小麦・大豆・鶏肉・りんご",
+            "製造日より36ヶ月"
+          ],
+          "detail": "#can-hotei",
+          "linkLabel": "やきとり75gの商品表示を見る",
+          "sourceArticle": "emergency-canned-food",
+          "photo": {
+            "kind": "affiliate",
+            "offerId": "hotei-yakitori-tare-75g",
+            "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/kkyamasakishop/cabinet/07353864/0917_tare.jpg?_ex=300x300",
+            "href": "https://af.moshimo.com/af/c/click?a_id=5810105&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fitem.rakuten.co.jp%2Fkkyamasakishop%2F49025110114991%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fkkyamasakishop%2Fi%2F10001055%2F",
+            "alt": "ホテイ やきとり たれ味75gの缶",
+            "width": 300,
+            "height": 300,
+            "saleUnit": "写真のリンク先：75g×1缶"
+          },
+          "conditionMarked": true,
+          "noteHighlights": [
+            [
+              "小麦・大豆・鶏肉・りんご"
+            ],
+            []
+          ]
+        },
+        {
+          "id": "umios",
+          "title": "Umios 月花さば水煮200g",
+          "condition": "1缶200gは液汁を含む量です。",
+          "notes": [
+            "さば",
+            "常温保存ができ、そのまま食べられます。"
+          ],
+          "detail": "#can-umios",
+          "linkLabel": "月花さば水煮の商品表示を見る",
+          "sourceArticle": "emergency-canned-food",
+          "photo": {
+            "kind": "affiliate",
+            "offerId": "tsukihana-saba-mizuni-200g-jan4901901145899",
+            "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/at-life/cabinet/h/4901901145899.jpg?_ex=300x300",
+            "href": "https://af.moshimo.com/af/c/click?a_id=5810105&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fitem.rakuten.co.jp%2Fat-life%2F4901901145899-wa%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fat-life%2Fi%2F10184443%2F",
+            "alt": "Umios 月花さば水煮200gの缶",
+            "width": 300,
+            "height": 300,
+            "saleUnit": "写真のリンク先：200g×1缶"
+          },
+          "conditionMarked": true,
+          "noteHighlights": [
+            [
+              "さば"
+            ],
+            []
+          ]
+        }
+      ]
+    },
+    "shopping": {
+      "label": "水・主食・おかず。足りない欄だけ買い足す",
+      "entries": [
+        {
+          "id": "water",
+          "title": "水",
+          "condition": "飲料水の足りない量をメモします。",
+          "notes": [
+            "容器の大きさも合わせて選びます。"
+          ],
+          "detail": "#category-water",
+          "linkLabel": "水",
+          "sourceArticle": "supermarket-emergency-food-list",
+          "photo": {
+            "kind": "licensed-category",
+            "src": "/images/photos/water-bottles.webp",
+            "alt": "氷の上に並ぶ透明な飲料水のペットボトル",
+            "width": 1400,
+            "height": 1050,
+            "sha256": "9c6a5118500c860c2592928c3403cabc1483669ad0d11b18980f40fbad85e087",
+            "credit": {
+              "author": "Myrtle Beach TheDigitel",
+              "title": "Bottled water (6972595593).jpg",
+              "source": "https://commons.wikimedia.org/wiki/File:Bottled_water_(6972595593).jpg",
+              "license": "CC BY 2.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+              "changes": "縮小・WebP変換・表示枠でトリミング"
+            }
+          },
+          "conditionMarked": true,
+          "noteHighlights": [
+            []
+          ]
+        },
+        {
+          "id": "staple",
+          "title": "主食",
+          "condition": "そのまま食べられるものを選びます。",
+          "notes": [
+            "温める手段がない分は、調理表示でそのまま食べられるものを選びます。"
+          ],
+          "detail": "#category-staple",
+          "linkLabel": "主食",
+          "sourceArticle": "supermarket-emergency-food-list",
+          "photo": {
+            "kind": "licensed-category",
+            "src": "/images/content14/staple-2850451575.webp",
+            "alt": "非常用キットに入った缶入りパン",
+            "width": 1400,
+            "height": 1050,
+            "sha256": "f8283efb3afb76ebe33c0a4d44ad3e665dbd181ff1692a7ed6ed58fd23706f5f",
+            "credit": {
+              "author": "David Pursehouse",
+              "title": "Earthquake Survival Kit - Canned Bread",
+              "source": "https://www.flickr.com/photos/mdid/2850451575/",
+              "license": "CC BY 2.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+              "changes": "縮小・WebP変換・表示枠でトリミング"
+            }
+          },
+          "conditionMarked": false,
+          "noteHighlights": [
+            [
+              "温める手段がない分",
+              "調理表示でそのまま食べられるもの"
+            ]
+          ]
+        },
+        {
+          "id": "main",
+          "title": "主菜",
+          "condition": "肉・魚・豆の缶詰やレトルトのおかず。",
+          "notes": [
+            "食べるための加熱が必要かと、一度に開ける量を見ます。"
+          ],
+          "detail": "#category-main",
+          "linkLabel": "主菜",
+          "sourceArticle": "supermarket-emergency-food-list",
+          "photo": {
+            "kind": "licensed-category",
+            "src": "/images/content14/main-5741064201.webp",
+            "alt": "手に持ったサーディンの缶詰",
+            "width": 800,
+            "height": 676,
+            "sha256": "8bb17e9ec5bb57ca8593060ded62c2571f9ff6fc3ed48ce70525be06d99111ca",
+            "credit": {
+              "author": "Andrea Nguyen",
+              "title": "Ligo-sardines",
+              "source": "https://www.flickr.com/photos/andrea_nguyen/5741064201/",
+              "license": "CC BY 2.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+              "changes": "縮小・WebP変換・表示枠でトリミング"
+            }
+          },
+          "conditionMarked": false,
+          "noteHighlights": [
+            [
+              "加熱が必要か",
+              "一度に開ける量"
+            ]
+          ]
+        },
+        {
+          "id": "side",
+          "title": "副菜",
+          "condition": "野菜の缶詰、野菜ジュースなど。",
+          "notes": [
+            "開封後の保存表示と、飲み切る・食べ切る量"
+          ],
+          "detail": "#category-side",
+          "linkLabel": "副菜",
+          "sourceArticle": "supermarket-emergency-food-list",
+          "photo": {
+            "kind": "licensed-category",
+            "src": "/images/content14/side-4477728568.webp",
+            "alt": "棚に並んだ野菜の缶詰",
+            "width": 1400,
+            "height": 1050,
+            "sha256": "36aa329810229fc620275433170749055f6461616476f6972a403659d10ad6a0",
+            "credit": {
+              "author": "F Delventhal",
+              "title": "Canned",
+              "source": "https://www.flickr.com/photos/krossbow/4477728568/",
+              "license": "CC BY 2.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+              "changes": "縮小・WebP変換・表示枠でトリミング"
+            }
+          },
+          "conditionMarked": false,
+          "noteHighlights": [
+            [
+              "開封後の保存表示",
+              "飲み切る・食べ切る量"
+            ]
+          ]
+        },
+        {
+          "id": "fruit",
+          "title": "果物",
+          "condition": "果物の缶詰、ドライフルーツなど",
+          "notes": [
+            "缶詰は開ける道具も買い物メモへ入れます。"
+          ],
+          "detail": "#category-fruit",
+          "linkLabel": "果物",
+          "sourceArticle": "supermarket-emergency-food-list",
+          "photo": {
+            "kind": "licensed-category",
+            "src": "/images/content14/fruit-5187413991.webp",
+            "alt": "白背景に置かれたレーズン",
+            "width": 600,
+            "height": 400,
+            "sha256": "e1b4b7fc6e2073b3e6509c76710363d944c6e5707363a166965cd2908ee0eb4f",
+            "credit": {
+              "author": "Jenn Durfey",
+              "title": "Raisins",
+              "source": "https://www.flickr.com/photos/dottiemae/5187413991/",
+              "license": "CC BY 2.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+              "changes": "縮小・WebP変換・表示枠でトリミング"
+            }
+          },
+          "conditionMarked": false,
+          "noteHighlights": [
+            [
+              "缶詰は",
+              "開ける道具"
+            ]
+          ]
+        },
+        {
+          "id": "snack",
+          "title": "好みの補食",
+          "condition": "ようかん、ビスケットなど。",
+          "notes": [
+            "食べる人の好みやアレルギー、かむ・飲み込む条件"
+          ],
+          "detail": "#category-snack",
+          "linkLabel": "好みの補食",
+          "sourceArticle": "supermarket-emergency-food-list",
+          "photo": {
+            "kind": "licensed-category",
+            "src": "/images/content14/snack-53352435401.webp",
+            "alt": "ごまがのったビスケット",
+            "width": 1400,
+            "height": 1053,
+            "sha256": "74f23c01ea0f2dd342880722a9255ce56b2c01aae49858568cd83f34daff1de9"
+          },
+          "conditionMarked": false,
+          "noteHighlights": [
+            [
+              "アレルギー",
+              "かむ・飲み込む条件"
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

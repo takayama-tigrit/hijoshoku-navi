@@ -127,6 +127,10 @@ try {
   await close(v, mode);
  }
  // Inspect every published HTML's actual static external link destinations/text.
+ const officialProductSources = JSON.parse(await readFile('docs/sources/content14/ledger.json','utf8')).filter(x => x.id === 33);
+ assert.equal(officialProductSources.length, 1, 'one reviewed Umios product source');
+ const officialProductHref = 'https://www.umios.com/jp/products/product?j=4901901145899';
+ assert.equal(officialProductSources[0].url, officialProductHref, 'exact reviewed product query, not a host/query wildcard');
  const audit = await browser.newContext({ javaScriptEnabled: false });
  const page = await audit.newPage();
  for (const file of (await readdir(output, { recursive: true })).filter(f => f.endsWith('.html'))) {
@@ -136,10 +140,10 @@ try {
    const u = new URL(link.href);
    if (u.origin === origin) continue;
    assert(!u.username && !u.password, 'no credentials in links');
-   if (u.search) {
+   if (u.search && link.href !== officialProductHref) {
     assert.equal(u.origin, 'https://af.moshimo.com', 'only approved fixed-product affiliate links have queries');
     assert.equal(u.pathname, '/af/c/click');
-    const approvedImages = [...Object.values(JSON.parse(await readFile('data/product-images.json','utf8')).images), ...Object.values(JSON.parse(await readFile('data/water-offers.json','utf8')).offers)];
+    const approvedImages = [...Object.values(JSON.parse(await readFile('data/product-images.json','utf8')).images), ...Object.values(JSON.parse(await readFile('data/water-offers.json','utf8')).offers), ...Object.values(JSON.parse(await readFile('data/content14-product-images.json','utf8')).images)];
     const exactImage = approvedImages.find(x=>x.href===link.href);
     assert.deepEqual([...u.searchParams.keys()].sort(), exactImage ? ['a_id', 'm', 'p_id', 'pc_id', 'pl_id', 'url'] : ['a_id', 'p_id', 'pc_id', 'pl_id', 'url']);
     for (const [key, value] of Object.entries({ a_id: '5810105', p_id: '54', pc_id: '54', pl_id: '616' })) assert.equal(u.searchParams.get(key), value);

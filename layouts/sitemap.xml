@@ -1,4 +1,4 @@
 {{- printf `<?xml version="1.0" encoding="utf-8" standalone="yes"?>` | safeHTML }}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{{ range .Pages }}{{ if and (not .Params.robotsNoIndex) (not (in (slice "taxonomy" "term" "404") .Kind)) }}<url><loc>{{ .Permalink }}</loc>{{ if not .Lastmod.IsZero }}<lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>{{ end }}</url>{{ end }}{{ end }}
+{{ range sort .Pages "Permalink" }}{{ if and (not .Params.robotsNoIndex) (not (in (slice "taxonomy" "term" "404") .Kind)) }}<url><loc>{{ .Permalink }}</loc>{{ $lastmod := .Lastmod }}{{ if or .IsHome (eq .Kind "section") }}{{ with .RegularPagesRecursive.ByLastmod.Reverse }}{{ $lastmod = (index . 0).Lastmod }}{{ end }}{{ end }}{{ if not $lastmod.IsZero }}<lastmod>{{ $lastmod.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>{{ end }}</url>{{ end }}{{ end }}
 </urlset>

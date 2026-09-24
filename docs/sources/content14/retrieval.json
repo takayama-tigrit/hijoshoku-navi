@@ -1,0 +1,134 @@
+[
+  {
+    "id": 30,
+    "url": "https://www.hoteifoods.co.jp/products/c01",
+    "final_url": "https://www.hoteifoods.co.jp/products/c01/",
+    "status": 200,
+    "checked_at": "2026-09-23T13:37:17.555627+00:00",
+    "excerpt": "excerpts/30.txt",
+    "response_sha256": "db1953905e1f21b2d2e73f738639a76cdd084262117a6bafd17f0f1420bc00ed",
+    "excerpt_sha256": "4d87b54184841d27f8a9cecb361cd404e158a4da636a5e93a004b68c79f4b10f",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  },
+  {
+    "id": 31,
+    "url": "https://www.hoteifoods.co.jp/toiawase",
+    "final_url": "https://www.hoteifoods.co.jp/toiawase/",
+    "status": 200,
+    "checked_at": "2026-09-23T13:36:58.705430+00:00",
+    "excerpt": "excerpts/31.txt",
+    "response_sha256": "d388d2626a00de4d957fcdd231b9ff173b93cc68968a0f1af36cf754b77fc39d",
+    "excerpt_sha256": "f9c496eb4b312e25dc2c536626b3bc8f15bea32e817759fd6c704111ce553aaf",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  },
+  {
+    "id": 32,
+    "url": "https://www.hoteifoods.co.jp/recipe/r-211001",
+    "final_url": "https://www.hoteifoods.co.jp/recipe/r-211001/",
+    "status": 200,
+    "checked_at": "2026-09-23T13:38:46.872127+00:00",
+    "excerpt": "excerpts/32.txt",
+    "response_sha256": "0c1ed1e3054ab8797a6c9e4c7eaed01e606f33afb354ee885653c2e7edab55aa",
+    "excerpt_sha256": "d3fe71e35d13c3cc2660604e30d17de6c8964ca58bfc77e7da0d7f0e13ae03de",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  },
+  {
+    "id": 33,
+    "url": "https://www.umios.com/jp/products/product?j=4901901145899",
+    "final_url": "https://www.umios.com/jp/products/product?j=4901901145899",
+    "status": 200,
+    "checked_at": "2026-09-23T13:36:45.184475+00:00",
+    "excerpt": "excerpts/33.txt",
+    "response_sha256": "3beb28266a27a1a033b63f0cc658b32dbfa170d6d0cffa21b51bf78c9e7b5a14",
+    "excerpt_sha256": "28b1e0c0657ea2078bc2bd8e88409c59b5b95f23d662880241d2fea6c9d48353",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  },
+  {
+    "id": 34,
+    "url": "https://www.market.umios.com/products/1030",
+    "final_url": "https://www.market.umios.com/products/1030",
+    "status": 200,
+    "checked_at": "2026-09-23T13:37:54.676302+00:00",
+    "excerpt": "excerpts/34.txt",
+    "response_sha256": "96f2e3c831896ae1d62ff5e5af202fb1debf0560187f32086c4769c174c4a081",
+    "excerpt_sha256": "fa048527fd621571717e596a8f15b4228f3f801c038165827806c7f97d675c16",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  },
+  {
+    "id": 35,
+    "url": "https://www.umios.com/jp/inquiry/faq_can.php",
+    "final_url": "https://www.umios.com/jp/inquiry/faq_can.php",
+    "status": 200,
+    "checked_at": "2026-09-23T13:36:45.184586+00:00",
+    "excerpt": "excerpts/35.txt",
+    "response_sha256": "3855594ca94d2c059600499770093e64ebbb2df7fbc7f77bcb47f7ea99934947",
+    "excerpt_sha256": "8850f8341f90d5691e5c33abad1633244b4e7ff9c0a27080d3eb59c2530d1f0f",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  },
+  {
+    "id": 36,
+    "url": "https://www.topvalu.net/items/detail/4549414144871",
+    "final_url": "https://www.topvalu.net/items/detail/4549414144871/",
+    "status": 200,
+    "checked_at": "2026-09-23T22:38:43.539079+09:00",
+    "excerpt": "excerpts/36.txt",
+    "response_sha256": "4cc580d75a9e8471cef4dad59da0cf1aebfa60a0e3176de91654659ef21fb82b",
+    "excerpt_sha256": "5e6d523f29e02337182365d1569de79f9e57527a736ce4fa7410b18bb48cc9e5",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  },
+  {
+    "id": 37,
+    "url": "https://www.topvalu.net/items/detail/4549414261523",
+    "final_url": "https://www.topvalu.net/items/detail/4549414261523/",
+    "status": 200,
+    "checked_at": "2026-09-23T22:40:15.904710+09:00",
+    "excerpt": "excerpts/37.txt",
+    "response_sha256": "03e14ebc7aca798bd31fd5df4066822b708f501f338e1040d6ba8b6d16da3ea9",
+    "excerpt_sha256": "df3dd018a05b8e31bc075caa974049b74c1c005467c5deffb68da2726c6d0a1a",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  },
+  {
+    "id": 38,
+    "url": "https://www.topvalu.net/inquiry/faq",
+    "final_url": "https://www.topvalu.net/inquiry/faq/#link_food",
+    "status": 200,
+    "checked_at": "2026-09-23T22:38:44.625454+09:00",
+    "excerpt": "excerpts/38.txt",
+    "response_sha256": "200e8dc989267a4ced961def5f909ba7b0a3c5446b62fe1d1265cbb5e7166e6b",
+    "excerpt_sha256": "af480a58e80d7ff773cb409f6594fb827c761ebfd8ab0950ebafa8f8b0af0787",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  },
+  {
+    "id": 39,
+    "url": "https://www.e-welcia.com/product/187733",
+    "final_url": "https://www.e-welcia.com/product/187733",
+    "status": 200,
+    "checked_at": "2026-09-23T22:37:09.525633+09:00",
+    "excerpt": "excerpts/39.txt",
+    "response_sha256": "dfe7e3f315a518b5845b4b385bf977b0838b46e7fd681eb420767a475128c968",
+    "excerpt_sha256": "565bb7a012f8749d3bf99193e1c9d58903b0e3cf1a31be9c92011a9c1eb51c6e",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  },
+  {
+    "id": 40,
+    "url": "https://www.topvalu.net/items/detail/4902121813094",
+    "final_url": "https://www.topvalu.net/items/detail/4902121813094/",
+    "status": 200,
+    "checked_at": "2026-09-23T22:37:53.866093+09:00",
+    "excerpt": "excerpts/40.txt",
+    "response_sha256": "9d5a430d16ebba7528b5acfc28bb78d3787aa5347834c7027b73e3e6e9a6b289",
+    "excerpt_sha256": "84d416d341c320fd11581afa87d00da560cec571ba3785538eaa1bf5bca06322",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  },
+  {
+    "id": 41,
+    "url": "https://www.e-welcia.com/product/88862",
+    "final_url": "https://www.e-welcia.com/product/88862",
+    "status": 200,
+    "checked_at": "2026-09-23T22:37:09.525427+09:00",
+    "excerpt": "excerpts/41.txt",
+    "response_sha256": "eeb56a57ccfac01ff6b8e8a32647016ce962249471dd0a3a82653f91fccab3cd",
+    "excerpt_sha256": "8b65a5b0416477f9267d63e04912c70e7d817d2982b640f14fa49bdcc1d7cf5f",
+    "retention": "Verbatim excerpts only. Full HTML/extracted text retained privately; separate paragraphs may come from separate source locations."
+  }
+]

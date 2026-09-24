@@ -1,0 +1,30 @@
+{{- $data := readFile "data/content14-visual.json" | transform.Unmarshal -}}
+{{- $group := .Get 0 -}}{{- $g := index $data.groups $group -}}
+{{- if not $g }}{{ errorf "Unknown visual panel: %s" $group }}{{ end -}}
+{{- $active := partial "affiliate-active.html" .Page -}}
+{{- $css := resources.Get "css/content14-visual.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<section class="visual-panel visual-panel-{{ $group }}" data-visual-panel="{{ $group }}" aria-label="{{ $g.label }}">
+{{ range $g.entries }}
+<article class="visual-entry" data-visual-entry="{{ .id }}">
+{{ with .photo }}{{ if or (ne .kind "affiliate") $active }}
+{{ if eq .kind "affiliate" }}<a class="visual-photo-link" href="{{ .href }}" rel="sponsored nofollow" referrerpolicy="origin" aria-label="{{ .alt }}の販売ページ">{{ end }}
+<img class="visual-photo" src="{{ .src }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+{{ if eq .kind "affiliate" }}</a>{{ end }}
+{{ with .saleUnit }}<p class="visual-sale-unit"><mark class="key-point"><strong>{{ . }}</strong></mark></p>{{ end }}
+{{ end }}{{ end }}
+<div class="visual-entry-body"><h3>{{ .title }}</h3>
+<p class="visual-condition">{{ if .conditionMarked }}<mark class="key-point"><strong>{{ .condition }}</strong></mark>{{ else }}{{ .condition }}{{ end }}</p>
+{{ $entry := . }}{{ if ne (len .noteHighlights) (len .notes) }}{{ errorf "visual note highlight coverage: %s" .id }}{{ end }}
+{{ range $i, $note := .notes }}
+{{ $marked := htmlEscape $note }}{{ range index $entry.noteHighlights $i }}{{ if or (not .) (not (in $note .)) }}{{ errorf "visual highlight must be a retained literal phrase: %s" $entry.id }}{{ end }}{{ $phrase := htmlEscape . }}{{ $marked = replace $marked $phrase (printf `<mark class="key-point"><strong>%s</strong></mark>` $phrase) }}{{ end }}
+{{ if and (eq $group "cans") (eq $i 0) }}<p class="visual-allergens">アレルギー表示：{{ $marked | safeHTML }}</p>{{ else }}<p class="visual-note">{{ $marked | safeHTML }}</p>{{ end }}
+{{ end }}
+<a class="visual-detail" href="{{ .detail }}">{{ .linkLabel }} ↓</a></div>
+</article>
+{{ end }}
+{{ $credits := slice }}{{ range $g.entries }}{{ if .photo.credit }}{{ $credits = $credits | append . }}{{ end }}{{ end }}
+{{ if $credits }}<details class="visual-credits"><summary>写真クレジット</summary><ul>
+{{ range $credits }}{{ $id := .id }}{{ with .photo.credit }}<li data-credit="{{ $id }}"><a href="{{ .source }}">{{ .title }}</a> — {{ .author }} / <a href="{{ .licenseUrl }}">{{ .license }}</a>。{{ .changes }}</li>{{ end }}{{ end }}
+</ul></details>{{ end }}
+</section>

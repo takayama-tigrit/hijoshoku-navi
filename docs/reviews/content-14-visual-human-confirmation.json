@@ -1,0 +1,61 @@
+{
+  "version": "CONTENT-14-VISUAL-V3",
+  "recorded_at": "2026-09-24T13:13:47.102626+09:00",
+  "reviewer": "site_operator",
+  "user_quote": "追加分も校正・事実確認OK",
+  "result": "confirmed_no_changes",
+  "publication_approval": "GRANTED_FOR_THESE_TWO_ARTICLES_WITH_IMAGE_ENHANCEMENT",
+  "prior_text_confirmation_sha256": "93b656abb0aea45db1a943af703a51f93b2b747af9308f9764bc4feb870f98b4",
+  "prior_text_packet_sha256": "d1ebeecf705dd48e4ad632b5ac257054fa03c7887bad3cf5b9b148b32e5670dd",
+  "packet_sha256": "f6abeda254c4de7499c6b8053b29e02a71db4b524f48606318e149f33930f3e9",
+  "presentation_manifest_sha256": "afc8dfe0fb4a9c049ac75f4eb46aca4f4056afdf8c797514d7cb46a0ad71068f",
+  "scope": "Two named articles only. Original text confirmation retained; visual additions, alt, purchase units and advertising disclosure confirmed. No Amazon reapplication, SNS, billing, deletion or future-content approval.",
+  "evidence_retention": "The original operator records, exact HTML proofreading packets and full presentation manifest are retained in the private audit archive. All 282 presentation inputs were byte-verified at this binding. This pinned record is the portable publication manifest; it does not redistribute the embedded product screenshots or local paths.",
+  "articles": [
+    {
+      "key": "canned_food_14",
+      "target": "content/posts/emergency-canned-food.md",
+      "draft_sha256": "4d32f07b91726dea2c5a8d4e3a291ec97e51108ef967c6f2a6bf019e9d1393cd",
+      "published_sha256": "96b17b39d8a1946b1fb0ee569aba96ef0ceb55dae569c4eb94490b69949f43c5"
+    },
+    {
+      "key": "shopping_list_14",
+      "target": "content/posts/supermarket-emergency-food-list.md",
+      "draft_sha256": "0134a75a5b463ff9cbd93999d83e2b26fda70a50aa9c424fa7331586882fd575",
+      "published_sha256": "1f2eebd2c84aa2fae90595132212592db95f11e63e57bd498c9ebe583f5da26a"
+    }
+  ],
+  "reviewed_dependencies": {
+    "assets/css/content14-visual.css": "4dfdf37e6ad7d8a404ad4c028fde6df9176daec8deb20245d400fbfc952b49f6",
+    "data/article-evidence-content14.json": "561a3d6b4d3ee8877b06ce4d802f69d1a60afdbb0c9ec29e98f24f29fd5ef24d",
+    "data/content14-product-images.json": "4a90914d1b3cb5408893101dccd3a949d72ecd9c49992da1ce6ecbfb7db5d3a3",
+    "data/content14-visual.json": "3266857f6facb118f17716f14304f999e7f2389a6c85129f43f2be79c0717e8d",
+    "docs/image-licenses.json": "6bc54069cc244813487aca0677c8eb335775b3f93c657ddcde10da7d9b294d80",
+    "docs/sources/content14/excerpts/30.txt": "4d87b54184841d27f8a9cecb361cd404e158a4da636a5e93a004b68c79f4b10f",
+    "docs/sources/content14/excerpts/31.txt": "f9c496eb4b312e25dc2c536626b3bc8f15bea32e817759fd6c704111ce553aaf",
+    "docs/sources/content14/excerpts/32.txt": "d3fe71e35d13c3cc2660604e30d17de6c8964ca58bfc77e7da0d7f0e13ae03de",
+    "docs/sources/content14/excerpts/33.txt": "28b1e0c0657ea2078bc2bd8e88409c59b5b95f23d662880241d2fea6c9d48353",
+    "docs/sources/content14/excerpts/34.txt": "fa048527fd621571717e596a8f15b4228f3f801c038165827806c7f97d675c16",
+    "docs/sources/content14/excerpts/35.txt": "8850f8341f90d5691e5c33abad1633244b4e7ff9c0a27080d3eb59c2530d1f0f",
+    "docs/sources/content14/excerpts/36.txt": "5e6d523f29e02337182365d1569de79f9e57527a736ce4fa7410b18bb48cc9e5",
+    "docs/sources/content14/excerpts/37.txt": "df3dd018a05b8e31bc075caa974049b74c1c005467c5deffb68da2726c6d0a1a",
+    "docs/sources/content14/excerpts/38.txt": "af480a58e80d7ff773cb409f6594fb827c761ebfd8ab0950ebafa8f8b0af0787",
+    "docs/sources/content14/excerpts/39.txt": "565bb7a012f8749d3bf99193e1c9d58903b0e3cf1a31be9c92011a9c1eb51c6e",
+    "docs/sources/content14/excerpts/40.txt": "84d416d341c320fd11581afa87d00da560cec571ba3785538eaa1bf5bca06322",
+    "docs/sources/content14/excerpts/41.txt": "8b65a5b0416477f9267d63e04912c70e7d817d2982b640f14fa49bdcc1d7cf5f",
+    "docs/sources/content14/ledger.json": "8682c31730783647f8b7cf250cf90e5aff83a67319c104388f1aa09dd8da5ead",
+    "docs/sources/content14/retrieval.json": "db309577d82f7f64e21c50c1b92220b2fc89f93cc5bceb6f80ee81356aac9972",
+    "hugo.toml": "01f0dbd1b88626b105aa21bd211079bea5e327d596de94ca11adb124e6a41e4f",
+    "layouts/_partials/article-references.html": "ffe522320a73238fdf9536b5b2abbc6c21a780bd8c9caf8b12ecb5246b5079f0",
+    "layouts/shortcodes/visual-panel.html": "b3256cb5c152aa3c5061efaafd06598aae33651d7d5a4934fcb59ed526fe8537",
+    "layouts/single.html": "e86190c9b619f08615efec32ee8eec6416fa2b7c04418f4c273403f93be3ded7",
+    "layouts/sitemap.xml": "851f8db71e767822c266f3524979846db3de4aeb70603ed909422af2928c7912",
+    "static/images/content14/fruit-5187413991.webp": "e1b4b7fc6e2073b3e6509c76710363d944c6e5707363a166965cd2908ee0eb4f",
+    "static/images/content14/main-5741064201.webp": "8bb17e9ec5bb57ca8593060ded62c2571f9ff6fc3ed48ce70525be06d99111ca",
+    "static/images/content14/side-4477728568.webp": "36aa329810229fc620275433170749055f6461616476f6972a403659d10ad6a0",
+    "static/images/content14/snack-53352435401.webp": "74f23c01ea0f2dd342880722a9255ce56b2c01aae49858568cd83f34daff1de9",
+    "static/images/content14/staple-2850451575.webp": "f8283efb3afb76ebe33c0a4d44ad3e665dbd181ff1692a7ed6ed58fd23706f5f",
+    "static/images/photos/water-bottles.webp": "9c6a5118500c860c2592928c3403cabc1483669ad0d11b18980f40fbad85e087"
+  },
+  "rights_ledger_sha256": "d099dafab486aab574aa19dbd9585c8ad9dd56e4731b68facd5158a00e5dfc12"
+}

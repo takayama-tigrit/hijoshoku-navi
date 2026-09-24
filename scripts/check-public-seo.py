@@ -11,7 +11,8 @@ from xml.etree import ElementTree
 
 ORIGIN = 'https://hijoshoku-navi.com'
 ARTICLES = ('/guide/', '/ranking/', '/posts/alpha-mai-osusume/',
-            '/posts/emergency-food-set-check/', '/posts/emergency-food-side-dishes/')
+            '/posts/emergency-food-set-check/', '/posts/emergency-food-side-dishes/',
+            '/posts/emergency-canned-food/', '/posts/supermarket-emergency-food-list/')
 ROUTES = (*ARTICLES, '/sitemap.xml', '/robots.txt')
 JST = timezone(timedelta(hours=9))
 SCOPE = 'public technical SEO only; not indexing, traffic, attribution or revenue'

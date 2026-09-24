@@ -17,8 +17,11 @@ assert manifest['human_review']=='confirmed_no_changes'
 content12_confirmation=load('content12_confirmation')
 content12_confirmation.verify()
 additional=json.loads((ROOT/'docs/reviews/content-12-human-proofreading.json').read_text())
-articles=manifest['articles']+additional['articles']
+content14_confirmation=load('content14_confirmation')
+content14=content14_confirmation.verify()
+articles=manifest['articles']+additional['articles']+content14['articles']
 expected={a['target'] for a in articles}
+assert len(expected)==len(articles), 'duplicate confirmed article target'
 utility={'content/about/index.md','content/privacy/index.md','content/photo-credits/index.md'}
 public={str(p.relative_to(ROOT)) for p in (ROOT/'content').rglob('*.md') if p.name!='_index.md' and str(p.relative_to(ROOT)) not in utility and not re.search(r'^draft: true$',p.read_text(),re.M)}
 assert expected==public, 'exact published article coverage'

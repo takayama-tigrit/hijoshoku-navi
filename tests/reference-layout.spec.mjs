@@ -25,12 +25,37 @@ const base = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch(process.env.PLAYWRIGHT_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH } : process.platform === 'darwin' ? { channel: 'chrome' } : {});
 const ledger = JSON.parse(await readFile('docs/image-licenses.json', 'utf8')).images;
 const editorial = JSON.parse(await readFile('data/editorial.json','utf8'));
-const expectedStoryPaths = [];
-for (const {file} of Object.values(JSON.parse(await readFile('data/article-evidence.json','utf8')).articles)) {
- if (!file.startsWith('content/')) continue; // Historical evidence is not a public route.
- const source=await readFile(file,'utf8');
- if (!/^draft:\s*true\s*$/m.test(source)) expectedStoryPaths.push('/'+file.replace(/^content\//,'').replace(/(?:\/index)?\.md$/,'')+'/');
+// Independent published-route contract; do not infer the expectation from generated cards.
+const expectedStoryPaths = [
+ "/guide/",
+ "/ranking/",
+ "/posts/alpha-mai-osusume/",
+ "/posts/emergency-food-set-check/",
+ "/posts/emergency-food-side-dishes/",
+ "/posts/emergency-water-bottles/",
+ "/posts/emergency-food-for-one/",
+ "/posts/emergency-food-storage/",
+ "/posts/rolling-stock-routine/",
+ "/posts/emergency-food-snacks/",
+ "/posts/pack-rice-or-alpha-rice/",
+ "/posts/emergency-food-to-go/",
+ "/posts/emergency-canned-food/",
+ "/posts/supermarket-emergency-food-list/"
+];
+const currentEvidence = JSON.parse(await readFile('data/article-evidence.json','utf8')).articles;
+const additionalEvidence = JSON.parse(await readFile('data/article-evidence-content14.json','utf8')).articles;
+assert.deepEqual(Object.keys(additionalEvidence).sort(), ['canned_food_14', 'shopping_list_14']);
+assert.equal(additionalEvidence.canned_food_14.file, 'content/posts/emergency-canned-food.md');
+assert.equal(additionalEvidence.shopping_list_14.file, 'content/posts/supermarket-emergency-food-list.md');
+assert(Object.keys(additionalEvidence).every(key => !(key in currentEvidence)), 'evidence keys must not collide');
+const publishedEvidencePaths = [];
+for (const {file} of [...Object.values(currentEvidence), ...Object.values(additionalEvidence)]) {
+ if (!file.startsWith('content/')) continue; // Preserve historical evidence outside publication.
+ const source = await readFile(file,'utf8');
+ if (!/^draft:\s*true\s*$/m.test(source)) publishedEvidencePaths.push('/'+file.replace(/^content\//,'').replace(/(?:\/index)?\.md$/,'')+'/');
 }
+assert.equal(new Set(publishedEvidencePaths).size, publishedEvidencePaths.length, 'published evidence routes must be unique');
+assert.deepEqual([...publishedEvidencePaths].sort(), [...expectedStoryPaths].sort(), 'exact approved public article set');
 const bodyPhotoIds = {
  '/guide/': ['meal', 'bread'],
  '/ranking/': ['bread', 'meal'],

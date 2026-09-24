@@ -1,0 +1,19 @@
+/* Opt-in only; uses the site's approved colour/type tokens. */
+.article-content .visual-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:24px 0 40px;align-items:start}
+.article-content .visual-entry{min-width:0;border-bottom:1px solid var(--line);padding-bottom:16px}
+.article-content .visual-photo{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;margin:0 0 14px;border:0}
+.article-content .visual-panel-cans .visual-photo{aspect-ratio:1;object-fit:contain;background:white}
+.article-content .visual-photo-link{display:block;border:0}
+.article-content .visual-entry h3{font-size:19px;line-height:1.6;border:0;padding:0;margin:0 0 10px}
+.article-content .visual-entry p{font-size:15px;line-height:1.75;margin:0 0 10px}
+.article-content .visual-entry .visual-condition{font-size:17px}
+.article-content .visual-entry .visual-allergens{font-size:14px}
+.article-content .visual-entry .visual-credit{font-size:11px;line-height:1.6;color:var(--muted)}
+.article-content .visual-detail{display:flex;align-items:center;min-height:48px;font-size:14px;font-weight:700;line-height:1.7;text-decoration:underline;text-underline-offset:4px;margin-top:8px}
+.article-content .visual-credits{grid-column:1/-1;font-size:12px;color:var(--muted)}
+.article-content .visual-credits summary{cursor:pointer;padding:10px 0;min-height:44px;text-decoration:underline;text-underline-offset:3px}
+.article-content .visual-credits ul{padding-left:18px;overflow-wrap:anywhere}
+.article-content .visual-credits li{font-size:12px;line-height:1.7}
+.article-content .visual-entry .visual-sale-unit{font-size:13px}
+.article-content [id^="can-"],.article-content [id^="category-"]{scroll-margin-top:100px}
+@media(max-width:600px){.article-content .visual-panel{gap:24px 14px}.article-content .visual-panel-cans{grid-template-columns:1fr}.article-content .visual-panel-cans .visual-photo{max-height:240px;aspect-ratio:4/3}.article-content .visual-panel-shopping h3{font-size:17px}.article-content .visual-panel-shopping p,.article-content .visual-panel-shopping .visual-condition{font-size:14px}.article-content .visual-panel-shopping .visual-note{font-size:13px}.article-content .visual-panel-shopping .visual-credit{font-size:10px}}

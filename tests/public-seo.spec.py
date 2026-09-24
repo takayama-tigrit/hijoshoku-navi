@@ -13,6 +13,9 @@ from unittest.mock import patch
 SOURCE = Path(__file__).resolve().parents[1] / 'scripts' / 'check-public-seo.py'
 
 
+EXPECTED_ARTICLES = ('/guide/', '/ranking/', '/posts/alpha-mai-osusume/', '/posts/emergency-food-set-check/', '/posts/emergency-food-side-dishes/', '/posts/emergency-canned-food/', '/posts/supermarket-emergency-food-list/')
+EXPECTED_ROUTES = (*EXPECTED_ARTICLES, '/sitemap.xml', '/robots.txt')
+
 class PublicSeoTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -30,12 +33,12 @@ class PublicSeoTests(unittest.TestCase):
 
     def fixtures(self, mod):
         pages = {}
-        for route in mod.ARTICLES:
+        for route in EXPECTED_ARTICLES:
             url = mod.ORIGIN + route
             ld = {'@context': 'https://schema.org', '@graph': [
                 {'@type': 'Article', 'headline': 'Fixture article', 'mainEntityOfPage': url}]}
             pages[route] = (200, 'text/html', '', '<title>Fixture</title><meta name="description" content="Fixture description"><link rel="canonical" href="'+url+'"><h1>Fixture article</h1><script type="application/ld+json">'+json.dumps(ld)+'</script>')
-        pages['/sitemap.xml'] = (200, 'application/xml', '', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+mod.ORIGIN+r+'</loc></url>' for r in mod.ARTICLES)+'</urlset>')
+        pages['/sitemap.xml'] = (200, 'application/xml', '', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+mod.ORIGIN+r+'</loc></url>' for r in EXPECTED_ARTICLES)+'</urlset>')
         pages['/robots.txt'] = (200, 'text/plain', '', 'User-agent: *\nDisallow:\nSitemap: '+mod.ORIGIN+'/sitemap.xml\n')
         return pages
 
@@ -45,9 +48,10 @@ class PublicSeoTests(unittest.TestCase):
             requested.append(route); return data[route]
         result = m.audit(fetch)
         self.assertEqual(result['status'], 'PASS')
-        self.assertEqual(requested, ['/guide/', '/ranking/', '/posts/alpha-mai-osusume/',
-                                    '/posts/emergency-food-set-check/', '/posts/emergency-food-side-dishes/',
-                                    '/sitemap.xml', '/robots.txt'])
+        self.assertEqual(tuple(m.ARTICLES), EXPECTED_ARTICLES)
+        self.assertEqual(tuple(m.ROUTES), EXPECTED_ROUTES)
+        self.assertEqual(tuple(requested), EXPECTED_ROUTES)
+        self.assertEqual(len(requested), len(set(requested)))
         self.assertEqual(result['measurement_scope'], 'public technical SEO only; not indexing, traffic, attribution or revenue')
         self.assertNotIn('sessions', result)
 
@@ -131,16 +135,18 @@ class PublicSeoTests(unittest.TestCase):
 
     def test_sitemap_requires_each_cohort_url_exactly_once(self):
         m = self.module()
-        for label in ('duplicate', 'missing'):
-            with self.subTest(label=label):
-                data = self.fixtures(m)
-                body = data['/sitemap.xml'][3]
-                entry = '<url><loc>' + m.ORIGIN + m.ARTICLES[0] + '</loc></url>'
-                body = body.replace(entry, entry + entry if label == 'duplicate' else '')
-                data['/sitemap.xml'] = (200, 'application/xml', '', body)
-                result = m.audit(data.__getitem__)
-                self.assertEqual(result['status'], 'FAIL')
-                self.assertIs(result['site_checks']['article_sitemap_membership'], False)
+        for route in EXPECTED_ARTICLES:
+            for label in ('duplicate', 'missing'):
+                with self.subTest(route=route, label=label):
+                    data = self.fixtures(m)
+                    body = data['/sitemap.xml'][3]
+                    entry = '<url><loc>' + m.ORIGIN + route + '</loc></url>'
+                    self.assertEqual(body.count(entry), 1)
+                    body = body.replace(entry, entry + entry if label == 'duplicate' else '')
+                    data['/sitemap.xml'] = (200, 'application/xml', '', body)
+                    result = m.audit(data.__getitem__)
+                    self.assertEqual(result['status'], 'FAIL')
+                    self.assertIs(result['site_checks']['article_sitemap_membership'], False)
 
     def test_sitemap_current_optional_lastmod_shape_is_supported(self):
         m = self.module(); data = self.fixtures(m)

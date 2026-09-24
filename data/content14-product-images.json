@@ -1,0 +1,31 @@
+{
+  "mediaId": "689409",
+  "promotionId": "54",
+  "candidateSourceSha256": "69712fa33b08e97e61448a05700cd18aa9348851a74a81a88378aece0ba8c6ef",
+  "images": {
+    "hotei-yakitori-tare-75g": {
+      "id": "hotei-yakitori-tare-75g",
+      "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/kkyamasakishop/cabinet/07353864/0917_tare.jpg?_ex=300x300",
+      "href": "https://af.moshimo.com/af/c/click?a_id=5810105&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fitem.rakuten.co.jp%2Fkkyamasakishop%2F49025110114991%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fkkyamasakishop%2Fi%2F10001055%2F",
+      "destination": "https://item.rakuten.co.jp/kkyamasakishop/49025110114991/",
+      "name": "ホテイフーズコーポレーション ホテイ やきとり たれ味 75g",
+      "officialCode": "<a href=\"//af.moshimo.com/af/c/click?a_id=5810105&amp;p_id=54&amp;pc_id=54&amp;pl_id=616&amp;url=https%3A%2F%2Fitem.rakuten.co.jp%2Fkkyamasakishop%2F49025110114991%2F&amp;m=http%3A%2F%2Fm.rakuten.co.jp%2Fkkyamasakishop%2Fi%2F10001055%2F\" rel=\"nofollow\" referrerpolicy=\"no-referrer-when-downgrade\"><img src=\"//thumbnail.image.rakuten.co.jp/@0_mall/kkyamasakishop/cabinet/07353864/0917_tare.jpg?_ex=300x300\" alt=\"\" style=\"border: none;\" /></a><img src=\"//i.moshimo.com/af/i/impression?a_id=5810105&amp;p_id=54&amp;pc_id=54&amp;pl_id=616\" alt=\"\" loading=\"lazy\" width=\"1\" height=\"1\" style=\"border: 0px;\">",
+      "source": "https://af.moshimo.com/af/shop/promotion/source/rakuten?shop_site_id=689409&promotion_id=54",
+      "mediaId": "689409",
+      "retrievedAt": "2026-09-23T15:39:04.870Z",
+      "salesUnit": "1缶（商品名に単品75g。総量75g・固形量55gは商品指定側条件）"
+    },
+    "tsukihana-saba-mizuni-200g-jan4901901145899": {
+      "id": "tsukihana-saba-mizuni-200g-jan4901901145899",
+      "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/at-life/cabinet/h/4901901145899.jpg?_ex=300x300",
+      "href": "https://af.moshimo.com/af/c/click?a_id=5810105&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fitem.rakuten.co.jp%2Fat-life%2F4901901145899-wa%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fat-life%2Fi%2F10184443%2F",
+      "destination": "https://item.rakuten.co.jp/at-life/4901901145899-wa/",
+      "name": "【決算還元】マルハニチロ　さば水煮　月花　缶詰 200g(食品　缶詰め　サバ)(4901901145899)※無くなり次第終了",
+      "officialCode": "<a href=\"//af.moshimo.com/af/c/click?a_id=5810105&amp;p_id=54&amp;pc_id=54&amp;pl_id=616&amp;url=https%3A%2F%2Fitem.rakuten.co.jp%2Fat-life%2F4901901145899-wa%2F&amp;m=http%3A%2F%2Fm.rakuten.co.jp%2Fat-life%2Fi%2F10184443%2F\" rel=\"nofollow\" referrerpolicy=\"no-referrer-when-downgrade\"><img src=\"//thumbnail.image.rakuten.co.jp/@0_mall/at-life/cabinet/h/4901901145899.jpg?_ex=300x300\" alt=\"\" style=\"border: none;\" /></a><img src=\"//i.moshimo.com/af/i/impression?a_id=5810105&amp;p_id=54&amp;pc_id=54&amp;pl_id=616\" alt=\"\" loading=\"lazy\" width=\"1\" height=\"1\" style=\"border: 0px;\">",
+      "source": "https://af.moshimo.com/af/shop/promotion/source/rakuten?shop_site_id=689409&promotion_id=54",
+      "mediaId": "689409",
+      "retrievedAt": "2026-09-23T15:39:04.485Z",
+      "salesUnit": "1缶（200g）。商品名に「月花 缶詰 200g」「4901901145899」。"
+    }
+  }
+}

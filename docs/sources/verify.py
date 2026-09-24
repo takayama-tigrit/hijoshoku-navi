@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Offline checks for retained evidence and every registered editorial article."""
+if not __debug__:
+    raise RuntimeError('evidence verification does not support Python optimization')
+
 import hashlib
 import json
 from pathlib import Path
@@ -16,6 +19,37 @@ ARTICLES = [ROOT / p for p in (
 ledger = json.loads((HERE / "ledger.json").read_text())
 records = json.loads((HERE / "retrieval.json").read_text())
 registry = json.loads((ROOT / 'data/article-evidence.json').read_text())['articles']
+# CONTENT-14 is a separately confirmed dataset: never mutate historical pins.
+extra_path = ROOT / 'data/article-evidence-content14.json'
+extra_dir = HERE / 'content14'
+assert extra_path.exists() == extra_dir.exists(), 'content14 incomplete dataset'
+if extra_path.exists():
+    extra = json.loads(extra_path.read_text())['articles']
+    targets = {'canned_food_14': 'content/posts/emergency-canned-food.md',
+               'shopping_list_14': 'content/posts/supermarket-emergency-food-list.md'}
+    assert set(extra) == set(targets), 'content14 exact article coverage'
+    assert not set(extra) & set(registry), 'content14 article key collision'
+    for key, target in targets.items():
+        assert extra[key]['file'] == target, 'content14 exact destination'
+
+    extra_sources = json.loads((extra_dir / 'ledger.json').read_text())
+    extra_records = json.loads((extra_dir / 'retrieval.json').read_text())
+    ids = [s['id'] for s in extra_sources]
+    assert all(type(i) is int and i > 0 for i in ids), 'content14 invalid source ID'
+    assert len(ids) == len(set(ids)) and not set(ids) & {s['id'] for s in ledger['sources']}, 'content14 source ID collision'
+    retrieval_ids = [r['id'] for r in extra_records]
+    assert len(retrieval_ids) == len(set(retrieval_ids)) and set(retrieval_ids) == set(ids), 'content14 retrieval IDs'
+    assert not set(retrieval_ids) & {r['id'] for r in records}, 'content14 retrieval ID collision'
+    for record in extra_records:
+        assert record['excerpt'] == f"excerpts/{record['id']}.txt", 'content14 exact excerpt path'
+        record['excerpt'] = 'content14/' + record['excerpt']
+    registry.update(extra)
+    ledger['sources'].extend(extra_sources)
+    records.extend(extra_records)
+import sys
+sys.path.insert(0, str(ROOT / 'scripts'))
+from content14_confirmation import verify as verify_content14
+verify_content14(ROOT)
 registered_paths = {ROOT / a['file'] for a in registry.values()}
 assert len(registered_paths) == len(registry), 'duplicate article file'
 assert set(ARTICLES) <= registered_paths, 'baseline article missing'

@@ -12,8 +12,10 @@ class EvidenceVerifierTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix='hijoshoku-source-test-')
         self.root = Path(self.temp.name)
-        for rel in ('content', 'data', 'docs/sources', 'docs/reviews'):
+        for rel in ('content', 'data', 'docs/sources', 'docs/reviews', 'scripts', 'layouts', 'assets', 'static'):
             shutil.copytree(ROOT / rel, self.root / rel)
+        for rel in ('hugo.toml', 'docs/image-licenses.json', 'docs/image-licenses-content14.json'):
+            shutil.copy2(ROOT / rel, self.root / rel)
 
     def tearDown(self):
         self.temp.cleanup()
