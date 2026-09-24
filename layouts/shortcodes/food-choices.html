@@ -1,0 +1,14 @@
+{{- $data := readFile "data/food-choices.json" | transform.Unmarshal -}}
+{{- $photos := readFile "data/product-images.json" | transform.Unmarshal -}}
+{{- $canPhotos := readFile "data/content14-visual.json" | transform.Unmarshal -}}
+{{- $active := partial "affiliate-active.html" .Page -}}
+{{- $css := resources.Get "css/food-choices.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<div class="food-choices" aria-label="食べ方と足りない食品から選ぶ">
+{{ range $data.entries }}{{ $entry := . }}{{ $photo := dict }}
+{{ if eq .photoKind "canned" }}{{ range $canPhotos.groups.cans.entries }}{{ if eq .id "hotei" }}{{ $photo = dict "image" .photo.src "href" .photo.href }}{{ end }}{{ end }}{{ else }}{{ $photo = index $photos.images .photoKey }}{{ end }}
+{{ if not $photo }}{{ errorf "food choice photo missing: %s" .id }}{{ end }}
+<section class="food-choice{{ if not $active }} no-photo{{ end }}" data-food-choice="{{ .id }}">
+{{ if $active }}<div class="food-media"><a href="{{ $photo.href }}" rel="sponsored nofollow" referrerpolicy="origin" aria-label="{{ .photoAlt }}の販売ページ"><img src="{{ $photo.image }}" alt="{{ .photoAlt }}" width="300" height="300" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a>{{ with .unit }}<p class="food-unit">{{ . }}</p>{{ end }}</div>{{ end }}
+<div class="food-copy"><h3>{{ .title }}</h3><p>{{ .name }}</p><p><mark class="key-point"><strong>{{ .condition }}</strong></mark></p><a class="food-detail" href="{{ .href }}">{{ .label }} →</a></div></section>
+{{ end }}</div>

@@ -40,8 +40,11 @@ def verify(root=ROOT):
         assert public.count(b'\ndraft: false\n') == 1 and digest(public) == article['published_sha256'], 'content14 published bytes'
         draft = public.replace(b'\ndraft: false\n', b'\ndraft: true\n', 1)
         assert digest(draft) == article['draft_sha256'], 'content14 draft identity'
+    from seo_demand_confirmation import SHARED_CONTENT14, verify as verify_seo
     for rel, expected in record['reviewed_dependencies'].items():
-        assert digest((root / rel).read_bytes()) == expected, 'content14 reviewed dependency: ' + rel
+        if rel not in SHARED_CONTENT14:
+            assert digest((root / rel).read_bytes()) == expected, 'content14 reviewed dependency: ' + rel
+    verify_seo(root)
     assert digest((root / 'docs/image-licenses-content14.json').read_bytes()) == record['rights_ledger_sha256'], 'content14 rights ledger'
     registry = json.loads((root / 'data/article-evidence-content14.json').read_text())['articles']
     assert {key: value['file'] for key, value in registry.items()} == TARGETS, 'content14 evidence binding'

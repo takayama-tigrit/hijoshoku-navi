@@ -12,9 +12,9 @@ class EvidenceVerifierTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix='hijoshoku-source-test-')
         self.root = Path(self.temp.name)
-        for rel in ('content', 'data', 'docs/sources', 'docs/reviews', 'scripts', 'layouts', 'assets', 'static'):
+        for rel in ('content', 'data', 'docs', 'scripts', 'layouts', 'assets', 'static'):
             shutil.copytree(ROOT / rel, self.root / rel)
-        for rel in ('hugo.toml', 'docs/image-licenses.json', 'docs/image-licenses-content14.json'):
+        for rel in ('hugo.toml',):
             shutil.copy2(ROOT / rel, self.root / rel)
 
     def tearDown(self):
@@ -40,7 +40,10 @@ class EvidenceVerifierTests(unittest.TestCase):
         p.write_text(text.replace('4人で3日分なら、飲料水の目安は36L。', '4人で3日分なら、飲料水の目安は99L。'))
         result = self.verify()
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn('stale claim mapping', result.stderr)
+        # Sealed published bytes are checked before semantic claim mappings.
+        self.assertEqual(result.stderr.strip().splitlines()[-1],
+                         'AssertionError: seo published bytes: content/guide/index.md')
+        self.assertEqual(result.stdout, '')
 
     def test_primary_checklist_safety_change_is_rejected(self):
         p = self.root / 'content/posts/emergency-food-storage.md'
@@ -50,7 +53,9 @@ class EvidenceVerifierTests(unittest.TestCase):
         p.write_text(text.replace(old, 'メーカー指定の包装・保存条件を変えてよい場合'))
         result = self.verify()
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn('stale claim mapping', result.stderr)
+        self.assertEqual(result.stderr.strip().splitlines()[-1],
+                         'AssertionError: seo published bytes: content/posts/emergency-food-storage.md')
+        self.assertEqual(result.stdout, '')
 
     def test_new_water_table_value_is_rejected(self):
         p = self.root / 'content/posts/emergency-water-bottles.md'
@@ -59,7 +64,9 @@ class EvidenceVerifierTests(unittest.TestCase):
         p.write_text(text.replace('500mL×18本 | 9L', '500mL×18本 | 8L'))
         result = self.verify()
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn('stale claim mapping', result.stderr)
+        self.assertEqual(result.stderr.strip().splitlines()[-1],
+                         'AssertionError: published text equals confirmed source except draft flag')
+        self.assertEqual(result.stdout, '')
 
     def test_unregistered_article_fails_closed(self):
         (self.root / 'content/posts/unregistered.md').write_text('---\nevidenceKey: unregistered\n---\nUnmapped article\n')

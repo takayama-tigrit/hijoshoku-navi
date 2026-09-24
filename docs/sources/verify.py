@@ -49,7 +49,86 @@ if extra_path.exists():
 import sys
 sys.path.insert(0, str(ROOT / 'scripts'))
 from content14_confirmation import verify as verify_content14
+from editorial_confirmation import verify as verify_editorial
 verify_content14(ROOT)
+verify_editorial(ROOT)
+
+def load_seo_evidence(root, previous_registry, previous_ledger, previous_records):
+    """Replace exactly five active bindings; never rewrite a historical registry."""
+    if not __debug__:
+        raise RuntimeError('evidence verification does not support Python optimization')
+    from seo_demand_confirmation import TARGETS
+    directory = root / 'docs/sources/seo-demand01'
+    extra = json.loads((root / 'data/article-evidence-seo-demand01.json').read_bytes())['articles']
+    assert {key: a['file'] for key, a in extra.items()} == TARGETS, 'seo exact evidence coverage'
+    assert not set(extra) & set(previous_registry), 'seo article key collision'
+    replaced = {key.removesuffix('_seo01'): target for key, target in TARGETS.items()}
+    assert all(previous_registry[key]['file'] == target for key, target in replaced.items()), 'seo predecessor evidence binding'
+    assert {key for key, a in previous_registry.items() if a['file'] in TARGETS.values()} == set(replaced), 'seo exact replaced bindings'
+    extra_sources = json.loads((directory / 'ledger.json').read_bytes())
+    ids = [s['id'] for s in extra_sources]
+    assert all(type(i) is int for i in ids), 'seo invalid source ID'
+    assert len(ids) == len(set(ids)) and not set(ids) & {s['id'] for s in previous_ledger['sources']}, 'seo source ID collision'
+    assert set(ids) == set(range(42, 49)), 'seo exact source coverage'
+    extra_records = json.loads((directory / 'retrieval.json').read_bytes())
+    retrieval_ids = [r['id'] for r in extra_records]
+    assert all(type(i) is int for i in retrieval_ids), 'seo invalid retrieval ID'
+    assert len(retrieval_ids) == len(set(retrieval_ids)) and not set(retrieval_ids) & {r['id'] for r in previous_records}, 'seo retrieval ID collision'
+    assert set(retrieval_ids) == set(ids), 'seo retrieval coverage'
+    assert {p.name for p in (directory / 'excerpts').iterdir()} == {f'{i}.txt' for i in ids}, 'seo excerpt coverage'
+    by_id = {s['id']: s for s in extra_sources}
+    for record in extra_records:
+        assert record['excerpt'] == f"excerpts/{record['id']}.txt", 'seo exact excerpt path'
+        raw = (directory / record['excerpt']).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == record['excerpt_sha256'], 'seo excerpt hash'
+        assert type(record['status']) is int and record['status'] == 200, 'seo retrieval status'
+        checked = datetime.fromisoformat(record['checked_at'].replace('Z', '+00:00'))
+        assert checked.tzinfo and checked <= datetime.now(timezone.utc), 'seo invalid or future evidence date'
+        source = by_id[record['id']]
+        assert date.fromisoformat(source['accessed']) == checked.date(), 'seo display/retrieval date mismatch'
+        assert source['url'] == record['url'].rstrip('/'), 'seo retrieval URL'
+        assert re.fullmatch(r'[0-9a-f]{64}', record['response_sha256']), 'seo response hash identity'
+        assert source.get('quotes'), 'seo quote coverage'
+        for quote in source['quotes']:
+            assert quote['text'] and quote['text'] in raw.decode(), 'seo quote mismatch'
+            assert date.fromisoformat(quote['added']) == checked.date(), 'seo quote date'
+        record['excerpt'] = 'seo-demand01/' + record['excerpt']
+    active = {key: value for key, value in previous_registry.items() if key not in replaced}
+    active.update(extra)
+    return active, {**previous_ledger, 'sources': previous_ledger['sources'] + extra_sources}, previous_records + extra_records
+
+
+def verify_food_choices(root, article_registry, source_map):
+    """Bind every card proposition and its provenance to the article reference list."""
+    if not __debug__:
+        raise RuntimeError('evidence verification does not support Python optimization')
+    data = json.loads((root / 'data/food-choices.json').read_bytes())
+    entries = data['entries']
+    expected = {'rice', 'bread', 'sides', 'cans', 'snacks', 'sets'}
+    assert data['version'] == 1 and len(entries) == 6 and {e['id'] for e in entries} == expected, 'seo UI exact card coverage'
+    ranking = article_registry['ranking_editorial11_seo01']
+    claims = ranking.get('ui_claims', [])
+    assert len(claims) == 6 and {c['id'] for c in claims} == expected, 'seo UI exact claim coverage'
+    assert {key for key, a in article_registry.items() if a.get('ui_claims')} == {'ranking_editorial11_seo01'}, 'seo UI article coverage'
+    assert (root / ranking['file']).read_text().count('{{< food-choices >}}') == 1, 'seo UI article binding'
+    cards = {e['id']: e for e in entries}
+    mapped = set()
+    for claim in claims:
+        assert claim['dataset'] == 'data/food-choices.json', 'seo UI dataset'
+        card = cards[claim['id']]
+        assert claim['text'] == card['condition'], 'seo UI claim text'
+        ids = claim['source_ids']
+        assert (ids and all(type(i) is int for i in ids)
+                and len(ids) == len(set(ids)) and len(card['source_ids']) == len(set(card['source_ids']))
+                and set(ids) == set(card['source_ids'])), 'seo UI claim sources'
+        assert set(ids) <= set(ranking['source_ids']) & set(source_map), 'seo UI reference coverage'
+        mapped.update(ids)
+    return {'ranking_editorial11_seo01': mapped}
+
+
+legacy_registry, legacy_ledger, legacy_records = registry, ledger, records
+registry, ledger, records = load_seo_evidence(ROOT, registry, ledger, records)
+
 registered_paths = {ROOT / a['file'] for a in registry.values()}
 assert len(registered_paths) == len(registry), 'duplicate article file'
 assert set(ARTICLES) <= registered_paths, 'baseline article missing'
@@ -69,6 +148,7 @@ assert set(range(1, 13)) <= sources.keys(), 'baseline evidence missing'
 assert {r['id'] for r in records} == sources.keys(), 'retrieval identity mismatch'
 records_by_id = {r['id']: r for r in records}
 all_cited = set()
+ui_mapped = verify_food_choices(ROOT, registry, sources)
 for record in records:
     raw = (HERE / record["excerpt"]).read_bytes()
     assert hashlib.sha256(raw).hexdigest() == record["excerpt_sha256"]
@@ -103,7 +183,7 @@ for path in ARTICLES:
     assert len(cited) == len(evidence['source_ids'])
     assert cited <= sources.keys()
     assert lastmod and lastmod.group(1) >= max(records_by_id[i]['checked_at'][:10] for i in cited), 'Article revision predates its evidence'
-    mapped = set()
+    mapped = set(ui_mapped.get(key.group(1), ()))
     for claim in evidence['claims']:
         assert semantic_text(claim['text']) in text, (path, 'stale claim mapping', claim['text'])
         assert claim['source_ids'] and set(claim['source_ids']) <= cited

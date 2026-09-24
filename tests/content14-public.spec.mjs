@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {createDraftRelatedFixture} from './draft-related-fixture.mjs';
 import {execFileSync} from 'node:child_process';
 import {mkdtemp,readFile,writeFile,mkdir,cp,access} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
@@ -119,11 +120,12 @@ try{
  }
 }finally{await writeFile(configPath,configRaw);}
 // A fixture tests Hugo draft exclusion; the actual sources remain confirmed public.
+const coherent=await createDraftRelatedFixture({sourceDir:workspace,fixtureDir:path.join(temp,'normal-source'),draftRoutes:pages.map(([slug])=>'/posts/'+slug+'/')});
 const savedArticles=[];
 try{
  for(const [slug] of pages){const f=path.join(workspace,'content/posts',slug+'.md'),raw=await readFile(f,'utf8');savedArticles.push([f,raw]);await writeFile(f,raw.replace(/^draft: false$/m,'draft: true'));}
  const hidden=path.join(temp,'draft-hidden'),shown=path.join(temp,'draft-shown');
- for(const [dest,flags] of [[hidden,[]],[shown,['--buildDrafts']]])execFileSync(hugo,['--destination',dest,'--environment','production','--baseURL','https://hijoshoku-navi.com/','--panicOnWarning',...flags],{cwd:workspace,stdio:'pipe'});
+ for(const [dest,flags] of [[hidden,[...coherent.buildArgs,'--contentDir',path.join(workspace,'content')]],[shown,['--buildDrafts']]])execFileSync(hugo,['--destination',dest,'--environment','production','--baseURL','https://hijoshoku-navi.com/','--panicOnWarning',...flags],{cwd:workspace,stdio:'pipe'});
  const listings=['index.html','posts/index.html','index.xml','posts/index.xml','sitemap.xml'];
  if(await exists(path.join(output,'index.json')))listings.push('index.json');
  for(const [slug] of pages){

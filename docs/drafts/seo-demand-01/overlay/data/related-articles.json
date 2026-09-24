@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "pages": {
+    "/guide/": [
+      "/ranking/",
+      "/posts/supermarket-emergency-food-list/",
+      "/posts/emergency-water-bottles/"
+    ],
+    "/ranking/": [
+      "/posts/alpha-mai-osusume/",
+      "/posts/emergency-food-side-dishes/",
+      "/posts/emergency-food-set-check/"
+    ],
+    "/posts/alpha-mai-osusume/": [
+      "/posts/pack-rice-or-alpha-rice/",
+      "/posts/emergency-food-side-dishes/",
+      "/posts/emergency-water-bottles/"
+    ],
+    "/posts/emergency-canned-food/": [
+      "/posts/emergency-food-side-dishes/",
+      "/posts/supermarket-emergency-food-list/",
+      "/posts/emergency-food-storage/"
+    ],
+    "/posts/emergency-food-for-one/": [
+      "/posts/emergency-food-set-check/",
+      "/posts/supermarket-emergency-food-list/",
+      "/guide/"
+    ],
+    "/posts/emergency-food-set-check/": [
+      "/posts/alpha-mai-osusume/",
+      "/posts/emergency-food-side-dishes/",
+      "/posts/emergency-water-bottles/"
+    ],
+    "/posts/emergency-food-side-dishes/": [
+      "/posts/emergency-canned-food/",
+      "/posts/alpha-mai-osusume/",
+      "/posts/supermarket-emergency-food-list/"
+    ],
+    "/posts/emergency-food-snacks/": [
+      "/posts/emergency-food-to-go/",
+      "/posts/rolling-stock-routine/",
+      "/ranking/"
+    ],
+    "/posts/emergency-food-storage/": [
+      "/posts/emergency-food-to-go/",
+      "/posts/rolling-stock-routine/",
+      "/posts/emergency-water-bottles/"
+    ],
+    "/posts/emergency-food-to-go/": [
+      "/posts/emergency-food-snacks/",
+      "/posts/emergency-food-storage/",
+      "/guide/"
+    ],
+    "/posts/emergency-water-bottles/": [
+      "/guide/",
+      "/posts/alpha-mai-osusume/",
+      "/posts/emergency-food-storage/"
+    ],
+    "/posts/pack-rice-or-alpha-rice/": [
+      "/posts/alpha-mai-osusume/",
+      "/ranking/",
+      "/posts/emergency-water-bottles/"
+    ],
+    "/posts/rolling-stock-routine/": [
+      "/posts/supermarket-emergency-food-list/",
+      "/posts/emergency-food-storage/",
+      "/posts/emergency-food-snacks/"
+    ],
+    "/posts/supermarket-emergency-food-list/": [
+      "/posts/emergency-canned-food/",
+      "/posts/rolling-stock-routine/",
+      "/guide/"
+    ]
+  }
+}

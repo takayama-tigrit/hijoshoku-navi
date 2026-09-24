@@ -1,14 +1,15 @@
 ---
 editorialRevision: editorial11
+seoRevision: seoDemand01
 title: "非常食の収納。外箱の表示を残し、期限が見える棚へ"
 date: 2026-09-20T00:00:00+09:00
-lastmod: 2026-09-20T00:00:00+09:00
+lastmod: 2026-09-24T00:00:00+09:00
 description: "届いた非常食をしまう前に、外箱と個包装の表示を確認。期限が読める配置と、持ち出し用・家置き用の一覧を作ります。"
 seriesTitle: "棚に置くまでの備え"
 storySummary: "外箱と個包装の表示を見て、しまう場所を決めます。賞味期限は手前から読める向きに、重いものは下へ。"
 categories: ["ガイド"]
 tags: ["非常食", "収納", "賞味期限"]
-evidenceKey: storage_editorial11
+evidenceKey: storage_editorial11_seo01
 draft: false
 readingJump: {"href": "#box-check", "label": "外箱を残す条件を確かめる"}
 ---
@@ -54,6 +55,8 @@ readingJump: {"href": "#box-check", "label": "外箱を残す条件を確かめ�
 食品の一覧には「商品名／個数／期限／置き場所／家置き・持ち出し」を記入します。バッグへ入れる持ち出し用と、家で使う家置き用は分けて数えます。同じ食品を両方に数えないようにしましょう。
 
 ごはん、主菜・副菜、お菓子は別の欄に書きます。食品を分散して置いた場合は、それぞれの場所も記入します。家族にもメモの置き場所を伝えておきましょう。
+
+持ち出すバッグに移す分は、[家庭備蓄と分けて数える持ち出し用の食品メモ](/posts/emergency-food-to-go/)に書き残します。
 
 ## 関連記事
 

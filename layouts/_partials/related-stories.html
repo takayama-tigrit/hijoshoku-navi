@@ -1,0 +1,23 @@
+{{- $current := . -}}{{- $t := partial "editorial-config.html" . -}}
+{{- $items := $t.featured -}}
+{{- if fileExists "data/related-articles.json" -}}
+  {{- $data := readFile "data/related-articles.json" | transform.Unmarshal -}}
+  {{- with index $data.pages .RelPermalink -}}
+    {{- $items = slice -}}{{- $seen := slice -}}
+    {{- range . -}}
+      {{- $target := . -}}{{- $p := site.GetPage $target -}}
+      {{- if not $p -}}{{- errorf "related article: unknown target %s" $target -}}
+      {{- else if or (eq $p.RelPermalink $current.RelPermalink) (in $seen $p.RelPermalink) -}}{{- errorf "related article: self/duplicate target %s" $target -}}
+      {{- else if not (where site.RegularPages "RelPermalink" $p.RelPermalink) -}}{{- errorf "related article: unbuilt/draft target %s" $target -}}
+      {{- else -}}
+        {{- $seen = $seen | append $p.RelPermalink -}}
+        {{- $items = $items | append (dict "path" $target) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- range $items -}}{{- $feature := . -}}
+  {{- with site.GetPage .path -}}{{- if ne .RelPermalink $current.RelPermalink -}}
+<div data-testid="related-article">{{ partial "story-card.html" (dict "page" . "feature" $feature) }}<a class="related-read" href="{{ .RelPermalink }}" data-testid="next-action">条件を確認する →</a></div>
+  {{- end -}}{{- end -}}
+{{- end -}}

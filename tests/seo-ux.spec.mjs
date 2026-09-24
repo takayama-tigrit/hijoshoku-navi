@@ -11,6 +11,17 @@ const routes={'/ranking/':3,'/guide/':1,'/posts/emergency-food-snacks/':1,'/post
 const comparisons=JSON.parse(await readFile('data/product-comparisons.json','utf8'));
 const images=JSON.parse(await readFile('data/product-images.json','utf8')).images;
 const searches=JSON.parse(await readFile('data/affiliate-links.json','utf8')).links;
+const choiceEntries=JSON.parse(await readFile('data/food-choices.json','utf8')).entries;
+assert.deepEqual(choiceEntries.map(e=>e.id),['rice','bread','sides','cans','snacks','sets']);
+const choiceSafety={rice:['水160mL','水15℃で60分','熱湯なら15分'],bread:['そのまま食べられます','小麦・卵・乳成分・大豆'],sides:['温めずに','主食の調理は別','大豆・豚肉・りんご'],cans:['総量と固形量','開け方','開封後に食べ切る量','小麦・大豆・鶏肉・りんご'],snacks:['ごはんやおかずの代わりに数えず','食事に添える'],sets:['ごはん12袋','水の有無と量','おかずの在庫']};
+for(const entry of choiceEntries)for(const term of choiceSafety[entry.id])assert(entry.condition.includes(term),`${entry.id}: source safety condition ${term}`);
+const sourceMarkers={};
+for(const route of Object.keys(routes)){
+ const file=route==='/ranking/'||route==='/guide/'?'content'+route+'index.md':'content'+route.slice(0,-1)+'.md';
+ sourceMarkers[route]=[...(await readFile(file,'utf8')).matchAll(/{{< mark "([^"]+)" >}}/g)].map(m=>m[1]);
+ assert(sourceMarkers[route].length>0,'source narrative markers must be explicit: '+route);
+}
+const allowedImageURLs=new Set([...Object.values(images).map(im=>im.image),...JSON.parse(await readFile('data/content14-visual.json','utf8')).groups.cans.entries.map(e=>e.photo.src)]);
 const groups={'/guide/':'guide-white','/posts/emergency-food-snacks/':'snacks','/ranking/':'ranking','/posts/alpha-mai-osusume/':'alpha','/posts/emergency-food-set-check/':'sets','/posts/emergency-food-side-dishes/':'sides'};
 const requiredSaleUnits={'尾西 ひだまりパン プレーン':'1袋70g／写真の販売品は36袋','ハウス 温めずにおいしいカレー まろやか野菜カレー 200g':'1袋200g／写真の販売品は2箱'};
 const rowData=page=>page.locator('.product-comparison tbody tr').evaluateAll(rows=>rows.map(row=>({key:row.getAttribute('data-product-key'),name:row.querySelector('.product-name')?.textContent,photo:row.querySelector('.product-photo')?.getAttribute('href')??null,src:row.querySelector('.product-photo img')?.getAttribute('src')??null,search:row.querySelector('.product-search')?.getAttribute('href'),official:row.querySelector('.product-source')?.getAttribute('href'),condition:row.querySelector('.product-condition mark')?.textContent,note:row.querySelector('.product-note mark')?.textContent,unit:row.querySelector('th .product-sale-unit mark')?.textContent??null})));
@@ -42,16 +53,34 @@ try{
  for(const device of [{name:'mobile',...devices['iPhone 13']},{name:'narrow',viewport:{width:320,height:740}},{name:'desktop',viewport:{width:1440,height:1000}},{name:'noJS',...devices['iPhone 13'],javaScriptEnabled:false}]){
   const {name,...options}=device,context=await browser.newContext(options),page=await context.newPage();
   // Real licensed product images only; no clicks or collection requests in QA.
-  await context.route('**/*',r=>{const u=new URL(r.request().url());return u.origin===base||(r.request().resourceType()==='image'&&['thumbnail.image.rakuten.co.jp','tshop.r10s.jp','image.rakuten.co.jp'].includes(u.hostname))?r.continue():r.abort();});
+  await context.route('**/*',r=>{const u=new URL(r.request().url());return u.origin===base||(r.request().method()==='GET'&&r.request().resourceType()==='image'&&allowedImageURLs.has(u.href))?r.continue():r.abort();});
   for(const [route,count]of Object.entries(routes)){
    const slug=route.replaceAll('/','-');assert.equal((await page.goto(base+route)).status(),200);
    await page.screenshot({path:path.join(artifacts,`${name}${slug}first.png`)});
-   const data=await page.evaluate(()=>({title:document.title,description:document.querySelector('meta[name=description]')?.content,canonical:document.querySelector('link[rel=canonical]')?.href,h1:[...document.querySelectorAll('h1')].map(e=>e.textContent),markers:[...document.querySelectorAll('.article-content mark')].map(e=>e.textContent),rows:document.querySelectorAll('.product-comparison tbody tr').length,images:document.querySelectorAll('.product-photo img').length,og:document.querySelector('meta[property="og:image"]')?.content,ld:[...document.querySelectorAll('script[type="application/ld+json"]')].flatMap(e=>JSON.parse(e.textContent)['@graph']||[JSON.parse(e.textContent)]),noOverflow:document.documentElement.scrollWidth<=innerWidth+1}));
+   const data=await page.evaluate(()=>({title:document.title,description:document.querySelector('meta[name=description]')?.content,canonical:document.querySelector('link[rel=canonical]')?.href,h1:[...document.querySelectorAll('h1')].map(e=>e.textContent),markers:[...document.querySelectorAll('.article-content mark')].map(e=>e.textContent),rows:document.querySelectorAll('.product-comparison tbody tr').length,images:document.querySelectorAll('.product-photo img').length,og:document.querySelector('meta[property="og:image"]')?.content,ld:[...document.querySelectorAll('script[type="application/ld+json"]')].flatMap(e=>JSON.parse(e.textContent)['@graph']||[JSON.parse(e.textContent)]),noOverflow:document.documentElement.scrollWidth<=document.documentElement.clientWidth+1}));
    metrics.push({viewport:name,route,...data});
    await verifyRows(page,route,true,name);
    check(data.h1.length===1&&!!data.description,`${name} ${route}: H1 and description`);
    check(data.canonical==='https://hijoshoku-navi.com'+route,`${name} ${route}: canonical`);
-   check(data.markers.length>=3&&data.markers.length<=16,`${name} ${route}: selective marked judgments, caution and next action`);
+   const legacyMarkers=await page.locator('.article-content mark').evaluateAll(es=>es.filter(e=>!e.closest('.food-choices')).map(e=>e.textContent));
+   check(legacyMarkers.length>=3&&legacyMarkers.length<=16,`${name} ${route}: selective body/product markers excluding the separately checked purpose hub`);
+   const narrativeMarkers=await page.locator('.article-content mark').evaluateAll(es=>es.filter(e=>!e.closest('.food-choices,.product-comparison')).map(e=>e.textContent));
+   check(JSON.stringify(narrativeMarkers)===JSON.stringify(sourceMarkers[route]),`${name} ${route}: exact approved narrative marker text/order, no missing or extra mark`);
+   const hub=page.locator('.food-choices');
+   check(await hub.count()===(route==='/ranking/'?1:0),`${name} ${route}: purpose hub only on its approved route`);
+   if(route==='/ranking/'){
+    const cards=hub.locator('[data-food-choice]');
+    check(JSON.stringify(await cards.evaluateAll(es=>es.map(e=>e.dataset.foodChoice)))===JSON.stringify(choiceEntries.map(e=>e.id)),`${name}: exact six-purpose set/order`);
+    check(await hub.locator('mark').count()===choiceEntries.length,`${name}: exactly one marked condition per purpose, no extra hub markers`);
+    for(const entry of choiceEntries){
+     const card=cards.filter({has:page.locator(`.food-detail[href="${entry.href}"]`)});
+     check(await card.count()===1,`${name} ${entry.id}: unique next-action target`);
+     assert.equal(await card.count(),1,'cannot inspect a missing/duplicate purpose');
+     check(await card.getAttribute('data-food-choice')===entry.id&&await card.locator('h3').textContent()===entry.title,`${name} ${entry.id}: matching purpose identity`);
+     check(JSON.stringify(await card.locator('mark strong').allTextContents())===JSON.stringify([entry.condition]),`${name} ${entry.id}: exact marked selection and safety text from source data`);
+     check(await card.locator('.food-detail').textContent()===entry.label+' →',`${name} ${entry.id}: exact next-action label`);
+    }
+   }
    check(data.rows===count&&data.images===count,`${name} ${route}: all ${count} product rows include photos`);
    check(route==='/posts/emergency-food-snacks/' ? !data.og : !!data.og&&data.og.startsWith('https://hijoshoku-navi.com/'),`${name} ${route}: only actual owned cover may supply OG image`);
    const article=data.ld.find(x=>x['@type']==='Article'),crumb=data.ld.find(x=>x['@type']==='BreadcrumbList');

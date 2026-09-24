@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 assert (ROOT/'scripts/content12_confirmation.py').is_file(), 'content12 publication verifier missing'
 with tempfile.TemporaryDirectory(prefix='content12-confirmation-') as d:
     root=Path(d)
-    for p in ['content','docs','data','layouts','scripts']:
+    for p in ['content','docs','data','layouts','scripts','assets']:
         shutil.copytree(ROOT/p,root/p,ignore=shutil.ignore_patterns('__pycache__'))
     def run(script='content12_confirmation.py'):
         return subprocess.run(['python3','-B',str(root/'scripts'/script)],capture_output=True,text=True)

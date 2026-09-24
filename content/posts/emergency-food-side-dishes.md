@@ -1,8 +1,9 @@
 ---
 editorialRevision: editorial11
+seoRevision: seoDemand01
 title: "非常食に添える、温め不要のおかず。カレー2品と副菜の選び方"
 date: 2026-09-19T00:00:00+09:00
-lastmod: 2026-09-20T00:00:00+09:00
+lastmod: 2026-09-24T00:00:00+09:00
 description: "温めずに食べられるハウスのカレー2品を、具材・内容量・原材料で比較。別に添える副菜や、開封後に使い切る量、配送時の残存賞味期限も確かめます。"
 seriesTitle: "備蓄のおかず選び"
 storySummary: "ごはんにかけるカレーと、別に添える副菜。温めずに食べる条件と原材料を見て、買い足すものを絞ります。"
@@ -10,7 +11,7 @@ choiceTitle: "野菜カレー・キーマの原材料を比べる"
 choiceNote: "カレーは温めずに食べられます。主食は別に調理条件を確認。"
 articleChoices: [{"condition": "野菜の具材を添えたい", "name": "まろやか野菜カレー", "note": "200g。大豆・豚肉・りんごを含みます。", "icon": "food", "official": "https://housefoods.jp/products/catalog/cd_1,092501,ret,curry,ata.html#materials", "label": "公式で野菜カレーの原材料を見る →"}, {"condition": "鶏肉を使ったカレーを添えたい", "name": "香りたつキーマカレー", "note": "180g。大豆・鶏肉・豚肉・りんごを含みます。", "icon": "food", "official": "https://housefoods.jp/products/catalog/cd_1,092500,ret,curry,ata.html#materials", "label": "公式でキーマの原材料を見る →"}]
 coverPhoto: "meal"
-evidenceKey: side_dishes_editorial11
+evidenceKey: side_dishes_editorial11_seo01
 categories: ["非常食のおかず"]
 tags: ["非常食", "温め不要", "おかず", "レトルト"]
 draft: false
@@ -69,6 +70,8 @@ draft: false
 {{< product-compare "sides" >}}
 
 在庫がそろっていれば、買い足さずに食事の組み合わせだけメモします。期限の早いものから普段の食事で使い、食べた分を補充します。
+
+カレー以外のおかずを足すなら、[やきとりとさば水煮の缶詰を、量と開封後の扱いで比べる](/posts/emergency-canned-food/)こともできます。
 
 ## 関連記事
 

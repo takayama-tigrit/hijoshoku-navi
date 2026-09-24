@@ -1,26 +1,33 @@
 ---
 editorialRevision: editorial11
-title: "温めずに食べる非常食。ごはん・パン・ようかんの備え"
+seoRevision: seoDemand01
+title: "非常食の選び方。温めない主食・おかず・お菓子を比べる"
 date: 2026-09-17T00:00:00+09:00
-lastmod: 2026-09-20T00:00:00+09:00
-description: "尾西の白飯は水で戻すごはん。ひだまりパンとえいようかんは、そのまま食べられます。調理の手間や量を比べ、主食と食事に添える補助食品を選びます。"
+lastmod: 2026-09-24T00:00:00+09:00
+description: "水で戻すごはん、開けて食べるパン、温めないカレーや缶詰。調理に使える水・待ち時間と、家に足りない食品から選びます。お菓子と主食セットの違いも比較します。"
 seriesTitle: "お湯が使えない日の食事"
-storySummary: "水で戻すごはん、開けて食べるパン、食事に添えるようかん。注ぐ水の量や待ち時間が違います。"
-choiceTitle: "そのまま食べるもの、水で戻すもの"
-choiceNote: "ごはんやパンに、主菜・副菜と飲料水も合わせて備えます。"
-articleChoices: [{"condition": "そのまま食べたい → 主食", "name": "ひだまりパン プレーン", "note": "注水不要の保存パン。小麦・卵・乳成分・大豆を含みます。", "icon": "bread", "official": "https://www.onisifoods.co.jp/products/hidamari/plane.html", "label": "公式でアレルギー表示を確認 →"}, {"condition": "そのまま食べたい → 補助", "name": "えいようかん", "note": "水を加えずに食べられるようかん。ごはんやおかずに、甘いものを添えるときに。", "icon": "yokan", "official": "https://www.imuraya.co.jp/goods/yokan/c-eiyo/eiyo/", "label": "公式で内容量・原材料を確認 →"}, {"condition": "水と待ち時間がある → 主食", "name": "尾西の白飯", "note": "1袋に水160mL。熱湯15分／水15℃で60分が目安。おかずと一緒に。", "icon": "rice", "official": "https://www.onisifoods.co.jp/products/hakuhan.html", "label": "公式で原材料・作り方を確認 →"}]
+storySummary: "ごはん・パン・おかず・缶詰・お菓子・セット。食べ方と家に足りないものから、選ぶ入口をまとめました。"
+readingJump: {"href": "#choose-by-prep", "label": "食べ方と足りない食品から選ぶ"}
 categories: ["比較"]
 tags: ["非常食", "家庭備蓄", "比較", "一人暮らし", "家族"]
 coverPhoto: "bread"
-evidenceKey: ranking_editorial11
+evidenceKey: ranking_editorial11_seo01
 draft: false
 ---
 
 お湯を沸かせないときは、{{< mark "すぐ食べるパンと、水で戻す尾西の白飯を組み合わせて備えます。" >}} 肉や魚、野菜のおかずも一緒に用意します。ようかんは食事に添える甘いものです。
 
-<div data-testid="next-action"><p><strong>開けて食べるものから選ぶ</strong></p><a href="#choose-by-prep">準備の違いを見る</a> ／ <a href="/guide/#stock-check">先に水と主食の在庫を数える</a></div>
+<div data-testid="next-action"><a href="#choose-by-prep">食べ方と足りない食品から選ぶ</a> ／ <a href="/guide/#stock-check">先に水と主食の在庫を数える</a></div>
 
 <div id="choose-by-prep"></div>
+
+## いま足りない食品から選ぶ
+
+{{< mark "ごはんやパンは主食。おかずと飲料水も合わせて備えます。" >}} すぐ食べる分と、水を注いで待てる分を分けると、使う場面に合うものを選べます。
+
+{{< food-choices >}}
+
+<div id="bread-and-rice"></div>
 
 {{< photo id="bread" >}}
 
@@ -45,6 +52,12 @@ draft: false
 
 </details>
 
+## カレー・缶詰は、ごはんに添える量から
+
+ごはんにかけるなら、[温めずに食べられるハウスの野菜カレーとキーマ](/posts/emergency-food-side-dishes/)が候補です。{{< mark "カレーを温める必要はありませんが、主食の調理は別。" >}} 野菜カレーにも豚肉が含まれるため、味ごとの原材料を見て選びます。
+
+肉や魚を別に添えるなら、[ホテイのやきとり75gと、月花さば水煮200gの比較](/posts/emergency-canned-food/)へ。缶の総量だけでなく、中身の固形量や、開けて一度に食べ切れる量を見ます。
+
 ## ごはんとおかずに、甘いものをひとつ
 
 白飯は1袋100g、ひだまりパンは1個70g、えいようかんは1本60g。熱量も、それぞれの袋・個・本を単位に比べます。
@@ -56,6 +69,8 @@ draft: false
 主菜には肉や魚、豆のおかず、副菜には野菜のおかずや汁物をそろえます。ようかんも含め、量は家族が食べる分に合わせます。
 
 えいようかんは1箱5本入り。栄養表示は1本分です。
+
+ほかのお菓子も備えるなら、[普段のお菓子と長期保存のお菓子の選び方](/posts/emergency-food-snacks/)へ。家族が食べられる原材料と、保管する場所に合わせて選びます。
 
 購入時は、届く時点で賞味期限がどれだけ残っているかを確かめます。届いたら袋や箱の期限をメモし、使う順番を決めて棚へ置きます。
 
@@ -83,6 +98,8 @@ draft: false
 {{< mark "食品の公的な目安は、最低3日分～1週間分×人数分です。" >}}朝・昼・夕の献立に当てはめ、量と栄養を考えます。
 
 主食のセットを選んだら、おかずの在庫も一緒に数えます。
+
+[尾西のごはんシリーズCY・DWの比較](/posts/emergency-food-set-check/)では、ごはん12袋に水が付くか、どれだけ入るかを確認できます。セット名の「食数」と、主菜・副菜まで含めた食事の備えは分けて考えます。
 
 <details>
 <summary>人数別の飲料水量を確認する</summary>

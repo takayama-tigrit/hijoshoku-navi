@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import http from 'node:http';
 import { chromium } from '@playwright/test';
+import { browserOptions } from './browser-options.mjs';
 
 const output = await mkdtemp(path.join(tmpdir(), 'hijoshoku-reference-'));
 const artifacts = process.env.ARTIFACT_DIR || path.join(output, 'evidence');
@@ -17,12 +18,14 @@ const server = http.createServer(async (req, res) => {
     if (name.endsWith('/')) name += 'index.html';
     const file = path.resolve(output, '.' + name);
     assert(file.startsWith(output + path.sep));
-    res.writeHead(200, { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream' }).end(await readFile(file));
+    const bytes = await readFile(file);
+    res.writeHead(200, { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream' }).end(bytes);
   } catch { res.writeHead(404).end(); }
 });
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = `http://127.0.0.1:${server.address().port}`;
-const browser = await chromium.launch(process.env.PLAYWRIGHT_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH } : process.platform === 'darwin' ? { channel: 'chrome' } : {});
+const browser = await chromium.launch(browserOptions());
+const allowedImages = new Set([...Object.values(JSON.parse(await readFile('data/product-images.json','utf8')).images).map(p=>p.image),...JSON.parse(await readFile('data/content14-visual.json','utf8')).groups.cans.entries.map(e=>e.photo.src)]);
 const ledger = JSON.parse(await readFile('docs/image-licenses.json', 'utf8')).images;
 const editorial = JSON.parse(await readFile('data/editorial.json','utf8'));
 // Independent published-route contract; do not infer the expectation from generated cards.
@@ -70,6 +73,7 @@ const check = (ok, message) => { if (!ok) failures.push(message); };
 try {
  for (const width of [320,390,768,1440]) {
   const context = await browser.newContext({viewport:{width,height:960},javaScriptEnabled:false});
+  await context.route('**/*',r=>new URL(r.request().url()).origin===base||(r.request().method()==='GET'&&r.request().resourceType()==='image'&&allowedImages.has(r.request().url()))?r.continue():r.abort());
   const page=await context.newPage();
   for (const route of ['/', '/guide/', '/ranking/', '/posts/alpha-mai-osusume/', '/about/', '/privacy/', '/posts/', '/404.html']) {
    await page.goto(base+route,{waitUntil:'networkidle'});
@@ -89,10 +93,12 @@ try {
     if(width<=390)check(m.second.y>=m.first.bottom&&m.second.width===width-32,`${width}: secondary story is vertically stacked`);
     measurements.push({route,width,...m});
    } else if(['/guide/','/ranking/','/posts/alpha-mai-osusume/'].includes(route)) {
-    const m=await page.evaluate(()=>{
+    const cardSelector=route==='/ranking/'?'[data-food-choice]':'[data-choice-card]';
+    check(await page.locator(cardSelector).count()===(route==='/ranking/'?6:route==='/guide/'?2:3),`${route}: exact choice set before style measurement`);
+    const m=await page.evaluate(cardSelector=>{
      const image=document.querySelector('.article-cover img'), title=document.querySelector('.article-header h1'),body=document.querySelector('.article-content'),a=document.querySelector('.article-jump');
-     return {imageY:image?.getBoundingClientRect().y,titleY:title.getBoundingClientRect().y,bodyWidth:body.getBoundingClientRect().width,font:getComputedStyle(body).fontSize,line:getComputedStyle(body).lineHeight,titleSize:getComputedStyle(title).fontSize,actionBottom:a?.getBoundingClientRect().bottom,radius:getComputedStyle(document.querySelector('[data-choice-card]')).borderRadius};
-    });
+     return {imageY:image?.getBoundingClientRect().y,titleY:title.getBoundingClientRect().y,bodyWidth:body.getBoundingClientRect().width,font:getComputedStyle(body).fontSize,line:getComputedStyle(body).lineHeight,titleSize:getComputedStyle(title).fontSize,actionBottom:a?.getBoundingClientRect().bottom,radius:getComputedStyle(document.querySelector(cardSelector)).borderRadius};
+    },cardSelector);
     check(m.titleY<m.imageY,`${route} ${width}: title before photo`);
     check(m.font==='16px'&&m.line==='28px',`${route} ${width}: 16px/28px body`);
     check(m.radius==='0px',`${route}: flat editorial choice memo`);

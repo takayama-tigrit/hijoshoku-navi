@@ -1,0 +1,88 @@
+[
+  {
+    "id": 42,
+    "url": "https://www.satake-fb.co.jp/products/hozon/",
+    "final_url": "https://www.satake-fb.co.jp/products/hozon/",
+    "status": 200,
+    "checked_at": "2026-09-24T16:01:42+09:00",
+    "excerpt": "excerpts/42.txt",
+    "excerpt_sha256": "167052c305d3417ec109d8be9fc63dc1e997376c7beb9a5cb2a3b3bf4e707495",
+    "response_sha256": "22ea30af1bdb6fdd848b71395935b8974b60fecab870c7e7076e3d5c51ebc353",
+    "retrieval_method": "public unauthenticated GET; HTML visible text and image alt text",
+    "scope": "サタケフードビジネス マジックライス 保存食 白飯 100g（JAN 4531717310145）"
+  },
+  {
+    "id": 43,
+    "url": "https://www.satakeshop.com/shopdetail/000000000519/ct104/page1/recommend/",
+    "final_url": "https://www.satakeshop.com/shopdetail/000000000519/ct104/page1/recommend/",
+    "status": 200,
+    "checked_at": "2026-09-24T16:28:36.076329+09:00",
+    "excerpt": "excerpts/43.txt",
+    "excerpt_sha256": "8792d42e941342259cfd4d463bf4e848a06f5b081eab23f8fd0d3d0634907638",
+    "response_sha256": "4a7f810e0f196f52892cc885cf0045e7dd4408aa1a1b6de95208b335aaf51f1e",
+    "retrieval_method": "Independent parent public GET; visible-text quotes rechecked",
+    "scope": "サタケフードビジネス マジックライス 保存食 白飯 100g（JAN 4531717310145）"
+  },
+  {
+    "id": 44,
+    "url": "https://www.satake-fb.co.jp/faq/",
+    "final_url": "https://www.satake-fb.co.jp/faq/",
+    "status": 200,
+    "checked_at": "2026-09-24T16:01:26+09:00",
+    "excerpt": "excerpts/44.txt",
+    "excerpt_sha256": "ff77092d7d040a52010aff039a0e3d4697f696e3af056d9d8c35441006a724ee",
+    "response_sha256": "7e492e113058519766311708545f7deef68cd72cef59d8fc870e5eab3d85a424",
+    "retrieval_method": "public unauthenticated GET; HTML visible text and image alt text",
+    "scope": "サタケフードビジネス マジックライス 保存食 白飯 100g（JAN 4531717310145）"
+  },
+  {
+    "id": 45,
+    "url": "https://www.alpha-online.jp/c/categorysearch/hijoushoku/quick/quickshiro",
+    "final_url": "https://www.alpha-online.jp/c/categorysearch/hijoushoku/quick/quickshiro",
+    "status": 200,
+    "checked_at": "2026-09-24T16:02:33+09:00",
+    "excerpt": "excerpts/45.txt",
+    "excerpt_sha256": "07637a400ef290c05133de34f902d930d972413239978652989ea7dc93177370",
+    "response_sha256": "4662d76c618a7abb67e1012a9c5c7d3cc8d5558a454095bbcb0567a38222f688",
+    "retrieval_method": "public unauthenticated GET; HTML visible text and image alt text",
+    "scope": "アルファー食品 安心米クイック 白飯 70g（商品番号919-7）"
+  },
+  {
+    "id": 46,
+    "url": "https://www.alpha-come.co.jp/img/pdf/hijyousyoku-siyousyo-2505.pdf",
+    "final_url": "https://www.alpha-come.co.jp/img/pdf/hijyousyoku-siyousyo-2505.pdf",
+    "status": 200,
+    "checked_at": "2026-09-24T16:02:52+09:00",
+    "excerpt": "excerpts/46.txt",
+    "excerpt_sha256": "0bb2933af68319d648bc3a30516621f797c7067fd16c34b3df17c0c2d4561643",
+    "response_sha256": "5fca63e9bf66d995e77a8b8956eccf22a9e71ec86ee91b23e0b47995a69eeff5",
+    "retrieval_method": "PDFKit text; PDF page 1 lower table visually cross-checked",
+    "scope": "安心米クイック 白飯 70gの行のみ",
+    "page": 1
+  },
+  {
+    "id": 47,
+    "url": "https://www.satake-fb.co.jp/wp/wp-content/uploads/2026/05/%E2%98%85%E9%95%B7%E6%9C%9F%E4%BF%9D%E5%AD%98%E9%A3%9F%E3%82%AB%E3%82%BF%E3%83%AD%E3%82%B0%E2%84%96853-01.pdf",
+    "final_url": "https://www.satake-fb.co.jp/wp/wp-content/uploads/2026/05/%E2%98%85%E9%95%B7%E6%9C%9F%E4%BF%9D%E5%AD%98%E9%A3%9F%E3%82%AB%E3%82%BF%E3%83%AD%E3%82%B0%E2%84%96853-01.pdf",
+    "status": 200,
+    "checked_at": "2026-09-24T16:05:46+09:00",
+    "excerpt": "excerpts/47.txt",
+    "excerpt_sha256": "540c70901eb34bfcc9524983b6eefe813082f0dbd4fac96b9ecc2f3df15f1d79",
+    "response_sha256": "0a2075250286138df14d805c66d58cdba656fbcf64688b71fd41fbe2b7745d06",
+    "retrieval_method": "visual transcription of PDF page 4 (printed pp.05–06); image-only PDF; cell labels and values transcribed with spaces",
+    "scope": "保存食 白飯 100gの列と同保存食シリーズの共通行のみ",
+    "page": 4
+  },
+  {
+    "id": 48,
+    "url": "https://www.satakeshop.com/html/page27.html",
+    "final_url": "https://www.satakeshop.com/html/page27.html",
+    "status": 200,
+    "checked_at": "2026-09-24T16:28:36.154030+09:00",
+    "excerpt": "excerpts/48.txt",
+    "excerpt_sha256": "62be2ffa6f71877c0f0d78827e5ad83325dfbda4ff2cc5b822951127ae05ac35",
+    "response_sha256": "a5058f1624d71406a453e34fcfbb5ec7ff0eff2562fc349c658273dbcfa8f1e0",
+    "retrieval_method": "Independent parent public GET; visible-text quotes rechecked",
+    "scope": "リンク元はマジックライス 保存食 白飯の個食商品ページ。5年保存の保存食シリーズ。ななこめっつ・ぽけこめっつへ転用しない。"
+  }
+]

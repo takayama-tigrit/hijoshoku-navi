@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "rice",
+      "title": "ごはんを備える",
+      "name": "尾西の白飯100g",
+      "condition": "1袋に水160mL。水15℃で60分、熱湯なら15分が目安。",
+      "href": "/posts/alpha-mai-osusume/",
+      "label": "アルファ米の違いを比べる",
+      "photoKey": "尾西 白飯 100g",
+      "unit": "写真の販売単位：100g×1袋",
+      "source_ids": [
+        1,
+        10
+      ],
+      "photoAlt": "100g尾西の白飯の袋"
+    },
+    {
+      "id": "bread",
+      "title": "注水せず主食を食べる",
+      "name": "ひだまりパン プレーン",
+      "condition": "そのまま食べられます。小麦・卵・乳成分・大豆を含みます。",
+      "href": "#bread-and-rice",
+      "label": "パンとごはんの食べ方を見る",
+      "photoKey": "尾西 ひだまりパン プレーン",
+      "unit": "写真の販売単位：70g×36袋",
+      "source_ids": [
+        12
+      ],
+      "photoAlt": "尾西のひだまりパン プレーンの袋"
+    },
+    {
+      "id": "sides",
+      "title": "ごはんにおかずを添える",
+      "name": "温めずにおいしいカレー",
+      "condition": "カレーは温めずに。主食の調理は別。写真の野菜カレーは大豆・豚肉・りんごを含みます。",
+      "href": "/posts/emergency-food-side-dishes/",
+      "label": "野菜カレーとキーマを比べる",
+      "photoKey": "ハウス 温めずにおいしいカレー まろやか野菜カレー 200g",
+      "unit": "写真の販売単位：野菜カレー200g×2箱",
+      "source_ids": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "photoAlt": "温めずにおいしいカレー まろやか野菜カレー200gの箱"
+    },
+    {
+      "id": "cans",
+      "title": "肉・魚の缶詰を足す",
+      "name": "やきとり・さば水煮",
+      "condition": "缶の総量と固形量、開け方、開封後に食べ切る量で選びます。写真のやきとりは小麦・大豆・鶏肉・りんごを含みます。",
+      "href": "/posts/emergency-canned-food/",
+      "label": "2種類の缶詰を比べる",
+      "photoKind": "canned",
+      "unit": "写真の販売単位：やきとり75g×1缶",
+      "source_ids": [
+        30,
+        31,
+        33,
+        34,
+        35
+      ],
+      "photoAlt": "ホテイ やきとり たれ味75gの缶"
+    },
+    {
+      "id": "snacks",
+      "title": "食事に甘いものを添える",
+      "name": "えいようかんなどのお菓子",
+      "condition": "ごはんやおかずの代わりに数えず、食事に添える分として。",
+      "href": "/posts/emergency-food-snacks/",
+      "label": "お菓子の原材料と保管を読む",
+      "photoKey": "井村屋 えいようかん",
+      "unit": "写真の販売単位：60g×5本",
+      "source_ids": [
+        2,
+        5
+      ],
+      "photoAlt": "井村屋えいようかん60g×5本入りの箱"
+    },
+    {
+      "id": "sets",
+      "title": "主食をまとめて買い足す",
+      "name": "尾西のごはんシリーズCY・DW",
+      "condition": "どちらもごはん12袋。水の有無と量、おかずの在庫を比べます。",
+      "href": "/posts/emergency-food-set-check/",
+      "label": "水なし・水入りのセットを比べる",
+      "photoKey": "尾西 ごはんシリーズ CY",
+      "unit": "写真の販売単位：CY（ごはん12袋）×1セット",
+      "source_ids": [
+        13,
+        14
+      ],
+      "photoAlt": "尾西のごはんシリーズCYのセット"
+    }
+  ]
+}

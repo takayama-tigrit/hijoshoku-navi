@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {createDraftRelatedFixture} from './draft-related-fixture.mjs';
 import {execFileSync} from 'node:child_process';
 import {mkdtemp,readFile,writeFile,mkdir,cp} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import path from 'node:path';import http from 'node:http';
@@ -8,8 +9,9 @@ const temp=await mkdtemp(path.join(tmpdir(),'hijoshoku-content-05-'));
 const artifacts=process.env.ARTIFACT_DIR||path.join(temp,'evidence');await mkdir(artifacts,{recursive:true});
 const fixture=path.join(temp,'content');await cp('content',fixture,{recursive:true});
 for(const slug of slugs){const p=path.join(fixture,'posts',slug+'.md');const s=await readFile(p,'utf8');assert.match(s,/^draft: (true|false)$/m);await writeFile(p,s.replace(/^draft: (true|false)$/m,'draft: true'));}
+const coherent=await createDraftRelatedFixture({sourceDir:process.cwd(),fixtureDir:path.join(temp,'normal-source'),draftRoutes:slugs.map(slug=>'/posts/'+slug+'/')});
 const normal=path.join(temp,'normal'),draft=path.join(temp,'draft');const hugo=process.env.HUGO_BIN||'hugo';
-for(const [dest,extra] of [[normal,[]],[draft,['--buildDrafts']]])execFileSync(hugo,['--contentDir',fixture,'--destination',dest,'--baseURL','http://localhost/','--environment','development','--panicOnWarning',...extra],{stdio:'inherit'});
+for(const [dest,extra] of [[normal,coherent.buildArgs],[draft,['--buildDrafts']]])execFileSync(hugo,['--contentDir',fixture,'--destination',dest,'--baseURL','http://localhost/','--environment','development','--panicOnWarning',...extra],{stdio:'inherit'});
 const checks=[],failures=[];function check(ok,message){(ok?checks:failures).push(message);}
 for(const slug of slugs){
  const route='/posts/'+slug+'/';

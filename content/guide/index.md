@@ -1,8 +1,9 @@
 ---
 editorialRevision: editorial11
+seoRevision: seoDemand01
 title: "非常食は何日分？いつものごはんと、水の備え"
 date: 2026-09-17T00:00:00+09:00
-lastmod: 2026-09-20T00:00:00+09:00
+lastmod: 2026-09-24T00:00:00+09:00
 description: "飲料水は1人1日3Lが目安。家にある水、ごはん、おかずを数え、3日分から1週間分へ備えるための在庫メモです。足りる分は買い足しません。"
 seriesTitle: "食卓から始める備え"
 "storySummary": "家にある水は何L、ごはんや缶詰は何食分？在庫を数え、おかずとの組み合わせもメモします。"
@@ -12,7 +13,7 @@ articleChoices: [{"condition": "手持ちの水は何Lある？", "name": "水�
 categories: ["ガイド"]
 tags: ["非常食", "家庭備蓄", "水", "選び方", "ローリングストック"]
 coverPhoto: "meal"
-evidenceKey: guide_editorial11
+evidenceKey: guide_editorial11_seo01
 draft: false
 ---
 
@@ -117,6 +118,8 @@ draft: false
 届いた食品は、現物の期限と保存方法を確認し、指定の保管条件に合う、家族が取り出せる場所へ置きます。期限の早いものから使い、減った分を補充します。
 
 {{< mark "普段の食事で賞味期限内に食べ、入れ替えていきましょう。" >}}
+
+買い足す食品を決めるときは、[スーパーで選ぶ水・主食・おかずの買い物リスト](/posts/supermarket-emergency-food-list/)も使えます。
 
 ## 関連記事
 

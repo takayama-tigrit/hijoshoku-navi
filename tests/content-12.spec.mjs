@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {createDraftRelatedFixture} from './draft-related-fixture.mjs';
 import {execFileSync} from 'node:child_process';
 import {mkdtemp,readFile,writeFile,mkdir,cp} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import path from 'node:path';import http from 'node:http';
@@ -20,8 +21,9 @@ execFileSync('python3',['-B','docs/sources/verify.py'],{stdio:'inherit'});
 // Preserve future draft-exclusion coverage, but never overwrite the actual public source.
 const fixture=path.join(temp,'content');await cp('content',fixture,{recursive:true});
 for(const slug of slugs){const p=path.join(fixture,`posts/${slug}.md`);const s=await readFile(p,'utf8');await writeFile(p,s.replace(/^draft: false$/m,'draft: true'));}
+const coherent=await createDraftRelatedFixture({sourceDir:process.cwd(),fixtureDir:path.join(temp,'normal-source'),draftRoutes:slugs.map(slug=>'/posts/'+slug+'/')});
 const normal=path.join(temp,'fixture-normal'),preview=path.join(temp,'fixture-draft'),draft=path.join(temp,'published');
-for(const [dest,extra] of [[normal,['--contentDir',fixture]],[preview,['--contentDir',fixture,'--buildDrafts']],[draft,[]]])execFileSync(process.env.HUGO_BIN||'hugo',['--destination',dest,'--baseURL','http://localhost/','--environment','development','--panicOnWarning',...extra],{stdio:'inherit'});
+for(const [dest,extra] of [[normal,[...coherent.buildArgs,'--contentDir',fixture]],[preview,['--contentDir',fixture,'--buildDrafts']],[draft,[]]])execFileSync(process.env.HUGO_BIN||'hugo',['--destination',dest,'--baseURL','http://localhost/','--environment','development','--panicOnWarning',...extra],{stdio:'inherit'});
 for(const slug of slugs){
  const route='/posts/'+slug+'/';await assert.rejects(readFile(path.join(normal,route,'index.html')));
  for(const f of ['index.html','index.xml','sitemap.xml','posts/index.html','posts/index.xml']){

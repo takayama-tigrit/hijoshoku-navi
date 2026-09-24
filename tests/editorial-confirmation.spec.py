@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 with tempfile.TemporaryDirectory(prefix='editorial-confirmation-') as temp:
     root = Path(temp)
-    for folder in ['content','docs','data','layouts','scripts']:
+    for folder in ['content','docs','data','layouts','scripts','assets']:
         shutil.copytree(ROOT/folder, root/folder)
     record = root/'docs/reviews/editorial-11-human-proofreading.json'
     original = record.read_bytes() if record.exists() else b'{}'
